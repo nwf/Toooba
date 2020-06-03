@@ -3292,9 +3292,9 @@ module mkFabric_2x3(CLK,
 	     WILL_FIRE_RL_fabric_rl_wr_xaction_master_to_slave_data &&
 	     fabric_v_f_wd_tasks_0$D_OUT[9:8] == 2'd2 ;
   assign MUX_fabric_v_f_rd_mis_0$enq_1__VAL_1 =
-	     { 1'd0, fabric_xactors_from_masters_0_f_rd_addr$D_OUT[28:21] } ;
-  assign MUX_fabric_v_f_rd_mis_0$enq_1__VAL_2 =
 	     { 1'd1, fabric_xactors_from_masters_1_f_rd_addr$D_OUT[28:21] } ;
+  assign MUX_fabric_v_f_rd_mis_0$enq_1__VAL_2 =
+	     { 1'd0, fabric_xactors_from_masters_0_f_rd_addr$D_OUT[28:21] } ;
   assign MUX_fabric_v_f_wd_tasks_0$enq_1__VAL_1 =
 	     { 2'd0, fabric_xactors_from_masters_0_f_wr_addr$D_OUT[28:21] } ;
   assign MUX_fabric_v_f_wd_tasks_0$enq_1__VAL_2 =
@@ -3328,17 +3328,17 @@ module mkFabric_2x3(CLK,
 	       8'd0 :
 	       x__h12338 ;
   assign MUX_fabric_xactors_from_masters_0_f_rd_data$enq_1__VAL_1 =
-	     { fabric_xactors_to_slaves_0_f_rd_data$D_OUT[70:3],
-	       IF_fabric_v_rg_r_beat_count_0_67_EQ_fabric_v_f_ETC___d396,
-	       fabric_xactors_to_slaves_0_f_rd_data$D_OUT[0] } ;
-  assign MUX_fabric_xactors_from_masters_0_f_rd_data$enq_1__VAL_2 =
-	     { fabric_xactors_to_slaves_1_f_rd_data$D_OUT[70:3],
-	       IF_fabric_v_rg_r_beat_count_1_07_EQ_fabric_v_f_ETC___d435,
-	       fabric_xactors_to_slaves_1_f_rd_data$D_OUT[0] } ;
-  assign MUX_fabric_xactors_from_masters_0_f_rd_data$enq_1__VAL_3 =
 	     { fabric_xactors_to_slaves_2_f_rd_data$D_OUT[70:3],
 	       IF_fabric_v_rg_r_beat_count_2_46_EQ_fabric_v_f_ETC___d474,
 	       fabric_xactors_to_slaves_2_f_rd_data$D_OUT[0] } ;
+  assign MUX_fabric_xactors_from_masters_0_f_rd_data$enq_1__VAL_2 =
+	     { fabric_xactors_to_slaves_0_f_rd_data$D_OUT[70:3],
+	       IF_fabric_v_rg_r_beat_count_0_67_EQ_fabric_v_f_ETC___d396,
+	       fabric_xactors_to_slaves_0_f_rd_data$D_OUT[0] } ;
+  assign MUX_fabric_xactors_from_masters_0_f_rd_data$enq_1__VAL_3 =
+	     { fabric_xactors_to_slaves_1_f_rd_data$D_OUT[70:3],
+	       IF_fabric_v_rg_r_beat_count_1_07_EQ_fabric_v_f_ETC___d435,
+	       fabric_xactors_to_slaves_1_f_rd_data$D_OUT[0] } ;
   assign MUX_fabric_xactors_from_masters_0_f_rd_data$enq_1__VAL_4 =
 	     { fabric_v_f_rd_err_info_0$D_OUT[3:0],
 	       66'd3,
@@ -3475,12 +3475,12 @@ module mkFabric_2x3(CLK,
 
   // submodule fabric_v_f_rd_mis_0
   assign fabric_v_f_rd_mis_0$D_IN =
-	     WILL_FIRE_RL_fabric_rl_rd_xaction_master_to_slave ?
+	     WILL_FIRE_RL_fabric_rl_rd_xaction_master_to_slave_3 ?
 	       MUX_fabric_v_f_rd_mis_0$enq_1__VAL_1 :
 	       MUX_fabric_v_f_rd_mis_0$enq_1__VAL_2 ;
   assign fabric_v_f_rd_mis_0$ENQ =
-	     WILL_FIRE_RL_fabric_rl_rd_xaction_master_to_slave ||
-	     WILL_FIRE_RL_fabric_rl_rd_xaction_master_to_slave_3 ;
+	     WILL_FIRE_RL_fabric_rl_rd_xaction_master_to_slave_3 ||
+	     WILL_FIRE_RL_fabric_rl_rd_xaction_master_to_slave ;
   assign fabric_v_f_rd_mis_0$DEQ =
 	     _dor1fabric_v_f_rd_mis_0$EN_deq &&
 	     fabric_v_rg_r_beat_count_0_67_EQ_fabric_v_f_rd_ETC___d369 ;
@@ -3488,12 +3488,12 @@ module mkFabric_2x3(CLK,
 
   // submodule fabric_v_f_rd_mis_1
   assign fabric_v_f_rd_mis_1$D_IN =
-	     WILL_FIRE_RL_fabric_rl_rd_xaction_master_to_slave_1 ?
+	     WILL_FIRE_RL_fabric_rl_rd_xaction_master_to_slave_4 ?
 	       MUX_fabric_v_f_rd_mis_0$enq_1__VAL_1 :
 	       MUX_fabric_v_f_rd_mis_0$enq_1__VAL_2 ;
   assign fabric_v_f_rd_mis_1$ENQ =
-	     WILL_FIRE_RL_fabric_rl_rd_xaction_master_to_slave_1 ||
-	     WILL_FIRE_RL_fabric_rl_rd_xaction_master_to_slave_4 ;
+	     WILL_FIRE_RL_fabric_rl_rd_xaction_master_to_slave_4 ||
+	     WILL_FIRE_RL_fabric_rl_rd_xaction_master_to_slave_1 ;
   assign fabric_v_f_rd_mis_1$DEQ =
 	     _dor1fabric_v_f_rd_mis_1$EN_deq &&
 	     fabric_v_rg_r_beat_count_1_07_EQ_fabric_v_f_rd_ETC___d409 ;
@@ -3501,12 +3501,12 @@ module mkFabric_2x3(CLK,
 
   // submodule fabric_v_f_rd_mis_2
   assign fabric_v_f_rd_mis_2$D_IN =
-	     WILL_FIRE_RL_fabric_rl_rd_xaction_master_to_slave_2 ?
+	     WILL_FIRE_RL_fabric_rl_rd_xaction_master_to_slave_5 ?
 	       MUX_fabric_v_f_rd_mis_0$enq_1__VAL_1 :
 	       MUX_fabric_v_f_rd_mis_0$enq_1__VAL_2 ;
   assign fabric_v_f_rd_mis_2$ENQ =
-	     WILL_FIRE_RL_fabric_rl_rd_xaction_master_to_slave_2 ||
-	     WILL_FIRE_RL_fabric_rl_rd_xaction_master_to_slave_5 ;
+	     WILL_FIRE_RL_fabric_rl_rd_xaction_master_to_slave_5 ||
+	     WILL_FIRE_RL_fabric_rl_rd_xaction_master_to_slave_2 ;
   assign fabric_v_f_rd_mis_2$DEQ =
 	     _dor1fabric_v_f_rd_mis_2$EN_deq &&
 	     fabric_v_rg_r_beat_count_2_46_EQ_fabric_v_f_rd_ETC___d448 ;
@@ -3749,23 +3749,23 @@ module mkFabric_2x3(CLK,
   assign fabric_xactors_from_masters_0_f_rd_addr$CLR = fabric_rg_reset ;
 
   // submodule fabric_xactors_from_masters_0_f_rd_data
-  always@(WILL_FIRE_RL_fabric_rl_rd_resp_slave_to_master or
+  always@(WILL_FIRE_RL_fabric_rl_rd_resp_slave_to_master_2 or
 	  MUX_fabric_xactors_from_masters_0_f_rd_data$enq_1__VAL_1 or
-	  WILL_FIRE_RL_fabric_rl_rd_resp_slave_to_master_1 or
+	  WILL_FIRE_RL_fabric_rl_rd_resp_slave_to_master or
 	  MUX_fabric_xactors_from_masters_0_f_rd_data$enq_1__VAL_2 or
-	  WILL_FIRE_RL_fabric_rl_rd_resp_slave_to_master_2 or
+	  WILL_FIRE_RL_fabric_rl_rd_resp_slave_to_master_1 or
 	  MUX_fabric_xactors_from_masters_0_f_rd_data$enq_1__VAL_3 or
 	  WILL_FIRE_RL_fabric_rl_rd_resp_err_to_master or
 	  MUX_fabric_xactors_from_masters_0_f_rd_data$enq_1__VAL_4)
   begin
     case (1'b1) // synopsys parallel_case
-      WILL_FIRE_RL_fabric_rl_rd_resp_slave_to_master:
+      WILL_FIRE_RL_fabric_rl_rd_resp_slave_to_master_2:
 	  fabric_xactors_from_masters_0_f_rd_data$D_IN =
 	      MUX_fabric_xactors_from_masters_0_f_rd_data$enq_1__VAL_1;
-      WILL_FIRE_RL_fabric_rl_rd_resp_slave_to_master_1:
+      WILL_FIRE_RL_fabric_rl_rd_resp_slave_to_master:
 	  fabric_xactors_from_masters_0_f_rd_data$D_IN =
 	      MUX_fabric_xactors_from_masters_0_f_rd_data$enq_1__VAL_2;
-      WILL_FIRE_RL_fabric_rl_rd_resp_slave_to_master_2:
+      WILL_FIRE_RL_fabric_rl_rd_resp_slave_to_master_1:
 	  fabric_xactors_from_masters_0_f_rd_data$D_IN =
 	      MUX_fabric_xactors_from_masters_0_f_rd_data$enq_1__VAL_3;
       WILL_FIRE_RL_fabric_rl_rd_resp_err_to_master:
@@ -3776,9 +3776,9 @@ module mkFabric_2x3(CLK,
     endcase
   end
   assign fabric_xactors_from_masters_0_f_rd_data$ENQ =
+	     WILL_FIRE_RL_fabric_rl_rd_resp_slave_to_master_2 ||
 	     WILL_FIRE_RL_fabric_rl_rd_resp_slave_to_master ||
 	     WILL_FIRE_RL_fabric_rl_rd_resp_slave_to_master_1 ||
-	     WILL_FIRE_RL_fabric_rl_rd_resp_slave_to_master_2 ||
 	     WILL_FIRE_RL_fabric_rl_rd_resp_err_to_master ;
   assign fabric_xactors_from_masters_0_f_rd_data$DEQ =
 	     v_from_masters_0_rready &&
@@ -3877,23 +3877,23 @@ module mkFabric_2x3(CLK,
   assign fabric_xactors_from_masters_1_f_rd_addr$CLR = fabric_rg_reset ;
 
   // submodule fabric_xactors_from_masters_1_f_rd_data
-  always@(WILL_FIRE_RL_fabric_rl_rd_resp_slave_to_master_3 or
+  always@(WILL_FIRE_RL_fabric_rl_rd_resp_slave_to_master_5 or
 	  MUX_fabric_xactors_from_masters_0_f_rd_data$enq_1__VAL_1 or
-	  WILL_FIRE_RL_fabric_rl_rd_resp_slave_to_master_4 or
+	  WILL_FIRE_RL_fabric_rl_rd_resp_slave_to_master_3 or
 	  MUX_fabric_xactors_from_masters_0_f_rd_data$enq_1__VAL_2 or
-	  WILL_FIRE_RL_fabric_rl_rd_resp_slave_to_master_5 or
+	  WILL_FIRE_RL_fabric_rl_rd_resp_slave_to_master_4 or
 	  MUX_fabric_xactors_from_masters_0_f_rd_data$enq_1__VAL_3 or
 	  WILL_FIRE_RL_fabric_rl_rd_resp_err_to_master_1 or
 	  MUX_fabric_xactors_from_masters_1_f_rd_data$enq_1__VAL_4)
   begin
     case (1'b1) // synopsys parallel_case
-      WILL_FIRE_RL_fabric_rl_rd_resp_slave_to_master_3:
+      WILL_FIRE_RL_fabric_rl_rd_resp_slave_to_master_5:
 	  fabric_xactors_from_masters_1_f_rd_data$D_IN =
 	      MUX_fabric_xactors_from_masters_0_f_rd_data$enq_1__VAL_1;
-      WILL_FIRE_RL_fabric_rl_rd_resp_slave_to_master_4:
+      WILL_FIRE_RL_fabric_rl_rd_resp_slave_to_master_3:
 	  fabric_xactors_from_masters_1_f_rd_data$D_IN =
 	      MUX_fabric_xactors_from_masters_0_f_rd_data$enq_1__VAL_2;
-      WILL_FIRE_RL_fabric_rl_rd_resp_slave_to_master_5:
+      WILL_FIRE_RL_fabric_rl_rd_resp_slave_to_master_4:
 	  fabric_xactors_from_masters_1_f_rd_data$D_IN =
 	      MUX_fabric_xactors_from_masters_0_f_rd_data$enq_1__VAL_3;
       WILL_FIRE_RL_fabric_rl_rd_resp_err_to_master_1:
@@ -3904,9 +3904,9 @@ module mkFabric_2x3(CLK,
     endcase
   end
   assign fabric_xactors_from_masters_1_f_rd_data$ENQ =
+	     WILL_FIRE_RL_fabric_rl_rd_resp_slave_to_master_5 ||
 	     WILL_FIRE_RL_fabric_rl_rd_resp_slave_to_master_3 ||
 	     WILL_FIRE_RL_fabric_rl_rd_resp_slave_to_master_4 ||
-	     WILL_FIRE_RL_fabric_rl_rd_resp_slave_to_master_5 ||
 	     WILL_FIRE_RL_fabric_rl_rd_resp_err_to_master_1 ;
   assign fabric_xactors_from_masters_1_f_rd_data$DEQ =
 	     v_from_masters_1_rready &&
