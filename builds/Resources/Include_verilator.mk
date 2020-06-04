@@ -9,16 +9,18 @@
 
 RTL_GEN_DIRS = -vdir Verilog_RTL  -bdir build_dir  -info-dir build_dir
 
-.depends.mk:
-	bluetcl -exec makedepend -verilog -elab  $(RTL_GEN_DIRS)  $(BSC_COMPILATION_FLAGS) -p $(BSC_PATH) -o $@ $(TOPFILE)
-
 build_dir:
 	mkdir -p $@
 
 Verilog_RTL:
 	mkdir -p $@
 
+ifeq (,$(filter clean full_clean,$(MAKECMDGOALS)))
 include .depends.mk
+
+.depends.mk: build_dir Verilog_RTL
+	bluetcl -exec makedepend -verilog -elab  $(RTL_GEN_DIRS)  $(BSC_COMPILATION_FLAGS) -p $(BSC_PATH) -o $@ $(TOPFILE)
+endif
 
 %.bo:
 	$(info building $@)
