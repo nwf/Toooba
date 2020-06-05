@@ -796,7 +796,7 @@ module mkFetchStage(CLK,
        f32d_enqReq_lat_0$whas,
        instdata_empty_lat_0$whas,
        instdata_full_lat_1$whas,
-       napTrainByDecQ_enqP_lat_0$whas,
+       napTrainByDecQ_empty_lat_1$whas,
        napTrainByExe$whas,
        out_fifo_dequeueFifo_lat_0$whas,
        out_fifo_dequeueFifo_lat_1$whas,
@@ -804,9 +804,9 @@ module mkFetchStage(CLK,
        out_fifo_enqueueElement_1_lat_0$whas,
        out_fifo_enqueueFifo_lat_0$whas,
        out_fifo_enqueueFifo_lat_1$whas,
+       pc_reg_dummy_2_0$whas,
        pc_reg_lat_0$whas,
-       pc_reg_lat_1$whas,
-       pc_reg_lat_2$whas;
+       pc_reg_lat_1$whas;
 
   // register decode_epoch_rl
   reg decode_epoch_rl;
@@ -2740,67 +2740,67 @@ module mkFetchStage(CLK,
 
   // remaining internal signals
   reg [63 : 0] CASE_f12f2_deqP_0_f12f2_data_0_BITS_69_TO_6_1__ETC__q257,
-	       CASE_pending_spaces56607_0_rg_pending_decode_B_ETC__q254,
+	       CASE_pending_spaces56589_0_rg_pending_decode_B_ETC__q254,
 	       SEL_ARR_IF_NOT_f22f3_empty_33_812_AND_NOT_SEL__ETC___d4283,
-	       SEL_ARR_IF_NOT_f22f3_empty_33_812_AND_NOT_SEL__ETC___d5197,
-	       SEL_ARR_SEL_ARR_rg_pending_decode_511_BITS_129_ETC___d5609,
-	       SEL_ARR_SEL_ARR_rg_pending_decode_511_BITS_259_ETC___d5592,
-	       SEL_ARR_f22f3_data_0_813_BITS_139_TO_76_561_f2_ETC___d5566,
-	       SEL_ARR_instdata_data_0_996_BITS_259_TO_196_30_ETC___d6304,
-	       SEL_ARR_rg_pending_decode_511_BITS_259_TO_196__ETC___d5590,
-	       SEL_ARR_rg_pending_decode_511_BITS_389_TO_326__ETC___d5516,
-	       in_pc__h183297,
-	       in_ppc__h190370,
-	       out___1_tval__h156693,
+	       SEL_ARR_IF_NOT_f22f3_empty_33_812_AND_NOT_SEL__ETC___d5206,
+	       SEL_ARR_SEL_ARR_rg_pending_decode_523_BITS_129_ETC___d5621,
+	       SEL_ARR_SEL_ARR_rg_pending_decode_523_BITS_259_ETC___d5604,
+	       SEL_ARR_f22f3_data_0_813_BITS_139_TO_76_573_f2_ETC___d5578,
+	       SEL_ARR_instdata_data_0_008_BITS_259_TO_196_31_ETC___d6316,
+	       SEL_ARR_rg_pending_decode_523_BITS_259_TO_196__ETC___d5602,
+	       SEL_ARR_rg_pending_decode_523_BITS_389_TO_326__ETC___d5528,
+	       in_pc__h183257,
+	       in_ppc__h190330,
+	       out___1_tval__h156675,
 	       pc_start__h125919,
 	       x__h123465,
-	       x__h189884,
-	       x__h200932,
-	       x__h200996,
-	       x__h209366,
-	       x__h209544,
-	       x__h209564,
-	       x__h217268,
-	       y_avValue_fst_pred_next_pc__h177167,
+	       x__h189844,
+	       x__h200892,
+	       x__h200956,
+	       x__h209326,
+	       x__h209504,
+	       x__h209524,
+	       x__h217228,
+	       y_avValue_fst_pred_next_pc__h177143,
 	       y_avValue_snd_fst__h124434;
-  reg [31 : 0] CASE_pending_spaces56607_0_rg_pending_decode_B_ETC__q251,
-	       CASE_pending_spaces56607_0_rg_pending_decode_B_ETC__q252,
+  reg [31 : 0] CASE_pending_spaces56589_0_rg_pending_decode_B_ETC__q251,
+	       CASE_pending_spaces56589_0_rg_pending_decode_B_ETC__q252,
 	       CASE_x8242_0_out_fifo_internalFifos_0D_OUT_BI_ETC__q194,
 	       CASE_x8412_0_out_fifo_internalFifos_0D_OUT_BI_ETC__q205,
-	       SEL_ARR_instdata_data_0_996_BITS_161_TO_130_48_ETC___d6486,
-	       SEL_ARR_instdata_data_0_996_BITS_31_TO_0_057_i_ETC___d6060,
-	       SEL_ARR_rg_pending_decode_511_BITS_161_TO_130__ETC___d5602,
-	       SEL_ARR_rg_pending_decode_511_BITS_193_TO_162__ETC___d5598,
-	       SEL_ARR_rg_pending_decode_511_BITS_291_TO_260__ETC___d5537,
-	       SEL_ARR_rg_pending_decode_511_BITS_323_TO_292__ETC___d5530,
-	       x__h162776,
-	       x__h162822,
-	       x__h170480,
-	       x__h170485,
-	       x__h171608,
-	       x__h171620,
-	       x__h175762,
-	       x__h175770,
-	       x__h175839,
-	       x__h175850,
-	       x__h188874,
-	       x__h195579,
-	       x__h201054,
-	       x__h207992,
-	       x__h209578,
-	       x__h216240;
-  reg [20 : 0] CASE_decode_061_BITS_94_TO_92_0_decode_061_BIT_ETC__q9,
-	       CASE_decode_487_BITS_94_TO_92_0_decode_487_BIT_ETC__q6;
+	       SEL_ARR_instdata_data_0_008_BITS_161_TO_130_49_ETC___d6498,
+	       SEL_ARR_instdata_data_0_008_BITS_31_TO_0_069_i_ETC___d6072,
+	       SEL_ARR_rg_pending_decode_523_BITS_161_TO_130__ETC___d5614,
+	       SEL_ARR_rg_pending_decode_523_BITS_193_TO_162__ETC___d5610,
+	       SEL_ARR_rg_pending_decode_523_BITS_291_TO_260__ETC___d5549,
+	       SEL_ARR_rg_pending_decode_523_BITS_323_TO_292__ETC___d5542,
+	       x__h162758,
+	       x__h162804,
+	       x__h170456,
+	       x__h170461,
+	       x__h171584,
+	       x__h171596,
+	       x__h175738,
+	       x__h175746,
+	       x__h175815,
+	       x__h175826,
+	       x__h188834,
+	       x__h195539,
+	       x__h201014,
+	       x__h207952,
+	       x__h209538,
+	       x__h216200;
+  reg [20 : 0] CASE_decode_073_BITS_94_TO_92_0_decode_073_BIT_ETC__q9,
+	       CASE_decode_499_BITS_94_TO_92_0_decode_499_BIT_ETC__q6;
   reg [15 : 0] CASE_IF_IF_IF_IF_SEL_ARR_f22f3_data_0_813_BITS_ETC__q250,
 	       CASE_y_avValue_fst28332_0_IF_NOT_f22f3_empty_3_ETC__q247,
-	       CASE_y_avValue_fst37123_0_IF_NOT_f22f3_empty_3_ETC__q248,
-	       CASE_y_avValue_fst45722_0_IF_NOT_f22f3_empty_3_ETC__q249,
+	       CASE_y_avValue_fst37117_0_IF_NOT_f22f3_empty_3_ETC__q248,
+	       CASE_y_avValue_fst45710_0_IF_NOT_f22f3_empty_3_ETC__q249,
 	       SEL_ARR_IF_NOT_f22f3_empty_33_812_AND_NOT_SEL__ETC___d4134,
 	       SEL_ARR_IF_NOT_f22f3_empty_33_812_AND_NOT_SEL__ETC___d4145,
 	       SEL_ARR_IF_NOT_f22f3_empty_33_812_AND_NOT_SEL__ETC___d4156,
 	       SEL_ARR_IF_NOT_f22f3_empty_33_812_AND_NOT_SEL__ETC___d4167;
-  reg [11 : 0] CASE_decode_061_BITS_72_TO_61_1_decode_061_BIT_ETC__q10,
-	       CASE_decode_487_BITS_72_TO_61_1_decode_487_BIT_ETC__q7,
+  reg [11 : 0] CASE_decode_073_BITS_72_TO_61_1_decode_073_BIT_ETC__q10,
+	       CASE_decode_499_BITS_72_TO_61_1_decode_499_BIT_ETC__q7,
 	       CASE_x8242_0_out_fifo_internalFifos_0D_OUT_BI_ETC__q224,
 	       CASE_x8412_0_out_fifo_internalFifos_0D_OUT_BI_ETC__q228;
   reg [9 : 0] CASE_x8242_0_out_fifo_internalFifos_0D_OUT_BI_ETC__q225,
@@ -2809,7 +2809,7 @@ module mkFetchStage(CLK,
 	      CASE_x8242_0_out_fifo_internalFifos_0D_OUT_BI_ETC__q191,
 	      CASE_x8242_0_out_fifo_internalFifos_0D_OUT_BI_ETC__q210,
 	      CASE_x8242_0_out_fifo_internalFifos_0D_OUT_BI_ETC__q213,
-	      CASE_x8242_0_out_fifo_internalFifos_0D_OUT_BI_ETC__q222,
+	      CASE_x8242_0_out_fifo_internalFifos_0D_OUT_BI_ETC__q221,
 	      CASE_x8242_0_out_fifo_internalFifos_0D_OUT_BI_ETC__q61,
 	      CASE_x8242_0_out_fifo_internalFifos_0D_OUT_BI_ETC__q64,
 	      CASE_x8412_0_out_fifo_internalFifos_0D_OUT_BI_ETC__q202,
@@ -2826,46 +2826,46 @@ module mkFetchStage(CLK,
 	      CASE_f32d_enqReq_lat_0wget_BITS_72_TO_69_0_f3_ETC__q261,
 	      CASE_f32d_enqReq_rl_BITS_72_TO_69_0_f32d_enqRe_ETC__q262,
 	      CASE_iTlbto_proc_response_get_BITS_3_TO_0_0_i_ETC__q1,
-	      CASE_x8242_0_out_fifo_internalFifos_0D_OUT_BI_ETC__q235,
+	      CASE_x8242_0_out_fifo_internalFifos_0D_OUT_BI_ETC__q234,
 	      CASE_x8242_0_out_fifo_internalFifos_0D_OUT_BI_ETC__q58,
-	      CASE_x8412_0_out_fifo_internalFifos_0D_OUT_BI_ETC__q234,
+	      CASE_x8412_0_out_fifo_internalFifos_0D_OUT_BI_ETC__q235,
 	      CASE_x8412_0_out_fifo_internalFifos_0D_OUT_BI_ETC__q56,
-	      IF_f22f3_data_0_813_BITS_74_TO_71_672_EQ_0_673_ETC___d5698,
-	      IF_f22f3_data_1_815_BITS_74_TO_71_700_EQ_0_701_ETC___d5726,
-	      IF_f22f3_data_2_817_BITS_74_TO_71_728_EQ_0_729_ETC___d5754,
-	      IF_f22f3_data_3_819_BITS_74_TO_71_756_EQ_0_757_ETC___d5782,
-	      IF_f32d_data_0_988_BITS_72_TO_69_338_EQ_0_339__ETC___d6364,
-	      IF_f32d_data_1_990_BITS_72_TO_69_366_EQ_0_367__ETC___d6392,
+	      IF_f22f3_data_0_813_BITS_74_TO_71_684_EQ_0_685_ETC___d5710,
+	      IF_f22f3_data_1_815_BITS_74_TO_71_712_EQ_0_713_ETC___d5738,
+	      IF_f22f3_data_2_817_BITS_74_TO_71_740_EQ_0_741_ETC___d5766,
+	      IF_f22f3_data_3_819_BITS_74_TO_71_768_EQ_0_769_ETC___d5794,
+	      IF_f32d_data_0_000_BITS_72_TO_69_350_EQ_0_351__ETC___d6376,
+	      IF_f32d_data_1_002_BITS_72_TO_69_378_EQ_0_379__ETC___d6404,
 	      IF_iTlb_to_proc_response_get_672_BITS_3_TO_0_7_ETC___d3737,
-	      IF_out_fifo_internalFifos_0_first__850_BITS_67_ETC___d7404,
-	      IF_out_fifo_internalFifos_1_first__852_BITS_67_ETC___d7432,
-	      IF_rg_pending_f32d_847_BITS_72_TO_69_644_EQ_0__ETC___d5670,
+	      IF_out_fifo_internalFifos_0_first__862_BITS_67_ETC___d7416,
+	      IF_out_fifo_internalFifos_1_first__864_BITS_67_ETC___d7444,
+	      IF_rg_pending_f32d_847_BITS_72_TO_69_656_EQ_0__ETC___d5682,
 	      SEL_ARR_f22f3_data_0_813_BITS_3_TO_0_814_f22f3_ETC___d3822,
-	      in_main_epoch__h183300,
+	      in_main_epoch__h183260,
 	      out_main_epoch__h123472;
-  reg [2 : 0] CASE_decode_061_BITS_77_TO_75_0_decode_061_BIT_ETC__q8,
-	      CASE_decode_487_BITS_77_TO_75_0_decode_487_BIT_ETC__q5,
+  reg [2 : 0] CASE_decode_073_BITS_77_TO_75_0_decode_073_BIT_ETC__q8,
+	      CASE_decode_499_BITS_77_TO_75_0_decode_499_BIT_ETC__q5,
 	      CASE_x8242_0_out_fifo_internalFifos_0D_OUT_BI_ETC__q187,
 	      CASE_x8242_0_out_fifo_internalFifos_0D_OUT_BI_ETC__q189,
 	      CASE_x8412_0_out_fifo_internalFifos_0D_OUT_BI_ETC__q198,
 	      CASE_x8412_0_out_fifo_internalFifos_0D_OUT_BI_ETC__q200,
-	      IF_out_fifo_internalFifos_0_first__850_BITS_17_ETC___d7004,
-	      IF_out_fifo_internalFifos_1_first__852_BITS_17_ETC___d7016;
-  reg [1 : 0] CASE_pending_spaces56607_0_rg_pending_decode_B_ETC__q253,
-	      CASE_pending_spaces_ext56609_0_IF_NOT_f22f3_em_ETC__q255,
+	      IF_out_fifo_internalFifos_0_first__862_BITS_17_ETC___d7016,
+	      IF_out_fifo_internalFifos_1_first__864_BITS_17_ETC___d7028;
+  reg [1 : 0] CASE_pending_spaces56589_0_rg_pending_decode_B_ETC__q253,
+	      CASE_pending_spaces_ext56591_0_IF_NOT_f22f3_em_ETC__q255,
 	      CASE_x8242_0_out_fifo_internalFifos_0D_OUT_BI_ETC__q33,
 	      CASE_x8242_0_out_fifo_internalFifos_0D_OUT_BI_ETC__q34,
 	      CASE_x8412_0_out_fifo_internalFifos_0D_OUT_BI_ETC__q31,
 	      CASE_x8412_0_out_fifo_internalFifos_0D_OUT_BI_ETC__q32,
-	      SEL_ARR_IF_NOT_f22f3_empty_33_812_AND_NOT_SEL__ETC___d5205,
-	      SEL_ARR_SEL_ARR_rg_pending_decode_511_BITS_195_ETC___d5596,
-	      SEL_ARR_SEL_ARR_rg_pending_decode_511_BITS_325_ETC___d5525,
-	      SEL_ARR_SEL_ARR_rg_pending_decode_511_BITS_65__ETC___d5613,
+	      SEL_ARR_IF_NOT_f22f3_empty_33_812_AND_NOT_SEL__ETC___d5214,
+	      SEL_ARR_SEL_ARR_rg_pending_decode_523_BITS_195_ETC___d5608,
+	      SEL_ARR_SEL_ARR_rg_pending_decode_523_BITS_325_ETC___d5537,
+	      SEL_ARR_SEL_ARR_rg_pending_decode_523_BITS_65__ETC___d5625,
 	      SEL_ARR_f12f2_data_0_681_BITS_136_TO_135_682_f_ETC___d3686,
-	      SEL_ARR_instdata_data_0_996_BITS_195_TO_194_01_ETC___d6019,
-	      SEL_ARR_instdata_data_0_996_BITS_65_TO_64_997__ETC___d6004,
-	      SEL_ARR_rg_pending_decode_511_BITS_195_TO_194__ETC___d5594,
-	      SEL_ARR_rg_pending_decode_511_BITS_325_TO_324__ETC___d5523,
+	      SEL_ARR_instdata_data_0_008_BITS_195_TO_194_02_ETC___d6031,
+	      SEL_ARR_instdata_data_0_008_BITS_65_TO_64_009__ETC___d6016,
+	      SEL_ARR_rg_pending_decode_523_BITS_195_TO_194__ETC___d5606,
+	      SEL_ARR_rg_pending_decode_523_BITS_325_TO_324__ETC___d5535,
 	      nbSupX2In__h124584;
   reg CASE_0_CONCAT_3_MINUS_IF_rg_pending_n_items_84_ETC___d4029,
       CASE_0_CONCAT_3_MINUS_IF_rg_pending_n_items_84_ETC___d4042,
@@ -2876,30 +2876,30 @@ module mkFetchStage(CLK,
       CASE_f12f2_deqP_0_NOT_f12f2_data_0_BIT_70_1_NO_ETC__q256,
       CASE_f12f2_deqP_0_f12f2_data_0_BIT_4_1_f12f2_d_ETC__q207,
       CASE_f12f2_deqP_0_f12f2_data_0_BIT_5_1_f12f2_d_ETC__q206,
-      CASE_f32d_deqP_0_IF_f32d_data_0_988_BITS_72_TO_ETC__q41,
-      CASE_f32d_deqP_0_IF_f32d_data_0_988_BITS_72_TO_ETC__q42,
-      CASE_f32d_deqP_0_IF_f32d_data_0_988_BITS_72_TO_ETC__q43,
-      CASE_f32d_deqP_0_IF_f32d_data_0_988_BITS_72_TO_ETC__q44,
-      CASE_f32d_deqP_0_IF_f32d_data_0_988_BITS_72_TO_ETC__q45,
-      CASE_f32d_deqP_0_IF_f32d_data_0_988_BITS_72_TO_ETC__q46,
-      CASE_f32d_deqP_0_IF_f32d_data_0_988_BITS_72_TO_ETC__q47,
-      CASE_f32d_deqP_0_IF_f32d_data_0_988_BITS_72_TO_ETC__q48,
-      CASE_f32d_deqP_0_IF_f32d_data_0_988_BITS_72_TO_ETC__q49,
-      CASE_f32d_deqP_0_IF_f32d_data_0_988_BITS_72_TO_ETC__q50,
-      CASE_f32d_deqP_0_IF_f32d_data_0_988_BITS_72_TO_ETC__q51,
-      CASE_f32d_deqP_0_IF_f32d_data_0_988_BITS_72_TO_ETC__q52,
-      CASE_f32d_deqP_0_IF_f32d_data_0_988_BITS_72_TO_ETC__q53,
-      CASE_pending_spaces56607_0_1_1_NOT_f22f3_empty_ETC__q242,
-      CASE_pending_spaces_ext56609_0_1_1_1_2_1_3_NOT_ETC__q245,
-      CASE_pending_spaces_ext56609_0_1_1_1_2_1_3_NOT_ETC__q246,
-      CASE_pending_spaces_ext56609_0_1_1_1_2_NOT_f22_ETC__q243,
-      CASE_pending_spaces_ext56609_0_1_1_1_2_NOT_f22_ETC__q244,
-      CASE_pending_spaces_ext56609_0_1_1_NOT_SEL_ARR_ETC__q240,
-      CASE_pending_spaces_ext56609_0_1_1_NOT_SEL_ARR_ETC__q241,
-      CASE_pending_spaces_ext56609_0_NOT_SEL_ARR_f22_ETC__q236,
-      CASE_pending_spaces_ext56609_0_NOT_SEL_ARR_f22_ETC__q237,
-      CASE_pending_spaces_ext56609_0_NOT_SEL_ARR_f22_ETC__q238,
-      CASE_pending_spaces_ext56609_0_NOT_SEL_ARR_f22_ETC__q239,
+      CASE_f32d_deqP_0_IF_f32d_data_0_000_BITS_72_TO_ETC__q41,
+      CASE_f32d_deqP_0_IF_f32d_data_0_000_BITS_72_TO_ETC__q42,
+      CASE_f32d_deqP_0_IF_f32d_data_0_000_BITS_72_TO_ETC__q43,
+      CASE_f32d_deqP_0_IF_f32d_data_0_000_BITS_72_TO_ETC__q44,
+      CASE_f32d_deqP_0_IF_f32d_data_0_000_BITS_72_TO_ETC__q45,
+      CASE_f32d_deqP_0_IF_f32d_data_0_000_BITS_72_TO_ETC__q46,
+      CASE_f32d_deqP_0_IF_f32d_data_0_000_BITS_72_TO_ETC__q47,
+      CASE_f32d_deqP_0_IF_f32d_data_0_000_BITS_72_TO_ETC__q48,
+      CASE_f32d_deqP_0_IF_f32d_data_0_000_BITS_72_TO_ETC__q49,
+      CASE_f32d_deqP_0_IF_f32d_data_0_000_BITS_72_TO_ETC__q50,
+      CASE_f32d_deqP_0_IF_f32d_data_0_000_BITS_72_TO_ETC__q51,
+      CASE_f32d_deqP_0_IF_f32d_data_0_000_BITS_72_TO_ETC__q52,
+      CASE_f32d_deqP_0_IF_f32d_data_0_000_BITS_72_TO_ETC__q53,
+      CASE_pending_spaces56589_0_1_1_NOT_f22f3_empty_ETC__q242,
+      CASE_pending_spaces_ext56591_0_1_1_1_2_1_3_NOT_ETC__q245,
+      CASE_pending_spaces_ext56591_0_1_1_1_2_1_3_NOT_ETC__q246,
+      CASE_pending_spaces_ext56591_0_1_1_1_2_NOT_f22_ETC__q243,
+      CASE_pending_spaces_ext56591_0_1_1_1_2_NOT_f22_ETC__q244,
+      CASE_pending_spaces_ext56591_0_1_1_NOT_SEL_ARR_ETC__q240,
+      CASE_pending_spaces_ext56591_0_1_1_NOT_SEL_ARR_ETC__q241,
+      CASE_pending_spaces_ext56591_0_NOT_SEL_ARR_f22_ETC__q236,
+      CASE_pending_spaces_ext56591_0_NOT_SEL_ARR_f22_ETC__q237,
+      CASE_pending_spaces_ext56591_0_NOT_SEL_ARR_f22_ETC__q238,
+      CASE_pending_spaces_ext56591_0_NOT_SEL_ARR_f22_ETC__q239,
       CASE_x8242_0_IF_out_fifo_internalFifos_0_first_ETC__q14,
       CASE_x8242_0_IF_out_fifo_internalFifos_0_first_ETC__q15,
       CASE_x8242_0_IF_out_fifo_internalFifos_0_first_ETC__q158,
@@ -3013,7 +3013,7 @@ module mkFetchStage(CLK,
       CASE_x8412_0_NOT_out_fifo_internalFifos_0D_OU_ETC__q216,
       CASE_x8412_0_NOT_out_fifo_internalFifos_0D_OU_ETC__q218,
       CASE_x8412_0_NOT_out_fifo_internalFifos_0D_OU_ETC__q219,
-      CASE_x8412_0_NOT_out_fifo_internalFifos_0D_OU_ETC__q221,
+      CASE_x8412_0_NOT_out_fifo_internalFifos_0D_OU_ETC__q222,
       CASE_x8412_0_NOT_out_fifo_internalFifos_0D_OU_ETC__q65,
       CASE_x8412_0_NOT_out_fifo_internalFifos_0D_OU_ETC__q67,
       CASE_x8412_0_NOT_out_fifo_internalFifos_0D_OU_ETC__q68,
@@ -3082,70 +3082,70 @@ module mkFetchStage(CLK,
       CASE_x9665_0_out_fifo_internalFifos_0FULL_N_1_ETC__q4,
       CASE_x9809_0_NOT_out_fifo_internalFifos_0FULL_ETC__q265,
       CASE_x9809_0_out_fifo_internalFifos_0FULL_N_1_ETC__q3,
-      SEL_ARR_IF_f22f3_data_0_813_BITS_74_TO_71_672__ETC___d5785,
-      SEL_ARR_IF_f22f3_data_0_813_BITS_74_TO_71_672__ETC___d5795,
-      SEL_ARR_IF_f22f3_data_0_813_BITS_74_TO_71_672__ETC___d5805,
-      SEL_ARR_IF_f22f3_data_0_813_BITS_74_TO_71_672__ETC___d5815,
-      SEL_ARR_IF_f22f3_data_0_813_BITS_74_TO_71_672__ETC___d5825,
-      SEL_ARR_IF_f22f3_data_0_813_BITS_74_TO_71_672__ETC___d5835,
-      SEL_ARR_IF_f22f3_data_0_813_BITS_74_TO_71_672__ETC___d5845,
-      SEL_ARR_IF_f22f3_data_0_813_BITS_74_TO_71_672__ETC___d5855,
-      SEL_ARR_IF_f22f3_data_0_813_BITS_74_TO_71_672__ETC___d5865,
-      SEL_ARR_IF_f22f3_data_0_813_BITS_74_TO_71_672__ETC___d5875,
-      SEL_ARR_IF_f22f3_data_0_813_BITS_74_TO_71_672__ETC___d5885,
-      SEL_ARR_IF_f22f3_data_0_813_BITS_74_TO_71_672__ETC___d5895,
-      SEL_ARR_IF_f22f3_data_0_813_BITS_74_TO_71_672__ETC___d5905,
+      SEL_ARR_IF_f22f3_data_0_813_BITS_74_TO_71_684__ETC___d5797,
+      SEL_ARR_IF_f22f3_data_0_813_BITS_74_TO_71_684__ETC___d5807,
+      SEL_ARR_IF_f22f3_data_0_813_BITS_74_TO_71_684__ETC___d5817,
+      SEL_ARR_IF_f22f3_data_0_813_BITS_74_TO_71_684__ETC___d5827,
+      SEL_ARR_IF_f22f3_data_0_813_BITS_74_TO_71_684__ETC___d5837,
+      SEL_ARR_IF_f22f3_data_0_813_BITS_74_TO_71_684__ETC___d5847,
+      SEL_ARR_IF_f22f3_data_0_813_BITS_74_TO_71_684__ETC___d5857,
+      SEL_ARR_IF_f22f3_data_0_813_BITS_74_TO_71_684__ETC___d5867,
+      SEL_ARR_IF_f22f3_data_0_813_BITS_74_TO_71_684__ETC___d5877,
+      SEL_ARR_IF_f22f3_data_0_813_BITS_74_TO_71_684__ETC___d5887,
+      SEL_ARR_IF_f22f3_data_0_813_BITS_74_TO_71_684__ETC___d5897,
+      SEL_ARR_IF_f22f3_data_0_813_BITS_74_TO_71_684__ETC___d5907,
+      SEL_ARR_IF_f22f3_data_0_813_BITS_74_TO_71_684__ETC___d5917,
       SEL_ARR_NOT_f22f3_data_0_813_BIT_140_194_195_N_ETC___d4203,
       SEL_ARR_NOT_f22f3_data_0_813_BIT_75_862_863_NO_ETC___d3871,
-      SEL_ARR_NOT_f32d_data_0_988_BIT_73_051_052_NOT_ETC___d6056,
-      SEL_ARR_NOT_f32d_data_0_988_BIT_74_783_784_NOT_ETC___d6788,
+      SEL_ARR_NOT_f32d_data_0_000_BIT_73_063_064_NOT_ETC___d6068,
+      SEL_ARR_NOT_f32d_data_0_000_BIT_74_795_796_NOT_ETC___d6800,
       SEL_ARR_f22f3_data_0_813_BIT_4_825_f22f3_data__ETC___d3830,
       SEL_ARR_f22f3_data_0_813_BIT_5_835_f22f3_data__ETC___d3840,
       SEL_ARR_f22f3_data_0_813_BIT_6_896_f22f3_data__ETC___d3901,
-      SEL_ARR_f32d_data_0_988_BIT_139_021_f32d_data__ETC___d6024,
-      SEL_ARR_f32d_data_0_988_BIT_4_006_f32d_data_1__ETC___d6009,
-      SEL_ARR_f32d_data_0_988_BIT_74_783_f32d_data_1_ETC___d6790,
+      SEL_ARR_f32d_data_0_000_BIT_139_033_f32d_data__ETC___d6036,
+      SEL_ARR_f32d_data_0_000_BIT_4_018_f32d_data_1__ETC___d6021,
+      SEL_ARR_f32d_data_0_000_BIT_74_795_f32d_data_1_ETC___d6802,
       SEL_ARR_nextAddrPred_valid_0_read__297_nextAdd_ETC___d3555,
       SEL_ARR_nextAddrPred_valid_0_read__297_nextAdd_ETC___d3572,
       SEL_ARR_nextAddrPred_valid_0_read__297_nextAdd_ETC___d3594,
       SEL_ARR_nextAddrPred_valid_0_read__297_nextAdd_ETC___d3606,
-      SEL_ARR_out_fifo_internalFifos_0_first__850_BI_ETC___d6960,
-      SEL_ARR_out_fifo_internalFifos_0_first__850_BI_ETC___d6968,
-      SEL_ARR_out_fifo_internalFifos_0_first__850_BI_ETC___d7538,
-      SEL_ARR_out_fifo_internalFifos_0_first__850_BI_ETC___d7540;
-  wire [259 : 0] SEL_ARR_out_fifo_internalFifos_0_first__850_BI_ETC___d7505,
-		 SEL_ARR_out_fifo_internalFifos_0_first__850_BI_ETC___d7727;
-  wire [129 : 0] SEL_ARR_IF_NOT_f22f3_empty_33_812_AND_NOT_SEL__ETC___d5191;
-  wire [127 : 0] IF_IF_decode_061_BITS_99_TO_95_065_EQ_8_075_AN_ETC___d6815,
-		 IF_IF_decode_487_BITS_99_TO_95_491_EQ_8_497_AN_ETC___d6816,
-		 IF_SEL_ARR_NOT_f32d_data_0_988_BIT_73_051_052__ETC___d6817,
-		 IF_SEL_ARR_NOT_f32d_data_0_988_BIT_74_783_784__ETC___d6810,
-		 IF_SEL_ARR_NOT_f32d_data_0_988_BIT_74_783_784__ETC___d6814;
-  wire [99 : 0] decode___d6061, decode___d6487;
-  wire [80 : 0] IF_IF_IF_IF_SEL_ARR_f22f3_data_0_813_BITS_204__ETC___d5969,
-		IF_IF_IF_SEL_ARR_f22f3_data_0_813_BITS_204_TO__ETC___d5966,
-		IF_IF_NOT_f22f3_empty_33_812_AND_NOT_SEL_ARR_f_ETC___d5975,
-		IF_IF_rg_pending_n_items_845_EQ_0_846_THEN_rg__ETC___d5973,
-		IF_NOT_SEL_ARR_IF_NOT_f22f3_empty_33_812_AND_N_ETC___d5965,
-		IF_NOT_SEL_ARR_IF_NOT_f22f3_empty_33_812_AND_N_ETC___d5968,
-		IF_NOT_SEL_ARR_IF_NOT_f22f3_empty_33_812_AND_N_ETC___d5971,
+      SEL_ARR_out_fifo_internalFifos_0_first__862_BI_ETC___d6972,
+      SEL_ARR_out_fifo_internalFifos_0_first__862_BI_ETC___d6980,
+      SEL_ARR_out_fifo_internalFifos_0_first__862_BI_ETC___d7550,
+      SEL_ARR_out_fifo_internalFifos_0_first__862_BI_ETC___d7552;
+  wire [259 : 0] SEL_ARR_out_fifo_internalFifos_0_first__862_BI_ETC___d7517,
+		 SEL_ARR_out_fifo_internalFifos_0_first__862_BI_ETC___d7739;
+  wire [129 : 0] SEL_ARR_IF_NOT_f22f3_empty_33_812_AND_NOT_SEL__ETC___d5200;
+  wire [127 : 0] IF_IF_decode_073_BITS_99_TO_95_077_EQ_8_087_AN_ETC___d6827,
+		 IF_IF_decode_499_BITS_99_TO_95_503_EQ_8_509_AN_ETC___d6828,
+		 IF_SEL_ARR_NOT_f32d_data_0_000_BIT_73_063_064__ETC___d6829,
+		 IF_SEL_ARR_NOT_f32d_data_0_000_BIT_74_795_796__ETC___d6822,
+		 IF_SEL_ARR_NOT_f32d_data_0_000_BIT_74_795_796__ETC___d6826;
+  wire [99 : 0] decode___d6073, decode___d6499;
+  wire [80 : 0] IF_IF_IF_IF_SEL_ARR_f22f3_data_0_813_BITS_204__ETC___d5981,
+		IF_IF_IF_SEL_ARR_f22f3_data_0_813_BITS_204_TO__ETC___d5978,
+		IF_IF_NOT_f22f3_empty_33_812_AND_NOT_SEL_ARR_f_ETC___d5987,
+		IF_IF_rg_pending_n_items_845_EQ_0_846_THEN_rg__ETC___d5985,
+		IF_NOT_SEL_ARR_IF_NOT_f22f3_empty_33_812_AND_N_ETC___d5977,
+		IF_NOT_SEL_ARR_IF_NOT_f22f3_empty_33_812_AND_N_ETC___d5980,
+		IF_NOT_SEL_ARR_IF_NOT_f22f3_empty_33_812_AND_N_ETC___d5983,
 		IF_ehr_pending_straddle_lat_1_whas__1_THEN_ehr_ETC___d40;
-  wire [71 : 0] SEL_ARR_out_fifo_internalFifos_0_first__850_BI_ETC___d7291,
-		SEL_ARR_out_fifo_internalFifos_0_first__850_BI_ETC___d7664,
-		decode_061_BITS_99_TO_95_065_CONCAT_IF_decode__ETC___d6279,
-		decode_487_BITS_99_TO_95_491_CONCAT_IF_decode__ETC___d6701;
-  wire [68 : 0] IF_NOT_f22f3_empty_33_812_AND_NOT_SEL_ARR_f22f_ETC___d5934,
-		NOT_SEL_ARR_NOT_out_fifo_internalFifos_0_first_ETC___d7502,
-		NOT_SEL_ARR_NOT_out_fifo_internalFifos_0_first_ETC___d7724;
+  wire [71 : 0] SEL_ARR_out_fifo_internalFifos_0_first__862_BI_ETC___d7303,
+		SEL_ARR_out_fifo_internalFifos_0_first__862_BI_ETC___d7676,
+		decode_073_BITS_99_TO_95_077_CONCAT_IF_decode__ETC___d6291,
+		decode_499_BITS_99_TO_95_503_CONCAT_IF_decode__ETC___d6713;
+  wire [68 : 0] IF_NOT_f22f3_empty_33_812_AND_NOT_SEL_ARR_f22f_ETC___d5946,
+		NOT_SEL_ARR_NOT_out_fifo_internalFifos_0_first_ETC___d7514,
+		NOT_SEL_ARR_NOT_out_fifo_internalFifos_0_first_ETC___d7736;
   wire [64 : 0] IF_NOT_IF_pc_reg_dummy2_0_read__283_AND_pc_reg_ETC___d3653,
-		decodeBrPred___d6283,
-		decodeBrPred___d6705;
+		decodeBrPred___d6295,
+		decodeBrPred___d6717;
   wire [63 : 0] IF_IF_IF_IF_SEL_ARR_f22f3_data_0_813_BITS_204__ETC___d4242,
 		IF_IF_IF_IF_SEL_ARR_f22f3_data_0_813_BITS_204__ETC___d4248,
 		IF_IF_IF_SEL_ARR_f22f3_data_0_813_BITS_204_TO__ETC___d4234,
 		IF_IF_IF_SEL_ARR_f22f3_data_0_813_BITS_204_TO__ETC___d4240,
 		IF_IF_SEL_ARR_f22f3_data_0_813_BITS_204_TO_141_ETC___d4232,
-		IF_IF_decode_487_BITS_99_TO_95_491_EQ_8_497_AN_ETC___d6771,
+		IF_IF_decode_499_BITS_99_TO_95_503_EQ_8_509_AN_ETC___d6783,
 		IF_IF_pc_reg_dummy2_0_read__283_AND_pc_reg_dum_ETC___d3631,
 		IF_NOT_IF_NOT_IF_pc_reg_dummy2_0_read__283_AND_ETC___d3632,
 		IF_NOT_IF_pc_reg_dummy2_0_read__283_AND_pc_reg_ETC___d3564,
@@ -3157,11 +3157,11 @@ module mkFetchStage(CLK,
 		IF_NOT_SEL_ARR_IF_NOT_f22f3_empty_33_812_AND_N_ETC___d4241,
 		IF_NOT_SEL_ARR_IF_NOT_f22f3_empty_33_812_AND_N_ETC___d4249,
 		IF_NOT_SEL_ARR_nextAddrPred_valid_0_read__297__ETC___d3585,
-		IF_NOT_decode_061_BIT_7_076_087_OR_decode_061__ETC___d6298,
-		IF_NOT_decode_487_BIT_7_498_509_OR_decode_487__ETC___d6720,
-		IF_SEL_ARR_NOT_f32d_data_0_988_BIT_73_051_052__ETC___d6772,
-		IF_decode_061_BIT_7_076_AND_NOT_decode_061_BIT_ETC___d6296,
-		IF_decode_487_BIT_7_498_AND_NOT_decode_487_BIT_ETC___d6718,
+		IF_NOT_decode_073_BIT_7_088_099_OR_decode_073__ETC___d6310,
+		IF_NOT_decode_499_BIT_7_510_521_OR_decode_499__ETC___d6732,
+		IF_SEL_ARR_NOT_f32d_data_0_000_BIT_73_063_064__ETC___d6784,
+		IF_decode_073_BIT_7_088_AND_NOT_decode_073_BIT_ETC___d6308,
+		IF_decode_499_BIT_7_510_AND_NOT_decode_499_BIT_ETC___d6730,
 		IF_out_fifo_enqueueElement_0_lat_0_whas__06_TH_ETC___d1510,
 		IF_out_fifo_enqueueElement_0_lat_0_whas__06_TH_ETC___d921,
 		IF_out_fifo_enqueueElement_0_lat_0_whas__06_TH_ETC___d926,
@@ -3171,148 +3171,148 @@ module mkFetchStage(CLK,
 		IF_pc_reg_lat_1_whas_THEN_pc_reg_lat_1_wget_EL_ETC___d11,
 		_theResult___snd_snd_fst__h121720,
 		_theResult___snd_snd_snd_fst__h128791,
-		_theResult___snd_snd_snd_fst__h137549,
-		_theResult___snd_snd_snd_fst__h146148,
-		_theResult___snd_snd_snd_fst__h154769,
-		decode_pred_next_pc__h186793,
-		decode_pred_next_pc__h193609,
+		_theResult___snd_snd_snd_fst__h137543,
+		_theResult___snd_snd_snd_fst__h146136,
+		_theResult___snd_snd_snd_fst__h154751,
+		decode_pred_next_pc__h186753,
+		decode_pred_next_pc__h193569,
 		def__h120050,
-		def__h171660,
-		getFetchState_pc__h222980,
-		in_ppc__h183298,
-		last_x16_pc__h186826,
-		last_x16_pc__h193642,
-		nextPc__h198099,
+		def__h171636,
+		getFetchState_pc__h222940,
+		in_ppc__h183258,
+		last_x16_pc__h186786,
+		last_x16_pc__h193602,
+		nextPc__h198059,
 		next_pc___1__h128488,
-		next_pc___1__h137266,
-		next_pc___1__h145865,
-		next_pc___1__h156657,
-		pc__h160432,
-		pc__h160436,
-		pc__h160774,
-		pc__h160778,
-		pc__h161120,
-		pc__h161124,
-		pc__h170351,
-		pc__h170355,
-		pred_next_pc__h154494,
+		next_pc___1__h137260,
+		next_pc___1__h145853,
+		next_pc___1__h156639,
+		pc__h160414,
+		pc__h160418,
+		pc__h160756,
+		pc__h160760,
+		pc__h161102,
+		pc__h161106,
+		pc__h170327,
+		pc__h170331,
+		pred_next_pc__h154476,
 		prev_PC__h121324,
 		prev_PC__h121727,
 		prev_PC__h122103,
-		train_nextPc__h200521,
+		train_nextPc__h200481,
 		tval__h123610,
 		upd__h2244,
 		upd__h2271,
 		upd__h2298,
 		value__h129239,
-		x1_avValue_fst_ppc__h187107,
-		x1_avValue_fst_ppc__h193814,
-		x1_avValue_fst_pred_next_pc__h156702,
-		x1_avValue_fst_pred_next_pc__h156708,
-		x1_avValue_fst_tval__h156705,
+		x1_avValue_fst_ppc__h187067,
+		x1_avValue_fst_ppc__h193774,
+		x1_avValue_fst_pred_next_pc__h156684,
+		x1_avValue_fst_pred_next_pc__h156690,
+		x1_avValue_fst_tval__h156687,
 		x22409_PLUS_1__q2,
 		x__h122409,
 		x__h124433,
-		x__h155852,
-		x__h177166,
-		x__h187118,
-		x__h193825,
-		x__h200487,
+		x__h155834,
+		x__h177142,
+		x__h187078,
+		x__h193785,
+		x__h200447,
 		x__h20492,
-		x__h222821,
+		x__h222781,
 		x__h32115,
 		x_snd_pc__h11203,
 		y__h122404,
-		y_avValue_fst_tval__h156699,
+		y_avValue_fst_tval__h156681,
 		y_avValue_snd_fst__h128698,
 		y_avValue_snd_snd_snd_fst__h128766,
 		y_avValue_snd_snd_snd_fst__h128768,
-		y_avValue_snd_snd_snd_fst__h137524,
-		y_avValue_snd_snd_snd_fst__h137526,
-		y_avValue_snd_snd_snd_fst__h146123,
-		y_avValue_snd_snd_snd_fst__h146125,
-		y_avValue_snd_snd_snd_fst__h154612,
-		y_avValue_snd_snd_snd_fst__h154614,
+		y_avValue_snd_snd_snd_fst__h137518,
+		y_avValue_snd_snd_snd_fst__h137520,
+		y_avValue_snd_snd_snd_fst__h146111,
+		y_avValue_snd_snd_snd_fst__h146113,
+		y_avValue_snd_snd_snd_fst__h154594,
+		y_avValue_snd_snd_snd_fst__h154596,
 		y_avValue_snd_snd_snd_snd_fst__h128713,
 		y_avValue_snd_snd_snd_snd_fst__h128744,
 		y_avValue_snd_snd_snd_snd_fst__h128746,
-		y_avValue_snd_snd_snd_snd_fst__h137491,
-		y_avValue_snd_snd_snd_snd_fst__h146090,
-		y_avValue_snd_snd_snd_snd_fst__h154552;
+		y_avValue_snd_snd_snd_snd_fst__h137485,
+		y_avValue_snd_snd_snd_snd_fst__h146078,
+		y_avValue_snd_snd_snd_snd_fst__h154534;
   wire [45 : 0] IF_out_fifo_enqueueElement_0_lat_0_whas__06_TH_ETC___d2222,
 		IF_out_fifo_enqueueElement_1_lat_0_whas__522_T_ETC___d2347,
-		NOT_SEL_ARR_NOT_out_fifo_internalFifos_0_first_ETC___d7290,
-		NOT_SEL_ARR_NOT_out_fifo_internalFifos_0_first_ETC___d7663;
+		NOT_SEL_ARR_NOT_out_fifo_internalFifos_0_first_ETC___d7302,
+		NOT_SEL_ARR_NOT_out_fifo_internalFifos_0_first_ETC___d7675;
   wire [31 : 0] IF_NOT_f22f3_empty_33_812_AND_NOT_SEL_ARR_f22f_ETC___d4117,
 		IF_NOT_f22f3_empty_33_812_AND_NOT_SEL_ARR_f22f_ETC___d4130,
-		IF_SEL_ARR_IF_NOT_f22f3_empty_33_812_AND_NOT_S_ETC___d4577,
 		IF_SEL_ARR_IF_NOT_f22f3_empty_33_812_AND_NOT_S_ETC___d4579,
 		IF_SEL_ARR_IF_NOT_f22f3_empty_33_812_AND_NOT_S_ETC___d4581,
 		IF_SEL_ARR_IF_NOT_f22f3_empty_33_812_AND_NOT_S_ETC___d4583,
 		IF_SEL_ARR_IF_NOT_f22f3_empty_33_812_AND_NOT_S_ETC___d4585,
-		IF_SEL_ARR_IF_NOT_f22f3_empty_33_812_AND_NOT_S_ETC___d4587,
-		IF_SEL_ARR_IF_NOT_f22f3_empty_33_812_AND_NOT_S_ETC___d4589,
+		IF_SEL_ARR_IF_NOT_f22f3_empty_33_812_AND_NOT_S_ETC___d4588,
+		IF_SEL_ARR_IF_NOT_f22f3_empty_33_812_AND_NOT_S_ETC___d4590,
 		IF_SEL_ARR_IF_NOT_f22f3_empty_33_812_AND_NOT_S_ETC___d4592,
 		IF_SEL_ARR_IF_NOT_f22f3_empty_33_812_AND_NOT_S_ETC___d4595,
-		IF_SEL_ARR_IF_NOT_f22f3_empty_33_812_AND_NOT_S_ETC___d4597,
-		IF_SEL_ARR_IF_NOT_f22f3_empty_33_812_AND_NOT_S_ETC___d4599,
+		IF_SEL_ARR_IF_NOT_f22f3_empty_33_812_AND_NOT_S_ETC___d4598,
 		IF_SEL_ARR_IF_NOT_f22f3_empty_33_812_AND_NOT_S_ETC___d4600,
 		IF_SEL_ARR_IF_NOT_f22f3_empty_33_812_AND_NOT_S_ETC___d4602,
-		IF_SEL_ARR_IF_NOT_f22f3_empty_33_812_AND_NOT_S_ETC___d4604,
-		IF_SEL_ARR_IF_NOT_f22f3_empty_33_812_AND_NOT_S_ETC___d4606,
-		IF_SEL_ARR_IF_NOT_f22f3_empty_33_812_AND_NOT_S_ETC___d4608,
-		IF_SEL_ARR_IF_NOT_f22f3_empty_33_812_AND_NOT_S_ETC___d4610,
-		IF_SEL_ARR_IF_NOT_f22f3_empty_33_812_AND_NOT_S_ETC___d4863,
-		IF_SEL_ARR_IF_NOT_f22f3_empty_33_812_AND_NOT_S_ETC___d4865,
-		IF_SEL_ARR_IF_NOT_f22f3_empty_33_812_AND_NOT_S_ETC___d4867,
-		IF_SEL_ARR_IF_NOT_f22f3_empty_33_812_AND_NOT_S_ETC___d4869,
-		IF_SEL_ARR_IF_NOT_f22f3_empty_33_812_AND_NOT_S_ETC___d4871,
-		IF_SEL_ARR_IF_NOT_f22f3_empty_33_812_AND_NOT_S_ETC___d4873,
-		IF_SEL_ARR_IF_NOT_f22f3_empty_33_812_AND_NOT_S_ETC___d4875,
-		IF_SEL_ARR_IF_NOT_f22f3_empty_33_812_AND_NOT_S_ETC___d4878,
+		IF_SEL_ARR_IF_NOT_f22f3_empty_33_812_AND_NOT_S_ETC___d4603,
+		IF_SEL_ARR_IF_NOT_f22f3_empty_33_812_AND_NOT_S_ETC___d4605,
+		IF_SEL_ARR_IF_NOT_f22f3_empty_33_812_AND_NOT_S_ETC___d4607,
+		IF_SEL_ARR_IF_NOT_f22f3_empty_33_812_AND_NOT_S_ETC___d4609,
+		IF_SEL_ARR_IF_NOT_f22f3_empty_33_812_AND_NOT_S_ETC___d4611,
+		IF_SEL_ARR_IF_NOT_f22f3_empty_33_812_AND_NOT_S_ETC___d4613,
+		IF_SEL_ARR_IF_NOT_f22f3_empty_33_812_AND_NOT_S_ETC___d4868,
+		IF_SEL_ARR_IF_NOT_f22f3_empty_33_812_AND_NOT_S_ETC___d4870,
+		IF_SEL_ARR_IF_NOT_f22f3_empty_33_812_AND_NOT_S_ETC___d4872,
+		IF_SEL_ARR_IF_NOT_f22f3_empty_33_812_AND_NOT_S_ETC___d4874,
+		IF_SEL_ARR_IF_NOT_f22f3_empty_33_812_AND_NOT_S_ETC___d4877,
+		IF_SEL_ARR_IF_NOT_f22f3_empty_33_812_AND_NOT_S_ETC___d4879,
 		IF_SEL_ARR_IF_NOT_f22f3_empty_33_812_AND_NOT_S_ETC___d4881,
-		IF_SEL_ARR_IF_NOT_f22f3_empty_33_812_AND_NOT_S_ETC___d4883,
-		IF_SEL_ARR_IF_NOT_f22f3_empty_33_812_AND_NOT_S_ETC___d4885,
-		IF_SEL_ARR_IF_NOT_f22f3_empty_33_812_AND_NOT_S_ETC___d4886,
-		IF_SEL_ARR_IF_NOT_f22f3_empty_33_812_AND_NOT_S_ETC___d4888,
-		IF_SEL_ARR_IF_NOT_f22f3_empty_33_812_AND_NOT_S_ETC___d4890,
+		IF_SEL_ARR_IF_NOT_f22f3_empty_33_812_AND_NOT_S_ETC___d4884,
+		IF_SEL_ARR_IF_NOT_f22f3_empty_33_812_AND_NOT_S_ETC___d4887,
+		IF_SEL_ARR_IF_NOT_f22f3_empty_33_812_AND_NOT_S_ETC___d4889,
+		IF_SEL_ARR_IF_NOT_f22f3_empty_33_812_AND_NOT_S_ETC___d4891,
 		IF_SEL_ARR_IF_NOT_f22f3_empty_33_812_AND_NOT_S_ETC___d4892,
 		IF_SEL_ARR_IF_NOT_f22f3_empty_33_812_AND_NOT_S_ETC___d4894,
 		IF_SEL_ARR_IF_NOT_f22f3_empty_33_812_AND_NOT_S_ETC___d4896,
-		IF_SEL_ARR_IF_NOT_f22f3_empty_33_812_AND_NOT_S_ETC___d5149,
-		IF_SEL_ARR_IF_NOT_f22f3_empty_33_812_AND_NOT_S_ETC___d5151,
-		IF_SEL_ARR_IF_NOT_f22f3_empty_33_812_AND_NOT_S_ETC___d5153,
-		IF_SEL_ARR_IF_NOT_f22f3_empty_33_812_AND_NOT_S_ETC___d5155,
+		IF_SEL_ARR_IF_NOT_f22f3_empty_33_812_AND_NOT_S_ETC___d4898,
+		IF_SEL_ARR_IF_NOT_f22f3_empty_33_812_AND_NOT_S_ETC___d4900,
+		IF_SEL_ARR_IF_NOT_f22f3_empty_33_812_AND_NOT_S_ETC___d4902,
 		IF_SEL_ARR_IF_NOT_f22f3_empty_33_812_AND_NOT_S_ETC___d5157,
 		IF_SEL_ARR_IF_NOT_f22f3_empty_33_812_AND_NOT_S_ETC___d5159,
 		IF_SEL_ARR_IF_NOT_f22f3_empty_33_812_AND_NOT_S_ETC___d5161,
-		IF_SEL_ARR_IF_NOT_f22f3_empty_33_812_AND_NOT_S_ETC___d5164,
-		IF_SEL_ARR_IF_NOT_f22f3_empty_33_812_AND_NOT_S_ETC___d5167,
-		IF_SEL_ARR_IF_NOT_f22f3_empty_33_812_AND_NOT_S_ETC___d5169,
-		IF_SEL_ARR_IF_NOT_f22f3_empty_33_812_AND_NOT_S_ETC___d5171,
-		IF_SEL_ARR_IF_NOT_f22f3_empty_33_812_AND_NOT_S_ETC___d5172,
-		IF_SEL_ARR_IF_NOT_f22f3_empty_33_812_AND_NOT_S_ETC___d5174,
+		IF_SEL_ARR_IF_NOT_f22f3_empty_33_812_AND_NOT_S_ETC___d5163,
+		IF_SEL_ARR_IF_NOT_f22f3_empty_33_812_AND_NOT_S_ETC___d5166,
+		IF_SEL_ARR_IF_NOT_f22f3_empty_33_812_AND_NOT_S_ETC___d5168,
+		IF_SEL_ARR_IF_NOT_f22f3_empty_33_812_AND_NOT_S_ETC___d5170,
+		IF_SEL_ARR_IF_NOT_f22f3_empty_33_812_AND_NOT_S_ETC___d5173,
 		IF_SEL_ARR_IF_NOT_f22f3_empty_33_812_AND_NOT_S_ETC___d5176,
 		IF_SEL_ARR_IF_NOT_f22f3_empty_33_812_AND_NOT_S_ETC___d5178,
 		IF_SEL_ARR_IF_NOT_f22f3_empty_33_812_AND_NOT_S_ETC___d5180,
-		IF_SEL_ARR_IF_NOT_f22f3_empty_33_812_AND_NOT_S_ETC___d5182,
-		IF_SEL_ARR_IF_NOT_f22f3_empty_33_812_AND_NOT_S_ETC___d5467,
-		IF_SEL_ARR_IF_NOT_f22f3_empty_33_812_AND_NOT_S_ETC___d5469,
-		IF_SEL_ARR_IF_NOT_f22f3_empty_33_812_AND_NOT_S_ETC___d5471,
-		IF_SEL_ARR_IF_NOT_f22f3_empty_33_812_AND_NOT_S_ETC___d5473,
-		IF_SEL_ARR_IF_NOT_f22f3_empty_33_812_AND_NOT_S_ETC___d5475,
-		IF_SEL_ARR_IF_NOT_f22f3_empty_33_812_AND_NOT_S_ETC___d5477,
-		IF_SEL_ARR_IF_NOT_f22f3_empty_33_812_AND_NOT_S_ETC___d5479,
+		IF_SEL_ARR_IF_NOT_f22f3_empty_33_812_AND_NOT_S_ETC___d5181,
+		IF_SEL_ARR_IF_NOT_f22f3_empty_33_812_AND_NOT_S_ETC___d5183,
+		IF_SEL_ARR_IF_NOT_f22f3_empty_33_812_AND_NOT_S_ETC___d5185,
+		IF_SEL_ARR_IF_NOT_f22f3_empty_33_812_AND_NOT_S_ETC___d5187,
+		IF_SEL_ARR_IF_NOT_f22f3_empty_33_812_AND_NOT_S_ETC___d5189,
+		IF_SEL_ARR_IF_NOT_f22f3_empty_33_812_AND_NOT_S_ETC___d5191,
+		IF_SEL_ARR_IF_NOT_f22f3_empty_33_812_AND_NOT_S_ETC___d5478,
+		IF_SEL_ARR_IF_NOT_f22f3_empty_33_812_AND_NOT_S_ETC___d5480,
 		IF_SEL_ARR_IF_NOT_f22f3_empty_33_812_AND_NOT_S_ETC___d5482,
-		IF_SEL_ARR_IF_NOT_f22f3_empty_33_812_AND_NOT_S_ETC___d5485,
+		IF_SEL_ARR_IF_NOT_f22f3_empty_33_812_AND_NOT_S_ETC___d5484,
 		IF_SEL_ARR_IF_NOT_f22f3_empty_33_812_AND_NOT_S_ETC___d5487,
 		IF_SEL_ARR_IF_NOT_f22f3_empty_33_812_AND_NOT_S_ETC___d5489,
-		IF_SEL_ARR_IF_NOT_f22f3_empty_33_812_AND_NOT_S_ETC___d5490,
-		IF_SEL_ARR_IF_NOT_f22f3_empty_33_812_AND_NOT_S_ETC___d5492,
+		IF_SEL_ARR_IF_NOT_f22f3_empty_33_812_AND_NOT_S_ETC___d5491,
 		IF_SEL_ARR_IF_NOT_f22f3_empty_33_812_AND_NOT_S_ETC___d5494,
-		IF_SEL_ARR_IF_NOT_f22f3_empty_33_812_AND_NOT_S_ETC___d5496,
-		IF_SEL_ARR_IF_NOT_f22f3_empty_33_812_AND_NOT_S_ETC___d5498,
-		IF_SEL_ARR_IF_NOT_f22f3_empty_33_812_AND_NOT_S_ETC___d5500,
+		IF_SEL_ARR_IF_NOT_f22f3_empty_33_812_AND_NOT_S_ETC___d5497,
+		IF_SEL_ARR_IF_NOT_f22f3_empty_33_812_AND_NOT_S_ETC___d5499,
+		IF_SEL_ARR_IF_NOT_f22f3_empty_33_812_AND_NOT_S_ETC___d5501,
+		IF_SEL_ARR_IF_NOT_f22f3_empty_33_812_AND_NOT_S_ETC___d5502,
+		IF_SEL_ARR_IF_NOT_f22f3_empty_33_812_AND_NOT_S_ETC___d5504,
+		IF_SEL_ARR_IF_NOT_f22f3_empty_33_812_AND_NOT_S_ETC___d5506,
+		IF_SEL_ARR_IF_NOT_f22f3_empty_33_812_AND_NOT_S_ETC___d5508,
+		IF_SEL_ARR_IF_NOT_f22f3_empty_33_812_AND_NOT_S_ETC___d5510,
+		IF_SEL_ARR_IF_NOT_f22f3_empty_33_812_AND_NOT_S_ETC___d5512,
 		IF_SEL_ARR_NOT_f22f3_data_0_813_BIT_75_862_863_ETC___d4115,
 		IF_SEL_ARR_NOT_f22f3_data_0_813_BIT_75_862_863_ETC___d4128,
 		IF_out_fifo_enqueueElement_0_lat_0_whas__06_TH_ETC___d1346,
@@ -3320,17 +3320,17 @@ module mkFetchStage(CLK,
 		IF_out_fifo_enqueueElement_1_lat_0_whas__522_T_ETC___d1557,
 		IF_out_fifo_enqueueElement_1_lat_0_whas__522_T_ETC___d1961,
 		_theResult___snd_fst__h128787,
-		_theResult___snd_fst__h137545,
-		_theResult___snd_fst__h146144,
-		_theResult___snd_fst__h154765,
-		inst__h160435,
-		inst__h160439,
-		inst__h160777,
-		inst__h160781,
-		inst__h161123,
-		inst__h161127,
-		inst__h170354,
-		inst__h170358,
+		_theResult___snd_fst__h137539,
+		_theResult___snd_fst__h146132,
+		_theResult___snd_fst__h154747,
+		inst__h160417,
+		inst__h160421,
+		inst__h160759,
+		inst__h160763,
+		inst__h161105,
+		inst__h161109,
+		inst__h170330,
+		inst__h170334,
 		instr__h129616,
 		instr__h129763,
 		instr__h129957,
@@ -3363,169 +3363,173 @@ module mkFetchStage(CLK,
 		instr__h134837,
 		instr__h135038,
 		instr__h135191,
-		instr__h136292,
-		instr__h136447,
-		instr__h136648,
-		instr__h136801,
-		instr__h138304,
-		instr__h138451,
-		instr__h138645,
-		instr__h138842,
-		instr__h139072,
-		instr__h139526,
-		instr__h139644,
-		instr__h139709,
-		instr__h140028,
-		instr__h140369,
-		instr__h140558,
-		instr__h140690,
-		instr__h140921,
-		instr__h141181,
-		instr__h141354,
-		instr__h141525,
-		instr__h141715,
-		instr__h141905,
-		instr__h142023,
-		instr__h142204,
-		instr__h142325,
-		instr__h142421,
-		instr__h142558,
-		instr__h142695,
-		instr__h142832,
-		instr__h142971,
-		instr__h143110,
-		instr__h143270,
-		instr__h143367,
-		instr__h143522,
-		instr__h143723,
-		instr__h143876,
-		instr__h144921,
-		instr__h145076,
-		instr__h145277,
-		instr__h145430,
-		instr__h146946,
-		instr__h147093,
-		instr__h147287,
-		instr__h147484,
-		instr__h147714,
-		instr__h148168,
-		instr__h148286,
-		instr__h148351,
-		instr__h148670,
-		instr__h149011,
-		instr__h149200,
-		instr__h149332,
-		instr__h149563,
-		instr__h149823,
-		instr__h149996,
-		instr__h150167,
-		instr__h150357,
-		instr__h150547,
-		instr__h150665,
-		instr__h150846,
-		instr__h150967,
-		instr__h151063,
-		instr__h151200,
-		instr__h151337,
-		instr__h151474,
-		instr__h151613,
-		instr__h151752,
-		instr__h151912,
-		instr__h152009,
-		instr__h152164,
-		instr__h152365,
-		instr__h152518,
-		instr__h153563,
-		instr__h153718,
-		instr__h153919,
-		instr__h154072,
-		instr__h162964,
-		instr__h163111,
-		instr__h163305,
-		instr__h163502,
-		instr__h163732,
-		instr__h164186,
-		instr__h164304,
-		instr__h164369,
-		instr__h164688,
-		instr__h165029,
-		instr__h165218,
-		instr__h165350,
-		instr__h165581,
-		instr__h165841,
-		instr__h166014,
-		instr__h166185,
-		instr__h166375,
-		instr__h166565,
-		instr__h166683,
-		instr__h166864,
-		instr__h166985,
-		instr__h167081,
-		instr__h167218,
-		instr__h167355,
-		instr__h167492,
-		instr__h167631,
-		instr__h167770,
-		instr__h167930,
-		instr__h168027,
-		instr__h168182,
-		instr__h168383,
-		instr__h168536,
-		instr__h169581,
-		instr__h169736,
-		instr__h169937,
-		instr__h170090,
+		instr__h135450,
+		instr__h136265,
+		instr__h136441,
+		instr__h136642,
+		instr__h136795,
+		instr__h138298,
+		instr__h138445,
+		instr__h138639,
+		instr__h138836,
+		instr__h139066,
+		instr__h139520,
+		instr__h139638,
+		instr__h139703,
+		instr__h140022,
+		instr__h140363,
+		instr__h140552,
+		instr__h140684,
+		instr__h140915,
+		instr__h141175,
+		instr__h141348,
+		instr__h141519,
+		instr__h141709,
+		instr__h141899,
+		instr__h142017,
+		instr__h142198,
+		instr__h142319,
+		instr__h142415,
+		instr__h142552,
+		instr__h142689,
+		instr__h142826,
+		instr__h142965,
+		instr__h143104,
+		instr__h143264,
+		instr__h143361,
+		instr__h143516,
+		instr__h143717,
+		instr__h143870,
+		instr__h144074,
+		instr__h144888,
+		instr__h145064,
+		instr__h145265,
+		instr__h145418,
+		instr__h146934,
+		instr__h147081,
+		instr__h147275,
+		instr__h147472,
+		instr__h147702,
+		instr__h148156,
+		instr__h148274,
+		instr__h148339,
+		instr__h148658,
+		instr__h148999,
+		instr__h149188,
+		instr__h149320,
+		instr__h149551,
+		instr__h149811,
+		instr__h149984,
+		instr__h150155,
+		instr__h150345,
+		instr__h150535,
+		instr__h150653,
+		instr__h150834,
+		instr__h150955,
+		instr__h151051,
+		instr__h151188,
+		instr__h151325,
+		instr__h151462,
+		instr__h151601,
+		instr__h151740,
+		instr__h151900,
+		instr__h151997,
+		instr__h152152,
+		instr__h152353,
+		instr__h152506,
+		instr__h152710,
+		instr__h153524,
+		instr__h153700,
+		instr__h153901,
+		instr__h154054,
+		instr__h162946,
+		instr__h163093,
+		instr__h163287,
+		instr__h163484,
+		instr__h163714,
+		instr__h164168,
+		instr__h164286,
+		instr__h164351,
+		instr__h164670,
+		instr__h165011,
+		instr__h165200,
+		instr__h165332,
+		instr__h165563,
+		instr__h165823,
+		instr__h165996,
+		instr__h166167,
+		instr__h166357,
+		instr__h166547,
+		instr__h166665,
+		instr__h166846,
+		instr__h166967,
+		instr__h167063,
+		instr__h167200,
+		instr__h167337,
+		instr__h167474,
+		instr__h167613,
+		instr__h167752,
+		instr__h167912,
+		instr__h168009,
+		instr__h168164,
+		instr__h168365,
+		instr__h168518,
+		instr__h168722,
+		instr__h169536,
+		instr__h169712,
+		instr__h169913,
+		instr__h170066,
 		n_inst__h129251,
-		n_inst__h138052,
-		n_inst__h146694,
-		n_inst__h161119,
+		n_inst__h138046,
+		n_inst__h146682,
+		n_inst__h161101,
 		n_orig_inst__h129250,
-		n_orig_inst__h138051,
-		n_orig_inst__h146693,
-		n_orig_inst__h161118,
+		n_orig_inst__h138045,
+		n_orig_inst__h146681,
+		n_orig_inst__h161100,
 		orig_inst___1__h128486,
-		orig_inst___1__h137264,
-		orig_inst___1__h145863,
-		orig_inst___1__h156655,
-		orig_inst__h160434,
-		orig_inst__h160438,
-		orig_inst__h160776,
-		orig_inst__h160780,
-		orig_inst__h161122,
-		orig_inst__h161126,
-		orig_inst__h170353,
-		orig_inst__h170357,
+		orig_inst___1__h137258,
+		orig_inst___1__h145851,
+		orig_inst___1__h156637,
+		orig_inst__h160416,
+		orig_inst__h160420,
+		orig_inst__h160758,
+		orig_inst__h160762,
+		orig_inst__h161104,
+		orig_inst__h161108,
+		orig_inst__h170329,
+		orig_inst__h170333,
 		y_avValue_snd_fst__h128754,
 		y_avValue_snd_fst__h128756,
-		y_avValue_snd_fst__h137512,
-		y_avValue_snd_fst__h137514,
-		y_avValue_snd_fst__h146111,
-		y_avValue_snd_fst__h146113,
-		y_avValue_snd_fst__h154600,
-		y_avValue_snd_fst__h154602,
+		y_avValue_snd_fst__h137506,
+		y_avValue_snd_fst__h137508,
+		y_avValue_snd_fst__h146099,
+		y_avValue_snd_fst__h146101,
+		y_avValue_snd_fst__h154582,
+		y_avValue_snd_fst__h154584,
 		y_avValue_snd_snd_fst__h128703,
 		y_avValue_snd_snd_fst__h128732,
 		y_avValue_snd_snd_fst__h128734,
 		y_avValue_snd_snd_fst__h128760,
-		y_avValue_snd_snd_fst__h137481,
-		y_avValue_snd_snd_fst__h137518,
-		y_avValue_snd_snd_fst__h146080,
-		y_avValue_snd_snd_fst__h146117,
-		y_avValue_snd_snd_fst__h154542,
-		y_avValue_snd_snd_fst__h154606,
+		y_avValue_snd_snd_fst__h137475,
+		y_avValue_snd_snd_fst__h137512,
+		y_avValue_snd_snd_fst__h146068,
+		y_avValue_snd_snd_fst__h146105,
+		y_avValue_snd_snd_fst__h154524,
+		y_avValue_snd_snd_fst__h154588,
 		y_avValue_snd_snd_snd_fst__h128708,
 		y_avValue_snd_snd_snd_fst__h128740,
-		y_avValue_snd_snd_snd_fst__h137486,
-		y_avValue_snd_snd_snd_fst__h146085,
-		y_avValue_snd_snd_snd_fst__h154547;
-  wire [26 : 0] NOT_SEL_ARR_NOT_out_fifo_internalFifos_0_first_ETC___d7370,
-		NOT_SEL_ARR_NOT_out_fifo_internalFifos_0_first_ETC___d7693;
-  wire [23 : 0] IF_SEL_ARR_NOT_f32d_data_0_988_BIT_73_051_052__ETC___d6317,
-		IF_SEL_ARR_NOT_f32d_data_0_988_BIT_73_051_052__ETC___d6731,
+		y_avValue_snd_snd_snd_fst__h137480,
+		y_avValue_snd_snd_snd_fst__h146073,
+		y_avValue_snd_snd_snd_fst__h154529;
+  wire [26 : 0] NOT_SEL_ARR_NOT_out_fifo_internalFifos_0_first_ETC___d7382,
+		NOT_SEL_ARR_NOT_out_fifo_internalFifos_0_first_ETC___d7705;
+  wire [23 : 0] IF_SEL_ARR_NOT_f32d_data_0_000_BIT_73_063_064__ETC___d6329,
+		IF_SEL_ARR_NOT_f32d_data_0_000_BIT_73_063_064__ETC___d6743,
 		IF_out_fifo_enqueueElement_0_lat_0_whas__06_TH_ETC___d936,
 		IF_out_fifo_enqueueElement_1_lat_0_whas__522_T_ETC___d1552,
-		SEL_ARR_out_fifo_internalFifos_0_first__850_BI_ETC___d6881,
-		SEL_ARR_out_fifo_internalFifos_0_first__850_BI_ETC___d7515;
+		SEL_ARR_out_fifo_internalFifos_0_first__862_BI_ETC___d6893,
+		SEL_ARR_out_fifo_internalFifos_0_first__862_BI_ETC___d7527;
   wire [20 : 0] IF_IF_out_fifo_enqueueElement_0_lat_0_whas__06_ETC___d2171,
 		IF_IF_out_fifo_enqueueElement_0_lat_0_whas__06_ETC___d2172,
 		IF_IF_out_fifo_enqueueElement_0_lat_0_whas__06_ETC___d2174,
@@ -3534,32 +3538,32 @@ module mkFetchStage(CLK,
 		IF_IF_out_fifo_enqueueElement_1_lat_0_whas__52_ETC___d2297,
 		IF_IF_out_fifo_enqueueElement_1_lat_0_whas__52_ETC___d2299,
 		IF_IF_out_fifo_enqueueElement_1_lat_0_whas__52_ETC___d2300,
-		IF_SEL_ARR_out_fifo_internalFifos_0_first__850_ETC___d7043,
-		IF_SEL_ARR_out_fifo_internalFifos_0_first__850_ETC___d7044,
-		IF_SEL_ARR_out_fifo_internalFifos_0_first__850_ETC___d7045,
-		IF_SEL_ARR_out_fifo_internalFifos_0_first__850_ETC___d7046,
-		IF_SEL_ARR_out_fifo_internalFifos_0_first__850_ETC___d7047,
-		IF_SEL_ARR_out_fifo_internalFifos_0_first__850_ETC___d7563,
-		IF_SEL_ARR_out_fifo_internalFifos_0_first__850_ETC___d7564,
-		IF_SEL_ARR_out_fifo_internalFifos_0_first__850_ETC___d7565,
-		IF_SEL_ARR_out_fifo_internalFifos_0_first__850_ETC___d7566,
-		IF_SEL_ARR_out_fifo_internalFifos_0_first__850_ETC___d7567,
+		IF_SEL_ARR_out_fifo_internalFifos_0_first__862_ETC___d7055,
+		IF_SEL_ARR_out_fifo_internalFifos_0_first__862_ETC___d7056,
+		IF_SEL_ARR_out_fifo_internalFifos_0_first__862_ETC___d7057,
+		IF_SEL_ARR_out_fifo_internalFifos_0_first__862_ETC___d7058,
+		IF_SEL_ARR_out_fifo_internalFifos_0_first__862_ETC___d7059,
+		IF_SEL_ARR_out_fifo_internalFifos_0_first__862_ETC___d7575,
+		IF_SEL_ARR_out_fifo_internalFifos_0_first__862_ETC___d7576,
+		IF_SEL_ARR_out_fifo_internalFifos_0_first__862_ETC___d7577,
+		IF_SEL_ARR_out_fifo_internalFifos_0_first__862_ETC___d7578,
+		IF_SEL_ARR_out_fifo_internalFifos_0_first__862_ETC___d7579,
 		SEXT_SEL_ARR_IF_NOT_f22f3_empty_33_812_AND_NOT_ETC___d4390,
-		SEXT_SEL_ARR_IF_NOT_f22f3_empty_33_812_AND_NOT_ETC___d4676,
-		SEXT_SEL_ARR_IF_NOT_f22f3_empty_33_812_AND_NOT_ETC___d4962,
-		SEXT_SEL_ARR_IF_NOT_f22f3_empty_33_812_AND_NOT_ETC___d5280;
+		SEXT_SEL_ARR_IF_NOT_f22f3_empty_33_812_AND_NOT_ETC___d4679,
+		SEXT_SEL_ARR_IF_NOT_f22f3_empty_33_812_AND_NOT_ETC___d4968,
+		SEXT_SEL_ARR_IF_NOT_f22f3_empty_33_812_AND_NOT_ETC___d5289;
   wire [19 : 0] imm20__h131738,
-		imm20__h140423,
-		imm20__h149065,
-		imm20__h165083;
-  wire [14 : 0] SEL_ARR_out_fifo_internalFifos_0_first__850_BI_ETC___d6970,
-		SEL_ARR_out_fifo_internalFifos_0_first__850_BI_ETC___d7542;
-  wire [12 : 0] NOT_SEL_ARR_NOT_out_fifo_internalFifos_0_first_ETC___d7369,
-		NOT_SEL_ARR_NOT_out_fifo_internalFifos_0_first_ETC___d7692,
+		imm20__h140417,
+		imm20__h149053,
+		imm20__h165065;
+  wire [14 : 0] SEL_ARR_out_fifo_internalFifos_0_first__862_BI_ETC___d6982,
+		SEL_ARR_out_fifo_internalFifos_0_first__862_BI_ETC___d7554;
+  wire [12 : 0] NOT_SEL_ARR_NOT_out_fifo_internalFifos_0_first_ETC___d7381,
+		NOT_SEL_ARR_NOT_out_fifo_internalFifos_0_first_ETC___d7704,
 		SEXT_SEL_ARR_IF_NOT_f22f3_empty_33_812_AND_NOT_ETC___d4415,
-		SEXT_SEL_ARR_IF_NOT_f22f3_empty_33_812_AND_NOT_ETC___d4701,
-		SEXT_SEL_ARR_IF_NOT_f22f3_empty_33_812_AND_NOT_ETC___d4987,
-		SEXT_SEL_ARR_IF_NOT_f22f3_empty_33_812_AND_NOT_ETC___d5305;
+		SEXT_SEL_ARR_IF_NOT_f22f3_empty_33_812_AND_NOT_ETC___d4704,
+		SEXT_SEL_ARR_IF_NOT_f22f3_empty_33_812_AND_NOT_ETC___d4993,
+		SEXT_SEL_ARR_IF_NOT_f22f3_empty_33_812_AND_NOT_ETC___d5314;
   wire [11 : 0] IF_IF_out_fifo_enqueueElement_0_lat_0_whas__06_ETC___d2178,
 		IF_IF_out_fifo_enqueueElement_0_lat_0_whas__06_ETC___d2180,
 		IF_IF_out_fifo_enqueueElement_0_lat_0_whas__06_ETC___d2182,
@@ -3602,92 +3606,92 @@ module mkFetchStage(CLK,
 		IF_IF_out_fifo_enqueueElement_1_lat_0_whas__52_ETC___d2339,
 		IF_IF_out_fifo_enqueueElement_1_lat_0_whas__52_ETC___d2341,
 		IF_IF_out_fifo_enqueueElement_1_lat_0_whas__52_ETC___d2343,
-		IF_SEL_ARR_out_fifo_internalFifos_0_first__850_ETC___d7234,
-		IF_SEL_ARR_out_fifo_internalFifos_0_first__850_ETC___d7235,
-		IF_SEL_ARR_out_fifo_internalFifos_0_first__850_ETC___d7236,
-		IF_SEL_ARR_out_fifo_internalFifos_0_first__850_ETC___d7237,
-		IF_SEL_ARR_out_fifo_internalFifos_0_first__850_ETC___d7238,
-		IF_SEL_ARR_out_fifo_internalFifos_0_first__850_ETC___d7239,
-		IF_SEL_ARR_out_fifo_internalFifos_0_first__850_ETC___d7240,
-		IF_SEL_ARR_out_fifo_internalFifos_0_first__850_ETC___d7241,
-		IF_SEL_ARR_out_fifo_internalFifos_0_first__850_ETC___d7242,
-		IF_SEL_ARR_out_fifo_internalFifos_0_first__850_ETC___d7243,
-		IF_SEL_ARR_out_fifo_internalFifos_0_first__850_ETC___d7244,
-		IF_SEL_ARR_out_fifo_internalFifos_0_first__850_ETC___d7245,
-		IF_SEL_ARR_out_fifo_internalFifos_0_first__850_ETC___d7246,
-		IF_SEL_ARR_out_fifo_internalFifos_0_first__850_ETC___d7247,
-		IF_SEL_ARR_out_fifo_internalFifos_0_first__850_ETC___d7248,
-		IF_SEL_ARR_out_fifo_internalFifos_0_first__850_ETC___d7249,
-		IF_SEL_ARR_out_fifo_internalFifos_0_first__850_ETC___d7250,
-		IF_SEL_ARR_out_fifo_internalFifos_0_first__850_ETC___d7251,
-		IF_SEL_ARR_out_fifo_internalFifos_0_first__850_ETC___d7252,
-		IF_SEL_ARR_out_fifo_internalFifos_0_first__850_ETC___d7253,
-		IF_SEL_ARR_out_fifo_internalFifos_0_first__850_ETC___d7254,
-		IF_SEL_ARR_out_fifo_internalFifos_0_first__850_ETC___d7255,
-		IF_SEL_ARR_out_fifo_internalFifos_0_first__850_ETC___d7256,
-		IF_SEL_ARR_out_fifo_internalFifos_0_first__850_ETC___d7257,
-		IF_SEL_ARR_out_fifo_internalFifos_0_first__850_ETC___d7258,
-		IF_SEL_ARR_out_fifo_internalFifos_0_first__850_ETC___d7259,
-		IF_SEL_ARR_out_fifo_internalFifos_0_first__850_ETC___d7260,
-		IF_SEL_ARR_out_fifo_internalFifos_0_first__850_ETC___d7261,
-		IF_SEL_ARR_out_fifo_internalFifos_0_first__850_ETC___d7262,
-		IF_SEL_ARR_out_fifo_internalFifos_0_first__850_ETC___d7263,
-		IF_SEL_ARR_out_fifo_internalFifos_0_first__850_ETC___d7264,
-		IF_SEL_ARR_out_fifo_internalFifos_0_first__850_ETC___d7265,
-		IF_SEL_ARR_out_fifo_internalFifos_0_first__850_ETC___d7266,
-		IF_SEL_ARR_out_fifo_internalFifos_0_first__850_ETC___d7267,
-		IF_SEL_ARR_out_fifo_internalFifos_0_first__850_ETC___d7268,
-		IF_SEL_ARR_out_fifo_internalFifos_0_first__850_ETC___d7269,
-		IF_SEL_ARR_out_fifo_internalFifos_0_first__850_ETC___d7270,
-		IF_SEL_ARR_out_fifo_internalFifos_0_first__850_ETC___d7271,
-		IF_SEL_ARR_out_fifo_internalFifos_0_first__850_ETC___d7272,
-		IF_SEL_ARR_out_fifo_internalFifos_0_first__850_ETC___d7273,
-		IF_SEL_ARR_out_fifo_internalFifos_0_first__850_ETC___d7274,
-		IF_SEL_ARR_out_fifo_internalFifos_0_first__850_ETC___d7275,
-		IF_SEL_ARR_out_fifo_internalFifos_0_first__850_ETC___d7276,
-		IF_SEL_ARR_out_fifo_internalFifos_0_first__850_ETC___d7615,
-		IF_SEL_ARR_out_fifo_internalFifos_0_first__850_ETC___d7616,
-		IF_SEL_ARR_out_fifo_internalFifos_0_first__850_ETC___d7617,
-		IF_SEL_ARR_out_fifo_internalFifos_0_first__850_ETC___d7618,
-		IF_SEL_ARR_out_fifo_internalFifos_0_first__850_ETC___d7619,
-		IF_SEL_ARR_out_fifo_internalFifos_0_first__850_ETC___d7620,
-		IF_SEL_ARR_out_fifo_internalFifos_0_first__850_ETC___d7621,
-		IF_SEL_ARR_out_fifo_internalFifos_0_first__850_ETC___d7622,
-		IF_SEL_ARR_out_fifo_internalFifos_0_first__850_ETC___d7623,
-		IF_SEL_ARR_out_fifo_internalFifos_0_first__850_ETC___d7624,
-		IF_SEL_ARR_out_fifo_internalFifos_0_first__850_ETC___d7625,
-		IF_SEL_ARR_out_fifo_internalFifos_0_first__850_ETC___d7626,
-		IF_SEL_ARR_out_fifo_internalFifos_0_first__850_ETC___d7627,
-		IF_SEL_ARR_out_fifo_internalFifos_0_first__850_ETC___d7628,
-		IF_SEL_ARR_out_fifo_internalFifos_0_first__850_ETC___d7629,
-		IF_SEL_ARR_out_fifo_internalFifos_0_first__850_ETC___d7630,
-		IF_SEL_ARR_out_fifo_internalFifos_0_first__850_ETC___d7631,
-		IF_SEL_ARR_out_fifo_internalFifos_0_first__850_ETC___d7632,
-		IF_SEL_ARR_out_fifo_internalFifos_0_first__850_ETC___d7633,
-		IF_SEL_ARR_out_fifo_internalFifos_0_first__850_ETC___d7634,
-		IF_SEL_ARR_out_fifo_internalFifos_0_first__850_ETC___d7635,
-		IF_SEL_ARR_out_fifo_internalFifos_0_first__850_ETC___d7636,
-		IF_SEL_ARR_out_fifo_internalFifos_0_first__850_ETC___d7637,
-		IF_SEL_ARR_out_fifo_internalFifos_0_first__850_ETC___d7638,
-		IF_SEL_ARR_out_fifo_internalFifos_0_first__850_ETC___d7639,
-		IF_SEL_ARR_out_fifo_internalFifos_0_first__850_ETC___d7640,
-		IF_SEL_ARR_out_fifo_internalFifos_0_first__850_ETC___d7641,
-		IF_SEL_ARR_out_fifo_internalFifos_0_first__850_ETC___d7642,
-		IF_SEL_ARR_out_fifo_internalFifos_0_first__850_ETC___d7643,
-		IF_SEL_ARR_out_fifo_internalFifos_0_first__850_ETC___d7644,
-		IF_SEL_ARR_out_fifo_internalFifos_0_first__850_ETC___d7645,
-		IF_SEL_ARR_out_fifo_internalFifos_0_first__850_ETC___d7646,
-		IF_SEL_ARR_out_fifo_internalFifos_0_first__850_ETC___d7647,
-		IF_SEL_ARR_out_fifo_internalFifos_0_first__850_ETC___d7648,
-		IF_SEL_ARR_out_fifo_internalFifos_0_first__850_ETC___d7649,
-		IF_SEL_ARR_out_fifo_internalFifos_0_first__850_ETC___d7650,
-		IF_SEL_ARR_out_fifo_internalFifos_0_first__850_ETC___d7651,
-		IF_SEL_ARR_out_fifo_internalFifos_0_first__850_ETC___d7652,
-		IF_SEL_ARR_out_fifo_internalFifos_0_first__850_ETC___d7653,
-		IF_SEL_ARR_out_fifo_internalFifos_0_first__850_ETC___d7654,
-		IF_SEL_ARR_out_fifo_internalFifos_0_first__850_ETC___d7655,
-		IF_SEL_ARR_out_fifo_internalFifos_0_first__850_ETC___d7656,
-		IF_SEL_ARR_out_fifo_internalFifos_0_first__850_ETC___d7657,
+		IF_SEL_ARR_out_fifo_internalFifos_0_first__862_ETC___d7246,
+		IF_SEL_ARR_out_fifo_internalFifos_0_first__862_ETC___d7247,
+		IF_SEL_ARR_out_fifo_internalFifos_0_first__862_ETC___d7248,
+		IF_SEL_ARR_out_fifo_internalFifos_0_first__862_ETC___d7249,
+		IF_SEL_ARR_out_fifo_internalFifos_0_first__862_ETC___d7250,
+		IF_SEL_ARR_out_fifo_internalFifos_0_first__862_ETC___d7251,
+		IF_SEL_ARR_out_fifo_internalFifos_0_first__862_ETC___d7252,
+		IF_SEL_ARR_out_fifo_internalFifos_0_first__862_ETC___d7253,
+		IF_SEL_ARR_out_fifo_internalFifos_0_first__862_ETC___d7254,
+		IF_SEL_ARR_out_fifo_internalFifos_0_first__862_ETC___d7255,
+		IF_SEL_ARR_out_fifo_internalFifos_0_first__862_ETC___d7256,
+		IF_SEL_ARR_out_fifo_internalFifos_0_first__862_ETC___d7257,
+		IF_SEL_ARR_out_fifo_internalFifos_0_first__862_ETC___d7258,
+		IF_SEL_ARR_out_fifo_internalFifos_0_first__862_ETC___d7259,
+		IF_SEL_ARR_out_fifo_internalFifos_0_first__862_ETC___d7260,
+		IF_SEL_ARR_out_fifo_internalFifos_0_first__862_ETC___d7261,
+		IF_SEL_ARR_out_fifo_internalFifos_0_first__862_ETC___d7262,
+		IF_SEL_ARR_out_fifo_internalFifos_0_first__862_ETC___d7263,
+		IF_SEL_ARR_out_fifo_internalFifos_0_first__862_ETC___d7264,
+		IF_SEL_ARR_out_fifo_internalFifos_0_first__862_ETC___d7265,
+		IF_SEL_ARR_out_fifo_internalFifos_0_first__862_ETC___d7266,
+		IF_SEL_ARR_out_fifo_internalFifos_0_first__862_ETC___d7267,
+		IF_SEL_ARR_out_fifo_internalFifos_0_first__862_ETC___d7268,
+		IF_SEL_ARR_out_fifo_internalFifos_0_first__862_ETC___d7269,
+		IF_SEL_ARR_out_fifo_internalFifos_0_first__862_ETC___d7270,
+		IF_SEL_ARR_out_fifo_internalFifos_0_first__862_ETC___d7271,
+		IF_SEL_ARR_out_fifo_internalFifos_0_first__862_ETC___d7272,
+		IF_SEL_ARR_out_fifo_internalFifos_0_first__862_ETC___d7273,
+		IF_SEL_ARR_out_fifo_internalFifos_0_first__862_ETC___d7274,
+		IF_SEL_ARR_out_fifo_internalFifos_0_first__862_ETC___d7275,
+		IF_SEL_ARR_out_fifo_internalFifos_0_first__862_ETC___d7276,
+		IF_SEL_ARR_out_fifo_internalFifos_0_first__862_ETC___d7277,
+		IF_SEL_ARR_out_fifo_internalFifos_0_first__862_ETC___d7278,
+		IF_SEL_ARR_out_fifo_internalFifos_0_first__862_ETC___d7279,
+		IF_SEL_ARR_out_fifo_internalFifos_0_first__862_ETC___d7280,
+		IF_SEL_ARR_out_fifo_internalFifos_0_first__862_ETC___d7281,
+		IF_SEL_ARR_out_fifo_internalFifos_0_first__862_ETC___d7282,
+		IF_SEL_ARR_out_fifo_internalFifos_0_first__862_ETC___d7283,
+		IF_SEL_ARR_out_fifo_internalFifos_0_first__862_ETC___d7284,
+		IF_SEL_ARR_out_fifo_internalFifos_0_first__862_ETC___d7285,
+		IF_SEL_ARR_out_fifo_internalFifos_0_first__862_ETC___d7286,
+		IF_SEL_ARR_out_fifo_internalFifos_0_first__862_ETC___d7287,
+		IF_SEL_ARR_out_fifo_internalFifos_0_first__862_ETC___d7288,
+		IF_SEL_ARR_out_fifo_internalFifos_0_first__862_ETC___d7627,
+		IF_SEL_ARR_out_fifo_internalFifos_0_first__862_ETC___d7628,
+		IF_SEL_ARR_out_fifo_internalFifos_0_first__862_ETC___d7629,
+		IF_SEL_ARR_out_fifo_internalFifos_0_first__862_ETC___d7630,
+		IF_SEL_ARR_out_fifo_internalFifos_0_first__862_ETC___d7631,
+		IF_SEL_ARR_out_fifo_internalFifos_0_first__862_ETC___d7632,
+		IF_SEL_ARR_out_fifo_internalFifos_0_first__862_ETC___d7633,
+		IF_SEL_ARR_out_fifo_internalFifos_0_first__862_ETC___d7634,
+		IF_SEL_ARR_out_fifo_internalFifos_0_first__862_ETC___d7635,
+		IF_SEL_ARR_out_fifo_internalFifos_0_first__862_ETC___d7636,
+		IF_SEL_ARR_out_fifo_internalFifos_0_first__862_ETC___d7637,
+		IF_SEL_ARR_out_fifo_internalFifos_0_first__862_ETC___d7638,
+		IF_SEL_ARR_out_fifo_internalFifos_0_first__862_ETC___d7639,
+		IF_SEL_ARR_out_fifo_internalFifos_0_first__862_ETC___d7640,
+		IF_SEL_ARR_out_fifo_internalFifos_0_first__862_ETC___d7641,
+		IF_SEL_ARR_out_fifo_internalFifos_0_first__862_ETC___d7642,
+		IF_SEL_ARR_out_fifo_internalFifos_0_first__862_ETC___d7643,
+		IF_SEL_ARR_out_fifo_internalFifos_0_first__862_ETC___d7644,
+		IF_SEL_ARR_out_fifo_internalFifos_0_first__862_ETC___d7645,
+		IF_SEL_ARR_out_fifo_internalFifos_0_first__862_ETC___d7646,
+		IF_SEL_ARR_out_fifo_internalFifos_0_first__862_ETC___d7647,
+		IF_SEL_ARR_out_fifo_internalFifos_0_first__862_ETC___d7648,
+		IF_SEL_ARR_out_fifo_internalFifos_0_first__862_ETC___d7649,
+		IF_SEL_ARR_out_fifo_internalFifos_0_first__862_ETC___d7650,
+		IF_SEL_ARR_out_fifo_internalFifos_0_first__862_ETC___d7651,
+		IF_SEL_ARR_out_fifo_internalFifos_0_first__862_ETC___d7652,
+		IF_SEL_ARR_out_fifo_internalFifos_0_first__862_ETC___d7653,
+		IF_SEL_ARR_out_fifo_internalFifos_0_first__862_ETC___d7654,
+		IF_SEL_ARR_out_fifo_internalFifos_0_first__862_ETC___d7655,
+		IF_SEL_ARR_out_fifo_internalFifos_0_first__862_ETC___d7656,
+		IF_SEL_ARR_out_fifo_internalFifos_0_first__862_ETC___d7657,
+		IF_SEL_ARR_out_fifo_internalFifos_0_first__862_ETC___d7658,
+		IF_SEL_ARR_out_fifo_internalFifos_0_first__862_ETC___d7659,
+		IF_SEL_ARR_out_fifo_internalFifos_0_first__862_ETC___d7660,
+		IF_SEL_ARR_out_fifo_internalFifos_0_first__862_ETC___d7661,
+		IF_SEL_ARR_out_fifo_internalFifos_0_first__862_ETC___d7662,
+		IF_SEL_ARR_out_fifo_internalFifos_0_first__862_ETC___d7663,
+		IF_SEL_ARR_out_fifo_internalFifos_0_first__862_ETC___d7664,
+		IF_SEL_ARR_out_fifo_internalFifos_0_first__862_ETC___d7665,
+		IF_SEL_ARR_out_fifo_internalFifos_0_first__862_ETC___d7666,
+		IF_SEL_ARR_out_fifo_internalFifos_0_first__862_ETC___d7667,
+		IF_SEL_ARR_out_fifo_internalFifos_0_first__862_ETC___d7668,
+		IF_SEL_ARR_out_fifo_internalFifos_0_first__862_ETC___d7669,
 		imm12__h129617,
 		imm12__h129958,
 		imm12__h131607,
@@ -3697,72 +3701,72 @@ module mkFetchStage(CLK,
 		imm12__h133046,
 		imm12__h134683,
 		imm12__h135039,
-		imm12__h138305,
-		imm12__h138646,
-		imm12__h140292,
-		imm12__h140976,
-		imm12__h141194,
-		imm12__h141391,
-		imm12__h141731,
-		imm12__h143368,
-		imm12__h143724,
-		imm12__h146947,
-		imm12__h147288,
-		imm12__h148934,
-		imm12__h149618,
-		imm12__h149836,
-		imm12__h150033,
-		imm12__h150373,
-		imm12__h152010,
-		imm12__h152366,
-		imm12__h162965,
-		imm12__h163306,
-		imm12__h164952,
-		imm12__h165636,
-		imm12__h165854,
-		imm12__h166051,
-		imm12__h166391,
-		imm12__h168028,
-		imm12__h168384,
+		imm12__h138299,
+		imm12__h138640,
+		imm12__h140286,
+		imm12__h140970,
+		imm12__h141188,
+		imm12__h141385,
+		imm12__h141725,
+		imm12__h143362,
+		imm12__h143718,
+		imm12__h146935,
+		imm12__h147276,
+		imm12__h148922,
+		imm12__h149606,
+		imm12__h149824,
+		imm12__h150021,
+		imm12__h150361,
+		imm12__h151998,
+		imm12__h152354,
+		imm12__h162947,
+		imm12__h163288,
+		imm12__h164934,
+		imm12__h165618,
+		imm12__h165836,
+		imm12__h166033,
+		imm12__h166373,
+		imm12__h168010,
+		imm12__h168366,
 		offset__h130332,
-		offset__h139020,
-		offset__h147662,
-		offset__h163680;
-  wire [9 : 0] SEL_ARR_out_fifo_internalFifos_0_first__850_BI_ETC___d6969,
-	       SEL_ARR_out_fifo_internalFifos_0_first__850_BI_ETC___d7541,
+		offset__h139014,
+		offset__h147650,
+		offset__h163662;
+  wire [9 : 0] SEL_ARR_out_fifo_internalFifos_0_first__862_BI_ETC___d6981,
+	       SEL_ARR_out_fifo_internalFifos_0_first__862_BI_ETC___d7553,
 	       nzimm10__h132289,
 	       nzimm10__h132507,
-	       nzimm10__h140974,
-	       nzimm10__h141192,
-	       nzimm10__h149616,
-	       nzimm10__h149834,
-	       nzimm10__h165634,
-	       nzimm10__h165852;
-  wire [8 : 0] SEL_ARR_out_fifo_internalFifos_0_first__850_BI_ETC___d7041,
-	       SEL_ARR_out_fifo_internalFifos_0_first__850_BI_ETC___d7561,
+	       nzimm10__h140968,
+	       nzimm10__h141186,
+	       nzimm10__h149604,
+	       nzimm10__h149822,
+	       nzimm10__h165616,
+	       nzimm10__h165834;
+  wire [8 : 0] SEL_ARR_out_fifo_internalFifos_0_first__862_BI_ETC___d7053,
+	       SEL_ARR_out_fifo_internalFifos_0_first__862_BI_ETC___d7573,
 	       offset__h130968,
 	       offset__h134596,
-	       offset__h139653,
-	       offset__h143281,
-	       offset__h148295,
-	       offset__h151923,
-	       offset__h164313,
-	       offset__h167941;
+	       offset__h139647,
+	       offset__h143275,
+	       offset__h148283,
+	       offset__h151911,
+	       offset__h164295,
+	       offset__h167923;
   wire [7 : 0] offset__h129460,
 	       offset__h134973,
-	       offset__h138213,
-	       offset__h143658,
-	       offset__h146855,
-	       offset__h152300,
-	       offset__h162873,
-	       offset__h168318;
+	       offset__h138207,
+	       offset__h143652,
+	       offset__h146843,
+	       offset__h152288,
+	       offset__h162855,
+	       offset__h168300;
   wire [6 : 0] NOT_iTlb_to_proc_response_get_672_BIT_4_673_67_ETC___d3808,
-	       SEL_ARR_out_fifo_internalFifos_0_first__850_BI_ETC___d6956,
-	       SEL_ARR_out_fifo_internalFifos_0_first__850_BI_ETC___d7537,
+	       SEL_ARR_out_fifo_internalFifos_0_first__862_BI_ETC___d6968,
+	       SEL_ARR_out_fifo_internalFifos_0_first__862_BI_ETC___d7549,
 	       offset__h129900,
-	       offset__h138588,
-	       offset__h147230,
-	       offset__h163248;
+	       offset__h138582,
+	       offset__h147218,
+	       offset__h163230;
   wire [5 : 0] IF_out_fifo_enqueueElement_0_lat_0_whas__06_TH_ETC___d1361,
 	       IF_out_fifo_enqueueElement_0_lat_0_whas__06_TH_ETC___d1377,
 	       IF_out_fifo_enqueueElement_0_lat_0_whas__06_TH_ETC___d1410,
@@ -3770,10 +3774,10 @@ module mkFetchStage(CLK,
 	       IF_out_fifo_enqueueElement_1_lat_0_whas__522_T_ETC___d1992,
 	       IF_out_fifo_enqueueElement_1_lat_0_whas__522_T_ETC___d2025,
 	       imm6__h131605,
-	       imm6__h140290,
-	       imm6__h148932,
-	       imm6__h164950;
-  wire [4 : 0] IF_NOT_f22f3_empty_33_812_AND_NOT_SEL_ARR_f22f_ETC___d5577,
+	       imm6__h140284,
+	       imm6__h148920,
+	       imm6__h164932;
+  wire [4 : 0] IF_NOT_f22f3_empty_33_812_AND_NOT_SEL_ARR_f22f_ETC___d5589,
 	       IF_out_fifo_enqueueElement_0_lat_0_whas__06_TH_ETC___d1394,
 	       IF_out_fifo_enqueueElement_0_lat_0_whas__06_TH_ETC___d946,
 	       IF_out_fifo_enqueueElement_0_lat_0_whas__06_TH_ETC___d959,
@@ -3782,43 +3786,43 @@ module mkFetchStage(CLK,
 	       IF_out_fifo_enqueueElement_1_lat_0_whas__522_T_ETC___d2009,
 	       NOT_f22f3_enqReq_dummy2_2_read__97_31_OR_IF_f2_ETC___d518,
 	       NOT_f32d_enqReq_dummy2_2_read__28_58_OR_IF_f32_ETC___d842,
-	       SEL_ARR_out_fifo_internalFifos_0_first__850_BI_ETC___d6947,
-	       SEL_ARR_out_fifo_internalFifos_0_first__850_BI_ETC___d6984,
-	       SEL_ARR_out_fifo_internalFifos_0_first__850_BI_ETC___d7534,
-	       SEL_ARR_out_fifo_internalFifos_0_first__850_BI_ETC___d7547,
+	       SEL_ARR_out_fifo_internalFifos_0_first__862_BI_ETC___d6959,
+	       SEL_ARR_out_fifo_internalFifos_0_first__862_BI_ETC___d6996,
+	       SEL_ARR_out_fifo_internalFifos_0_first__862_BI_ETC___d7546,
+	       SEL_ARR_out_fifo_internalFifos_0_first__862_BI_ETC___d7559,
 	       offset_BITS_4_TO_0___h129889,
 	       offset_BITS_4_TO_0___h130324,
 	       offset_BITS_4_TO_0___h135318,
-	       offset_BITS_4_TO_0___h138577,
-	       offset_BITS_4_TO_0___h139012,
-	       offset_BITS_4_TO_0___h144003,
-	       offset_BITS_4_TO_0___h147219,
-	       offset_BITS_4_TO_0___h147654,
-	       offset_BITS_4_TO_0___h152645,
-	       offset_BITS_4_TO_0___h163237,
-	       offset_BITS_4_TO_0___h163672,
-	       offset_BITS_4_TO_0___h168663,
+	       offset_BITS_4_TO_0___h138571,
+	       offset_BITS_4_TO_0___h139006,
+	       offset_BITS_4_TO_0___h143997,
+	       offset_BITS_4_TO_0___h147207,
+	       offset_BITS_4_TO_0___h147642,
+	       offset_BITS_4_TO_0___h152633,
+	       offset_BITS_4_TO_0___h163219,
+	       offset_BITS_4_TO_0___h163654,
+	       offset_BITS_4_TO_0___h168645,
 	       rd__h129960,
-	       rd__h138648,
-	       rd__h147290,
-	       rd__h163308,
+	       rd__h138642,
+	       rd__h147278,
+	       rd__h163290,
 	       rs1__h129959,
-	       rs1__h138647,
-	       rs1__h147289,
-	       rs1__h163307;
-  wire [3 : 0] IF_IF_NOT_f22f3_empty_33_812_AND_NOT_SEL_ARR_f_ETC___d5909,
-	       IF_IF_NOT_f22f3_empty_33_812_AND_NOT_SEL_ARR_f_ETC___d5910,
-	       IF_IF_NOT_f22f3_empty_33_812_AND_NOT_SEL_ARR_f_ETC___d5911,
-	       IF_IF_NOT_f22f3_empty_33_812_AND_NOT_SEL_ARR_f_ETC___d5912,
-	       IF_IF_NOT_f22f3_empty_33_812_AND_NOT_SEL_ARR_f_ETC___d5913,
-	       IF_IF_NOT_f22f3_empty_33_812_AND_NOT_SEL_ARR_f_ETC___d5914,
-	       IF_IF_NOT_f22f3_empty_33_812_AND_NOT_SEL_ARR_f_ETC___d5915,
-	       IF_IF_NOT_f22f3_empty_33_812_AND_NOT_SEL_ARR_f_ETC___d5916,
-	       IF_IF_NOT_f22f3_empty_33_812_AND_NOT_SEL_ARR_f_ETC___d5917,
-	       IF_IF_NOT_f22f3_empty_33_812_AND_NOT_SEL_ARR_f_ETC___d5918,
-	       IF_IF_NOT_f22f3_empty_33_812_AND_NOT_SEL_ARR_f_ETC___d5919,
-	       IF_IF_NOT_f22f3_empty_33_812_AND_NOT_SEL_ARR_f_ETC___d5920,
-	       IF_IF_NOT_f22f3_empty_33_812_AND_NOT_SEL_ARR_f_ETC___d5921,
+	       rs1__h138641,
+	       rs1__h147277,
+	       rs1__h163289;
+  wire [3 : 0] IF_IF_NOT_f22f3_empty_33_812_AND_NOT_SEL_ARR_f_ETC___d5921,
+	       IF_IF_NOT_f22f3_empty_33_812_AND_NOT_SEL_ARR_f_ETC___d5922,
+	       IF_IF_NOT_f22f3_empty_33_812_AND_NOT_SEL_ARR_f_ETC___d5923,
+	       IF_IF_NOT_f22f3_empty_33_812_AND_NOT_SEL_ARR_f_ETC___d5924,
+	       IF_IF_NOT_f22f3_empty_33_812_AND_NOT_SEL_ARR_f_ETC___d5925,
+	       IF_IF_NOT_f22f3_empty_33_812_AND_NOT_SEL_ARR_f_ETC___d5926,
+	       IF_IF_NOT_f22f3_empty_33_812_AND_NOT_SEL_ARR_f_ETC___d5927,
+	       IF_IF_NOT_f22f3_empty_33_812_AND_NOT_SEL_ARR_f_ETC___d5928,
+	       IF_IF_NOT_f22f3_empty_33_812_AND_NOT_SEL_ARR_f_ETC___d5929,
+	       IF_IF_NOT_f22f3_empty_33_812_AND_NOT_SEL_ARR_f_ETC___d5930,
+	       IF_IF_NOT_f22f3_empty_33_812_AND_NOT_SEL_ARR_f_ETC___d5931,
+	       IF_IF_NOT_f22f3_empty_33_812_AND_NOT_SEL_ARR_f_ETC___d5932,
+	       IF_IF_NOT_f22f3_empty_33_812_AND_NOT_SEL_ARR_f_ETC___d5933,
 	       IF_IF_iTlb_to_proc_response_get_672_BIT_4_673__ETC___d3779,
 	       IF_IF_iTlb_to_proc_response_get_672_BIT_4_673__ETC___d3781,
 	       IF_IF_iTlb_to_proc_response_get_672_BIT_4_673__ETC___d3783,
@@ -3837,49 +3841,49 @@ module mkFetchStage(CLK,
 	       IF_IF_out_fifo_enqueueElement_1_lat_0_whas__52_ETC___d2364,
 	       IF_IF_out_fifo_enqueueElement_1_lat_0_whas__52_ETC___d2366,
 	       IF_IF_out_fifo_enqueueElement_1_lat_0_whas__52_ETC___d2368,
-	       IF_NOT_SEL_ARR_NOT_f32d_data_0_988_BIT_73_051__ETC___d6458,
-	       IF_NOT_SEL_ARR_NOT_f32d_data_0_988_BIT_73_051__ETC___d6459,
+	       IF_NOT_SEL_ARR_NOT_f32d_data_0_000_BIT_73_063__ETC___d6470,
+	       IF_NOT_SEL_ARR_NOT_f32d_data_0_000_BIT_73_063__ETC___d6471,
 	       IF_NOT_iTlb_to_proc_response_get_672_BIT_4_673_ETC___d3790,
-	       IF_SEL_ARR_IF_f32d_data_0_988_BITS_72_TO_69_33_ETC___d6448,
-	       IF_SEL_ARR_IF_f32d_data_0_988_BITS_72_TO_69_33_ETC___d6449,
-	       IF_SEL_ARR_IF_f32d_data_0_988_BITS_72_TO_69_33_ETC___d6450,
-	       IF_SEL_ARR_IF_f32d_data_0_988_BITS_72_TO_69_33_ETC___d6451,
-	       IF_SEL_ARR_IF_f32d_data_0_988_BITS_72_TO_69_33_ETC___d6452,
-	       IF_SEL_ARR_IF_f32d_data_0_988_BITS_72_TO_69_33_ETC___d6453,
-	       IF_SEL_ARR_IF_f32d_data_0_988_BITS_72_TO_69_33_ETC___d6454,
-	       IF_SEL_ARR_IF_f32d_data_0_988_BITS_72_TO_69_33_ETC___d6455,
-	       IF_SEL_ARR_IF_f32d_data_0_988_BITS_72_TO_69_33_ETC___d6456,
-	       IF_SEL_ARR_IF_out_fifo_internalFifos_0_first___ETC___d7485,
-	       IF_SEL_ARR_IF_out_fifo_internalFifos_0_first___ETC___d7486,
-	       IF_SEL_ARR_IF_out_fifo_internalFifos_0_first___ETC___d7487,
-	       IF_SEL_ARR_IF_out_fifo_internalFifos_0_first___ETC___d7488,
-	       IF_SEL_ARR_IF_out_fifo_internalFifos_0_first___ETC___d7489,
-	       IF_SEL_ARR_IF_out_fifo_internalFifos_0_first___ETC___d7490,
-	       IF_SEL_ARR_IF_out_fifo_internalFifos_0_first___ETC___d7491,
-	       IF_SEL_ARR_IF_out_fifo_internalFifos_0_first___ETC___d7492,
-	       IF_SEL_ARR_IF_out_fifo_internalFifos_0_first___ETC___d7493,
-	       IF_SEL_ARR_IF_out_fifo_internalFifos_0_first___ETC___d7494,
-	       IF_SEL_ARR_IF_out_fifo_internalFifos_0_first___ETC___d7495,
-	       IF_SEL_ARR_IF_out_fifo_internalFifos_0_first___ETC___d7496,
-	       IF_SEL_ARR_IF_out_fifo_internalFifos_0_first___ETC___d7710,
-	       IF_SEL_ARR_IF_out_fifo_internalFifos_0_first___ETC___d7711,
-	       IF_SEL_ARR_IF_out_fifo_internalFifos_0_first___ETC___d7712,
-	       IF_SEL_ARR_IF_out_fifo_internalFifos_0_first___ETC___d7713,
-	       IF_SEL_ARR_IF_out_fifo_internalFifos_0_first___ETC___d7714,
-	       IF_SEL_ARR_IF_out_fifo_internalFifos_0_first___ETC___d7715,
-	       IF_SEL_ARR_IF_out_fifo_internalFifos_0_first___ETC___d7716,
-	       IF_SEL_ARR_IF_out_fifo_internalFifos_0_first___ETC___d7717,
-	       IF_SEL_ARR_IF_out_fifo_internalFifos_0_first___ETC___d7718,
-	       IF_SEL_ARR_IF_out_fifo_internalFifos_0_first___ETC___d7719,
-	       IF_SEL_ARR_IF_out_fifo_internalFifos_0_first___ETC___d7720,
-	       IF_SEL_ARR_IF_out_fifo_internalFifos_0_first___ETC___d7721,
-	       IF_SEL_ARR_NOT_f32d_data_0_988_BIT_73_051_052__ETC___d6457,
+	       IF_SEL_ARR_IF_f32d_data_0_000_BITS_72_TO_69_35_ETC___d6460,
+	       IF_SEL_ARR_IF_f32d_data_0_000_BITS_72_TO_69_35_ETC___d6461,
+	       IF_SEL_ARR_IF_f32d_data_0_000_BITS_72_TO_69_35_ETC___d6462,
+	       IF_SEL_ARR_IF_f32d_data_0_000_BITS_72_TO_69_35_ETC___d6463,
+	       IF_SEL_ARR_IF_f32d_data_0_000_BITS_72_TO_69_35_ETC___d6464,
+	       IF_SEL_ARR_IF_f32d_data_0_000_BITS_72_TO_69_35_ETC___d6465,
+	       IF_SEL_ARR_IF_f32d_data_0_000_BITS_72_TO_69_35_ETC___d6466,
+	       IF_SEL_ARR_IF_f32d_data_0_000_BITS_72_TO_69_35_ETC___d6467,
+	       IF_SEL_ARR_IF_f32d_data_0_000_BITS_72_TO_69_35_ETC___d6468,
+	       IF_SEL_ARR_IF_out_fifo_internalFifos_0_first___ETC___d7497,
+	       IF_SEL_ARR_IF_out_fifo_internalFifos_0_first___ETC___d7498,
+	       IF_SEL_ARR_IF_out_fifo_internalFifos_0_first___ETC___d7499,
+	       IF_SEL_ARR_IF_out_fifo_internalFifos_0_first___ETC___d7500,
+	       IF_SEL_ARR_IF_out_fifo_internalFifos_0_first___ETC___d7501,
+	       IF_SEL_ARR_IF_out_fifo_internalFifos_0_first___ETC___d7502,
+	       IF_SEL_ARR_IF_out_fifo_internalFifos_0_first___ETC___d7503,
+	       IF_SEL_ARR_IF_out_fifo_internalFifos_0_first___ETC___d7504,
+	       IF_SEL_ARR_IF_out_fifo_internalFifos_0_first___ETC___d7505,
+	       IF_SEL_ARR_IF_out_fifo_internalFifos_0_first___ETC___d7506,
+	       IF_SEL_ARR_IF_out_fifo_internalFifos_0_first___ETC___d7507,
+	       IF_SEL_ARR_IF_out_fifo_internalFifos_0_first___ETC___d7508,
+	       IF_SEL_ARR_IF_out_fifo_internalFifos_0_first___ETC___d7722,
+	       IF_SEL_ARR_IF_out_fifo_internalFifos_0_first___ETC___d7723,
+	       IF_SEL_ARR_IF_out_fifo_internalFifos_0_first___ETC___d7724,
+	       IF_SEL_ARR_IF_out_fifo_internalFifos_0_first___ETC___d7725,
+	       IF_SEL_ARR_IF_out_fifo_internalFifos_0_first___ETC___d7726,
+	       IF_SEL_ARR_IF_out_fifo_internalFifos_0_first___ETC___d7727,
+	       IF_SEL_ARR_IF_out_fifo_internalFifos_0_first___ETC___d7728,
+	       IF_SEL_ARR_IF_out_fifo_internalFifos_0_first___ETC___d7729,
+	       IF_SEL_ARR_IF_out_fifo_internalFifos_0_first___ETC___d7730,
+	       IF_SEL_ARR_IF_out_fifo_internalFifos_0_first___ETC___d7731,
+	       IF_SEL_ARR_IF_out_fifo_internalFifos_0_first___ETC___d7732,
+	       IF_SEL_ARR_IF_out_fifo_internalFifos_0_first___ETC___d7733,
+	       IF_SEL_ARR_NOT_f32d_data_0_000_BIT_73_063_064__ETC___d6469,
 	       IF_f22f3_enqReq_lat_0_whas__92_THEN_IF_f22f3_e_ETC___d488,
 	       IF_f32d_enqReq_lat_0_whas__34_THEN_IF_f32d_enq_ETC___d812,
 	       IF_out_fifo_enqueueElement_0_lat_0_whas__06_TH_ETC___d931,
 	       IF_out_fifo_enqueueElement_1_lat_0_whas__522_T_ETC___d1547,
-	       x1_avValue_fst_main_epoch__h156707,
-	       y_avValue_fst_main_epoch__h156701;
+	       x1_avValue_fst_main_epoch__h156689,
+	       y_avValue_fst_main_epoch__h156683;
   wire [2 : 0] IF_IF_IF_IF_SEL_ARR_f22f3_data_0_813_BITS_204__ETC___d4165,
 	       IF_IF_IF_IF_SEL_ARR_f22f3_data_0_813_BITS_204__ETC___d4170,
 	       IF_IF_IF_IF_SEL_ARR_f22f3_data_0_813_BITS_204__ETC___d4262,
@@ -3891,56 +3895,56 @@ module mkFetchStage(CLK,
 	       IF_IF_out_fifo_enqueueElement_0_lat_0_whas__06_ETC___d2168,
 	       IF_IF_out_fifo_enqueueElement_1_lat_0_whas__52_ETC___d2291,
 	       IF_IF_out_fifo_enqueueElement_1_lat_0_whas__52_ETC___d2293,
-	       IF_SEL_ARR_IF_out_fifo_internalFifos_0_first___ETC___d7037,
-	       IF_SEL_ARR_IF_out_fifo_internalFifos_0_first___ETC___d7038,
-	       IF_SEL_ARR_IF_out_fifo_internalFifos_0_first___ETC___d7039,
-	       IF_SEL_ARR_IF_out_fifo_internalFifos_0_first___ETC___d7040,
-	       IF_SEL_ARR_IF_out_fifo_internalFifos_0_first___ETC___d7557,
-	       IF_SEL_ARR_IF_out_fifo_internalFifos_0_first___ETC___d7558,
-	       IF_SEL_ARR_IF_out_fifo_internalFifos_0_first___ETC___d7559,
-	       IF_SEL_ARR_IF_out_fifo_internalFifos_0_first___ETC___d7560,
-	       SEL_ARR_out_fifo_internalFifos_0_first__850_BI_ETC___d6938,
-	       SEL_ARR_out_fifo_internalFifos_0_first__850_BI_ETC___d7531,
+	       IF_SEL_ARR_IF_out_fifo_internalFifos_0_first___ETC___d7049,
+	       IF_SEL_ARR_IF_out_fifo_internalFifos_0_first___ETC___d7050,
+	       IF_SEL_ARR_IF_out_fifo_internalFifos_0_first___ETC___d7051,
+	       IF_SEL_ARR_IF_out_fifo_internalFifos_0_first___ETC___d7052,
+	       IF_SEL_ARR_IF_out_fifo_internalFifos_0_first___ETC___d7569,
+	       IF_SEL_ARR_IF_out_fifo_internalFifos_0_first___ETC___d7570,
+	       IF_SEL_ARR_IF_out_fifo_internalFifos_0_first___ETC___d7571,
+	       IF_SEL_ARR_IF_out_fifo_internalFifos_0_first___ETC___d7572,
+	       SEL_ARR_out_fifo_internalFifos_0_first__862_BI_ETC___d6950,
+	       SEL_ARR_out_fifo_internalFifos_0_first__862_BI_ETC___d7543,
 	       _0_CONCAT_SEL_ARR_f22f3_data_0_813_BITS_206_TO__ETC___d4095,
 	       _theResult___fst__h128470,
-	       _theResult___fst__h137248,
-	       _theResult___fst__h145847,
+	       _theResult___fst__h137242,
+	       _theResult___fst__h145835,
 	       j__h125924,
 	       j__h128487,
-	       j__h137265,
-	       j__h145864,
-	       n_items__h156605,
+	       j__h137259,
+	       j__h145852,
+	       n_items__h156587,
 	       n_x16s__h125911,
 	       n_x16s__h125921,
-	       pending_spaces_ext__h156609,
-	       x__h174267,
-	       x__h177163,
+	       pending_spaces_ext__h156591,
+	       x__h174243,
+	       x__h177139,
 	       y_avValue_fst__h128332,
 	       y_avValue_fst__h128343,
 	       y_avValue_fst__h128371,
 	       y_avValue_fst__h128405,
-	       y_avValue_fst__h137123,
-	       y_avValue_fst__h137134,
-	       y_avValue_fst__h137183,
-	       y_avValue_fst__h145722,
-	       y_avValue_fst__h145733,
-	       y_avValue_fst__h145782,
-	       y_avValue_snd_snd_fst__h156636,
-	       y_avValue_snd_snd_fst__h156645;
+	       y_avValue_fst__h137117,
+	       y_avValue_fst__h137128,
+	       y_avValue_fst__h137177,
+	       y_avValue_fst__h145710,
+	       y_avValue_fst__h145721,
+	       y_avValue_fst__h145770,
+	       y_avValue_snd_snd_fst__h156618,
+	       y_avValue_snd_snd_fst__h156627;
   wire [1 : 0] IF_IF_IF_IF_IF_SEL_ARR_f22f3_data_0_813_BITS_2_ETC___d4296,
 	       IF_IF_IF_IF_SEL_ARR_f22f3_data_0_813_BITS_204__ETC___d4291,
 	       IF_IF_IF_SEL_ARR_f22f3_data_0_813_BITS_204_TO__ETC___d4286,
-	       IF_IF_rg_pending_n_items_845_EQ_0_846_THEN_ehr_ETC___d5200,
-	       IF_IF_rg_pending_n_items_845_EQ_0_846_THEN_rg__ETC___d5202,
+	       IF_IF_rg_pending_n_items_845_EQ_0_846_THEN_ehr_ETC___d5209,
+	       IF_IF_rg_pending_n_items_845_EQ_0_846_THEN_rg__ETC___d5211,
 	       IF_NOT_IF_pc_reg_dummy2_0_read__283_AND_pc_reg_ETC___d3639,
 	       IF_NOT_f22f3_empty_33_812_AND_NOT_SEL_ARR_f22f_ETC___d4288,
 	       IF_NOT_f22f3_empty_33_812_AND_NOT_SEL_ARR_f22f_ETC___d4293,
 	       IF_NOT_f22f3_empty_33_812_AND_NOT_SEL_ARR_f22f_ETC___d4298,
-	       IF_NOT_f22f3_empty_33_812_AND_NOT_SEL_ARR_f22f_ETC___d5203,
+	       IF_NOT_f22f3_empty_33_812_AND_NOT_SEL_ARR_f22f_ETC___d5212,
 	       _theResult_____2__h23869,
 	       next_deqP___1__h24188,
 	       pending_n_items__h124835,
-	       pending_spaces__h156607,
+	       pending_spaces__h156589,
 	       v__h19953,
 	       v__h20236,
 	       x__h11117,
@@ -3952,8 +3956,8 @@ module mkFetchStage(CLK,
 	       y__h122639,
 	       y__h126007,
 	       y_avValue_snd__h124826,
-	       y_avValue_snd__h179943,
-	       y_avValue_snd_fst__h177156;
+	       y_avValue_snd__h179919,
+	       y_avValue_snd_fst__h177132;
   wire CASE_0_CONCAT_3_MINUS_IF_rg_pending_n_items_84_ETC___d4004,
        CASE_0_CONCAT_3_MINUS_IF_rg_pending_n_items_84_ETC___d4006,
        CASE_0_CONCAT_3_MINUS_IF_rg_pending_n_items_84_ETC___d4008,
@@ -3962,53 +3966,53 @@ module mkFetchStage(CLK,
        CASE_0_CONCAT_3_MINUS_IF_rg_pending_n_items_84_ETC___d4049,
        IF_IF_IF_IF_IF_SEL_ARR_f22f3_data_0_813_BITS_2_ETC___d4187,
        IF_IF_IF_IF_IF_SEL_ARR_f22f3_data_0_813_BITS_2_ETC___d4222,
-       IF_IF_IF_IF_IF_SEL_ARR_f22f3_data_0_813_BITS_2_ETC___d5554,
-       IF_IF_IF_IF_IF_SEL_ARR_f22f3_data_0_813_BITS_2_ETC___d5960,
+       IF_IF_IF_IF_IF_SEL_ARR_f22f3_data_0_813_BITS_2_ETC___d5566,
+       IF_IF_IF_IF_IF_SEL_ARR_f22f3_data_0_813_BITS_2_ETC___d5972,
        IF_IF_IF_IF_SEL_ARR_f22f3_data_0_813_BITS_204__ETC___d4166,
        IF_IF_IF_IF_SEL_ARR_f22f3_data_0_813_BITS_204__ETC___d4171,
        IF_IF_IF_IF_SEL_ARR_f22f3_data_0_813_BITS_204__ETC___d4184,
        IF_IF_IF_IF_SEL_ARR_f22f3_data_0_813_BITS_204__ETC___d4216,
        IF_IF_IF_IF_SEL_ARR_f22f3_data_0_813_BITS_204__ETC___d4219,
-       IF_IF_IF_IF_SEL_ARR_f22f3_data_0_813_BITS_204__ETC___d5551,
-       IF_IF_IF_IF_SEL_ARR_f22f3_data_0_813_BITS_204__ETC___d5957,
+       IF_IF_IF_IF_SEL_ARR_f22f3_data_0_813_BITS_204__ETC___d5563,
+       IF_IF_IF_IF_SEL_ARR_f22f3_data_0_813_BITS_204__ETC___d5969,
        IF_IF_IF_SEL_ARR_f22f3_data_0_813_BITS_204_TO__ETC___d4155,
        IF_IF_IF_SEL_ARR_f22f3_data_0_813_BITS_204_TO__ETC___d4160,
        IF_IF_IF_SEL_ARR_f22f3_data_0_813_BITS_204_TO__ETC___d4181,
        IF_IF_IF_SEL_ARR_f22f3_data_0_813_BITS_204_TO__ETC___d4211,
        IF_IF_IF_SEL_ARR_f22f3_data_0_813_BITS_204_TO__ETC___d4214,
-       IF_IF_IF_SEL_ARR_f22f3_data_0_813_BITS_204_TO__ETC___d5548,
-       IF_IF_IF_SEL_ARR_f22f3_data_0_813_BITS_204_TO__ETC___d5954,
+       IF_IF_IF_SEL_ARR_f22f3_data_0_813_BITS_204_TO__ETC___d5560,
+       IF_IF_IF_SEL_ARR_f22f3_data_0_813_BITS_204_TO__ETC___d5966,
        IF_IF_SEL_ARR_f22f3_data_0_813_BITS_204_TO_141_ETC___d4144,
        IF_IF_SEL_ARR_f22f3_data_0_813_BITS_204_TO_141_ETC___d4149,
        IF_IF_SEL_ARR_f22f3_data_0_813_BITS_204_TO_141_ETC___d4209,
-       IF_IF_SEL_ARR_f22f3_data_0_813_BITS_204_TO_141_ETC___d5545,
-       IF_IF_decode_061_BITS_99_TO_95_065_EQ_8_075_AN_ETC___d6478,
-       IF_IF_decode_061_BITS_99_TO_95_065_EQ_8_075_AN_ETC___d6775,
-       IF_IF_decode_061_BITS_99_TO_95_065_EQ_8_075_AN_ETC___d6792,
-       IF_IF_decode_487_BITS_99_TO_95_491_EQ_8_497_AN_ETC___d6779,
-       IF_IF_decode_487_BITS_99_TO_95_491_EQ_8_497_AN_ETC___d6797,
+       IF_IF_SEL_ARR_f22f3_data_0_813_BITS_204_TO_141_ETC___d5557,
+       IF_IF_decode_073_BITS_99_TO_95_077_EQ_8_087_AN_ETC___d6490,
+       IF_IF_decode_073_BITS_99_TO_95_077_EQ_8_087_AN_ETC___d6787,
+       IF_IF_decode_073_BITS_99_TO_95_077_EQ_8_087_AN_ETC___d6804,
+       IF_IF_decode_499_BITS_99_TO_95_503_EQ_8_509_AN_ETC___d6791,
+       IF_IF_decode_499_BITS_99_TO_95_503_EQ_8_509_AN_ETC___d6809,
        IF_IF_pc_reg_dummy2_0_read__283_AND_pc_reg_dum_ETC___d3614,
        IF_IF_pc_reg_dummy2_0_read__283_AND_pc_reg_dum_ETC___d3646,
        IF_IF_rg_pending_n_items_845_EQ_0_846_THEN_ehr_ETC___d3936,
        IF_IF_rg_pending_n_items_845_EQ_0_846_THEN_ehr_ETC___d4208,
-       IF_IF_rg_pending_n_items_845_EQ_0_846_THEN_ehr_ETC___d5544,
+       IF_IF_rg_pending_n_items_845_EQ_0_846_THEN_ehr_ETC___d5556,
        IF_IF_rg_pending_n_items_845_EQ_0_846_THEN_rg__ETC___d3979,
        IF_IF_rg_pending_n_items_845_EQ_0_846_THEN_rg__ETC___d4272,
-       IF_IF_rg_pending_n_items_845_EQ_0_846_THEN_rg__ETC___d5573,
-       IF_IF_rg_pending_n_items_845_EQ_0_846_THEN_rg__ETC___d5641,
-       IF_IF_rg_pending_n_items_845_EQ_0_846_THEN_rg__ETC___d5787,
-       IF_IF_rg_pending_n_items_845_EQ_0_846_THEN_rg__ETC___d5797,
-       IF_IF_rg_pending_n_items_845_EQ_0_846_THEN_rg__ETC___d5807,
-       IF_IF_rg_pending_n_items_845_EQ_0_846_THEN_rg__ETC___d5817,
-       IF_IF_rg_pending_n_items_845_EQ_0_846_THEN_rg__ETC___d5827,
-       IF_IF_rg_pending_n_items_845_EQ_0_846_THEN_rg__ETC___d5837,
-       IF_IF_rg_pending_n_items_845_EQ_0_846_THEN_rg__ETC___d5847,
-       IF_IF_rg_pending_n_items_845_EQ_0_846_THEN_rg__ETC___d5857,
-       IF_IF_rg_pending_n_items_845_EQ_0_846_THEN_rg__ETC___d5867,
-       IF_IF_rg_pending_n_items_845_EQ_0_846_THEN_rg__ETC___d5877,
-       IF_IF_rg_pending_n_items_845_EQ_0_846_THEN_rg__ETC___d5887,
-       IF_IF_rg_pending_n_items_845_EQ_0_846_THEN_rg__ETC___d5897,
-       IF_IF_rg_pending_n_items_845_EQ_0_846_THEN_rg__ETC___d5907,
+       IF_IF_rg_pending_n_items_845_EQ_0_846_THEN_rg__ETC___d5585,
+       IF_IF_rg_pending_n_items_845_EQ_0_846_THEN_rg__ETC___d5653,
+       IF_IF_rg_pending_n_items_845_EQ_0_846_THEN_rg__ETC___d5799,
+       IF_IF_rg_pending_n_items_845_EQ_0_846_THEN_rg__ETC___d5809,
+       IF_IF_rg_pending_n_items_845_EQ_0_846_THEN_rg__ETC___d5819,
+       IF_IF_rg_pending_n_items_845_EQ_0_846_THEN_rg__ETC___d5829,
+       IF_IF_rg_pending_n_items_845_EQ_0_846_THEN_rg__ETC___d5839,
+       IF_IF_rg_pending_n_items_845_EQ_0_846_THEN_rg__ETC___d5849,
+       IF_IF_rg_pending_n_items_845_EQ_0_846_THEN_rg__ETC___d5859,
+       IF_IF_rg_pending_n_items_845_EQ_0_846_THEN_rg__ETC___d5869,
+       IF_IF_rg_pending_n_items_845_EQ_0_846_THEN_rg__ETC___d5879,
+       IF_IF_rg_pending_n_items_845_EQ_0_846_THEN_rg__ETC___d5889,
+       IF_IF_rg_pending_n_items_845_EQ_0_846_THEN_rg__ETC___d5899,
+       IF_IF_rg_pending_n_items_845_EQ_0_846_THEN_rg__ETC___d5909,
+       IF_IF_rg_pending_n_items_845_EQ_0_846_THEN_rg__ETC___d5919,
        IF_NOT_IF_NOT_IF_pc_reg_dummy2_0_read__283_AND_ETC___d3601,
        IF_NOT_IF_NOT_IF_pc_reg_dummy2_0_read__283_AND_ETC___d3648,
        IF_NOT_IF_pc_reg_dummy2_0_read__283_AND_pc_reg_ETC___d3581,
@@ -4019,34 +4023,34 @@ module mkFetchStage(CLK,
        IF_NOT_SEL_ARR_IF_NOT_f22f3_empty_33_812_AND_N_ETC___d4210,
        IF_NOT_SEL_ARR_IF_NOT_f22f3_empty_33_812_AND_N_ETC___d4215,
        IF_NOT_SEL_ARR_IF_NOT_f22f3_empty_33_812_AND_N_ETC___d4220,
-       IF_NOT_SEL_ARR_instdata_data_0_996_BITS_195_TO_ETC___d6769,
-       IF_NOT_SEL_ARR_instdata_data_0_996_BITS_195_TO_ETC___d6803,
-       IF_NOT_decode_061_BIT_26_095_096_AND_NOT_decod_ETC___d6136,
-       IF_NOT_decode_487_BIT_26_517_518_AND_NOT_decod_ETC___d6558,
+       IF_NOT_SEL_ARR_instdata_data_0_008_BITS_195_TO_ETC___d6781,
+       IF_NOT_SEL_ARR_instdata_data_0_008_BITS_195_TO_ETC___d6815,
+       IF_NOT_decode_073_BIT_26_107_108_AND_NOT_decod_ETC___d6148,
+       IF_NOT_decode_499_BIT_26_529_530_AND_NOT_decod_ETC___d6570,
        IF_NOT_f22f3_empty_33_812_AND_NOT_SEL_ARR_f22f_ETC___d3980,
        IF_NOT_f22f3_empty_33_812_AND_NOT_SEL_ARR_f22f_ETC___d4273,
-       IF_NOT_f22f3_empty_33_812_AND_NOT_SEL_ARR_f22f_ETC___d5643,
-       IF_NOT_f22f3_empty_33_812_AND_NOT_SEL_ARR_f22f_ETC___d5945,
-       IF_NOT_f22f3_empty_33_812_AND_NOT_SEL_ARR_f22f_ETC___d5962,
+       IF_NOT_f22f3_empty_33_812_AND_NOT_SEL_ARR_f22f_ETC___d5655,
+       IF_NOT_f22f3_empty_33_812_AND_NOT_SEL_ARR_f22f_ETC___d5957,
+       IF_NOT_f22f3_empty_33_812_AND_NOT_SEL_ARR_f22f_ETC___d5974,
        IF_NOT_f22f3_empty_33_812_AND_SEL_ARR_f22f3_da_ETC___d3905,
-       IF_SEL_ARR_NOT_f32d_data_0_988_BIT_73_051_052__ETC___d6479,
-       IF_SEL_ARR_NOT_f32d_data_0_988_BIT_73_051_052__ETC___d6767,
-       IF_SEL_ARR_NOT_f32d_data_0_988_BIT_73_051_052__ETC___d6780,
-       IF_SEL_ARR_NOT_f32d_data_0_988_BIT_73_051_052__ETC___d6801,
+       IF_SEL_ARR_NOT_f32d_data_0_000_BIT_73_063_064__ETC___d6491,
+       IF_SEL_ARR_NOT_f32d_data_0_000_BIT_73_063_064__ETC___d6779,
+       IF_SEL_ARR_NOT_f32d_data_0_000_BIT_73_063_064__ETC___d6792,
+       IF_SEL_ARR_NOT_f32d_data_0_000_BIT_73_063_064__ETC___d6813,
        IF_SEL_ARR_f22f3_data_0_813_BITS_204_TO_141_90_ETC___d4098,
        IF_SEL_ARR_f22f3_data_0_813_BITS_204_TO_141_90_ETC___d4104,
        IF_SEL_ARR_f22f3_data_0_813_BITS_204_TO_141_90_ETC___d4137,
        IF_SEL_ARR_f22f3_data_0_813_BITS_204_TO_141_90_ETC___d4178,
-       IF_SEL_ARR_f32d_data_0_988_BIT_4_006_f32d_data_ETC___d6480,
-       IF_SEL_ARR_f32d_data_0_988_BIT_4_006_f32d_data_ETC___d6768,
-       IF_SEL_ARR_f32d_data_0_988_BIT_4_006_f32d_data_ETC___d6777,
-       IF_SEL_ARR_f32d_data_0_988_BIT_4_006_f32d_data_ETC___d6802,
-       IF_SEL_ARR_instdata_data_0_996_BITS_65_TO_64_9_ETC___d6481,
-       IF_SEL_ARR_instdata_data_0_996_BITS_65_TO_64_9_ETC___d6778,
-       IF_decode_061_BITS_99_TO_95_065_EQ_8_075_AND_d_ETC___d6292,
-       IF_decode_061_BIT_0_062_THEN_NOT_decode_epoch__ETC___d6776,
-       IF_decode_487_BITS_99_TO_95_491_EQ_8_497_AND_d_ETC___d6714,
-       IF_decode_487_BITS_99_TO_95_491_EQ_8_497_AND_d_ETC___d6763,
+       IF_SEL_ARR_f32d_data_0_000_BIT_4_018_f32d_data_ETC___d6492,
+       IF_SEL_ARR_f32d_data_0_000_BIT_4_018_f32d_data_ETC___d6780,
+       IF_SEL_ARR_f32d_data_0_000_BIT_4_018_f32d_data_ETC___d6789,
+       IF_SEL_ARR_f32d_data_0_000_BIT_4_018_f32d_data_ETC___d6814,
+       IF_SEL_ARR_instdata_data_0_008_BITS_65_TO_64_0_ETC___d6493,
+       IF_SEL_ARR_instdata_data_0_008_BITS_65_TO_64_0_ETC___d6790,
+       IF_decode_073_BITS_99_TO_95_077_EQ_8_087_AND_d_ETC___d6304,
+       IF_decode_073_BIT_0_074_THEN_NOT_decode_epoch__ETC___d6788,
+       IF_decode_499_BITS_99_TO_95_503_EQ_8_509_AND_d_ETC___d6726,
+       IF_decode_499_BITS_99_TO_95_503_EQ_8_509_AND_d_ETC___d6775,
        IF_decode_epoch_lat_0_whas__6_THEN_decode_epoc_ETC___d19,
        IF_ehr_pending_straddle_lat_1_whas__1_THEN_ehr_ETC___d30,
        IF_f12f2_deqReq_dummy2_2_read__42_AND_IF_f12f2_ETC___d150,
@@ -4101,8 +4105,8 @@ module mkFetchStage(CLK,
        IF_rg_pending_n_items_845_EQ_0_846_THEN_rg_pen_ETC___d3977,
        IF_rg_pending_n_items_845_EQ_0_846_THEN_rg_pen_ETC___d4058,
        IF_rg_pending_n_items_845_EQ_0_846_THEN_rg_pen_ETC___d4065,
-       NOT_0_CONCAT_IF_rg_pending_n_items_845_EQ_0_84_ETC___d5634,
-       NOT_IF_SEL_ARR_f22f3_data_0_813_BITS_204_TO_14_ETC___d5951,
+       NOT_0_CONCAT_IF_rg_pending_n_items_845_EQ_0_84_ETC___d5646,
+       NOT_IF_SEL_ARR_f22f3_data_0_813_BITS_204_TO_14_ETC___d5963,
        NOT_IF_pc_reg_dummy2_0_read__283_AND_pc_reg_du_ETC___d3580,
        NOT_IF_rg_pending_n_items_845_EQ_0_846_THEN_rg_ETC___d3890,
        NOT_IF_rg_pending_n_items_845_EQ_0_846_THEN_rg_ETC___d3892,
@@ -4126,18 +4130,18 @@ module mkFetchStage(CLK,
        NOT_SEL_ARR_f22f3_data_0_813_BITS_3_TO_0_814_f_ETC___d3989,
        NOT_SEL_ARR_f22f3_data_0_813_BITS_3_TO_0_814_f_ETC___d3995,
        NOT_SEL_ARR_f22f3_data_0_813_BITS_3_TO_0_814_f_ETC___d4002,
-       NOT_SEL_ARR_f32d_data_0_988_BITS_3_TO_0_989_f3_ETC___d6040,
-       NOT_SEL_ARR_instdata_data_0_996_BITS_195_TO_19_ETC___d6495,
-       NOT_SEL_ARR_instdata_data_0_996_BITS_65_TO_64__ETC___d6795,
+       NOT_SEL_ARR_f32d_data_0_000_BITS_3_TO_0_001_f3_ETC___d6052,
+       NOT_SEL_ARR_instdata_data_0_008_BITS_195_TO_19_ETC___d6507,
+       NOT_SEL_ARR_instdata_data_0_008_BITS_65_TO_64__ETC___d6807,
        NOT_SEL_ARR_nextAddrPred_valid_0_read__297_nex_ETC___d3617,
-       NOT_decode_061_BITS_25_TO_21_097_EQ_decode_061_ETC___d6133,
-       NOT_decode_061_BIT_27_094_104_OR_decode_061_BI_ETC___d6111,
-       NOT_decode_061_BIT_7_076_087_OR_decode_061_BIT_ETC___d6103,
-       NOT_decode_061_BIT_7_076_087_OR_decode_061_BIT_ETC___d6290,
-       NOT_decode_487_BITS_25_TO_21_519_EQ_decode_487_ETC___d6555,
-       NOT_decode_487_BIT_27_516_526_OR_decode_487_BI_ETC___d6533,
-       NOT_decode_487_BIT_7_498_509_OR_decode_487_BIT_ETC___d6525,
-       NOT_decode_487_BIT_7_498_509_OR_decode_487_BIT_ETC___d6712,
+       NOT_decode_073_BITS_25_TO_21_109_EQ_decode_073_ETC___d6145,
+       NOT_decode_073_BIT_27_106_116_OR_decode_073_BI_ETC___d6123,
+       NOT_decode_073_BIT_7_088_099_OR_decode_073_BIT_ETC___d6115,
+       NOT_decode_073_BIT_7_088_099_OR_decode_073_BIT_ETC___d6302,
+       NOT_decode_499_BITS_25_TO_21_531_EQ_decode_499_ETC___d6567,
+       NOT_decode_499_BIT_27_528_538_OR_decode_499_BI_ETC___d6545,
+       NOT_decode_499_BIT_7_510_521_OR_decode_499_BIT_ETC___d6537,
+       NOT_decode_499_BIT_7_510_521_OR_decode_499_BIT_ETC___d6724,
        NOT_f12f2_clearReq_dummy2_1_read__28_29_OR_IF__ETC___d133,
        NOT_f12f2_enqReq_dummy2_2_read__34_64_OR_IF_f1_ETC___d168,
        NOT_f22f3_clearReq_dummy2_1_read__95_13_OR_IF__ETC___d417,
@@ -4154,19 +4158,19 @@ module mkFetchStage(CLK,
        NOT_rg_pending_f32d_847_BITS_3_TO_0_848_EQ_f_m_ETC___d3972,
        SEL_ARR_NOT_f22f3_data_0_813_BIT_75_862_863_NO_ETC___d4110,
        SEL_ARR_NOT_f22f3_data_0_813_BIT_75_862_863_NO_ETC___d4123,
-       SEL_ARR_NOT_f32d_data_0_988_BIT_73_051_052_NOT_ETC___d6764,
+       SEL_ARR_NOT_f32d_data_0_000_BIT_73_063_064_NOT_ETC___d6776,
        SEL_ARR_f22f3_data_0_813_BITS_3_TO_0_814_f22f3_ETC___d3823,
        SEL_ARR_f22f3_data_0_813_BITS_3_TO_0_814_f22f3_ETC___d3874,
        SEL_ARR_f22f3_data_0_813_BIT_4_825_f22f3_data__ETC___d3832,
        SEL_ARR_f22f3_data_0_813_BIT_4_825_f22f3_data__ETC___d3877,
        SEL_ARR_f22f3_data_0_813_BIT_5_835_f22f3_data__ETC___d3841,
-       SEL_ARR_f32d_data_0_988_BITS_3_TO_0_989_f32d_d_ETC___d5994,
-       SEL_ARR_f32d_data_0_988_BITS_3_TO_0_989_f32d_d_ETC___d6542,
-       SEL_ARR_f32d_data_0_988_BIT_4_006_f32d_data_1__ETC___d6010,
-       SEL_ARR_f32d_data_0_988_BIT_4_006_f32d_data_1__ETC___d6482,
-       SEL_ARR_f32d_data_0_988_BIT_4_006_f32d_data_1__ETC___d6799,
-       SEL_ARR_instdata_data_0_996_BITS_195_TO_194_01_ETC___d6028,
-       SEL_ARR_instdata_data_0_996_BITS_65_TO_64_997__ETC___d6015,
+       SEL_ARR_f32d_data_0_000_BITS_3_TO_0_001_f32d_d_ETC___d6006,
+       SEL_ARR_f32d_data_0_000_BITS_3_TO_0_001_f32d_d_ETC___d6554,
+       SEL_ARR_f32d_data_0_000_BIT_4_018_f32d_data_1__ETC___d6022,
+       SEL_ARR_f32d_data_0_000_BIT_4_018_f32d_data_1__ETC___d6494,
+       SEL_ARR_f32d_data_0_000_BIT_4_018_f32d_data_1__ETC___d6811,
+       SEL_ARR_instdata_data_0_008_BITS_195_TO_194_02_ETC___d6040,
+       SEL_ARR_instdata_data_0_008_BITS_65_TO_64_009__ETC___d6027,
        _0_CONCAT_IF_rg_pending_n_items_845_EQ_0_846_TH_ETC___d4268,
        _dand1iMem$EN_to_proc_response_get,
        _dfoo1,
@@ -4177,10 +4181,10 @@ module mkFetchStage(CLK,
        _theResult_____2__h33402,
        b__h126002,
        b__h126014,
-       decode_061_BITS_99_TO_95_065_EQ_8_075_AND_deco_ETC___d6116,
-       decode_061_BIT_7_076_AND_NOT_decode_061_BIT_6__ETC___d6112,
-       decode_487_BITS_99_TO_95_491_EQ_8_497_AND_deco_ETC___d6538,
-       decode_487_BIT_7_498_AND_NOT_decode_487_BIT_6__ETC___d6534,
+       decode_073_BITS_99_TO_95_077_EQ_8_087_AND_deco_ETC___d6128,
+       decode_073_BIT_7_088_AND_NOT_decode_073_BIT_6__ETC___d6124,
+       decode_499_BITS_99_TO_95_503_EQ_8_509_AND_deco_ETC___d6550,
+       decode_499_BIT_7_510_AND_NOT_decode_499_BIT_6__ETC___d6546,
        f12f2_enqReq_dummy2_2_read__34_AND_IF_f12f2_en_ETC___d160,
        f22f3_empty_33_OR_SEL_ARR_f22f3_data_0_813_BIT_ETC___d3919,
        f22f3_empty_33_OR_SEL_ARR_f22f3_data_0_813_BIT_ETC___d3926,
@@ -4188,13 +4192,13 @@ module mkFetchStage(CLK,
        f22f3_empty_33_OR_SEL_ARR_f22f3_data_0_813_BIT_ETC___d3955,
        f22f3_enqReq_dummy2_2_read__97_AND_IF_f22f3_en_ETC___d428,
        f32d_enqReq_dummy2_2_read__28_AND_IF_f32d_enqR_ETC___d754,
-       instdata_enqP_dummy2_0_read__580_AND_instdata__ETC___d5588,
-       instdata_enqP_dummy2_0_read__580_AND_instdata__ETC___d5625,
-       n__read__h182580,
+       instdata_enqP_dummy2_0_read__592_AND_instdata__ETC___d5600,
+       instdata_enqP_dummy2_0_read__592_AND_instdata__ETC___d5637,
+       n__read__h182540,
        next_deqP___1__h12102,
        next_deqP___1__h33721,
-       next_deqP__h182560,
-       next_enqP__h176398,
+       next_deqP__h182520,
+       next_enqP__h176374,
        out_fifo_enqueueElement_0_dummy2_1_read__148_A_ETC___d2258,
        out_fifo_enqueueElement_1_dummy2_1_read__280_A_ETC___d2378,
        out_fifo_willDequeue_0_dummy2_1_read__259_AND__ETC___d2278,
@@ -4203,7 +4207,7 @@ module mkFetchStage(CLK,
        rg_pending_f32d_847_BITS_3_TO_0_848_EQ_f_main__ETC___d3849,
        rg_pending_f32d_847_BITS_3_TO_0_848_EQ_f_main__ETC___d3885,
        rg_pending_f32d_847_BIT_4_851_EQ_decode_epoch__ETC___d3852,
-       upd__h176701,
+       upd__h176677,
        upd__h36635,
        upd__h42616,
        upd__h42643,
@@ -4213,7 +4217,7 @@ module mkFetchStage(CLK,
        v__h10998,
        v__h31656,
        v__h31939,
-       x__h177155,
+       x__h177131,
        x__h32058,
        x__h59665,
        x__h68242,
@@ -4231,9 +4235,9 @@ module mkFetchStage(CLK,
 
   // value method pipelines_0_first
   assign pipelines_0_first =
-	     { x__h200932,
-	       x__h200996,
-	       SEL_ARR_out_fifo_internalFifos_0_first__850_BI_ETC___d7505 } ;
+	     { x__h200892,
+	       x__h200956,
+	       SEL_ARR_out_fifo_internalFifos_0_first__862_BI_ETC___d7517 } ;
   always@(x__h68242 or
 	  out_fifo_internalFifos_0$EMPTY_N or
 	  out_fifo_internalFifos_1$EMPTY_N)
@@ -4255,9 +4259,9 @@ module mkFetchStage(CLK,
 
   // value method pipelines_1_first
   assign pipelines_1_first =
-	     { x__h209544,
-	       x__h209564,
-	       SEL_ARR_out_fifo_internalFifos_0_first__850_BI_ETC___d7727 } ;
+	     { x__h209504,
+	       x__h209524,
+	       SEL_ARR_out_fifo_internalFifos_0_first__862_BI_ETC___d7739 } ;
   always@(x__h78412 or
 	  out_fifo_internalFifos_0$EMPTY_N or
 	  out_fifo_internalFifos_1$EMPTY_N)
@@ -4550,7 +4554,7 @@ module mkFetchStage(CLK,
 
   // value method getFetchState
   assign getFetchState =
-	     { getFetchState_pc__h222980,
+	     { getFetchState_pc__h222940,
 	       f_main_epoch,
 	       waitForRedirect,
 	       waitForFlush } ;
@@ -5309,7 +5313,7 @@ module mkFetchStage(CLK,
 	      !instdata_empty_dummy2_1$Q_OUT ||
 	      !instdata_empty_dummy2_2$Q_OUT ||
 	      !instdata_empty_rl) &&
-	     NOT_SEL_ARR_f32d_data_0_988_BITS_3_TO_0_989_f3_ETC___d6040 ;
+	     NOT_SEL_ARR_f32d_data_0_000_BITS_3_TO_0_001_f3_ETC___d6052 ;
   assign WILL_FIRE_RL_doDecode = CAN_FIRE_RL_doDecode ;
 
   // rule RL_doFetch3
@@ -5464,7 +5468,7 @@ module mkFetchStage(CLK,
 	     WILL_FIRE_RL_doFetch2 && !iTlb$to_proc_response_get[4] &&
 	     mmio$getFetchTarget == 2'd0 ;
   assign MUX_iTlb$to_proc_request_put_1__VAL_2 =
-	     { getFetchState_pc__h222980[63:2], 2'd0 } ;
+	     { getFetchState_pc__h222940[63:2], 2'd0 } ;
   assign MUX_pc_reg_lat_0$wset_1__VAL_2 =
 	     (NOT_IF_pc_reg_dummy2_0_read__283_AND_pc_reg_du_ETC___d3580 ?
 		IF_IF_pc_reg_dummy2_0_read__283_AND_pc_reg_dum_ETC___d3614 :
@@ -5476,31 +5480,31 @@ module mkFetchStage(CLK,
   assign pc_reg_lat_0$whas = EN_start || WILL_FIRE_RL_doFetch1 ;
   assign pc_reg_lat_1$whas =
 	     WILL_FIRE_RL_doDecode &&
-	     SEL_ARR_f32d_data_0_988_BITS_3_TO_0_989_f32d_d_ETC___d5994 &&
-	     IF_NOT_SEL_ARR_instdata_data_0_996_BITS_195_TO_ETC___d6769 ;
-  assign pc_reg_lat_2$whas =
+	     SEL_ARR_f32d_data_0_000_BITS_3_TO_0_001_f32d_d_ETC___d6006 &&
+	     IF_NOT_SEL_ARR_instdata_data_0_008_BITS_195_TO_ETC___d6781 ;
+  assign pc_reg_dummy_2_0$whas =
 	     WILL_FIRE_RL_doFetch3 &&
 	     f22f3_empty_33_OR_SEL_ARR_f22f3_data_0_813_BIT_ETC___d3919 &&
 	     IF_rg_pending_n_items_845_EQ_0_846_THEN_rg_pen_ETC___d3977 &&
 	     IF_IF_IF_IF_IF_SEL_ARR_f22f3_data_0_813_BITS_2_ETC___d4222 ;
   assign decode_epoch_lat_0$wget =
-	     (SEL_ARR_instdata_data_0_996_BITS_195_TO_194_01_ETC___d6019 !=
+	     (SEL_ARR_instdata_data_0_008_BITS_195_TO_194_02_ETC___d6031 !=
 	      2'd0 &&
-	      SEL_ARR_f32d_data_0_988_BIT_139_021_f32d_data__ETC___d6024) ?
-	       (SEL_ARR_f32d_data_0_988_BIT_4_006_f32d_data_1__ETC___d6482 ?
-		  IF_SEL_ARR_NOT_f32d_data_0_988_BIT_73_051_052__ETC___d6780 :
-		  IF_SEL_ARR_instdata_data_0_996_BITS_65_TO_64_9_ETC___d6481) :
-	       IF_SEL_ARR_instdata_data_0_996_BITS_65_TO_64_9_ETC___d6481 ;
+	      SEL_ARR_f32d_data_0_000_BIT_139_033_f32d_data__ETC___d6036) ?
+	       (SEL_ARR_f32d_data_0_000_BIT_4_018_f32d_data_1__ETC___d6494 ?
+		  IF_SEL_ARR_NOT_f32d_data_0_000_BIT_73_063_064__ETC___d6792 :
+		  IF_SEL_ARR_instdata_data_0_008_BITS_65_TO_64_0_ETC___d6493) :
+	       IF_SEL_ARR_instdata_data_0_008_BITS_65_TO_64_0_ETC___d6493 ;
   assign decode_epoch_lat_0$whas =
 	     WILL_FIRE_RL_doDecode &&
-	     SEL_ARR_f32d_data_0_988_BITS_3_TO_0_989_f32d_d_ETC___d5994 ;
+	     SEL_ARR_f32d_data_0_000_BITS_3_TO_0_001_f32d_d_ETC___d6006 ;
   assign ehr_pending_straddle_lat_0$wget =
-	     { IF_NOT_f22f3_empty_33_812_AND_NOT_SEL_ARR_f22f_ETC___d5945,
-	       IF_IF_NOT_f22f3_empty_33_812_AND_NOT_SEL_ARR_f_ETC___d5975 } ;
+	     { IF_NOT_f22f3_empty_33_812_AND_NOT_SEL_ARR_f22f_ETC___d5957,
+	       IF_IF_NOT_f22f3_empty_33_812_AND_NOT_SEL_ARR_f_ETC___d5987 } ;
   assign f12f2_enqReq_lat_0$wget =
 	     { 1'd1,
 	       x__h122620,
-	       getFetchState_pc__h222980,
+	       getFetchState_pc__h222940,
 	       IF_NOT_IF_pc_reg_dummy2_0_read__283_AND_pc_reg_ETC___d3653,
 	       fetch3_epoch,
 	       decode_epoch_dummy2_0$Q_OUT && decode_epoch_dummy2_1$Q_OUT &&
@@ -5523,27 +5527,27 @@ module mkFetchStage(CLK,
 	      IF_rg_pending_n_items_845_EQ_0_846_THEN_rg_pen_ETC___d3977) ;
   assign f32d_enqReq_lat_0$wget =
 	     { 1'd1,
-	       x__h177155,
-	       x__h177166,
-	       IF_NOT_f22f3_empty_33_812_AND_NOT_SEL_ARR_f22f_ETC___d5643,
+	       x__h177131,
+	       x__h177142,
+	       IF_NOT_f22f3_empty_33_812_AND_NOT_SEL_ARR_f22f_ETC___d5655,
 	       IF_NOT_f22f3_empty_33_812_AND_NOT_SEL_ARR_f22f_ETC___d3980,
-	       IF_IF_NOT_f22f3_empty_33_812_AND_NOT_SEL_ARR_f_ETC___d5921,
-	       IF_NOT_f22f3_empty_33_812_AND_NOT_SEL_ARR_f22f_ETC___d5934 } ;
+	       IF_IF_NOT_f22f3_empty_33_812_AND_NOT_SEL_ARR_f_ETC___d5933,
+	       IF_NOT_f22f3_empty_33_812_AND_NOT_SEL_ARR_f22f_ETC___d5946 } ;
   assign f32d_enqReq_lat_0$whas =
 	     WILL_FIRE_RL_doFetch3 &&
 	     (pending_n_items__h124835 != 2'd0 ||
 	      f22f3_empty_33_OR_SEL_ARR_f22f3_data_0_813_BIT_ETC___d3919) &&
-	     n_items__h156605 != 3'd0 ;
+	     n_items__h156587 != 3'd0 ;
   assign instdata_empty_lat_0$whas =
 	     WILL_FIRE_RL_doDecode &&
-	     next_deqP__h182560 ==
+	     next_deqP__h182520 ==
 	     (instdata_enqP_dummy2_0$Q_OUT && instdata_enqP_dummy2_1$Q_OUT &&
 	      instdata_enqP_rl) ;
   assign instdata_full_lat_1$whas =
 	     WILL_FIRE_RL_doFetch3 &&
 	     (pending_n_items__h124835 != 2'd0 ||
 	      f22f3_empty_33_OR_SEL_ARR_f22f3_data_0_813_BIT_ETC___d3919) &&
-	     NOT_0_CONCAT_IF_rg_pending_n_items_845_EQ_0_84_ETC___d5634 ;
+	     NOT_0_CONCAT_IF_rg_pending_n_items_845_EQ_0_84_ETC___d5646 ;
   assign out_fifo_enqueueFifo_lat_0$whas =
 	     out_fifo_enqueueElement_0_dummy2_1$Q_OUT &&
 	     IF_out_fifo_enqueueElement_0_lat_0_whas__06_TH_ETC___d911 ;
@@ -5558,57 +5562,57 @@ module mkFetchStage(CLK,
 	     IF_out_fifo_willDequeue_1_lat_0_whas__143_THEN_ETC___d2146 ;
   assign out_fifo_enqueueElement_0_lat_0$wget =
 	     { 1'd1,
-	       in_pc__h183297,
-	       x__h187118,
-	       in_main_epoch__h183300,
-	       IF_SEL_ARR_NOT_f32d_data_0_988_BIT_73_051_052__ETC___d6317,
-	       SEL_ARR_instdata_data_0_996_BITS_31_TO_0_057_i_ETC___d6060,
-	       decode_061_BITS_99_TO_95_065_CONCAT_IF_decode__ETC___d6279,
-	       x__h188874,
-	       decode___d6061[27:1],
-	       !SEL_ARR_NOT_f32d_data_0_988_BIT_73_051_052_NOT_ETC___d6056 ||
-	       decode___d6061[0],
-	       IF_NOT_SEL_ARR_NOT_f32d_data_0_988_BIT_73_051__ETC___d6459,
-	       x__h189884 } ;
+	       in_pc__h183257,
+	       x__h187078,
+	       in_main_epoch__h183260,
+	       IF_SEL_ARR_NOT_f32d_data_0_000_BIT_73_063_064__ETC___d6329,
+	       SEL_ARR_instdata_data_0_008_BITS_31_TO_0_069_i_ETC___d6072,
+	       decode_073_BITS_99_TO_95_077_CONCAT_IF_decode__ETC___d6291,
+	       x__h188834,
+	       decode___d6073[27:1],
+	       !SEL_ARR_NOT_f32d_data_0_000_BIT_73_063_064_NOT_ETC___d6068 ||
+	       decode___d6073[0],
+	       IF_NOT_SEL_ARR_NOT_f32d_data_0_000_BIT_73_063__ETC___d6471,
+	       x__h189844 } ;
   assign out_fifo_enqueueElement_0_lat_0$whas =
 	     WILL_FIRE_RL_doDecode &&
-	     SEL_ARR_f32d_data_0_988_BITS_3_TO_0_989_f32d_d_ETC___d5994 &&
-	     SEL_ARR_instdata_data_0_996_BITS_65_TO_64_997__ETC___d6004 !=
+	     SEL_ARR_f32d_data_0_000_BITS_3_TO_0_001_f32d_d_ETC___d6006 &&
+	     SEL_ARR_instdata_data_0_008_BITS_65_TO_64_009__ETC___d6016 !=
 	     2'd0 &&
-	     SEL_ARR_f32d_data_0_988_BIT_4_006_f32d_data_1__ETC___d6010 ;
+	     SEL_ARR_f32d_data_0_000_BIT_4_018_f32d_data_1__ETC___d6022 ;
   assign out_fifo_enqueueElement_1_lat_0$wget =
 	     { 1'd1,
-	       SEL_ARR_instdata_data_0_996_BITS_259_TO_196_30_ETC___d6304,
-	       x__h193825,
-	       in_main_epoch__h183300,
-	       IF_SEL_ARR_NOT_f32d_data_0_988_BIT_73_051_052__ETC___d6731,
-	       SEL_ARR_instdata_data_0_996_BITS_161_TO_130_48_ETC___d6486,
-	       decode_487_BITS_99_TO_95_491_CONCAT_IF_decode__ETC___d6701,
-	       x__h195579,
-	       decode___d6487[27:1],
-	       !SEL_ARR_NOT_f32d_data_0_988_BIT_73_051_052_NOT_ETC___d6056 ||
-	       decode___d6487[0],
-	       IF_NOT_SEL_ARR_NOT_f32d_data_0_988_BIT_73_051__ETC___d6459,
-	       x__h189884 } ;
+	       SEL_ARR_instdata_data_0_008_BITS_259_TO_196_31_ETC___d6316,
+	       x__h193785,
+	       in_main_epoch__h183260,
+	       IF_SEL_ARR_NOT_f32d_data_0_000_BIT_73_063_064__ETC___d6743,
+	       SEL_ARR_instdata_data_0_008_BITS_161_TO_130_49_ETC___d6498,
+	       decode_499_BITS_99_TO_95_503_CONCAT_IF_decode__ETC___d6713,
+	       x__h195539,
+	       decode___d6499[27:1],
+	       !SEL_ARR_NOT_f32d_data_0_000_BIT_73_063_064_NOT_ETC___d6068 ||
+	       decode___d6499[0],
+	       IF_NOT_SEL_ARR_NOT_f32d_data_0_000_BIT_73_063__ETC___d6471,
+	       x__h189844 } ;
   assign out_fifo_enqueueElement_1_lat_0$whas =
 	     WILL_FIRE_RL_doDecode &&
-	     SEL_ARR_f32d_data_0_988_BITS_3_TO_0_989_f32d_d_ETC___d5994 &&
-	     SEL_ARR_instdata_data_0_996_BITS_195_TO_194_01_ETC___d6019 !=
+	     SEL_ARR_f32d_data_0_000_BITS_3_TO_0_001_f32d_d_ETC___d6006 &&
+	     SEL_ARR_instdata_data_0_008_BITS_195_TO_194_02_ETC___d6031 !=
 	     2'd0 &&
-	     SEL_ARR_f32d_data_0_988_BIT_139_021_f32d_data__ETC___d6024 &&
-	     SEL_ARR_f32d_data_0_988_BIT_4_006_f32d_data_1__ETC___d6482 ;
+	     SEL_ARR_f32d_data_0_000_BIT_139_033_f32d_data__ETC___d6036 &&
+	     SEL_ARR_f32d_data_0_000_BIT_4_018_f32d_data_1__ETC___d6494 ;
   assign nextAddrPred_updateEn$wget =
-	     { x__h200487,
-	       train_nextPc__h200521,
-	       train_nextPc__h200521 != x__h200487 + 64'd2 } ;
-  assign napTrainByExe$wget = { x__h222821, train_predictors_next_pc } ;
+	     { x__h200447,
+	       train_nextPc__h200481,
+	       train_nextPc__h200481 != x__h200447 + 64'd2 } ;
+  assign napTrainByExe$wget = { x__h222781, train_predictors_next_pc } ;
   assign napTrainByExe$whas =
 	     EN_train_predictors && train_predictors_mispred ;
-  assign perfReqQ_enqReq_lat_0$wget = { 1'd1, perf_req_r } ;
-  assign napTrainByDecQ_enqP_lat_0$whas =
+  assign napTrainByDecQ_empty_lat_1$whas =
 	     WILL_FIRE_RL_doDecode &&
-	     SEL_ARR_f32d_data_0_988_BITS_3_TO_0_989_f32d_d_ETC___d5994 &&
-	     IF_NOT_SEL_ARR_instdata_data_0_996_BITS_195_TO_ETC___d6803 ;
+	     SEL_ARR_f32d_data_0_000_BITS_3_TO_0_001_f32d_d_ETC___d6006 &&
+	     IF_NOT_SEL_ARR_instdata_data_0_008_BITS_195_TO_ETC___d6815 ;
+  assign perfReqQ_enqReq_lat_0$wget = { 1'd1, perf_req_r } ;
 
   // register decode_epoch_rl
   assign decode_epoch_rl$D_IN =
@@ -5693,15 +5697,7 @@ module mkFetchStage(CLK,
   assign f22f3_clearReq_rl$EN = 1'd1 ;
 
   // register f22f3_data_0
-  assign f22f3_data_0$D_IN = f22f3_data_1$D_IN ;
-  assign f22f3_data_0$EN =
-	     f22f3_enqP == 2'd0 &&
-	     NOT_f22f3_clearReq_dummy2_1_read__95_13_OR_IF__ETC___d417 &&
-	     f22f3_enqReq_dummy2_2$Q_OUT &&
-	     IF_f22f3_enqReq_lat_1_whas__89_THEN_f22f3_enqR_ETC___d198 ;
-
-  // register f22f3_data_1
-  assign f22f3_data_1$D_IN =
+  assign f22f3_data_0$D_IN =
 	     { x__h20435,
 	       x__h20492,
 	       !f22f3_enqReq_dummy2_2$Q_OUT ||
@@ -5716,6 +5712,14 @@ module mkFetchStage(CLK,
 	       WILL_FIRE_RL_doFetch2 ?
 		 f22f3_enqReq_lat_0$wget[70:0] :
 		 f22f3_enqReq_rl[70:0] } ;
+  assign f22f3_data_0$EN =
+	     f22f3_enqP == 2'd0 &&
+	     NOT_f22f3_clearReq_dummy2_1_read__95_13_OR_IF__ETC___d417 &&
+	     f22f3_enqReq_dummy2_2$Q_OUT &&
+	     IF_f22f3_enqReq_lat_1_whas__89_THEN_f22f3_enqR_ETC___d198 ;
+
+  // register f22f3_data_1
+  assign f22f3_data_1$D_IN = f22f3_data_0$D_IN ;
   assign f22f3_data_1$EN =
 	     f22f3_enqP == 2'd1 &&
 	     NOT_f22f3_clearReq_dummy2_1_read__95_13_OR_IF__ETC___d417 &&
@@ -5723,7 +5727,7 @@ module mkFetchStage(CLK,
 	     IF_f22f3_enqReq_lat_1_whas__89_THEN_f22f3_enqR_ETC___d198 ;
 
   // register f22f3_data_2
-  assign f22f3_data_2$D_IN = f22f3_data_1$D_IN ;
+  assign f22f3_data_2$D_IN = f22f3_data_0$D_IN ;
   assign f22f3_data_2$EN =
 	     f22f3_enqP == 2'd2 &&
 	     NOT_f22f3_clearReq_dummy2_1_read__95_13_OR_IF__ETC___d417 &&
@@ -5731,7 +5735,7 @@ module mkFetchStage(CLK,
 	     IF_f22f3_enqReq_lat_1_whas__89_THEN_f22f3_enqR_ETC___d198 ;
 
   // register f22f3_data_3
-  assign f22f3_data_3$D_IN = f22f3_data_1$D_IN ;
+  assign f22f3_data_3$D_IN = f22f3_data_0$D_IN ;
   assign f22f3_data_3$EN =
 	     f22f3_enqP == 2'd3 &&
 	     NOT_f22f3_clearReq_dummy2_1_read__95_13_OR_IF__ETC___d417 &&
@@ -5845,27 +5849,27 @@ module mkFetchStage(CLK,
 
   // register fetch3_epoch
   assign fetch3_epoch$D_IN = !fetch3_epoch ;
-  assign fetch3_epoch$EN = pc_reg_lat_2$whas ;
+  assign fetch3_epoch$EN = pc_reg_dummy_2_0$whas ;
 
   // register instdata_data_0
   assign instdata_data_0$D_IN =
-	     { SEL_ARR_SEL_ARR_rg_pending_decode_511_BITS_259_ETC___d5592,
-	       SEL_ARR_SEL_ARR_rg_pending_decode_511_BITS_195_ETC___d5596,
-	       x__h175762,
-	       x__h175770,
-	       SEL_ARR_SEL_ARR_rg_pending_decode_511_BITS_129_ETC___d5609,
-	       SEL_ARR_SEL_ARR_rg_pending_decode_511_BITS_65__ETC___d5613,
-	       x__h175839,
-	       x__h175850 } ;
+	     { SEL_ARR_SEL_ARR_rg_pending_decode_523_BITS_259_ETC___d5604,
+	       SEL_ARR_SEL_ARR_rg_pending_decode_523_BITS_195_ETC___d5608,
+	       x__h175738,
+	       x__h175746,
+	       SEL_ARR_SEL_ARR_rg_pending_decode_523_BITS_129_ETC___d5621,
+	       SEL_ARR_SEL_ARR_rg_pending_decode_523_BITS_65__ETC___d5625,
+	       x__h175815,
+	       x__h175826 } ;
   assign instdata_data_0$EN =
 	     WILL_FIRE_RL_doFetch3 &&
-	     instdata_enqP_dummy2_0_read__580_AND_instdata__ETC___d5588 ;
+	     instdata_enqP_dummy2_0_read__592_AND_instdata__ETC___d5600 ;
 
   // register instdata_data_1
   assign instdata_data_1$D_IN = instdata_data_0$D_IN ;
   assign instdata_data_1$EN =
 	     WILL_FIRE_RL_doFetch3 &&
-	     instdata_enqP_dummy2_0_read__580_AND_instdata__ETC___d5625 ;
+	     instdata_enqP_dummy2_0_read__592_AND_instdata__ETC___d5637 ;
 
   // register instdata_deqP_rl
   assign instdata_deqP_rl$D_IN =
@@ -5891,24 +5895,24 @@ module mkFetchStage(CLK,
 
   // register napTrainByDecQ_data_0
   assign napTrainByDecQ_data_0$D_IN =
-	     (SEL_ARR_instdata_data_0_996_BITS_195_TO_194_01_ETC___d6019 !=
+	     (SEL_ARR_instdata_data_0_008_BITS_195_TO_194_02_ETC___d6031 !=
 	      2'd0 &&
-	      SEL_ARR_f32d_data_0_988_BIT_139_021_f32d_data__ETC___d6024) ?
-	       (SEL_ARR_f32d_data_0_988_BIT_4_006_f32d_data_1__ETC___d6482 ?
-		  IF_SEL_ARR_NOT_f32d_data_0_988_BIT_73_051_052__ETC___d6817 :
-		  IF_IF_decode_061_BITS_99_TO_95_065_EQ_8_075_AN_ETC___d6815) :
-	       IF_IF_decode_061_BITS_99_TO_95_065_EQ_8_075_AN_ETC___d6815 ;
-  assign napTrainByDecQ_data_0$EN = napTrainByDecQ_enqP_lat_0$whas ;
+	      SEL_ARR_f32d_data_0_000_BIT_139_033_f32d_data__ETC___d6036) ?
+	       (SEL_ARR_f32d_data_0_000_BIT_4_018_f32d_data_1__ETC___d6494 ?
+		  IF_SEL_ARR_NOT_f32d_data_0_000_BIT_73_063_064__ETC___d6829 :
+		  IF_IF_decode_073_BITS_99_TO_95_077_EQ_8_087_AN_ETC___d6827) :
+	       IF_IF_decode_073_BITS_99_TO_95_077_EQ_8_087_AN_ETC___d6827 ;
+  assign napTrainByDecQ_data_0$EN = napTrainByDecQ_empty_lat_1$whas ;
 
   // register napTrainByDecQ_empty_rl
   assign napTrainByDecQ_empty_rl$D_IN =
-	     !napTrainByDecQ_enqP_lat_0$whas &&
+	     !napTrainByDecQ_empty_lat_1$whas &&
 	     (CAN_FIRE_RL_setTrainNAPByDec || napTrainByDecQ_empty_rl) ;
   assign napTrainByDecQ_empty_rl$EN = 1'd1 ;
 
   // register napTrainByDecQ_full_rl
   assign napTrainByDecQ_full_rl$D_IN =
-	     napTrainByDecQ_enqP_lat_0$whas ||
+	     napTrainByDecQ_empty_lat_1$whas ||
 	     !CAN_FIRE_RL_setTrainNAPByDec && napTrainByDecQ_full_rl ;
   assign napTrainByDecQ_full_rl$EN = 1'd1 ;
 
@@ -9272,7 +9276,7 @@ module mkFetchStage(CLK,
   assign pc_reg_rl$D_IN =
 	     EN_redirect ?
 	       redirect_pc :
-	       (pc_reg_lat_2$whas ?
+	       (pc_reg_dummy_2_0$whas ?
 		  upd__h2244 :
 		  IF_pc_reg_lat_1_whas_THEN_pc_reg_lat_1_wget_EL_ETC___d11) ;
   assign pc_reg_rl$EN = 1'd1 ;
@@ -9313,15 +9317,15 @@ module mkFetchStage(CLK,
 
   // register rg_pending_decode
   assign rg_pending_decode$D_IN =
-	     { SEL_ARR_IF_NOT_f22f3_empty_33_812_AND_NOT_SEL__ETC___d5191,
-	       SEL_ARR_IF_NOT_f22f3_empty_33_812_AND_NOT_SEL__ETC___d5197,
-	       SEL_ARR_IF_NOT_f22f3_empty_33_812_AND_NOT_SEL__ETC___d5205,
-	       x__h170480,
-	       x__h170485,
-	       y_avValue_fst_pred_next_pc__h177167,
-	       SEL_ARR_SEL_ARR_rg_pending_decode_511_BITS_325_ETC___d5525,
-	       x__h171608,
-	       x__h171620 } ;
+	     { SEL_ARR_IF_NOT_f22f3_empty_33_812_AND_NOT_SEL__ETC___d5200,
+	       SEL_ARR_IF_NOT_f22f3_empty_33_812_AND_NOT_SEL__ETC___d5206,
+	       SEL_ARR_IF_NOT_f22f3_empty_33_812_AND_NOT_SEL__ETC___d5214,
+	       x__h170456,
+	       x__h170461,
+	       y_avValue_fst_pred_next_pc__h177143,
+	       SEL_ARR_SEL_ARR_rg_pending_decode_523_BITS_325_ETC___d5537,
+	       x__h171584,
+	       x__h171596 } ;
   assign rg_pending_decode$EN =
 	     WILL_FIRE_RL_doFetch3 &&
 	     (pending_n_items__h124835 != 2'd0 ||
@@ -9331,9 +9335,9 @@ module mkFetchStage(CLK,
 
   // register rg_pending_f32d
   assign rg_pending_f32d$D_IN =
-	     { x1_avValue_fst_pred_next_pc__h156708,
+	     { x1_avValue_fst_pred_next_pc__h156690,
 	       70'h0A0000000000000000,
-	       IF_NOT_f22f3_empty_33_812_AND_NOT_SEL_ARR_f22f_ETC___d5577 } ;
+	       IF_NOT_f22f3_empty_33_812_AND_NOT_SEL_ARR_f22f_ETC___d5589 } ;
   assign rg_pending_f32d$EN =
 	     WILL_FIRE_RL_doFetch3 &&
 	     (pending_n_items__h124835 != 2'd0 ||
@@ -9345,7 +9349,7 @@ module mkFetchStage(CLK,
   assign rg_pending_n_items$D_IN =
 	     (pending_n_items__h124835 != 2'd0 ||
 	      f22f3_empty_33_OR_SEL_ARR_f22f3_data_0_813_BIT_ETC___d3919) ?
-	       y_avValue_snd__h179943 :
+	       y_avValue_snd__h179919 :
 	       2'd0 ;
   assign rg_pending_n_items$EN = WILL_FIRE_RL_doFetch3 ;
 
@@ -9377,26 +9381,26 @@ module mkFetchStage(CLK,
   assign decode_epoch_dummy2_1$EN = 1'b0 ;
 
   // submodule dirPred
-  assign dirPred$pred_0_pred_pc = in_pc__h183297 ;
+  assign dirPred$pred_0_pred_pc = in_pc__h183257 ;
   assign dirPred$pred_1_pred_pc =
-	     SEL_ARR_instdata_data_0_996_BITS_259_TO_196_30_ETC___d6304 ;
+	     SEL_ARR_instdata_data_0_008_BITS_259_TO_196_31_ETC___d6316 ;
   assign dirPred$update_mispred = train_predictors_mispred ;
   assign dirPred$update_pc = train_predictors_pc ;
   assign dirPred$update_taken = train_predictors_taken ;
   assign dirPred$update_train = train_predictors_dpTrain ;
   assign dirPred$EN_pred_0_pred =
 	     WILL_FIRE_RL_doDecode &&
-	     SEL_ARR_f32d_data_0_988_BITS_3_TO_0_989_f32d_d_ETC___d5994 &&
-	     SEL_ARR_instdata_data_0_996_BITS_65_TO_64_997__ETC___d6004 !=
+	     SEL_ARR_f32d_data_0_000_BITS_3_TO_0_001_f32d_d_ETC___d6006 &&
+	     SEL_ARR_instdata_data_0_008_BITS_65_TO_64_009__ETC___d6016 !=
 	     2'd0 &&
-	     SEL_ARR_f32d_data_0_988_BIT_4_006_f32d_data_1__ETC___d6010 &&
-	     SEL_ARR_NOT_f32d_data_0_988_BIT_73_051_052_NOT_ETC___d6056 &&
-	     !decode___d6061[0] &&
-	     decode___d6061[99:95] == 5'd10 ;
+	     SEL_ARR_f32d_data_0_000_BIT_4_018_f32d_data_1__ETC___d6022 &&
+	     SEL_ARR_NOT_f32d_data_0_000_BIT_73_063_064_NOT_ETC___d6068 &&
+	     !decode___d6073[0] &&
+	     decode___d6073[99:95] == 5'd10 ;
   assign dirPred$EN_pred_1_pred =
 	     WILL_FIRE_RL_doDecode &&
-	     SEL_ARR_f32d_data_0_988_BITS_3_TO_0_989_f32d_d_ETC___d5994 &&
-	     NOT_SEL_ARR_instdata_data_0_996_BITS_195_TO_19_ETC___d6495 ;
+	     SEL_ARR_f32d_data_0_000_BITS_3_TO_0_001_f32d_d_ETC___d6006 &&
+	     NOT_SEL_ARR_instdata_data_0_008_BITS_195_TO_19_ETC___d6507 ;
   assign dirPred$EN_update =
 	     EN_train_predictors && train_predictors_iType == 5'd10 ;
   assign dirPred$EN_flush = EN_flush_predictors ;
@@ -9630,7 +9634,7 @@ module mkFetchStage(CLK,
 
   // submodule napTrainByDecQ_empty_dummy2_1
   assign napTrainByDecQ_empty_dummy2_1$D_IN = 1'd1 ;
-  assign napTrainByDecQ_empty_dummy2_1$EN = napTrainByDecQ_enqP_lat_0$whas ;
+  assign napTrainByDecQ_empty_dummy2_1$EN = napTrainByDecQ_empty_lat_1$whas ;
 
   // submodule napTrainByDecQ_empty_dummy2_2
   assign napTrainByDecQ_empty_dummy2_2$D_IN = 1'b0 ;
@@ -9638,7 +9642,7 @@ module mkFetchStage(CLK,
 
   // submodule napTrainByDecQ_enqP_dummy2_0
   assign napTrainByDecQ_enqP_dummy2_0$D_IN = 1'd1 ;
-  assign napTrainByDecQ_enqP_dummy2_0$EN = napTrainByDecQ_enqP_lat_0$whas ;
+  assign napTrainByDecQ_enqP_dummy2_0$EN = napTrainByDecQ_empty_lat_1$whas ;
 
   // submodule napTrainByDecQ_enqP_dummy2_1
   assign napTrainByDecQ_enqP_dummy2_1$D_IN = 1'b0 ;
@@ -9650,7 +9654,7 @@ module mkFetchStage(CLK,
 
   // submodule napTrainByDecQ_full_dummy2_1
   assign napTrainByDecQ_full_dummy2_1$D_IN = 1'd1 ;
-  assign napTrainByDecQ_full_dummy2_1$EN = napTrainByDecQ_enqP_lat_0$whas ;
+  assign napTrainByDecQ_full_dummy2_1$EN = napTrainByDecQ_empty_lat_1$whas ;
 
   // submodule napTrainByDecQ_full_dummy2_2
   assign napTrainByDecQ_full_dummy2_2$D_IN = 1'b0 ;
@@ -9660,7 +9664,7 @@ module mkFetchStage(CLK,
   assign nextAddrPred_next_addrs$ADDR_1 = prev_PC__h122103[8:1] ;
   assign nextAddrPred_next_addrs$ADDR_2 = prev_PC__h121727[8:1] ;
   assign nextAddrPred_next_addrs$ADDR_3 = prev_PC__h121324[8:1] ;
-  assign nextAddrPred_next_addrs$ADDR_4 = getFetchState_pc__h222980[8:1] ;
+  assign nextAddrPred_next_addrs$ADDR_4 = getFetchState_pc__h222940[8:1] ;
   assign nextAddrPred_next_addrs$ADDR_5 = 8'h0 ;
   assign nextAddrPred_next_addrs$ADDR_IN = nextAddrPred_updateEn$wget[73:66] ;
   assign nextAddrPred_next_addrs$D_IN = nextAddrPred_updateEn$wget[64:1] ;
@@ -9673,7 +9677,7 @@ module mkFetchStage(CLK,
   assign nextAddrPred_tags$ADDR_2 = prev_PC__h122103[8:1] ;
   assign nextAddrPred_tags$ADDR_3 = prev_PC__h121727[8:1] ;
   assign nextAddrPred_tags$ADDR_4 = prev_PC__h121324[8:1] ;
-  assign nextAddrPred_tags$ADDR_5 = getFetchState_pc__h222980[8:1] ;
+  assign nextAddrPred_tags$ADDR_5 = getFetchState_pc__h222940[8:1] ;
   assign nextAddrPred_tags$ADDR_IN = nextAddrPred_updateEn$wget[73:66] ;
   assign nextAddrPred_tags$D_IN = nextAddrPred_updateEn$wget[128:74] ;
   assign nextAddrPred_tags$WE =
@@ -9844,7 +9848,7 @@ module mkFetchStage(CLK,
 
   // submodule pc_reg_dummy2_2
   assign pc_reg_dummy2_2$D_IN = 1'd1 ;
-  assign pc_reg_dummy2_2$EN = pc_reg_lat_2$whas ;
+  assign pc_reg_dummy2_2$EN = pc_reg_dummy_2_0$whas ;
 
   // submodule pc_reg_dummy2_3
   assign pc_reg_dummy2_3$D_IN = 1'd1 ;
@@ -9884,107 +9888,107 @@ module mkFetchStage(CLK,
 
   // submodule ras
   assign ras$ras_0_popPush_pop =
-	     (decode___d6061[99:95] != 5'd8 || !decode___d6061[7] ||
-	      decode___d6061[6] ||
-	      decode___d6061[5:1] != 5'd1 && decode___d6061[5:1] != 5'd5) &&
-	     (NOT_decode_061_BIT_7_076_087_OR_decode_061_BIT_ETC___d6103 ||
-	      (decode___d6061[27] && !decode___d6061[26] &&
-	       (decode___d6061[25:21] == 5'd1 ||
-		decode___d6061[25:21] == 5'd5) ||
-	       !decode___d6061[7] ||
-	       decode___d6061[6] ||
-	       decode___d6061[5:1] != 5'd1 && decode___d6061[5:1] != 5'd5) &&
-	      IF_NOT_decode_061_BIT_26_095_096_AND_NOT_decod_ETC___d6136) ;
+	     (decode___d6073[99:95] != 5'd8 || !decode___d6073[7] ||
+	      decode___d6073[6] ||
+	      decode___d6073[5:1] != 5'd1 && decode___d6073[5:1] != 5'd5) &&
+	     (NOT_decode_073_BIT_7_088_099_OR_decode_073_BIT_ETC___d6115 ||
+	      (decode___d6073[27] && !decode___d6073[26] &&
+	       (decode___d6073[25:21] == 5'd1 ||
+		decode___d6073[25:21] == 5'd5) ||
+	       !decode___d6073[7] ||
+	       decode___d6073[6] ||
+	       decode___d6073[5:1] != 5'd1 && decode___d6073[5:1] != 5'd5) &&
+	      IF_NOT_decode_073_BIT_26_107_108_AND_NOT_decod_ETC___d6148) ;
   assign ras$ras_0_popPush_pushAddr =
-	     { decode___d6061[7] && !decode___d6061[6] &&
-	       (decode___d6061[5:1] == 5'd1 || decode___d6061[5:1] == 5'd5) ||
-	       !decode___d6061[27] ||
-	       decode___d6061[26] ||
-	       decode___d6061[25:21] != 5'd1 && decode___d6061[25:21] != 5'd5,
-	       in_pc__h183297 +
-	       ((SEL_ARR_instdata_data_0_996_BITS_65_TO_64_997__ETC___d6004 ==
+	     { decode___d6073[7] && !decode___d6073[6] &&
+	       (decode___d6073[5:1] == 5'd1 || decode___d6073[5:1] == 5'd5) ||
+	       !decode___d6073[27] ||
+	       decode___d6073[26] ||
+	       decode___d6073[25:21] != 5'd1 && decode___d6073[25:21] != 5'd5,
+	       in_pc__h183257 +
+	       ((SEL_ARR_instdata_data_0_008_BITS_65_TO_64_009__ETC___d6016 ==
 		 2'd2) ?
 		  64'd4 :
 		  64'd2) } ;
   assign ras$ras_1_popPush_pop =
-	     (decode___d6487[99:95] != 5'd8 || !decode___d6487[7] ||
-	      decode___d6487[6] ||
-	      decode___d6487[5:1] != 5'd1 && decode___d6487[5:1] != 5'd5) &&
-	     (NOT_decode_487_BIT_7_498_509_OR_decode_487_BIT_ETC___d6525 ||
-	      (decode___d6487[27] && !decode___d6487[26] &&
-	       (decode___d6487[25:21] == 5'd1 ||
-		decode___d6487[25:21] == 5'd5) ||
-	       !decode___d6487[7] ||
-	       decode___d6487[6] ||
-	       decode___d6487[5:1] != 5'd1 && decode___d6487[5:1] != 5'd5) &&
-	      IF_NOT_decode_487_BIT_26_517_518_AND_NOT_decod_ETC___d6558) ;
+	     (decode___d6499[99:95] != 5'd8 || !decode___d6499[7] ||
+	      decode___d6499[6] ||
+	      decode___d6499[5:1] != 5'd1 && decode___d6499[5:1] != 5'd5) &&
+	     (NOT_decode_499_BIT_7_510_521_OR_decode_499_BIT_ETC___d6537 ||
+	      (decode___d6499[27] && !decode___d6499[26] &&
+	       (decode___d6499[25:21] == 5'd1 ||
+		decode___d6499[25:21] == 5'd5) ||
+	       !decode___d6499[7] ||
+	       decode___d6499[6] ||
+	       decode___d6499[5:1] != 5'd1 && decode___d6499[5:1] != 5'd5) &&
+	      IF_NOT_decode_499_BIT_26_529_530_AND_NOT_decod_ETC___d6570) ;
   assign ras$ras_1_popPush_pushAddr =
-	     { decode___d6487[7] && !decode___d6487[6] &&
-	       (decode___d6487[5:1] == 5'd1 || decode___d6487[5:1] == 5'd5) ||
-	       !decode___d6487[27] ||
-	       decode___d6487[26] ||
-	       decode___d6487[25:21] != 5'd1 && decode___d6487[25:21] != 5'd5,
-	       SEL_ARR_instdata_data_0_996_BITS_259_TO_196_30_ETC___d6304 +
-	       ((SEL_ARR_instdata_data_0_996_BITS_195_TO_194_01_ETC___d6019 ==
+	     { decode___d6499[7] && !decode___d6499[6] &&
+	       (decode___d6499[5:1] == 5'd1 || decode___d6499[5:1] == 5'd5) ||
+	       !decode___d6499[27] ||
+	       decode___d6499[26] ||
+	       decode___d6499[25:21] != 5'd1 && decode___d6499[25:21] != 5'd5,
+	       SEL_ARR_instdata_data_0_008_BITS_259_TO_196_31_ETC___d6316 +
+	       ((SEL_ARR_instdata_data_0_008_BITS_195_TO_194_02_ETC___d6031 ==
 		 2'd2) ?
 		  64'd4 :
 		  64'd2) } ;
   assign ras$EN_ras_0_popPush =
 	     WILL_FIRE_RL_doDecode &&
-	     SEL_ARR_f32d_data_0_988_BITS_3_TO_0_989_f32d_d_ETC___d5994 &&
-	     SEL_ARR_instdata_data_0_996_BITS_65_TO_64_997__ETC___d6004 !=
+	     SEL_ARR_f32d_data_0_000_BITS_3_TO_0_001_f32d_d_ETC___d6006 &&
+	     SEL_ARR_instdata_data_0_008_BITS_65_TO_64_009__ETC___d6016 !=
 	     2'd0 &&
-	     SEL_ARR_f32d_data_0_988_BIT_4_006_f32d_data_1__ETC___d6010 &&
-	     SEL_ARR_NOT_f32d_data_0_988_BIT_73_051_052_NOT_ETC___d6056 &&
-	     !decode___d6061[0] &&
-	     decode_061_BITS_99_TO_95_065_EQ_8_075_AND_deco_ETC___d6116 ;
+	     SEL_ARR_f32d_data_0_000_BIT_4_018_f32d_data_1__ETC___d6022 &&
+	     SEL_ARR_NOT_f32d_data_0_000_BIT_73_063_064_NOT_ETC___d6068 &&
+	     !decode___d6073[0] &&
+	     decode_073_BITS_99_TO_95_077_EQ_8_087_AND_deco_ETC___d6128 ;
   assign ras$EN_ras_1_popPush =
 	     WILL_FIRE_RL_doDecode &&
-	     SEL_ARR_f32d_data_0_988_BITS_3_TO_0_989_f32d_d_ETC___d6542 ;
+	     SEL_ARR_f32d_data_0_000_BITS_3_TO_0_001_f32d_d_ETC___d6554 ;
   assign ras$EN_flush = EN_flush_predictors ;
 
   // remaining internal signals
-  module_decode instance_decode_3(.decode_inst(SEL_ARR_instdata_data_0_996_BITS_31_TO_0_057_i_ETC___d6060),
-				  .decode(decode___d6061));
-  module_decode instance_decode_2(.decode_inst(SEL_ARR_instdata_data_0_996_BITS_161_TO_130_48_ETC___d6486),
-				  .decode(decode___d6487));
-  module_decodeBrPred instance_decodeBrPred_1(.decodeBrPred_pc(SEL_ARR_instdata_data_0_996_BITS_259_TO_196_30_ETC___d6304),
-					      .decodeBrPred_dInst(decode_487_BITS_99_TO_95_491_CONCAT_IF_decode__ETC___d6701),
-					      .decodeBrPred_histTaken(decode___d6487[99:95] ==
+  module_decode instance_decode_3(.decode_inst(SEL_ARR_instdata_data_0_008_BITS_31_TO_0_069_i_ETC___d6072),
+				  .decode(decode___d6073));
+  module_decode instance_decode_2(.decode_inst(SEL_ARR_instdata_data_0_008_BITS_161_TO_130_49_ETC___d6498),
+				  .decode(decode___d6499));
+  module_decodeBrPred instance_decodeBrPred_1(.decodeBrPred_pc(SEL_ARR_instdata_data_0_008_BITS_259_TO_196_31_ETC___d6316),
+					      .decodeBrPred_dInst(decode_499_BITS_99_TO_95_503_CONCAT_IF_decode__ETC___d6713),
+					      .decodeBrPred_histTaken(decode___d6499[99:95] ==
 								      5'd10 &&
 								      dirPred$pred_1_pred[24]),
-					      .decodeBrPred_is_32b_inst(SEL_ARR_instdata_data_0_996_BITS_195_TO_194_01_ETC___d6019 ==
+					      .decodeBrPred_is_32b_inst(SEL_ARR_instdata_data_0_008_BITS_195_TO_194_02_ETC___d6031 ==
 									2'd2),
-					      .decodeBrPred(decodeBrPred___d6705));
-  module_decodeBrPred instance_decodeBrPred_0(.decodeBrPred_pc(in_pc__h183297),
-					      .decodeBrPred_dInst(decode_061_BITS_99_TO_95_065_CONCAT_IF_decode__ETC___d6279),
-					      .decodeBrPred_histTaken(decode___d6061[99:95] ==
+					      .decodeBrPred(decodeBrPred___d6717));
+  module_decodeBrPred instance_decodeBrPred_0(.decodeBrPred_pc(in_pc__h183257),
+					      .decodeBrPred_dInst(decode_073_BITS_99_TO_95_077_CONCAT_IF_decode__ETC___d6291),
+					      .decodeBrPred_histTaken(decode___d6073[99:95] ==
 								      5'd10 &&
 								      dirPred$pred_0_pred[24]),
-					      .decodeBrPred_is_32b_inst(SEL_ARR_instdata_data_0_996_BITS_65_TO_64_997__ETC___d6004 ==
+					      .decodeBrPred_is_32b_inst(SEL_ARR_instdata_data_0_008_BITS_65_TO_64_009__ETC___d6016 ==
 									2'd2),
-					      .decodeBrPred(decodeBrPred___d6283));
+					      .decodeBrPred(decodeBrPred___d6295));
   assign CASE_0_CONCAT_3_MINUS_IF_rg_pending_n_items_84_ETC___d4004 =
-	     CASE_pending_spaces_ext56609_0_NOT_SEL_ARR_f22_ETC__q236 &&
-	     CASE_pending_spaces_ext56609_0_NOT_SEL_ARR_f22_ETC__q237 ;
+	     CASE_pending_spaces_ext56591_0_NOT_SEL_ARR_f22_ETC__q236 &&
+	     CASE_pending_spaces_ext56591_0_NOT_SEL_ARR_f22_ETC__q237 ;
   assign CASE_0_CONCAT_3_MINUS_IF_rg_pending_n_items_84_ETC___d4006 =
-	     CASE_pending_spaces_ext56609_0_NOT_SEL_ARR_f22_ETC__q238 &&
-	     CASE_pending_spaces_ext56609_0_NOT_SEL_ARR_f22_ETC__q239 &&
+	     CASE_pending_spaces_ext56591_0_NOT_SEL_ARR_f22_ETC__q238 &&
+	     CASE_pending_spaces_ext56591_0_NOT_SEL_ARR_f22_ETC__q239 &&
 	     CASE_0_CONCAT_3_MINUS_IF_rg_pending_n_items_84_ETC___d4004 ;
   assign CASE_0_CONCAT_3_MINUS_IF_rg_pending_n_items_84_ETC___d4008 =
-	     CASE_pending_spaces_ext56609_0_1_1_NOT_SEL_ARR_ETC__q240 &&
-	     CASE_pending_spaces_ext56609_0_1_1_NOT_SEL_ARR_ETC__q241 &&
+	     CASE_pending_spaces_ext56591_0_1_1_NOT_SEL_ARR_ETC__q240 &&
+	     CASE_pending_spaces_ext56591_0_1_1_NOT_SEL_ARR_ETC__q241 &&
 	     CASE_0_CONCAT_3_MINUS_IF_rg_pending_n_items_84_ETC___d4006 ;
   assign CASE_0_CONCAT_3_MINUS_IF_rg_pending_n_items_84_ETC___d4046 =
-	     CASE_pending_spaces_ext56609_0_1_1_1_2_NOT_f22_ETC__q243 &&
+	     CASE_pending_spaces_ext56591_0_1_1_1_2_NOT_f22_ETC__q243 &&
 	     CASE_0_CONCAT_3_MINUS_IF_rg_pending_n_items_84_ETC___d4042 &&
 	     CASE_0_CONCAT_3_MINUS_IF_rg_pending_n_items_84_ETC___d4044 ;
   assign CASE_0_CONCAT_3_MINUS_IF_rg_pending_n_items_84_ETC___d4047 =
-	     CASE_pending_spaces_ext56609_0_1_1_1_2_NOT_f22_ETC__q244 &&
+	     CASE_pending_spaces_ext56591_0_1_1_1_2_NOT_f22_ETC__q244 &&
 	     CASE_0_CONCAT_3_MINUS_IF_rg_pending_n_items_84_ETC___d4046 ;
   assign CASE_0_CONCAT_3_MINUS_IF_rg_pending_n_items_84_ETC___d4049 =
-	     CASE_pending_spaces_ext56609_0_1_1_1_2_1_3_NOT_ETC__q245 &&
-	     CASE_pending_spaces_ext56609_0_1_1_1_2_1_3_NOT_ETC__q246 &&
+	     CASE_pending_spaces_ext56591_0_1_1_1_2_1_3_NOT_ETC__q245 &&
+	     CASE_pending_spaces_ext56591_0_1_1_1_2_1_3_NOT_ETC__q246 &&
 	     CASE_0_CONCAT_3_MINUS_IF_rg_pending_n_items_84_ETC___d4047 ;
   assign IF_IF_IF_IF_IF_SEL_ARR_f22f3_data_0_813_BITS_2_ETC___d4187 =
 	     IF_IF_IF_IF_SEL_ARR_f22f3_data_0_813_BITS_204__ETC___d4166 ?
@@ -10008,25 +10012,25 @@ module mkFetchStage(CLK,
 		     2'd0) :
 		  2'd1) :
 	       2'd0 ;
-  assign IF_IF_IF_IF_IF_SEL_ARR_f22f3_data_0_813_BITS_2_ETC___d5554 =
+  assign IF_IF_IF_IF_IF_SEL_ARR_f22f3_data_0_813_BITS_2_ETC___d5566 =
 	     IF_IF_IF_IF_SEL_ARR_f22f3_data_0_813_BITS_204__ETC___d4166 ?
 	       ((SEL_ARR_IF_NOT_f22f3_empty_33_812_AND_NOT_SEL__ETC___d4167[1:0] ==
 		 2'b11) ?
 		  !IF_IF_IF_IF_SEL_ARR_f22f3_data_0_813_BITS_204__ETC___d4171 ||
-		  IF_IF_IF_IF_SEL_ARR_f22f3_data_0_813_BITS_204__ETC___d5551 :
-		  IF_IF_IF_IF_SEL_ARR_f22f3_data_0_813_BITS_204__ETC___d5551) :
-	       IF_IF_IF_IF_SEL_ARR_f22f3_data_0_813_BITS_204__ETC___d5551 ;
-  assign IF_IF_IF_IF_IF_SEL_ARR_f22f3_data_0_813_BITS_2_ETC___d5960 =
+		  IF_IF_IF_IF_SEL_ARR_f22f3_data_0_813_BITS_204__ETC___d5563 :
+		  IF_IF_IF_IF_SEL_ARR_f22f3_data_0_813_BITS_204__ETC___d5563) :
+	       IF_IF_IF_IF_SEL_ARR_f22f3_data_0_813_BITS_204__ETC___d5563 ;
+  assign IF_IF_IF_IF_IF_SEL_ARR_f22f3_data_0_813_BITS_2_ETC___d5972 =
 	     IF_IF_IF_IF_SEL_ARR_f22f3_data_0_813_BITS_204__ETC___d4166 ?
 	       ((SEL_ARR_IF_NOT_f22f3_empty_33_812_AND_NOT_SEL__ETC___d4167[1:0] ==
 		 2'b11) ?
 		  IF_IF_IF_IF_SEL_ARR_f22f3_data_0_813_BITS_204__ETC___d4171 &&
-		  IF_IF_IF_IF_SEL_ARR_f22f3_data_0_813_BITS_204__ETC___d5957 :
-		  IF_IF_IF_IF_SEL_ARR_f22f3_data_0_813_BITS_204__ETC___d5957) :
-	       IF_IF_IF_IF_SEL_ARR_f22f3_data_0_813_BITS_204__ETC___d5957 ;
+		  IF_IF_IF_IF_SEL_ARR_f22f3_data_0_813_BITS_204__ETC___d5969 :
+		  IF_IF_IF_IF_SEL_ARR_f22f3_data_0_813_BITS_204__ETC___d5969) :
+	       IF_IF_IF_IF_SEL_ARR_f22f3_data_0_813_BITS_204__ETC___d5969 ;
   assign IF_IF_IF_IF_SEL_ARR_f22f3_data_0_813_BITS_204__ETC___d4165 =
 	     IF_IF_IF_SEL_ARR_f22f3_data_0_813_BITS_204_TO__ETC___d4155 ?
-	       y_avValue_fst__h145782 :
+	       y_avValue_fst__h145770 :
 	       IF_IF_IF_SEL_ARR_f22f3_data_0_813_BITS_204_TO__ETC___d4154 ;
   assign IF_IF_IF_IF_SEL_ARR_f22f3_data_0_813_BITS_204__ETC___d4166 =
 	     IF_IF_IF_IF_SEL_ARR_f22f3_data_0_813_BITS_204__ETC___d4165 <
@@ -10063,7 +10067,7 @@ module mkFetchStage(CLK,
 	       IF_IF_IF_SEL_ARR_f22f3_data_0_813_BITS_204_TO__ETC___d4234 ;
   assign IF_IF_IF_IF_SEL_ARR_f22f3_data_0_813_BITS_204__ETC___d4248 =
 	     IF_IF_IF_SEL_ARR_f22f3_data_0_813_BITS_204_TO__ETC___d4155 ?
-	       y_avValue_snd_snd_snd_snd_fst__h146090 :
+	       y_avValue_snd_snd_snd_snd_fst__h146078 :
 	       IF_IF_IF_SEL_ARR_f22f3_data_0_813_BITS_204_TO__ETC___d4240 ;
   assign IF_IF_IF_IF_SEL_ARR_f22f3_data_0_813_BITS_204__ETC___d4262 =
 	     IF_IF_IF_SEL_ARR_f22f3_data_0_813_BITS_204_TO__ETC___d4155 ?
@@ -10082,35 +10086,35 @@ module mkFetchStage(CLK,
 		     2'd0) :
 		  2'd1) :
 	       2'd0 ;
-  assign IF_IF_IF_IF_SEL_ARR_f22f3_data_0_813_BITS_204__ETC___d5551 =
+  assign IF_IF_IF_IF_SEL_ARR_f22f3_data_0_813_BITS_204__ETC___d5563 =
 	     IF_IF_IF_SEL_ARR_f22f3_data_0_813_BITS_204_TO__ETC___d4155 ?
 	       ((SEL_ARR_IF_NOT_f22f3_empty_33_812_AND_NOT_SEL__ETC___d4156[1:0] ==
 		 2'b11) ?
 		  !IF_IF_IF_SEL_ARR_f22f3_data_0_813_BITS_204_TO__ETC___d4160 ||
-		  IF_IF_IF_SEL_ARR_f22f3_data_0_813_BITS_204_TO__ETC___d5548 :
-		  IF_IF_IF_SEL_ARR_f22f3_data_0_813_BITS_204_TO__ETC___d5548) :
-	       IF_IF_IF_SEL_ARR_f22f3_data_0_813_BITS_204_TO__ETC___d5548 ;
-  assign IF_IF_IF_IF_SEL_ARR_f22f3_data_0_813_BITS_204__ETC___d5957 =
+		  IF_IF_IF_SEL_ARR_f22f3_data_0_813_BITS_204_TO__ETC___d5560 :
+		  IF_IF_IF_SEL_ARR_f22f3_data_0_813_BITS_204_TO__ETC___d5560) :
+	       IF_IF_IF_SEL_ARR_f22f3_data_0_813_BITS_204_TO__ETC___d5560 ;
+  assign IF_IF_IF_IF_SEL_ARR_f22f3_data_0_813_BITS_204__ETC___d5969 =
 	     IF_IF_IF_SEL_ARR_f22f3_data_0_813_BITS_204_TO__ETC___d4155 ?
 	       ((SEL_ARR_IF_NOT_f22f3_empty_33_812_AND_NOT_SEL__ETC___d4156[1:0] ==
 		 2'b11) ?
 		  IF_IF_IF_SEL_ARR_f22f3_data_0_813_BITS_204_TO__ETC___d4160 &&
-		  IF_IF_IF_SEL_ARR_f22f3_data_0_813_BITS_204_TO__ETC___d5954 :
-		  IF_IF_IF_SEL_ARR_f22f3_data_0_813_BITS_204_TO__ETC___d5954) :
-	       IF_IF_IF_SEL_ARR_f22f3_data_0_813_BITS_204_TO__ETC___d5954 ;
-  assign IF_IF_IF_IF_SEL_ARR_f22f3_data_0_813_BITS_204__ETC___d5969 =
-	     IF_IF_IF_SEL_ARR_f22f3_data_0_813_BITS_204_TO__ETC___d4155 ?
-	       IF_NOT_SEL_ARR_IF_NOT_f22f3_empty_33_812_AND_N_ETC___d5968 :
+		  IF_IF_IF_SEL_ARR_f22f3_data_0_813_BITS_204_TO__ETC___d5966 :
+		  IF_IF_IF_SEL_ARR_f22f3_data_0_813_BITS_204_TO__ETC___d5966) :
 	       IF_IF_IF_SEL_ARR_f22f3_data_0_813_BITS_204_TO__ETC___d5966 ;
+  assign IF_IF_IF_IF_SEL_ARR_f22f3_data_0_813_BITS_204__ETC___d5981 =
+	     IF_IF_IF_SEL_ARR_f22f3_data_0_813_BITS_204_TO__ETC___d4155 ?
+	       IF_NOT_SEL_ARR_IF_NOT_f22f3_empty_33_812_AND_N_ETC___d5980 :
+	       IF_IF_IF_SEL_ARR_f22f3_data_0_813_BITS_204_TO__ETC___d5978 ;
   assign IF_IF_IF_SEL_ARR_f22f3_data_0_813_BITS_204_TO__ETC___d4154 =
 	     IF_IF_SEL_ARR_f22f3_data_0_813_BITS_204_TO_141_ETC___d4144 ?
-	       y_avValue_fst__h137183 :
+	       y_avValue_fst__h137177 :
 	       IF_IF_SEL_ARR_f22f3_data_0_813_BITS_204_TO_141_ETC___d4143 ;
   assign IF_IF_IF_SEL_ARR_f22f3_data_0_813_BITS_204_TO__ETC___d4155 =
 	     IF_IF_IF_SEL_ARR_f22f3_data_0_813_BITS_204_TO__ETC___d4154 <
 	     n_x16s__h125921 ;
   assign IF_IF_IF_SEL_ARR_f22f3_data_0_813_BITS_204_TO__ETC___d4160 =
-	     y_avValue_fst__h145722 < n_x16s__h125921 ;
+	     y_avValue_fst__h145710 < n_x16s__h125921 ;
   assign IF_IF_IF_SEL_ARR_f22f3_data_0_813_BITS_204_TO__ETC___d4181 =
 	     IF_IF_SEL_ARR_f22f3_data_0_813_BITS_204_TO_141_ETC___d4144 ?
 	       ((SEL_ARR_IF_NOT_f22f3_empty_33_812_AND_NOT_SEL__ETC___d4145[1:0] ==
@@ -10137,7 +10141,7 @@ module mkFetchStage(CLK,
 	       pc_start__h125919 ;
   assign IF_IF_IF_SEL_ARR_f22f3_data_0_813_BITS_204_TO__ETC___d4240 =
 	     IF_IF_SEL_ARR_f22f3_data_0_813_BITS_204_TO_141_ETC___d4144 ?
-	       y_avValue_snd_snd_snd_snd_fst__h137491 :
+	       y_avValue_snd_snd_snd_snd_fst__h137485 :
 	       IF_IF_SEL_ARR_f22f3_data_0_813_BITS_204_TO_141_ETC___d4232 ;
   assign IF_IF_IF_SEL_ARR_f22f3_data_0_813_BITS_204_TO__ETC___d4260 =
 	     IF_IF_SEL_ARR_f22f3_data_0_813_BITS_204_TO_141_ETC___d4144 ?
@@ -10156,125 +10160,125 @@ module mkFetchStage(CLK,
 		     2'd0) :
 		  2'd1) :
 	       2'd0 ;
-  assign IF_IF_IF_SEL_ARR_f22f3_data_0_813_BITS_204_TO__ETC___d5548 =
+  assign IF_IF_IF_SEL_ARR_f22f3_data_0_813_BITS_204_TO__ETC___d5560 =
 	     IF_IF_SEL_ARR_f22f3_data_0_813_BITS_204_TO_141_ETC___d4144 ?
 	       ((SEL_ARR_IF_NOT_f22f3_empty_33_812_AND_NOT_SEL__ETC___d4145[1:0] ==
 		 2'b11) ?
 		  !IF_IF_SEL_ARR_f22f3_data_0_813_BITS_204_TO_141_ETC___d4149 ||
-		  IF_IF_SEL_ARR_f22f3_data_0_813_BITS_204_TO_141_ETC___d5545 :
-		  IF_IF_SEL_ARR_f22f3_data_0_813_BITS_204_TO_141_ETC___d5545) :
-	       IF_IF_SEL_ARR_f22f3_data_0_813_BITS_204_TO_141_ETC___d5545 ;
-  assign IF_IF_IF_SEL_ARR_f22f3_data_0_813_BITS_204_TO__ETC___d5954 =
+		  IF_IF_SEL_ARR_f22f3_data_0_813_BITS_204_TO_141_ETC___d5557 :
+		  IF_IF_SEL_ARR_f22f3_data_0_813_BITS_204_TO_141_ETC___d5557) :
+	       IF_IF_SEL_ARR_f22f3_data_0_813_BITS_204_TO_141_ETC___d5557 ;
+  assign IF_IF_IF_SEL_ARR_f22f3_data_0_813_BITS_204_TO__ETC___d5966 =
 	     IF_IF_SEL_ARR_f22f3_data_0_813_BITS_204_TO_141_ETC___d4144 ?
 	       ((SEL_ARR_IF_NOT_f22f3_empty_33_812_AND_NOT_SEL__ETC___d4145[1:0] ==
 		 2'b11) ?
 		  IF_IF_SEL_ARR_f22f3_data_0_813_BITS_204_TO_141_ETC___d4149 &&
-		  NOT_IF_SEL_ARR_f22f3_data_0_813_BITS_204_TO_14_ETC___d5951 :
-		  NOT_IF_SEL_ARR_f22f3_data_0_813_BITS_204_TO_14_ETC___d5951) :
-	       NOT_IF_SEL_ARR_f22f3_data_0_813_BITS_204_TO_14_ETC___d5951 ;
-  assign IF_IF_IF_SEL_ARR_f22f3_data_0_813_BITS_204_TO__ETC___d5966 =
+		  NOT_IF_SEL_ARR_f22f3_data_0_813_BITS_204_TO_14_ETC___d5963 :
+		  NOT_IF_SEL_ARR_f22f3_data_0_813_BITS_204_TO_14_ETC___d5963) :
+	       NOT_IF_SEL_ARR_f22f3_data_0_813_BITS_204_TO_14_ETC___d5963 ;
+  assign IF_IF_IF_SEL_ARR_f22f3_data_0_813_BITS_204_TO__ETC___d5978 =
 	     IF_IF_SEL_ARR_f22f3_data_0_813_BITS_204_TO_141_ETC___d4144 ?
-	       IF_NOT_SEL_ARR_IF_NOT_f22f3_empty_33_812_AND_N_ETC___d5965 :
+	       IF_NOT_SEL_ARR_IF_NOT_f22f3_empty_33_812_AND_N_ETC___d5977 :
 	       { pc_start__h125919,
 		 SEL_ARR_IF_NOT_f22f3_empty_33_812_AND_NOT_SEL__ETC___d4134,
 		 !SEL_ARR_NOT_f22f3_data_0_813_BIT_140_194_195_N_ETC___d4203 } ;
-  assign IF_IF_NOT_f22f3_empty_33_812_AND_NOT_SEL_ARR_f_ETC___d5909 =
-	     (NOT_f22f3_empty_33_812_AND_NOT_SEL_ARR_f22f3_d_ETC___d3844 ?
-		IF_rg_pending_f32d_847_BITS_72_TO_69_644_EQ_0__ETC___d5670 ==
-		4'd12 :
-		IF_IF_rg_pending_n_items_845_EQ_0_846_THEN_rg__ETC___d5907) ?
-	       4'd13 :
-	       4'd15 ;
-  assign IF_IF_NOT_f22f3_empty_33_812_AND_NOT_SEL_ARR_f_ETC___d5910 =
-	     (NOT_f22f3_empty_33_812_AND_NOT_SEL_ARR_f22f3_d_ETC___d3844 ?
-		IF_rg_pending_f32d_847_BITS_72_TO_69_644_EQ_0__ETC___d5670 ==
-		4'd11 :
-		IF_IF_rg_pending_n_items_845_EQ_0_846_THEN_rg__ETC___d5897) ?
-	       4'd12 :
-	       IF_IF_NOT_f22f3_empty_33_812_AND_NOT_SEL_ARR_f_ETC___d5909 ;
-  assign IF_IF_NOT_f22f3_empty_33_812_AND_NOT_SEL_ARR_f_ETC___d5911 =
-	     (NOT_f22f3_empty_33_812_AND_NOT_SEL_ARR_f22f3_d_ETC___d3844 ?
-		IF_rg_pending_f32d_847_BITS_72_TO_69_644_EQ_0__ETC___d5670 ==
-		4'd10 :
-		IF_IF_rg_pending_n_items_845_EQ_0_846_THEN_rg__ETC___d5887) ?
-	       4'd11 :
-	       IF_IF_NOT_f22f3_empty_33_812_AND_NOT_SEL_ARR_f_ETC___d5910 ;
-  assign IF_IF_NOT_f22f3_empty_33_812_AND_NOT_SEL_ARR_f_ETC___d5912 =
-	     (NOT_f22f3_empty_33_812_AND_NOT_SEL_ARR_f22f3_d_ETC___d3844 ?
-		IF_rg_pending_f32d_847_BITS_72_TO_69_644_EQ_0__ETC___d5670 ==
-		4'd9 :
-		IF_IF_rg_pending_n_items_845_EQ_0_846_THEN_rg__ETC___d5877) ?
-	       4'd9 :
-	       IF_IF_NOT_f22f3_empty_33_812_AND_NOT_SEL_ARR_f_ETC___d5911 ;
-  assign IF_IF_NOT_f22f3_empty_33_812_AND_NOT_SEL_ARR_f_ETC___d5913 =
-	     (NOT_f22f3_empty_33_812_AND_NOT_SEL_ARR_f22f3_d_ETC___d3844 ?
-		IF_rg_pending_f32d_847_BITS_72_TO_69_644_EQ_0__ETC___d5670 ==
-		4'd8 :
-		IF_IF_rg_pending_n_items_845_EQ_0_846_THEN_rg__ETC___d5867) ?
-	       4'd8 :
-	       IF_IF_NOT_f22f3_empty_33_812_AND_NOT_SEL_ARR_f_ETC___d5912 ;
-  assign IF_IF_NOT_f22f3_empty_33_812_AND_NOT_SEL_ARR_f_ETC___d5914 =
-	     (NOT_f22f3_empty_33_812_AND_NOT_SEL_ARR_f22f3_d_ETC___d3844 ?
-		IF_rg_pending_f32d_847_BITS_72_TO_69_644_EQ_0__ETC___d5670 ==
-		4'd7 :
-		IF_IF_rg_pending_n_items_845_EQ_0_846_THEN_rg__ETC___d5857) ?
-	       4'd7 :
-	       IF_IF_NOT_f22f3_empty_33_812_AND_NOT_SEL_ARR_f_ETC___d5913 ;
-  assign IF_IF_NOT_f22f3_empty_33_812_AND_NOT_SEL_ARR_f_ETC___d5915 =
-	     (NOT_f22f3_empty_33_812_AND_NOT_SEL_ARR_f22f3_d_ETC___d3844 ?
-		IF_rg_pending_f32d_847_BITS_72_TO_69_644_EQ_0__ETC___d5670 ==
-		4'd6 :
-		IF_IF_rg_pending_n_items_845_EQ_0_846_THEN_rg__ETC___d5847) ?
-	       4'd6 :
-	       IF_IF_NOT_f22f3_empty_33_812_AND_NOT_SEL_ARR_f_ETC___d5914 ;
-  assign IF_IF_NOT_f22f3_empty_33_812_AND_NOT_SEL_ARR_f_ETC___d5916 =
-	     (NOT_f22f3_empty_33_812_AND_NOT_SEL_ARR_f22f3_d_ETC___d3844 ?
-		IF_rg_pending_f32d_847_BITS_72_TO_69_644_EQ_0__ETC___d5670 ==
-		4'd5 :
-		IF_IF_rg_pending_n_items_845_EQ_0_846_THEN_rg__ETC___d5837) ?
-	       4'd5 :
-	       IF_IF_NOT_f22f3_empty_33_812_AND_NOT_SEL_ARR_f_ETC___d5915 ;
-  assign IF_IF_NOT_f22f3_empty_33_812_AND_NOT_SEL_ARR_f_ETC___d5917 =
-	     (NOT_f22f3_empty_33_812_AND_NOT_SEL_ARR_f22f3_d_ETC___d3844 ?
-		IF_rg_pending_f32d_847_BITS_72_TO_69_644_EQ_0__ETC___d5670 ==
-		4'd4 :
-		IF_IF_rg_pending_n_items_845_EQ_0_846_THEN_rg__ETC___d5827) ?
-	       4'd4 :
-	       IF_IF_NOT_f22f3_empty_33_812_AND_NOT_SEL_ARR_f_ETC___d5916 ;
-  assign IF_IF_NOT_f22f3_empty_33_812_AND_NOT_SEL_ARR_f_ETC___d5918 =
-	     (NOT_f22f3_empty_33_812_AND_NOT_SEL_ARR_f22f3_d_ETC___d3844 ?
-		IF_rg_pending_f32d_847_BITS_72_TO_69_644_EQ_0__ETC___d5670 ==
-		4'd3 :
-		IF_IF_rg_pending_n_items_845_EQ_0_846_THEN_rg__ETC___d5817) ?
-	       4'd3 :
-	       IF_IF_NOT_f22f3_empty_33_812_AND_NOT_SEL_ARR_f_ETC___d5917 ;
-  assign IF_IF_NOT_f22f3_empty_33_812_AND_NOT_SEL_ARR_f_ETC___d5919 =
-	     (NOT_f22f3_empty_33_812_AND_NOT_SEL_ARR_f22f3_d_ETC___d3844 ?
-		IF_rg_pending_f32d_847_BITS_72_TO_69_644_EQ_0__ETC___d5670 ==
-		4'd2 :
-		IF_IF_rg_pending_n_items_845_EQ_0_846_THEN_rg__ETC___d5807) ?
-	       4'd2 :
-	       IF_IF_NOT_f22f3_empty_33_812_AND_NOT_SEL_ARR_f_ETC___d5918 ;
-  assign IF_IF_NOT_f22f3_empty_33_812_AND_NOT_SEL_ARR_f_ETC___d5920 =
-	     (NOT_f22f3_empty_33_812_AND_NOT_SEL_ARR_f22f3_d_ETC___d3844 ?
-		IF_rg_pending_f32d_847_BITS_72_TO_69_644_EQ_0__ETC___d5670 ==
-		4'd1 :
-		IF_IF_rg_pending_n_items_845_EQ_0_846_THEN_rg__ETC___d5797) ?
-	       4'd1 :
-	       IF_IF_NOT_f22f3_empty_33_812_AND_NOT_SEL_ARR_f_ETC___d5919 ;
   assign IF_IF_NOT_f22f3_empty_33_812_AND_NOT_SEL_ARR_f_ETC___d5921 =
 	     (NOT_f22f3_empty_33_812_AND_NOT_SEL_ARR_f22f3_d_ETC___d3844 ?
-		IF_rg_pending_f32d_847_BITS_72_TO_69_644_EQ_0__ETC___d5670 ==
+		IF_rg_pending_f32d_847_BITS_72_TO_69_656_EQ_0__ETC___d5682 ==
+		4'd12 :
+		IF_IF_rg_pending_n_items_845_EQ_0_846_THEN_rg__ETC___d5919) ?
+	       4'd13 :
+	       4'd15 ;
+  assign IF_IF_NOT_f22f3_empty_33_812_AND_NOT_SEL_ARR_f_ETC___d5922 =
+	     (NOT_f22f3_empty_33_812_AND_NOT_SEL_ARR_f22f3_d_ETC___d3844 ?
+		IF_rg_pending_f32d_847_BITS_72_TO_69_656_EQ_0__ETC___d5682 ==
+		4'd11 :
+		IF_IF_rg_pending_n_items_845_EQ_0_846_THEN_rg__ETC___d5909) ?
+	       4'd12 :
+	       IF_IF_NOT_f22f3_empty_33_812_AND_NOT_SEL_ARR_f_ETC___d5921 ;
+  assign IF_IF_NOT_f22f3_empty_33_812_AND_NOT_SEL_ARR_f_ETC___d5923 =
+	     (NOT_f22f3_empty_33_812_AND_NOT_SEL_ARR_f22f3_d_ETC___d3844 ?
+		IF_rg_pending_f32d_847_BITS_72_TO_69_656_EQ_0__ETC___d5682 ==
+		4'd10 :
+		IF_IF_rg_pending_n_items_845_EQ_0_846_THEN_rg__ETC___d5899) ?
+	       4'd11 :
+	       IF_IF_NOT_f22f3_empty_33_812_AND_NOT_SEL_ARR_f_ETC___d5922 ;
+  assign IF_IF_NOT_f22f3_empty_33_812_AND_NOT_SEL_ARR_f_ETC___d5924 =
+	     (NOT_f22f3_empty_33_812_AND_NOT_SEL_ARR_f22f3_d_ETC___d3844 ?
+		IF_rg_pending_f32d_847_BITS_72_TO_69_656_EQ_0__ETC___d5682 ==
+		4'd9 :
+		IF_IF_rg_pending_n_items_845_EQ_0_846_THEN_rg__ETC___d5889) ?
+	       4'd9 :
+	       IF_IF_NOT_f22f3_empty_33_812_AND_NOT_SEL_ARR_f_ETC___d5923 ;
+  assign IF_IF_NOT_f22f3_empty_33_812_AND_NOT_SEL_ARR_f_ETC___d5925 =
+	     (NOT_f22f3_empty_33_812_AND_NOT_SEL_ARR_f22f3_d_ETC___d3844 ?
+		IF_rg_pending_f32d_847_BITS_72_TO_69_656_EQ_0__ETC___d5682 ==
+		4'd8 :
+		IF_IF_rg_pending_n_items_845_EQ_0_846_THEN_rg__ETC___d5879) ?
+	       4'd8 :
+	       IF_IF_NOT_f22f3_empty_33_812_AND_NOT_SEL_ARR_f_ETC___d5924 ;
+  assign IF_IF_NOT_f22f3_empty_33_812_AND_NOT_SEL_ARR_f_ETC___d5926 =
+	     (NOT_f22f3_empty_33_812_AND_NOT_SEL_ARR_f22f3_d_ETC___d3844 ?
+		IF_rg_pending_f32d_847_BITS_72_TO_69_656_EQ_0__ETC___d5682 ==
+		4'd7 :
+		IF_IF_rg_pending_n_items_845_EQ_0_846_THEN_rg__ETC___d5869) ?
+	       4'd7 :
+	       IF_IF_NOT_f22f3_empty_33_812_AND_NOT_SEL_ARR_f_ETC___d5925 ;
+  assign IF_IF_NOT_f22f3_empty_33_812_AND_NOT_SEL_ARR_f_ETC___d5927 =
+	     (NOT_f22f3_empty_33_812_AND_NOT_SEL_ARR_f22f3_d_ETC___d3844 ?
+		IF_rg_pending_f32d_847_BITS_72_TO_69_656_EQ_0__ETC___d5682 ==
+		4'd6 :
+		IF_IF_rg_pending_n_items_845_EQ_0_846_THEN_rg__ETC___d5859) ?
+	       4'd6 :
+	       IF_IF_NOT_f22f3_empty_33_812_AND_NOT_SEL_ARR_f_ETC___d5926 ;
+  assign IF_IF_NOT_f22f3_empty_33_812_AND_NOT_SEL_ARR_f_ETC___d5928 =
+	     (NOT_f22f3_empty_33_812_AND_NOT_SEL_ARR_f22f3_d_ETC___d3844 ?
+		IF_rg_pending_f32d_847_BITS_72_TO_69_656_EQ_0__ETC___d5682 ==
+		4'd5 :
+		IF_IF_rg_pending_n_items_845_EQ_0_846_THEN_rg__ETC___d5849) ?
+	       4'd5 :
+	       IF_IF_NOT_f22f3_empty_33_812_AND_NOT_SEL_ARR_f_ETC___d5927 ;
+  assign IF_IF_NOT_f22f3_empty_33_812_AND_NOT_SEL_ARR_f_ETC___d5929 =
+	     (NOT_f22f3_empty_33_812_AND_NOT_SEL_ARR_f22f3_d_ETC___d3844 ?
+		IF_rg_pending_f32d_847_BITS_72_TO_69_656_EQ_0__ETC___d5682 ==
+		4'd4 :
+		IF_IF_rg_pending_n_items_845_EQ_0_846_THEN_rg__ETC___d5839) ?
+	       4'd4 :
+	       IF_IF_NOT_f22f3_empty_33_812_AND_NOT_SEL_ARR_f_ETC___d5928 ;
+  assign IF_IF_NOT_f22f3_empty_33_812_AND_NOT_SEL_ARR_f_ETC___d5930 =
+	     (NOT_f22f3_empty_33_812_AND_NOT_SEL_ARR_f22f3_d_ETC___d3844 ?
+		IF_rg_pending_f32d_847_BITS_72_TO_69_656_EQ_0__ETC___d5682 ==
+		4'd3 :
+		IF_IF_rg_pending_n_items_845_EQ_0_846_THEN_rg__ETC___d5829) ?
+	       4'd3 :
+	       IF_IF_NOT_f22f3_empty_33_812_AND_NOT_SEL_ARR_f_ETC___d5929 ;
+  assign IF_IF_NOT_f22f3_empty_33_812_AND_NOT_SEL_ARR_f_ETC___d5931 =
+	     (NOT_f22f3_empty_33_812_AND_NOT_SEL_ARR_f22f3_d_ETC___d3844 ?
+		IF_rg_pending_f32d_847_BITS_72_TO_69_656_EQ_0__ETC___d5682 ==
+		4'd2 :
+		IF_IF_rg_pending_n_items_845_EQ_0_846_THEN_rg__ETC___d5819) ?
+	       4'd2 :
+	       IF_IF_NOT_f22f3_empty_33_812_AND_NOT_SEL_ARR_f_ETC___d5930 ;
+  assign IF_IF_NOT_f22f3_empty_33_812_AND_NOT_SEL_ARR_f_ETC___d5932 =
+	     (NOT_f22f3_empty_33_812_AND_NOT_SEL_ARR_f22f3_d_ETC___d3844 ?
+		IF_rg_pending_f32d_847_BITS_72_TO_69_656_EQ_0__ETC___d5682 ==
+		4'd1 :
+		IF_IF_rg_pending_n_items_845_EQ_0_846_THEN_rg__ETC___d5809) ?
+	       4'd1 :
+	       IF_IF_NOT_f22f3_empty_33_812_AND_NOT_SEL_ARR_f_ETC___d5931 ;
+  assign IF_IF_NOT_f22f3_empty_33_812_AND_NOT_SEL_ARR_f_ETC___d5933 =
+	     (NOT_f22f3_empty_33_812_AND_NOT_SEL_ARR_f22f3_d_ETC___d3844 ?
+		IF_rg_pending_f32d_847_BITS_72_TO_69_656_EQ_0__ETC___d5682 ==
 		4'd0 :
-		IF_IF_rg_pending_n_items_845_EQ_0_846_THEN_rg__ETC___d5787) ?
+		IF_IF_rg_pending_n_items_845_EQ_0_846_THEN_rg__ETC___d5799) ?
 	       4'd0 :
-	       IF_IF_NOT_f22f3_empty_33_812_AND_NOT_SEL_ARR_f_ETC___d5920 ;
-  assign IF_IF_NOT_f22f3_empty_33_812_AND_NOT_SEL_ARR_f_ETC___d5975 =
-	     IF_NOT_f22f3_empty_33_812_AND_NOT_SEL_ARR_f22f_ETC___d5962 ?
+	       IF_IF_NOT_f22f3_empty_33_812_AND_NOT_SEL_ARR_f_ETC___d5932 ;
+  assign IF_IF_NOT_f22f3_empty_33_812_AND_NOT_SEL_ARR_f_ETC___d5987 =
+	     IF_NOT_f22f3_empty_33_812_AND_NOT_SEL_ARR_f22f_ETC___d5974 ?
 	       81'h0AAAAAAAAAAAAAAAAAAAA :
 	       (NOT_f22f3_empty_33_812_AND_NOT_SEL_ARR_f22f3_d_ETC___d3844 ?
 		  ehr_pending_straddle_rl[80:0] :
-		  IF_IF_rg_pending_n_items_845_EQ_0_846_THEN_rg__ETC___d5973) ;
+		  IF_IF_rg_pending_n_items_845_EQ_0_846_THEN_rg__ETC___d5985) ;
   assign IF_IF_SEL_ARR_f22f3_data_0_813_BITS_204_TO_141_ETC___d4143 =
 	     IF_SEL_ARR_f22f3_data_0_813_BITS_204_TO_141_90_ETC___d4098 ?
 	       y_avValue_fst__h128405 :
@@ -10283,7 +10287,7 @@ module mkFetchStage(CLK,
 	     IF_IF_SEL_ARR_f22f3_data_0_813_BITS_204_TO_141_ETC___d4143 <
 	     n_x16s__h125921 ;
   assign IF_IF_SEL_ARR_f22f3_data_0_813_BITS_204_TO_141_ETC___d4149 =
-	     y_avValue_fst__h137123 < n_x16s__h125921 ;
+	     y_avValue_fst__h137117 < n_x16s__h125921 ;
   assign IF_IF_SEL_ARR_f22f3_data_0_813_BITS_204_TO_141_ETC___d4209 =
 	     IF_SEL_ARR_f22f3_data_0_813_BITS_204_TO_141_90_ETC___d4098 ?
 	       IF_IF_rg_pending_n_items_845_EQ_0_846_THEN_ehr_ETC___d4208 :
@@ -10301,56 +10305,56 @@ module mkFetchStage(CLK,
 		  3'd1 :
 		  3'd0) :
 	       3'd0 ;
-  assign IF_IF_SEL_ARR_f22f3_data_0_813_BITS_204_TO_141_ETC___d5545 =
+  assign IF_IF_SEL_ARR_f22f3_data_0_813_BITS_204_TO_141_ETC___d5557 =
 	     IF_SEL_ARR_f22f3_data_0_813_BITS_204_TO_141_90_ETC___d4098 ?
-	       IF_IF_rg_pending_n_items_845_EQ_0_846_THEN_ehr_ETC___d5544 :
+	       IF_IF_rg_pending_n_items_845_EQ_0_846_THEN_ehr_ETC___d5556 :
 	       SEL_ARR_NOT_f22f3_data_0_813_BIT_140_194_195_N_ETC___d4203 ;
-  assign IF_IF_decode_061_BITS_99_TO_95_065_EQ_8_075_AN_ETC___d6478 =
-	     (IF_decode_061_BITS_99_TO_95_065_EQ_8_075_AND_d_ETC___d6292 &&
-	      decode_pred_next_pc__h186793 != in_ppc__h183298) ?
+  assign IF_IF_decode_073_BITS_99_TO_95_077_EQ_8_087_AN_ETC___d6490 =
+	     (IF_decode_073_BITS_99_TO_95_077_EQ_8_087_AND_d_ETC___d6304 &&
+	      decode_pred_next_pc__h186753 != in_ppc__h183258) ?
 	       !decode_epoch_dummy2_0$Q_OUT || !decode_epoch_dummy2_1$Q_OUT ||
 	       !decode_epoch_rl :
 	       decode_epoch_dummy2_0$Q_OUT && decode_epoch_dummy2_1$Q_OUT &&
 	       decode_epoch_rl ;
-  assign IF_IF_decode_061_BITS_99_TO_95_065_EQ_8_075_AN_ETC___d6775 =
-	     (IF_decode_061_BITS_99_TO_95_065_EQ_8_075_AND_d_ETC___d6292 &&
-	      decode_pred_next_pc__h186793 != in_ppc__h183298) ?
+  assign IF_IF_decode_073_BITS_99_TO_95_077_EQ_8_087_AN_ETC___d6787 =
+	     (IF_decode_073_BITS_99_TO_95_077_EQ_8_087_AND_d_ETC___d6304 &&
+	      decode_pred_next_pc__h186753 != in_ppc__h183258) ?
 	       decode_epoch_dummy2_0$Q_OUT && decode_epoch_dummy2_1$Q_OUT &&
 	       decode_epoch_rl :
 	       !decode_epoch_dummy2_0$Q_OUT || !decode_epoch_dummy2_1$Q_OUT ||
 	       !decode_epoch_rl ;
-  assign IF_IF_decode_061_BITS_99_TO_95_065_EQ_8_075_AN_ETC___d6792 =
-	     (IF_decode_061_BITS_99_TO_95_065_EQ_8_075_AND_d_ETC___d6292 &&
-	      decode_pred_next_pc__h186793 != in_ppc__h183298) ?
-	       SEL_ARR_NOT_f32d_data_0_988_BIT_74_783_784_NOT_ETC___d6788 ||
-	       SEL_ARR_f32d_data_0_988_BIT_74_783_f32d_data_1_ETC___d6790 :
-	       SEL_ARR_f32d_data_0_988_BIT_74_783_f32d_data_1_ETC___d6790 ;
-  assign IF_IF_decode_061_BITS_99_TO_95_065_EQ_8_075_AN_ETC___d6815 =
-	     (IF_decode_061_BITS_99_TO_95_065_EQ_8_075_AND_d_ETC___d6292 &&
-	      decode_pred_next_pc__h186793 != in_ppc__h183298) ?
-	       IF_SEL_ARR_NOT_f32d_data_0_988_BIT_74_783_784__ETC___d6814 :
-	       { in_pc__h183297, nextPc__h198099 } ;
-  assign IF_IF_decode_487_BITS_99_TO_95_491_EQ_8_497_AN_ETC___d6771 =
-	     (IF_decode_487_BITS_99_TO_95_491_EQ_8_497_AND_d_ETC___d6714 &&
-	      decode_pred_next_pc__h193609 != in_ppc__h190370) ?
-	       decode_pred_next_pc__h193609 :
-	       decode_pred_next_pc__h186793 ;
-  assign IF_IF_decode_487_BITS_99_TO_95_491_EQ_8_497_AN_ETC___d6779 =
-	     (IF_decode_487_BITS_99_TO_95_491_EQ_8_497_AND_d_ETC___d6714 &&
-	      decode_pred_next_pc__h193609 != in_ppc__h190370) ?
-	       IF_SEL_ARR_instdata_data_0_996_BITS_65_TO_64_9_ETC___d6778 :
-	       IF_SEL_ARR_instdata_data_0_996_BITS_65_TO_64_9_ETC___d6481 ;
-  assign IF_IF_decode_487_BITS_99_TO_95_491_EQ_8_497_AN_ETC___d6797 =
-	     (IF_decode_487_BITS_99_TO_95_491_EQ_8_497_AND_d_ETC___d6714 &&
-	      decode_pred_next_pc__h193609 != in_ppc__h190370) ?
-	       SEL_ARR_NOT_f32d_data_0_988_BIT_74_783_784_NOT_ETC___d6788 ||
-	       NOT_SEL_ARR_instdata_data_0_996_BITS_65_TO_64__ETC___d6795 :
-	       NOT_SEL_ARR_instdata_data_0_996_BITS_65_TO_64__ETC___d6795 ;
-  assign IF_IF_decode_487_BITS_99_TO_95_491_EQ_8_497_AN_ETC___d6816 =
-	     (IF_decode_487_BITS_99_TO_95_491_EQ_8_497_AND_d_ETC___d6714 &&
-	      decode_pred_next_pc__h193609 != in_ppc__h190370) ?
-	       IF_SEL_ARR_NOT_f32d_data_0_988_BIT_74_783_784__ETC___d6810 :
-	       IF_IF_decode_061_BITS_99_TO_95_065_EQ_8_075_AN_ETC___d6815 ;
+  assign IF_IF_decode_073_BITS_99_TO_95_077_EQ_8_087_AN_ETC___d6804 =
+	     (IF_decode_073_BITS_99_TO_95_077_EQ_8_087_AND_d_ETC___d6304 &&
+	      decode_pred_next_pc__h186753 != in_ppc__h183258) ?
+	       SEL_ARR_NOT_f32d_data_0_000_BIT_74_795_796_NOT_ETC___d6800 ||
+	       SEL_ARR_f32d_data_0_000_BIT_74_795_f32d_data_1_ETC___d6802 :
+	       SEL_ARR_f32d_data_0_000_BIT_74_795_f32d_data_1_ETC___d6802 ;
+  assign IF_IF_decode_073_BITS_99_TO_95_077_EQ_8_087_AN_ETC___d6827 =
+	     (IF_decode_073_BITS_99_TO_95_077_EQ_8_087_AND_d_ETC___d6304 &&
+	      decode_pred_next_pc__h186753 != in_ppc__h183258) ?
+	       IF_SEL_ARR_NOT_f32d_data_0_000_BIT_74_795_796__ETC___d6826 :
+	       { in_pc__h183257, nextPc__h198059 } ;
+  assign IF_IF_decode_499_BITS_99_TO_95_503_EQ_8_509_AN_ETC___d6783 =
+	     (IF_decode_499_BITS_99_TO_95_503_EQ_8_509_AND_d_ETC___d6726 &&
+	      decode_pred_next_pc__h193569 != in_ppc__h190330) ?
+	       decode_pred_next_pc__h193569 :
+	       decode_pred_next_pc__h186753 ;
+  assign IF_IF_decode_499_BITS_99_TO_95_503_EQ_8_509_AN_ETC___d6791 =
+	     (IF_decode_499_BITS_99_TO_95_503_EQ_8_509_AND_d_ETC___d6726 &&
+	      decode_pred_next_pc__h193569 != in_ppc__h190330) ?
+	       IF_SEL_ARR_instdata_data_0_008_BITS_65_TO_64_0_ETC___d6790 :
+	       IF_SEL_ARR_instdata_data_0_008_BITS_65_TO_64_0_ETC___d6493 ;
+  assign IF_IF_decode_499_BITS_99_TO_95_503_EQ_8_509_AN_ETC___d6809 =
+	     (IF_decode_499_BITS_99_TO_95_503_EQ_8_509_AND_d_ETC___d6726 &&
+	      decode_pred_next_pc__h193569 != in_ppc__h190330) ?
+	       SEL_ARR_NOT_f32d_data_0_000_BIT_74_795_796_NOT_ETC___d6800 ||
+	       NOT_SEL_ARR_instdata_data_0_008_BITS_65_TO_64__ETC___d6807 :
+	       NOT_SEL_ARR_instdata_data_0_008_BITS_65_TO_64__ETC___d6807 ;
+  assign IF_IF_decode_499_BITS_99_TO_95_503_EQ_8_509_AN_ETC___d6828 =
+	     (IF_decode_499_BITS_99_TO_95_503_EQ_8_509_AND_d_ETC___d6726 &&
+	      decode_pred_next_pc__h193569 != in_ppc__h190330) ?
+	       IF_SEL_ARR_NOT_f32d_data_0_000_BIT_74_795_796__ETC___d6822 :
+	       IF_IF_decode_073_BITS_99_TO_95_077_EQ_8_087_AN_ETC___d6827 ;
   assign IF_IF_iTlb_to_proc_response_get_672_BIT_4_673__ETC___d3779 =
 	     IF_iTlb_to_proc_response_get_672_BIT_4_673_THE_ETC___d3770 ?
 	       4'd11 :
@@ -11082,7 +11086,7 @@ module mkFetchStage(CLK,
 		  4'd1 :
 		  IF_IF_out_fifo_enqueueElement_1_lat_0_whas__52_ETC___d2366) ;
   assign IF_IF_pc_reg_dummy2_0_read__283_AND_pc_reg_dum_ETC___d3614 =
-	     (getFetchState_pc__h222980[1:0] == 2'b0 &&
+	     (getFetchState_pc__h222940[1:0] == 2'b0 &&
 	      (IF_NOT_SEL_ARR_nextAddrPred_valid_0_read__297__ETC___d3585[5:2] !=
 	       4'd15 ||
 	       IF_NOT_SEL_ARR_nextAddrPred_valid_0_read__297__ETC___d3585[1:0] ==
@@ -11093,7 +11097,7 @@ module mkFetchStage(CLK,
 	       !SEL_ARR_nextAddrPred_valid_0_read__297_nextAdd_ETC___d3594 ||
 	       !IF_NOT_IF_pc_reg_dummy2_0_read__283_AND_pc_reg_ETC___d3598 ;
   assign IF_IF_pc_reg_dummy2_0_read__283_AND_pc_reg_dum_ETC___d3631 =
-	     (getFetchState_pc__h222980[1:0] == 2'b0 &&
+	     (getFetchState_pc__h222940[1:0] == 2'b0 &&
 	      (IF_NOT_SEL_ARR_nextAddrPred_valid_0_read__297__ETC___d3585[5:2] !=
 	       4'd15 ||
 	       IF_NOT_SEL_ARR_nextAddrPred_valid_0_read__297__ETC___d3585[1:0] ==
@@ -11104,7 +11108,7 @@ module mkFetchStage(CLK,
 		  nextAddrPred_next_addrs$D_OUT_2 :
 		  nextAddrPred_next_addrs$D_OUT_3) ;
   assign IF_IF_pc_reg_dummy2_0_read__283_AND_pc_reg_dum_ETC___d3646 =
-	     (getFetchState_pc__h222980[1:0] == 2'b0 &&
+	     (getFetchState_pc__h222940[1:0] == 2'b0 &&
 	      (IF_NOT_SEL_ARR_nextAddrPred_valid_0_read__297__ETC___d3585[5:2] !=
 	       4'd15 ||
 	       IF_NOT_SEL_ARR_nextAddrPred_valid_0_read__297__ETC___d3585[1:0] ==
@@ -11126,7 +11130,7 @@ module mkFetchStage(CLK,
 	       !SEL_ARR_NOT_f22f3_data_0_813_BIT_140_194_195_N_ETC___d4203 :
 	       IF_SEL_ARR_f22f3_data_0_813_BITS_204_TO_141_90_ETC___d4137 &&
 	       !SEL_ARR_NOT_f22f3_data_0_813_BIT_140_194_195_N_ETC___d4203 ;
-  assign IF_IF_rg_pending_n_items_845_EQ_0_846_THEN_ehr_ETC___d5200 =
+  assign IF_IF_rg_pending_n_items_845_EQ_0_846_THEN_ehr_ETC___d5209 =
 	     IF_rg_pending_n_items_845_EQ_0_846_THEN_ehr_pe_ETC___d3886 ?
 	       2'd2 :
 	       ((SEL_ARR_IF_NOT_f22f3_empty_33_812_AND_NOT_SEL__ETC___d4134[1:0] ==
@@ -11135,7 +11139,7 @@ module mkFetchStage(CLK,
 		     2'd2 :
 		     2'd0) :
 		  2'd1) ;
-  assign IF_IF_rg_pending_n_items_845_EQ_0_846_THEN_ehr_ETC___d5544 =
+  assign IF_IF_rg_pending_n_items_845_EQ_0_846_THEN_ehr_ETC___d5556 =
 	     (IF_rg_pending_n_items_845_EQ_0_846_THEN_ehr_pe_ETC___d3886 ||
 	      SEL_ARR_IF_NOT_f22f3_empty_33_812_AND_NOT_SEL__ETC___d4134[1:0] !=
 	      2'b11) ?
@@ -11154,132 +11158,132 @@ module mkFetchStage(CLK,
 		  SEL_ARR_NOT_f22f3_data_0_813_BIT_75_862_863_NO_ETC___d3871 :
 		  !rg_pending_f32d[73]) :
 	       !rg_pending_f32d[73] ;
-  assign IF_IF_rg_pending_n_items_845_EQ_0_846_THEN_rg__ETC___d5202 =
+  assign IF_IF_rg_pending_n_items_845_EQ_0_846_THEN_rg__ETC___d5211 =
 	     IF_rg_pending_n_items_845_EQ_0_846_THEN_rg_pen_ETC___d3977 ?
 	       (IF_SEL_ARR_f22f3_data_0_813_BITS_204_TO_141_90_ETC___d4098 ?
-		  IF_IF_rg_pending_n_items_845_EQ_0_846_THEN_ehr_ETC___d5200 :
+		  IF_IF_rg_pending_n_items_845_EQ_0_846_THEN_ehr_ETC___d5209 :
 		  2'd0) :
 	       2'd0 ;
-  assign IF_IF_rg_pending_n_items_845_EQ_0_846_THEN_rg__ETC___d5573 =
+  assign IF_IF_rg_pending_n_items_845_EQ_0_846_THEN_rg__ETC___d5585 =
 	     IF_rg_pending_n_items_845_EQ_0_846_THEN_rg_pen_ETC___d3977 ?
 	       ((pending_n_items__h124835 == 2'd0) ?
 		  SEL_ARR_f22f3_data_0_813_BIT_4_825_f22f3_data__ETC___d3830 :
 		  rg_pending_f32d[4]) :
 	       rg_pending_f32d[4] ;
-  assign IF_IF_rg_pending_n_items_845_EQ_0_846_THEN_rg__ETC___d5641 =
+  assign IF_IF_rg_pending_n_items_845_EQ_0_846_THEN_rg__ETC___d5653 =
 	     (pending_n_items__h124835 == 2'd0) ?
 	       IF_rg_pending_n_items_845_EQ_0_846_THEN_ehr_pe_ETC___d3886 &&
 	       ehr_pending_straddle_rl[0] :
 	       rg_pending_f32d[74] ;
-  assign IF_IF_rg_pending_n_items_845_EQ_0_846_THEN_rg__ETC___d5787 =
+  assign IF_IF_rg_pending_n_items_845_EQ_0_846_THEN_rg__ETC___d5799 =
 	     IF_rg_pending_n_items_845_EQ_0_846_THEN_rg_pen_ETC___d3977 ?
 	       ((pending_n_items__h124835 == 2'd0) ?
-		  SEL_ARR_IF_f22f3_data_0_813_BITS_74_TO_71_672__ETC___d5785 :
-		  IF_rg_pending_f32d_847_BITS_72_TO_69_644_EQ_0__ETC___d5670 ==
+		  SEL_ARR_IF_f22f3_data_0_813_BITS_74_TO_71_684__ETC___d5797 :
+		  IF_rg_pending_f32d_847_BITS_72_TO_69_656_EQ_0__ETC___d5682 ==
 		  4'd0) :
-	       IF_rg_pending_f32d_847_BITS_72_TO_69_644_EQ_0__ETC___d5670 ==
+	       IF_rg_pending_f32d_847_BITS_72_TO_69_656_EQ_0__ETC___d5682 ==
 	       4'd0 ;
-  assign IF_IF_rg_pending_n_items_845_EQ_0_846_THEN_rg__ETC___d5797 =
+  assign IF_IF_rg_pending_n_items_845_EQ_0_846_THEN_rg__ETC___d5809 =
 	     IF_rg_pending_n_items_845_EQ_0_846_THEN_rg_pen_ETC___d3977 ?
 	       ((pending_n_items__h124835 == 2'd0) ?
-		  SEL_ARR_IF_f22f3_data_0_813_BITS_74_TO_71_672__ETC___d5795 :
-		  IF_rg_pending_f32d_847_BITS_72_TO_69_644_EQ_0__ETC___d5670 ==
+		  SEL_ARR_IF_f22f3_data_0_813_BITS_74_TO_71_684__ETC___d5807 :
+		  IF_rg_pending_f32d_847_BITS_72_TO_69_656_EQ_0__ETC___d5682 ==
 		  4'd1) :
-	       IF_rg_pending_f32d_847_BITS_72_TO_69_644_EQ_0__ETC___d5670 ==
+	       IF_rg_pending_f32d_847_BITS_72_TO_69_656_EQ_0__ETC___d5682 ==
 	       4'd1 ;
-  assign IF_IF_rg_pending_n_items_845_EQ_0_846_THEN_rg__ETC___d5807 =
+  assign IF_IF_rg_pending_n_items_845_EQ_0_846_THEN_rg__ETC___d5819 =
 	     IF_rg_pending_n_items_845_EQ_0_846_THEN_rg_pen_ETC___d3977 ?
 	       ((pending_n_items__h124835 == 2'd0) ?
-		  SEL_ARR_IF_f22f3_data_0_813_BITS_74_TO_71_672__ETC___d5805 :
-		  IF_rg_pending_f32d_847_BITS_72_TO_69_644_EQ_0__ETC___d5670 ==
+		  SEL_ARR_IF_f22f3_data_0_813_BITS_74_TO_71_684__ETC___d5817 :
+		  IF_rg_pending_f32d_847_BITS_72_TO_69_656_EQ_0__ETC___d5682 ==
 		  4'd2) :
-	       IF_rg_pending_f32d_847_BITS_72_TO_69_644_EQ_0__ETC___d5670 ==
+	       IF_rg_pending_f32d_847_BITS_72_TO_69_656_EQ_0__ETC___d5682 ==
 	       4'd2 ;
-  assign IF_IF_rg_pending_n_items_845_EQ_0_846_THEN_rg__ETC___d5817 =
+  assign IF_IF_rg_pending_n_items_845_EQ_0_846_THEN_rg__ETC___d5829 =
 	     IF_rg_pending_n_items_845_EQ_0_846_THEN_rg_pen_ETC___d3977 ?
 	       ((pending_n_items__h124835 == 2'd0) ?
-		  SEL_ARR_IF_f22f3_data_0_813_BITS_74_TO_71_672__ETC___d5815 :
-		  IF_rg_pending_f32d_847_BITS_72_TO_69_644_EQ_0__ETC___d5670 ==
+		  SEL_ARR_IF_f22f3_data_0_813_BITS_74_TO_71_684__ETC___d5827 :
+		  IF_rg_pending_f32d_847_BITS_72_TO_69_656_EQ_0__ETC___d5682 ==
 		  4'd3) :
-	       IF_rg_pending_f32d_847_BITS_72_TO_69_644_EQ_0__ETC___d5670 ==
+	       IF_rg_pending_f32d_847_BITS_72_TO_69_656_EQ_0__ETC___d5682 ==
 	       4'd3 ;
-  assign IF_IF_rg_pending_n_items_845_EQ_0_846_THEN_rg__ETC___d5827 =
+  assign IF_IF_rg_pending_n_items_845_EQ_0_846_THEN_rg__ETC___d5839 =
 	     IF_rg_pending_n_items_845_EQ_0_846_THEN_rg_pen_ETC___d3977 ?
 	       ((pending_n_items__h124835 == 2'd0) ?
-		  SEL_ARR_IF_f22f3_data_0_813_BITS_74_TO_71_672__ETC___d5825 :
-		  IF_rg_pending_f32d_847_BITS_72_TO_69_644_EQ_0__ETC___d5670 ==
+		  SEL_ARR_IF_f22f3_data_0_813_BITS_74_TO_71_684__ETC___d5837 :
+		  IF_rg_pending_f32d_847_BITS_72_TO_69_656_EQ_0__ETC___d5682 ==
 		  4'd4) :
-	       IF_rg_pending_f32d_847_BITS_72_TO_69_644_EQ_0__ETC___d5670 ==
+	       IF_rg_pending_f32d_847_BITS_72_TO_69_656_EQ_0__ETC___d5682 ==
 	       4'd4 ;
-  assign IF_IF_rg_pending_n_items_845_EQ_0_846_THEN_rg__ETC___d5837 =
+  assign IF_IF_rg_pending_n_items_845_EQ_0_846_THEN_rg__ETC___d5849 =
 	     IF_rg_pending_n_items_845_EQ_0_846_THEN_rg_pen_ETC___d3977 ?
 	       ((pending_n_items__h124835 == 2'd0) ?
-		  SEL_ARR_IF_f22f3_data_0_813_BITS_74_TO_71_672__ETC___d5835 :
-		  IF_rg_pending_f32d_847_BITS_72_TO_69_644_EQ_0__ETC___d5670 ==
+		  SEL_ARR_IF_f22f3_data_0_813_BITS_74_TO_71_684__ETC___d5847 :
+		  IF_rg_pending_f32d_847_BITS_72_TO_69_656_EQ_0__ETC___d5682 ==
 		  4'd5) :
-	       IF_rg_pending_f32d_847_BITS_72_TO_69_644_EQ_0__ETC___d5670 ==
+	       IF_rg_pending_f32d_847_BITS_72_TO_69_656_EQ_0__ETC___d5682 ==
 	       4'd5 ;
-  assign IF_IF_rg_pending_n_items_845_EQ_0_846_THEN_rg__ETC___d5847 =
+  assign IF_IF_rg_pending_n_items_845_EQ_0_846_THEN_rg__ETC___d5859 =
 	     IF_rg_pending_n_items_845_EQ_0_846_THEN_rg_pen_ETC___d3977 ?
 	       ((pending_n_items__h124835 == 2'd0) ?
-		  SEL_ARR_IF_f22f3_data_0_813_BITS_74_TO_71_672__ETC___d5845 :
-		  IF_rg_pending_f32d_847_BITS_72_TO_69_644_EQ_0__ETC___d5670 ==
+		  SEL_ARR_IF_f22f3_data_0_813_BITS_74_TO_71_684__ETC___d5857 :
+		  IF_rg_pending_f32d_847_BITS_72_TO_69_656_EQ_0__ETC___d5682 ==
 		  4'd6) :
-	       IF_rg_pending_f32d_847_BITS_72_TO_69_644_EQ_0__ETC___d5670 ==
+	       IF_rg_pending_f32d_847_BITS_72_TO_69_656_EQ_0__ETC___d5682 ==
 	       4'd6 ;
-  assign IF_IF_rg_pending_n_items_845_EQ_0_846_THEN_rg__ETC___d5857 =
+  assign IF_IF_rg_pending_n_items_845_EQ_0_846_THEN_rg__ETC___d5869 =
 	     IF_rg_pending_n_items_845_EQ_0_846_THEN_rg_pen_ETC___d3977 ?
 	       ((pending_n_items__h124835 == 2'd0) ?
-		  SEL_ARR_IF_f22f3_data_0_813_BITS_74_TO_71_672__ETC___d5855 :
-		  IF_rg_pending_f32d_847_BITS_72_TO_69_644_EQ_0__ETC___d5670 ==
+		  SEL_ARR_IF_f22f3_data_0_813_BITS_74_TO_71_684__ETC___d5867 :
+		  IF_rg_pending_f32d_847_BITS_72_TO_69_656_EQ_0__ETC___d5682 ==
 		  4'd7) :
-	       IF_rg_pending_f32d_847_BITS_72_TO_69_644_EQ_0__ETC___d5670 ==
+	       IF_rg_pending_f32d_847_BITS_72_TO_69_656_EQ_0__ETC___d5682 ==
 	       4'd7 ;
-  assign IF_IF_rg_pending_n_items_845_EQ_0_846_THEN_rg__ETC___d5867 =
+  assign IF_IF_rg_pending_n_items_845_EQ_0_846_THEN_rg__ETC___d5879 =
 	     IF_rg_pending_n_items_845_EQ_0_846_THEN_rg_pen_ETC___d3977 ?
 	       ((pending_n_items__h124835 == 2'd0) ?
-		  SEL_ARR_IF_f22f3_data_0_813_BITS_74_TO_71_672__ETC___d5865 :
-		  IF_rg_pending_f32d_847_BITS_72_TO_69_644_EQ_0__ETC___d5670 ==
+		  SEL_ARR_IF_f22f3_data_0_813_BITS_74_TO_71_684__ETC___d5877 :
+		  IF_rg_pending_f32d_847_BITS_72_TO_69_656_EQ_0__ETC___d5682 ==
 		  4'd8) :
-	       IF_rg_pending_f32d_847_BITS_72_TO_69_644_EQ_0__ETC___d5670 ==
+	       IF_rg_pending_f32d_847_BITS_72_TO_69_656_EQ_0__ETC___d5682 ==
 	       4'd8 ;
-  assign IF_IF_rg_pending_n_items_845_EQ_0_846_THEN_rg__ETC___d5877 =
+  assign IF_IF_rg_pending_n_items_845_EQ_0_846_THEN_rg__ETC___d5889 =
 	     IF_rg_pending_n_items_845_EQ_0_846_THEN_rg_pen_ETC___d3977 ?
 	       ((pending_n_items__h124835 == 2'd0) ?
-		  SEL_ARR_IF_f22f3_data_0_813_BITS_74_TO_71_672__ETC___d5875 :
-		  IF_rg_pending_f32d_847_BITS_72_TO_69_644_EQ_0__ETC___d5670 ==
+		  SEL_ARR_IF_f22f3_data_0_813_BITS_74_TO_71_684__ETC___d5887 :
+		  IF_rg_pending_f32d_847_BITS_72_TO_69_656_EQ_0__ETC___d5682 ==
 		  4'd9) :
-	       IF_rg_pending_f32d_847_BITS_72_TO_69_644_EQ_0__ETC___d5670 ==
+	       IF_rg_pending_f32d_847_BITS_72_TO_69_656_EQ_0__ETC___d5682 ==
 	       4'd9 ;
-  assign IF_IF_rg_pending_n_items_845_EQ_0_846_THEN_rg__ETC___d5887 =
+  assign IF_IF_rg_pending_n_items_845_EQ_0_846_THEN_rg__ETC___d5899 =
 	     IF_rg_pending_n_items_845_EQ_0_846_THEN_rg_pen_ETC___d3977 ?
 	       ((pending_n_items__h124835 == 2'd0) ?
-		  SEL_ARR_IF_f22f3_data_0_813_BITS_74_TO_71_672__ETC___d5885 :
-		  IF_rg_pending_f32d_847_BITS_72_TO_69_644_EQ_0__ETC___d5670 ==
+		  SEL_ARR_IF_f22f3_data_0_813_BITS_74_TO_71_684__ETC___d5897 :
+		  IF_rg_pending_f32d_847_BITS_72_TO_69_656_EQ_0__ETC___d5682 ==
 		  4'd10) :
-	       IF_rg_pending_f32d_847_BITS_72_TO_69_644_EQ_0__ETC___d5670 ==
+	       IF_rg_pending_f32d_847_BITS_72_TO_69_656_EQ_0__ETC___d5682 ==
 	       4'd10 ;
-  assign IF_IF_rg_pending_n_items_845_EQ_0_846_THEN_rg__ETC___d5897 =
+  assign IF_IF_rg_pending_n_items_845_EQ_0_846_THEN_rg__ETC___d5909 =
 	     IF_rg_pending_n_items_845_EQ_0_846_THEN_rg_pen_ETC___d3977 ?
 	       ((pending_n_items__h124835 == 2'd0) ?
-		  SEL_ARR_IF_f22f3_data_0_813_BITS_74_TO_71_672__ETC___d5895 :
-		  IF_rg_pending_f32d_847_BITS_72_TO_69_644_EQ_0__ETC___d5670 ==
+		  SEL_ARR_IF_f22f3_data_0_813_BITS_74_TO_71_684__ETC___d5907 :
+		  IF_rg_pending_f32d_847_BITS_72_TO_69_656_EQ_0__ETC___d5682 ==
 		  4'd11) :
-	       IF_rg_pending_f32d_847_BITS_72_TO_69_644_EQ_0__ETC___d5670 ==
+	       IF_rg_pending_f32d_847_BITS_72_TO_69_656_EQ_0__ETC___d5682 ==
 	       4'd11 ;
-  assign IF_IF_rg_pending_n_items_845_EQ_0_846_THEN_rg__ETC___d5907 =
+  assign IF_IF_rg_pending_n_items_845_EQ_0_846_THEN_rg__ETC___d5919 =
 	     IF_rg_pending_n_items_845_EQ_0_846_THEN_rg_pen_ETC___d3977 ?
 	       ((pending_n_items__h124835 == 2'd0) ?
-		  SEL_ARR_IF_f22f3_data_0_813_BITS_74_TO_71_672__ETC___d5905 :
-		  IF_rg_pending_f32d_847_BITS_72_TO_69_644_EQ_0__ETC___d5670 ==
+		  SEL_ARR_IF_f22f3_data_0_813_BITS_74_TO_71_684__ETC___d5917 :
+		  IF_rg_pending_f32d_847_BITS_72_TO_69_656_EQ_0__ETC___d5682 ==
 		  4'd12) :
-	       IF_rg_pending_f32d_847_BITS_72_TO_69_644_EQ_0__ETC___d5670 ==
+	       IF_rg_pending_f32d_847_BITS_72_TO_69_656_EQ_0__ETC___d5682 ==
 	       4'd12 ;
-  assign IF_IF_rg_pending_n_items_845_EQ_0_846_THEN_rg__ETC___d5973 =
+  assign IF_IF_rg_pending_n_items_845_EQ_0_846_THEN_rg__ETC___d5985 =
 	     IF_rg_pending_n_items_845_EQ_0_846_THEN_rg_pen_ETC___d3977 ?
 	       (IF_IF_IF_IF_SEL_ARR_f22f3_data_0_813_BITS_204__ETC___d4166 ?
-		  IF_NOT_SEL_ARR_IF_NOT_f22f3_empty_33_812_AND_N_ETC___d5971 :
-		  IF_IF_IF_IF_SEL_ARR_f22f3_data_0_813_BITS_204__ETC___d5969) :
+		  IF_NOT_SEL_ARR_IF_NOT_f22f3_empty_33_812_AND_N_ETC___d5983 :
+		  IF_IF_IF_IF_SEL_ARR_f22f3_data_0_813_BITS_204__ETC___d5981) :
 	       ehr_pending_straddle_rl[80:0] ;
   assign IF_NOT_IF_NOT_IF_pc_reg_dummy2_0_read__283_AND_ETC___d3601 =
 	     ((IF_NOT_IF_pc_reg_dummy2_0_read__283_AND_pc_reg_ETC___d3564[5:2] !=
@@ -11310,15 +11314,15 @@ module mkFetchStage(CLK,
 	       SEL_ARR_nextAddrPred_valid_0_read__297_nextAdd_ETC___d3572 &&
 	       IF_pc_reg_dummy2_0_read__283_AND_pc_reg_dummy2_ETC___d3576 ;
   assign IF_NOT_IF_pc_reg_dummy2_0_read__283_AND_pc_reg_ETC___d3564 =
-	     ((getFetchState_pc__h222980[5:2] != 4'd15 ||
-	       getFetchState_pc__h222980[1:0] == 2'b0) &&
+	     ((getFetchState_pc__h222940[5:2] != 4'd15 ||
+	       getFetchState_pc__h222940[1:0] == 2'b0) &&
 	      (!SEL_ARR_nextAddrPred_valid_0_read__297_nextAdd_ETC___d3555 ||
 	       !IF_pc_reg_dummy2_0_read__283_AND_pc_reg_dummy2_ETC___d3559)) ?
 	       prev_PC__h121324 :
-	       getFetchState_pc__h222980 ;
+	       getFetchState_pc__h222940 ;
   assign IF_NOT_IF_pc_reg_dummy2_0_read__283_AND_pc_reg_ETC___d3581 =
-	     ((getFetchState_pc__h222980[5:2] != 4'd15 ||
-	       getFetchState_pc__h222980[1:0] == 2'b0) &&
+	     ((getFetchState_pc__h222940[5:2] != 4'd15 ||
+	       getFetchState_pc__h222940[1:0] == 2'b0) &&
 	      (!SEL_ARR_nextAddrPred_valid_0_read__297_nextAdd_ETC___d3555 ||
 	       !IF_pc_reg_dummy2_0_read__283_AND_pc_reg_dummy2_ETC___d3559)) ?
 	       !SEL_ARR_nextAddrPred_valid_0_read__297_nextAdd_ETC___d3572 ||
@@ -11328,8 +11332,8 @@ module mkFetchStage(CLK,
   assign IF_NOT_IF_pc_reg_dummy2_0_read__283_AND_pc_reg_ETC___d3598 =
 	     prev_PC__h121727[63:9] == nextAddrPred_tags$D_OUT_3 ;
   assign IF_NOT_IF_pc_reg_dummy2_0_read__283_AND_pc_reg_ETC___d3603 =
-	     ((getFetchState_pc__h222980[5:2] != 4'd15 ||
-	       getFetchState_pc__h222980[1:0] == 2'b0) &&
+	     ((getFetchState_pc__h222940[5:2] != 4'd15 ||
+	       getFetchState_pc__h222940[1:0] == 2'b0) &&
 	      (!SEL_ARR_nextAddrPred_valid_0_read__297_nextAdd_ETC___d3555 ||
 	       !IF_pc_reg_dummy2_0_read__283_AND_pc_reg_dummy2_ETC___d3559)) ?
 	       _theResult___snd_snd_fst__h121720 :
@@ -11337,23 +11341,23 @@ module mkFetchStage(CLK,
   assign IF_NOT_IF_pc_reg_dummy2_0_read__283_AND_pc_reg_ETC___d3610 =
 	     prev_PC__h122103[63:9] == nextAddrPred_tags$D_OUT_2 ;
   assign IF_NOT_IF_pc_reg_dummy2_0_read__283_AND_pc_reg_ETC___d3615 =
-	     ((getFetchState_pc__h222980[5:2] != 4'd15 ||
-	       getFetchState_pc__h222980[1:0] == 2'b0) &&
+	     ((getFetchState_pc__h222940[5:2] != 4'd15 ||
+	       getFetchState_pc__h222940[1:0] == 2'b0) &&
 	      (!SEL_ARR_nextAddrPred_valid_0_read__297_nextAdd_ETC___d3555 ||
 	       !IF_pc_reg_dummy2_0_read__283_AND_pc_reg_dummy2_ETC___d3559)) ?
 	       IF_NOT_IF_NOT_IF_pc_reg_dummy2_0_read__283_AND_ETC___d3601 :
 	       !SEL_ARR_nextAddrPred_valid_0_read__297_nextAdd_ETC___d3555 ||
 	       !IF_pc_reg_dummy2_0_read__283_AND_pc_reg_dummy2_ETC___d3559 ;
   assign IF_NOT_IF_pc_reg_dummy2_0_read__283_AND_pc_reg_ETC___d3620 =
-	     ((getFetchState_pc__h222980[5:2] != 4'd15 ||
-	       getFetchState_pc__h222980[1:0] == 2'b0) &&
+	     ((getFetchState_pc__h222940[5:2] != 4'd15 ||
+	       getFetchState_pc__h222940[1:0] == 2'b0) &&
 	      (!SEL_ARR_nextAddrPred_valid_0_read__297_nextAdd_ETC___d3555 ||
 	       !IF_pc_reg_dummy2_0_read__283_AND_pc_reg_dummy2_ETC___d3559)) ?
 	       64'd1 :
 	       64'd0 ;
   assign IF_NOT_IF_pc_reg_dummy2_0_read__283_AND_pc_reg_ETC___d3634 =
-	     ((getFetchState_pc__h222980[5:2] != 4'd15 ||
-	       getFetchState_pc__h222980[1:0] == 2'b0) &&
+	     ((getFetchState_pc__h222940[5:2] != 4'd15 ||
+	       getFetchState_pc__h222940[1:0] == 2'b0) &&
 	      (!SEL_ARR_nextAddrPred_valid_0_read__297_nextAdd_ETC___d3555 ||
 	       !IF_pc_reg_dummy2_0_read__283_AND_pc_reg_dummy2_ETC___d3559)) ?
 	       IF_NOT_IF_NOT_IF_pc_reg_dummy2_0_read__283_AND_ETC___d3632 :
@@ -11363,15 +11367,15 @@ module mkFetchStage(CLK,
 	       IF_IF_pc_reg_dummy2_0_read__283_AND_pc_reg_dum_ETC___d3631 :
 	       IF_NOT_IF_pc_reg_dummy2_0_read__283_AND_pc_reg_ETC___d3634 ;
   assign IF_NOT_IF_pc_reg_dummy2_0_read__283_AND_pc_reg_ETC___d3639 =
-	     ((getFetchState_pc__h222980[5:2] != 4'd15 ||
-	       getFetchState_pc__h222980[1:0] == 2'b0) &&
+	     ((getFetchState_pc__h222940[5:2] != 4'd15 ||
+	       getFetchState_pc__h222940[1:0] == 2'b0) &&
 	      (!SEL_ARR_nextAddrPred_valid_0_read__297_nextAdd_ETC___d3555 ||
 	       !IF_pc_reg_dummy2_0_read__283_AND_pc_reg_dummy2_ETC___d3559)) ?
 	       2'd1 :
 	       2'd0 ;
   assign IF_NOT_IF_pc_reg_dummy2_0_read__283_AND_pc_reg_ETC___d3650 =
-	     ((getFetchState_pc__h222980[5:2] != 4'd15 ||
-	       getFetchState_pc__h222980[1:0] == 2'b0) &&
+	     ((getFetchState_pc__h222940[5:2] != 4'd15 ||
+	       getFetchState_pc__h222940[1:0] == 2'b0) &&
 	      (!SEL_ARR_nextAddrPred_valid_0_read__297_nextAdd_ETC___d3555 ||
 	       !IF_pc_reg_dummy2_0_read__283_AND_pc_reg_dummy2_ETC___d3559)) ?
 	       IF_NOT_IF_NOT_IF_pc_reg_dummy2_0_read__283_AND_ETC___d3648 :
@@ -11418,7 +11422,7 @@ module mkFetchStage(CLK,
 	      IF_IF_IF_IF_SEL_ARR_f22f3_data_0_813_BITS_204__ETC___d4171) ?
 	       IF_IF_IF_IF_SEL_ARR_f22f3_data_0_813_BITS_204__ETC___d4242 :
 	       IF_IF_IF_IF_SEL_ARR_f22f3_data_0_813_BITS_204__ETC___d4248 ;
-  assign IF_NOT_SEL_ARR_IF_NOT_f22f3_empty_33_812_AND_N_ETC___d5965 =
+  assign IF_NOT_SEL_ARR_IF_NOT_f22f3_empty_33_812_AND_N_ETC___d5977 =
 	     (SEL_ARR_IF_NOT_f22f3_empty_33_812_AND_NOT_SEL__ETC___d4145[1:0] !=
 	      2'b11 ||
 	      IF_IF_SEL_ARR_f22f3_data_0_813_BITS_204_TO_141_ETC___d4149) ?
@@ -11428,76 +11432,76 @@ module mkFetchStage(CLK,
 	       { IF_IF_SEL_ARR_f22f3_data_0_813_BITS_204_TO_141_ETC___d4232,
 		 SEL_ARR_IF_NOT_f22f3_empty_33_812_AND_NOT_SEL__ETC___d4145,
 		 IF_IF_SEL_ARR_f22f3_data_0_813_BITS_204_TO_141_ETC___d4209 } ;
-  assign IF_NOT_SEL_ARR_IF_NOT_f22f3_empty_33_812_AND_N_ETC___d5968 =
+  assign IF_NOT_SEL_ARR_IF_NOT_f22f3_empty_33_812_AND_N_ETC___d5980 =
 	     (SEL_ARR_IF_NOT_f22f3_empty_33_812_AND_NOT_SEL__ETC___d4156[1:0] !=
 	      2'b11 ||
 	      IF_IF_IF_SEL_ARR_f22f3_data_0_813_BITS_204_TO__ETC___d4160) ?
-	       IF_IF_IF_SEL_ARR_f22f3_data_0_813_BITS_204_TO__ETC___d5966 :
+	       IF_IF_IF_SEL_ARR_f22f3_data_0_813_BITS_204_TO__ETC___d5978 :
 	       { IF_IF_IF_SEL_ARR_f22f3_data_0_813_BITS_204_TO__ETC___d4240,
 		 SEL_ARR_IF_NOT_f22f3_empty_33_812_AND_NOT_SEL__ETC___d4156,
 		 IF_IF_IF_SEL_ARR_f22f3_data_0_813_BITS_204_TO__ETC___d4214 } ;
-  assign IF_NOT_SEL_ARR_IF_NOT_f22f3_empty_33_812_AND_N_ETC___d5971 =
+  assign IF_NOT_SEL_ARR_IF_NOT_f22f3_empty_33_812_AND_N_ETC___d5983 =
 	     (SEL_ARR_IF_NOT_f22f3_empty_33_812_AND_NOT_SEL__ETC___d4167[1:0] !=
 	      2'b11 ||
 	      IF_IF_IF_IF_SEL_ARR_f22f3_data_0_813_BITS_204__ETC___d4171) ?
-	       IF_IF_IF_IF_SEL_ARR_f22f3_data_0_813_BITS_204__ETC___d5969 :
+	       IF_IF_IF_IF_SEL_ARR_f22f3_data_0_813_BITS_204__ETC___d5981 :
 	       { IF_IF_IF_IF_SEL_ARR_f22f3_data_0_813_BITS_204__ETC___d4248,
 		 SEL_ARR_IF_NOT_f22f3_empty_33_812_AND_NOT_SEL__ETC___d4167,
 		 IF_IF_IF_IF_SEL_ARR_f22f3_data_0_813_BITS_204__ETC___d4219 } ;
-  assign IF_NOT_SEL_ARR_NOT_f32d_data_0_988_BIT_73_051__ETC___d6458 =
-	     (!SEL_ARR_NOT_f32d_data_0_988_BIT_73_051_052_NOT_ETC___d6056 &&
-	      CASE_f32d_deqP_0_IF_f32d_data_0_988_BITS_72_TO_ETC__q52) ?
+  assign IF_NOT_SEL_ARR_NOT_f32d_data_0_000_BIT_73_063__ETC___d6470 =
+	     (!SEL_ARR_NOT_f32d_data_0_000_BIT_73_063_064_NOT_ETC___d6068 &&
+	      CASE_f32d_deqP_0_IF_f32d_data_0_000_BITS_72_TO_ETC__q52) ?
 	       4'd1 :
-	       IF_SEL_ARR_NOT_f32d_data_0_988_BIT_73_051_052__ETC___d6457 ;
-  assign IF_NOT_SEL_ARR_NOT_f32d_data_0_988_BIT_73_051__ETC___d6459 =
-	     (!SEL_ARR_NOT_f32d_data_0_988_BIT_73_051_052_NOT_ETC___d6056 &&
-	      CASE_f32d_deqP_0_IF_f32d_data_0_988_BITS_72_TO_ETC__q53) ?
+	       IF_SEL_ARR_NOT_f32d_data_0_000_BIT_73_063_064__ETC___d6469 ;
+  assign IF_NOT_SEL_ARR_NOT_f32d_data_0_000_BIT_73_063__ETC___d6471 =
+	     (!SEL_ARR_NOT_f32d_data_0_000_BIT_73_063_064_NOT_ETC___d6068 &&
+	      CASE_f32d_deqP_0_IF_f32d_data_0_000_BITS_72_TO_ETC__q53) ?
 	       4'd0 :
-	       IF_NOT_SEL_ARR_NOT_f32d_data_0_988_BIT_73_051__ETC___d6458 ;
-  assign IF_NOT_SEL_ARR_instdata_data_0_996_BITS_195_TO_ETC___d6769 =
-	     (SEL_ARR_instdata_data_0_996_BITS_195_TO_194_01_ETC___d6019 !=
+	       IF_NOT_SEL_ARR_NOT_f32d_data_0_000_BIT_73_063__ETC___d6470 ;
+  assign IF_NOT_SEL_ARR_instdata_data_0_008_BITS_195_TO_ETC___d6781 =
+	     (SEL_ARR_instdata_data_0_008_BITS_195_TO_194_02_ETC___d6031 !=
 	      2'd0 &&
-	      SEL_ARR_f32d_data_0_988_BIT_139_021_f32d_data__ETC___d6024) ?
-	       IF_SEL_ARR_f32d_data_0_988_BIT_4_006_f32d_data_ETC___d6768 :
-	       SEL_ARR_instdata_data_0_996_BITS_65_TO_64_997__ETC___d6004 !=
+	      SEL_ARR_f32d_data_0_000_BIT_139_033_f32d_data__ETC___d6036) ?
+	       IF_SEL_ARR_f32d_data_0_000_BIT_4_018_f32d_data_ETC___d6780 :
+	       SEL_ARR_instdata_data_0_008_BITS_65_TO_64_009__ETC___d6016 !=
 	       2'd0 &&
-	       SEL_ARR_f32d_data_0_988_BIT_4_006_f32d_data_1__ETC___d6010 &&
-	       SEL_ARR_NOT_f32d_data_0_988_BIT_73_051_052_NOT_ETC___d6764 ;
-  assign IF_NOT_SEL_ARR_instdata_data_0_996_BITS_195_TO_ETC___d6803 =
-	     (SEL_ARR_instdata_data_0_996_BITS_195_TO_194_01_ETC___d6019 !=
+	       SEL_ARR_f32d_data_0_000_BIT_4_018_f32d_data_1__ETC___d6022 &&
+	       SEL_ARR_NOT_f32d_data_0_000_BIT_73_063_064_NOT_ETC___d6776 ;
+  assign IF_NOT_SEL_ARR_instdata_data_0_008_BITS_195_TO_ETC___d6815 =
+	     (SEL_ARR_instdata_data_0_008_BITS_195_TO_194_02_ETC___d6031 !=
 	      2'd0 &&
-	      SEL_ARR_f32d_data_0_988_BIT_139_021_f32d_data__ETC___d6024) ?
-	       IF_SEL_ARR_f32d_data_0_988_BIT_4_006_f32d_data_ETC___d6802 :
-	       SEL_ARR_instdata_data_0_996_BITS_65_TO_64_997__ETC___d6004 !=
+	      SEL_ARR_f32d_data_0_000_BIT_139_033_f32d_data__ETC___d6036) ?
+	       IF_SEL_ARR_f32d_data_0_000_BIT_4_018_f32d_data_ETC___d6814 :
+	       SEL_ARR_instdata_data_0_008_BITS_65_TO_64_009__ETC___d6016 !=
 	       2'd0 &&
-	       SEL_ARR_f32d_data_0_988_BIT_4_006_f32d_data_1__ETC___d6799 ;
+	       SEL_ARR_f32d_data_0_000_BIT_4_018_f32d_data_1__ETC___d6811 ;
   assign IF_NOT_SEL_ARR_nextAddrPred_valid_0_read__297__ETC___d3585 =
 	     (!SEL_ARR_nextAddrPred_valid_0_read__297_nextAdd_ETC___d3555 ||
 	      !IF_pc_reg_dummy2_0_read__283_AND_pc_reg_dummy2_ETC___d3559) ?
 	       _theResult___snd_snd_fst__h121720 :
 	       IF_NOT_IF_pc_reg_dummy2_0_read__283_AND_pc_reg_ETC___d3564 ;
-  assign IF_NOT_decode_061_BIT_26_095_096_AND_NOT_decod_ETC___d6136 =
-	     (!decode___d6061[26] && !decode___d6061[6]) ?
-	       NOT_decode_061_BITS_25_TO_21_097_EQ_decode_061_ETC___d6133 :
-	       !decode___d6061[26] || !decode___d6061[6] ||
-	       NOT_decode_061_BITS_25_TO_21_097_EQ_decode_061_ETC___d6133 ;
-  assign IF_NOT_decode_061_BIT_7_076_087_OR_decode_061__ETC___d6298 =
-	     NOT_decode_061_BIT_7_076_087_OR_decode_061_BIT_ETC___d6103 ?
+  assign IF_NOT_decode_073_BIT_26_107_108_AND_NOT_decod_ETC___d6148 =
+	     (!decode___d6073[26] && !decode___d6073[6]) ?
+	       NOT_decode_073_BITS_25_TO_21_109_EQ_decode_073_ETC___d6145 :
+	       !decode___d6073[26] || !decode___d6073[6] ||
+	       NOT_decode_073_BITS_25_TO_21_109_EQ_decode_073_ETC___d6145 ;
+  assign IF_NOT_decode_073_BIT_7_088_099_OR_decode_073__ETC___d6310 =
+	     NOT_decode_073_BIT_7_088_099_OR_decode_073_BIT_ETC___d6115 ?
 	       ras$ras_0_first :
-	       (NOT_decode_061_BIT_27_094_104_OR_decode_061_BI_ETC___d6111 ?
-		  decodeBrPred___d6283[63:0] :
-		  IF_decode_061_BIT_7_076_AND_NOT_decode_061_BIT_ETC___d6296) ;
-  assign IF_NOT_decode_487_BIT_26_517_518_AND_NOT_decod_ETC___d6558 =
-	     (!decode___d6487[26] && !decode___d6487[6]) ?
-	       NOT_decode_487_BITS_25_TO_21_519_EQ_decode_487_ETC___d6555 :
-	       !decode___d6487[26] || !decode___d6487[6] ||
-	       NOT_decode_487_BITS_25_TO_21_519_EQ_decode_487_ETC___d6555 ;
-  assign IF_NOT_decode_487_BIT_7_498_509_OR_decode_487__ETC___d6720 =
-	     NOT_decode_487_BIT_7_498_509_OR_decode_487_BIT_ETC___d6525 ?
+	       (NOT_decode_073_BIT_27_106_116_OR_decode_073_BI_ETC___d6123 ?
+		  decodeBrPred___d6295[63:0] :
+		  IF_decode_073_BIT_7_088_AND_NOT_decode_073_BIT_ETC___d6308) ;
+  assign IF_NOT_decode_499_BIT_26_529_530_AND_NOT_decod_ETC___d6570 =
+	     (!decode___d6499[26] && !decode___d6499[6]) ?
+	       NOT_decode_499_BITS_25_TO_21_531_EQ_decode_499_ETC___d6567 :
+	       !decode___d6499[26] || !decode___d6499[6] ||
+	       NOT_decode_499_BITS_25_TO_21_531_EQ_decode_499_ETC___d6567 ;
+  assign IF_NOT_decode_499_BIT_7_510_521_OR_decode_499__ETC___d6732 =
+	     NOT_decode_499_BIT_7_510_521_OR_decode_499_BIT_ETC___d6537 ?
 	       ras$ras_1_first :
-	       (NOT_decode_487_BIT_27_516_526_OR_decode_487_BI_ETC___d6533 ?
-		  decodeBrPred___d6705[63:0] :
-		  IF_decode_487_BIT_7_498_AND_NOT_decode_487_BIT_ETC___d6718) ;
+	       (NOT_decode_499_BIT_27_528_538_OR_decode_499_BI_ETC___d6545 ?
+		  decodeBrPred___d6717[63:0] :
+		  IF_decode_499_BIT_7_510_AND_NOT_decode_499_BIT_ETC___d6730) ;
   assign IF_NOT_f22f3_empty_33_812_AND_NOT_SEL_ARR_f22f_ETC___d3980 =
 	     NOT_f22f3_empty_33_812_AND_NOT_SEL_ARR_f22f3_d_ETC___d3844 ?
 	       rg_pending_f32d[73] :
@@ -11542,28 +11546,28 @@ module mkFetchStage(CLK,
 	       (IF_rg_pending_n_items_845_EQ_0_846_THEN_rg_pen_ETC___d3977 ?
 		  IF_IF_IF_IF_IF_SEL_ARR_f22f3_data_0_813_BITS_2_ETC___d4296 :
 		  2'd0) ;
-  assign IF_NOT_f22f3_empty_33_812_AND_NOT_SEL_ARR_f22f_ETC___d5203 =
+  assign IF_NOT_f22f3_empty_33_812_AND_NOT_SEL_ARR_f22f_ETC___d5212 =
 	     NOT_f22f3_empty_33_812_AND_NOT_SEL_ARR_f22f3_d_ETC___d3844 ?
 	       2'd0 :
-	       IF_IF_rg_pending_n_items_845_EQ_0_846_THEN_rg__ETC___d5202 ;
-  assign IF_NOT_f22f3_empty_33_812_AND_NOT_SEL_ARR_f22f_ETC___d5577 =
+	       IF_IF_rg_pending_n_items_845_EQ_0_846_THEN_rg__ETC___d5211 ;
+  assign IF_NOT_f22f3_empty_33_812_AND_NOT_SEL_ARR_f22f_ETC___d5589 =
 	     NOT_f22f3_empty_33_812_AND_NOT_SEL_ARR_f22f3_d_ETC___d3844 ?
 	       rg_pending_f32d[4:0] :
-	       { IF_IF_rg_pending_n_items_845_EQ_0_846_THEN_rg__ETC___d5573,
-		 x1_avValue_fst_main_epoch__h156707 } ;
-  assign IF_NOT_f22f3_empty_33_812_AND_NOT_SEL_ARR_f22f_ETC___d5643 =
+	       { IF_IF_rg_pending_n_items_845_EQ_0_846_THEN_rg__ETC___d5585,
+		 x1_avValue_fst_main_epoch__h156689 } ;
+  assign IF_NOT_f22f3_empty_33_812_AND_NOT_SEL_ARR_f22f_ETC___d5655 =
 	     NOT_f22f3_empty_33_812_AND_NOT_SEL_ARR_f22f3_d_ETC___d3844 ?
 	       rg_pending_f32d[74] :
 	       (IF_rg_pending_n_items_845_EQ_0_846_THEN_rg_pen_ETC___d3977 ?
-		  IF_IF_rg_pending_n_items_845_EQ_0_846_THEN_rg__ETC___d5641 :
+		  IF_IF_rg_pending_n_items_845_EQ_0_846_THEN_rg__ETC___d5653 :
 		  rg_pending_f32d[74]) ;
-  assign IF_NOT_f22f3_empty_33_812_AND_NOT_SEL_ARR_f22f_ETC___d5934 =
+  assign IF_NOT_f22f3_empty_33_812_AND_NOT_SEL_ARR_f22f_ETC___d5946 =
 	     NOT_f22f3_empty_33_812_AND_NOT_SEL_ARR_f22f3_d_ETC___d3844 ?
 	       rg_pending_f32d[68:0] :
-	       { x1_avValue_fst_tval__h156705,
-		 IF_IF_rg_pending_n_items_845_EQ_0_846_THEN_rg__ETC___d5573,
-		 x1_avValue_fst_main_epoch__h156707 } ;
-  assign IF_NOT_f22f3_empty_33_812_AND_NOT_SEL_ARR_f22f_ETC___d5945 =
+	       { x1_avValue_fst_tval__h156687,
+		 IF_IF_rg_pending_n_items_845_EQ_0_846_THEN_rg__ETC___d5585,
+		 x1_avValue_fst_main_epoch__h156689 } ;
+  assign IF_NOT_f22f3_empty_33_812_AND_NOT_SEL_ARR_f22f_ETC___d5957 =
 	     NOT_f22f3_empty_33_812_AND_NOT_SEL_ARR_f22f3_d_ETC___d3844 ?
 	       SEL_ARR_f22f3_data_0_813_BITS_3_TO_0_814_f22f3_ETC___d3823 &&
 	       SEL_ARR_f22f3_data_0_813_BIT_4_825_f22f3_data__ETC___d3832 &&
@@ -11571,13 +11575,13 @@ module mkFetchStage(CLK,
 	       (IF_rg_pending_n_items_845_EQ_0_846_THEN_rg_pen_ETC___d3977 ?
 		  IF_IF_IF_IF_IF_SEL_ARR_f22f3_data_0_813_BITS_2_ETC___d4187 :
 		  IF_rg_pending_n_items_845_EQ_0_846_THEN_ehr_pe_ETC___d3886) ;
-  assign IF_NOT_f22f3_empty_33_812_AND_NOT_SEL_ARR_f22f_ETC___d5962 =
+  assign IF_NOT_f22f3_empty_33_812_AND_NOT_SEL_ARR_f22f_ETC___d5974 =
 	     NOT_f22f3_empty_33_812_AND_NOT_SEL_ARR_f22f3_d_ETC___d3844 ?
 	       !SEL_ARR_f22f3_data_0_813_BITS_3_TO_0_814_f22f3_ETC___d3823 ||
 	       !SEL_ARR_f22f3_data_0_813_BIT_4_825_f22f3_data__ETC___d3832 ||
 	       IF_rg_pending_n_items_845_EQ_0_846_THEN_NOT_eh_ETC___d3973 :
 	       (IF_rg_pending_n_items_845_EQ_0_846_THEN_rg_pen_ETC___d3977 ?
-		  IF_IF_IF_IF_IF_SEL_ARR_f22f3_data_0_813_BITS_2_ETC___d5960 :
+		  IF_IF_IF_IF_IF_SEL_ARR_f22f3_data_0_813_BITS_2_ETC___d5972 :
 		  IF_rg_pending_n_items_845_EQ_0_846_THEN_NOT_eh_ETC___d3973) ;
   assign IF_NOT_f22f3_empty_33_812_AND_SEL_ARR_f22f3_da_ETC___d3905 =
 	     (!f22f3_empty &&
@@ -11589,66 +11593,62 @@ module mkFetchStage(CLK,
 	      (mmio$getFetchTarget == 2'd0 || mmio$getFetchTarget == 2'd1)) ?
 	       4'hA :
 	       IF_IF_iTlb_to_proc_response_get_672_BIT_4_673__ETC___d3789 ;
-  assign IF_SEL_ARR_IF_NOT_f22f3_empty_33_812_AND_NOT_S_ETC___d4577 =
+  assign IF_SEL_ARR_IF_NOT_f22f3_empty_33_812_AND_NOT_S_ETC___d4579 =
 	     (SEL_ARR_IF_NOT_f22f3_empty_33_812_AND_NOT_SEL__ETC___d4145[1:0] ==
 	      2'b0 &&
 	      SEL_ARR_IF_NOT_f22f3_empty_33_812_AND_NOT_SEL__ETC___d4145[15:13] ==
 	      3'b001) ?
-	       instr__h145277 :
+	       instr__h145265 :
 	       ((SEL_ARR_IF_NOT_f22f3_empty_33_812_AND_NOT_SEL__ETC___d4145[1:0] ==
 		 2'b0 &&
 		 SEL_ARR_IF_NOT_f22f3_empty_33_812_AND_NOT_SEL__ETC___d4145[15:13] ==
 		 3'b101) ?
-		  instr__h145430 :
+		  instr__h145418 :
 		  32'h0) ;
-  assign IF_SEL_ARR_IF_NOT_f22f3_empty_33_812_AND_NOT_S_ETC___d4579 =
+  assign IF_SEL_ARR_IF_NOT_f22f3_empty_33_812_AND_NOT_S_ETC___d4581 =
 	     (SEL_ARR_IF_NOT_f22f3_empty_33_812_AND_NOT_SEL__ETC___d4145[1:0] ==
 	      2'b10 &&
-	      SEL_ARR_IF_NOT_f22f3_empty_33_812_AND_NOT_SEL__ETC___d4145[11:7] !=
-	      5'd0 &&
 	      SEL_ARR_IF_NOT_f22f3_empty_33_812_AND_NOT_SEL__ETC___d4145[15:13] ==
 	      3'b001) ?
-	       instr__h144921 :
+	       instr__h144888 :
 	       ((SEL_ARR_IF_NOT_f22f3_empty_33_812_AND_NOT_SEL__ETC___d4145[1:0] ==
 		 2'b10 &&
 		 SEL_ARR_IF_NOT_f22f3_empty_33_812_AND_NOT_SEL__ETC___d4145[15:13] ==
 		 3'b101) ?
-		  instr__h145076 :
-		  IF_SEL_ARR_IF_NOT_f22f3_empty_33_812_AND_NOT_S_ETC___d4577) ;
-  assign IF_SEL_ARR_IF_NOT_f22f3_empty_33_812_AND_NOT_S_ETC___d4581 =
-	     (SEL_ARR_IF_NOT_f22f3_empty_33_812_AND_NOT_SEL__ETC___d4145[1:0] ==
-	      2'b0 &&
-	      SEL_ARR_IF_NOT_f22f3_empty_33_812_AND_NOT_SEL__ETC___d4145[15:13] ==
-	      3'b011) ?
-	       instr__h143723 :
-	       ((SEL_ARR_IF_NOT_f22f3_empty_33_812_AND_NOT_SEL__ETC___d4145[1:0] ==
-		 2'b0 &&
-		 SEL_ARR_IF_NOT_f22f3_empty_33_812_AND_NOT_SEL__ETC___d4145[15:13] ==
-		 3'b111) ?
-		  instr__h143876 :
+		  instr__h145064 :
 		  IF_SEL_ARR_IF_NOT_f22f3_empty_33_812_AND_NOT_S_ETC___d4579) ;
   assign IF_SEL_ARR_IF_NOT_f22f3_empty_33_812_AND_NOT_S_ETC___d4583 =
 	     (SEL_ARR_IF_NOT_f22f3_empty_33_812_AND_NOT_SEL__ETC___d4145[1:0] ==
-	      2'b10 &&
-	      SEL_ARR_IF_NOT_f22f3_empty_33_812_AND_NOT_SEL__ETC___d4145[11:7] !=
-	      5'd0 &&
+	      2'b0 &&
 	      SEL_ARR_IF_NOT_f22f3_empty_33_812_AND_NOT_SEL__ETC___d4145[15:13] ==
-	      3'b011) ?
-	       instr__h143367 :
+	      3'b111) ?
+	       instr__h143870 :
 	       ((SEL_ARR_IF_NOT_f22f3_empty_33_812_AND_NOT_SEL__ETC___d4145[1:0] ==
 		 2'b10 &&
 		 SEL_ARR_IF_NOT_f22f3_empty_33_812_AND_NOT_SEL__ETC___d4145[15:13] ==
-		 3'b111) ?
-		  instr__h143522 :
+		 3'b011) ?
+		  instr__h144074 :
 		  IF_SEL_ARR_IF_NOT_f22f3_empty_33_812_AND_NOT_S_ETC___d4581) ;
   assign IF_SEL_ARR_IF_NOT_f22f3_empty_33_812_AND_NOT_S_ETC___d4585 =
+	     (SEL_ARR_IF_NOT_f22f3_empty_33_812_AND_NOT_SEL__ETC___d4145[1:0] ==
+	      2'b10 &&
+	      SEL_ARR_IF_NOT_f22f3_empty_33_812_AND_NOT_SEL__ETC___d4145[15:13] ==
+	      3'b111) ?
+	       instr__h143516 :
+	       ((SEL_ARR_IF_NOT_f22f3_empty_33_812_AND_NOT_SEL__ETC___d4145[1:0] ==
+		 2'b0 &&
+		 SEL_ARR_IF_NOT_f22f3_empty_33_812_AND_NOT_SEL__ETC___d4145[15:13] ==
+		 3'b011) ?
+		  instr__h143717 :
+		  IF_SEL_ARR_IF_NOT_f22f3_empty_33_812_AND_NOT_S_ETC___d4583) ;
+  assign IF_SEL_ARR_IF_NOT_f22f3_empty_33_812_AND_NOT_S_ETC___d4588 =
 	     (SEL_ARR_IF_NOT_f22f3_empty_33_812_AND_NOT_SEL__ETC___d4145[1:0] ==
 	      2'b01 &&
 	      SEL_ARR_IF_NOT_f22f3_empty_33_812_AND_NOT_SEL__ETC___d4145[15:10] ==
 	      6'b100111 &&
 	      SEL_ARR_IF_NOT_f22f3_empty_33_812_AND_NOT_SEL__ETC___d4145[6:5] ==
 	      2'b0) ?
-	       instr__h143110 :
+	       instr__h143104 :
 	       ((SEL_ARR_IF_NOT_f22f3_empty_33_812_AND_NOT_SEL__ETC___d4145[1:0] ==
 		 2'b10 &&
 		 SEL_ARR_IF_NOT_f22f3_empty_33_812_AND_NOT_SEL__ETC___d4145[15:12] ==
@@ -11657,41 +11657,48 @@ module mkFetchStage(CLK,
 		 5'd0 &&
 		 SEL_ARR_IF_NOT_f22f3_empty_33_812_AND_NOT_SEL__ETC___d4145[6:2] ==
 		 5'd0) ?
-		  instr__h143270 :
-		  IF_SEL_ARR_IF_NOT_f22f3_empty_33_812_AND_NOT_S_ETC___d4583) ;
-  assign IF_SEL_ARR_IF_NOT_f22f3_empty_33_812_AND_NOT_S_ETC___d4587 =
+		  instr__h143264 :
+		  ((SEL_ARR_IF_NOT_f22f3_empty_33_812_AND_NOT_SEL__ETC___d4145[1:0] ==
+		    2'b10 &&
+		    SEL_ARR_IF_NOT_f22f3_empty_33_812_AND_NOT_SEL__ETC___d4145[11:7] !=
+		    5'd0 &&
+		    SEL_ARR_IF_NOT_f22f3_empty_33_812_AND_NOT_SEL__ETC___d4145[15:13] ==
+		    3'b011) ?
+		     instr__h143361 :
+		     IF_SEL_ARR_IF_NOT_f22f3_empty_33_812_AND_NOT_S_ETC___d4585)) ;
+  assign IF_SEL_ARR_IF_NOT_f22f3_empty_33_812_AND_NOT_S_ETC___d4590 =
 	     (SEL_ARR_IF_NOT_f22f3_empty_33_812_AND_NOT_SEL__ETC___d4145[1:0] ==
 	      2'b01 &&
 	      SEL_ARR_IF_NOT_f22f3_empty_33_812_AND_NOT_SEL__ETC___d4145[15:10] ==
 	      6'b100011 &&
 	      SEL_ARR_IF_NOT_f22f3_empty_33_812_AND_NOT_SEL__ETC___d4145[6:5] ==
 	      2'b0) ?
-	       instr__h142832 :
+	       instr__h142826 :
 	       ((SEL_ARR_IF_NOT_f22f3_empty_33_812_AND_NOT_SEL__ETC___d4145[1:0] ==
 		 2'b01 &&
 		 SEL_ARR_IF_NOT_f22f3_empty_33_812_AND_NOT_SEL__ETC___d4145[15:10] ==
 		 6'b100111 &&
 		 SEL_ARR_IF_NOT_f22f3_empty_33_812_AND_NOT_SEL__ETC___d4145[6:5] ==
 		 2'b01) ?
-		  instr__h142971 :
-		  IF_SEL_ARR_IF_NOT_f22f3_empty_33_812_AND_NOT_S_ETC___d4585) ;
-  assign IF_SEL_ARR_IF_NOT_f22f3_empty_33_812_AND_NOT_S_ETC___d4589 =
+		  instr__h142965 :
+		  IF_SEL_ARR_IF_NOT_f22f3_empty_33_812_AND_NOT_S_ETC___d4588) ;
+  assign IF_SEL_ARR_IF_NOT_f22f3_empty_33_812_AND_NOT_S_ETC___d4592 =
 	     (SEL_ARR_IF_NOT_f22f3_empty_33_812_AND_NOT_SEL__ETC___d4145[1:0] ==
 	      2'b01 &&
 	      SEL_ARR_IF_NOT_f22f3_empty_33_812_AND_NOT_SEL__ETC___d4145[15:10] ==
 	      6'b100011 &&
 	      SEL_ARR_IF_NOT_f22f3_empty_33_812_AND_NOT_SEL__ETC___d4145[6:5] ==
 	      2'b10) ?
-	       instr__h142558 :
+	       instr__h142552 :
 	       ((SEL_ARR_IF_NOT_f22f3_empty_33_812_AND_NOT_SEL__ETC___d4145[1:0] ==
 		 2'b01 &&
 		 SEL_ARR_IF_NOT_f22f3_empty_33_812_AND_NOT_SEL__ETC___d4145[15:10] ==
 		 6'b100011 &&
 		 SEL_ARR_IF_NOT_f22f3_empty_33_812_AND_NOT_SEL__ETC___d4145[6:5] ==
 		 2'b01) ?
-		  instr__h142695 :
-		  IF_SEL_ARR_IF_NOT_f22f3_empty_33_812_AND_NOT_S_ETC___d4587) ;
-  assign IF_SEL_ARR_IF_NOT_f22f3_empty_33_812_AND_NOT_S_ETC___d4592 =
+		  instr__h142689 :
+		  IF_SEL_ARR_IF_NOT_f22f3_empty_33_812_AND_NOT_S_ETC___d4590) ;
+  assign IF_SEL_ARR_IF_NOT_f22f3_empty_33_812_AND_NOT_S_ETC___d4595 =
 	     (SEL_ARR_IF_NOT_f22f3_empty_33_812_AND_NOT_SEL__ETC___d4145[1:0] ==
 	      2'b10 &&
 	      SEL_ARR_IF_NOT_f22f3_empty_33_812_AND_NOT_SEL__ETC___d4145[15:12] ==
@@ -11700,7 +11707,7 @@ module mkFetchStage(CLK,
 	      5'd0 &&
 	      SEL_ARR_IF_NOT_f22f3_empty_33_812_AND_NOT_SEL__ETC___d4145[6:2] !=
 	      5'd0) ?
-	       instr__h142204 :
+	       instr__h142198 :
 	       ((SEL_ARR_IF_NOT_f22f3_empty_33_812_AND_NOT_SEL__ETC___d4145[1:0] ==
 		 2'b10 &&
 		 SEL_ARR_IF_NOT_f22f3_empty_33_812_AND_NOT_SEL__ETC___d4145[15:12] ==
@@ -11709,98 +11716,98 @@ module mkFetchStage(CLK,
 		 5'd0 &&
 		 SEL_ARR_IF_NOT_f22f3_empty_33_812_AND_NOT_SEL__ETC___d4145[6:2] !=
 		 5'd0) ?
-		  instr__h142325 :
+		  instr__h142319 :
 		  ((SEL_ARR_IF_NOT_f22f3_empty_33_812_AND_NOT_SEL__ETC___d4145[1:0] ==
 		    2'b01 &&
 		    SEL_ARR_IF_NOT_f22f3_empty_33_812_AND_NOT_SEL__ETC___d4145[15:10] ==
 		    6'b100011 &&
 		    SEL_ARR_IF_NOT_f22f3_empty_33_812_AND_NOT_SEL__ETC___d4145[6:5] ==
 		    2'b11) ?
-		     instr__h142421 :
-		     IF_SEL_ARR_IF_NOT_f22f3_empty_33_812_AND_NOT_S_ETC___d4589)) ;
-  assign IF_SEL_ARR_IF_NOT_f22f3_empty_33_812_AND_NOT_S_ETC___d4595 =
+		     instr__h142415 :
+		     IF_SEL_ARR_IF_NOT_f22f3_empty_33_812_AND_NOT_S_ETC___d4592)) ;
+  assign IF_SEL_ARR_IF_NOT_f22f3_empty_33_812_AND_NOT_S_ETC___d4598 =
 	     (SEL_ARR_IF_NOT_f22f3_empty_33_812_AND_NOT_SEL__ETC___d4145[1:0] ==
 	      2'b01 &&
 	      SEL_ARR_IF_NOT_f22f3_empty_33_812_AND_NOT_SEL__ETC___d4145[15:13] ==
 	      3'b100 &&
 	      SEL_ARR_IF_NOT_f22f3_empty_33_812_AND_NOT_SEL__ETC___d4145[11:10] ==
 	      2'b0 &&
-	      imm6__h140290 != 6'd0) ?
-	       instr__h141715 :
+	      imm6__h140284 != 6'd0) ?
+	       instr__h141709 :
 	       ((SEL_ARR_IF_NOT_f22f3_empty_33_812_AND_NOT_SEL__ETC___d4145[1:0] ==
 		 2'b01 &&
 		 SEL_ARR_IF_NOT_f22f3_empty_33_812_AND_NOT_SEL__ETC___d4145[15:13] ==
 		 3'b100 &&
 		 SEL_ARR_IF_NOT_f22f3_empty_33_812_AND_NOT_SEL__ETC___d4145[11:10] ==
 		 2'b01 &&
-		 imm6__h140290 != 6'd0) ?
-		  instr__h141905 :
+		 imm6__h140284 != 6'd0) ?
+		  instr__h141899 :
 		  ((SEL_ARR_IF_NOT_f22f3_empty_33_812_AND_NOT_SEL__ETC___d4145[1:0] ==
 		    2'b01 &&
 		    SEL_ARR_IF_NOT_f22f3_empty_33_812_AND_NOT_SEL__ETC___d4145[15:13] ==
 		    3'b100 &&
 		    SEL_ARR_IF_NOT_f22f3_empty_33_812_AND_NOT_SEL__ETC___d4145[11:10] ==
 		    2'b10) ?
-		     instr__h142023 :
-		     IF_SEL_ARR_IF_NOT_f22f3_empty_33_812_AND_NOT_S_ETC___d4592)) ;
-  assign IF_SEL_ARR_IF_NOT_f22f3_empty_33_812_AND_NOT_S_ETC___d4597 =
+		     instr__h142017 :
+		     IF_SEL_ARR_IF_NOT_f22f3_empty_33_812_AND_NOT_S_ETC___d4595)) ;
+  assign IF_SEL_ARR_IF_NOT_f22f3_empty_33_812_AND_NOT_S_ETC___d4600 =
 	     (SEL_ARR_IF_NOT_f22f3_empty_33_812_AND_NOT_SEL__ETC___d4145[1:0] ==
 	      2'b0 &&
 	      SEL_ARR_IF_NOT_f22f3_empty_33_812_AND_NOT_SEL__ETC___d4145[15:13] ==
 	      3'b0 &&
-	      nzimm10__h141192 != 10'd0) ?
-	       instr__h141354 :
+	      nzimm10__h141186 != 10'd0) ?
+	       instr__h141348 :
 	       ((SEL_ARR_IF_NOT_f22f3_empty_33_812_AND_NOT_SEL__ETC___d4145[1:0] ==
 		 2'b10 &&
 		 SEL_ARR_IF_NOT_f22f3_empty_33_812_AND_NOT_SEL__ETC___d4145[15:13] ==
 		 3'b0 &&
 		 SEL_ARR_IF_NOT_f22f3_empty_33_812_AND_NOT_SEL__ETC___d4145[11:7] !=
 		 5'd0 &&
-		 imm6__h140290 != 6'd0) ?
-		  instr__h141525 :
-		  IF_SEL_ARR_IF_NOT_f22f3_empty_33_812_AND_NOT_S_ETC___d4595) ;
-  assign IF_SEL_ARR_IF_NOT_f22f3_empty_33_812_AND_NOT_S_ETC___d4599 =
+		 imm6__h140284 != 6'd0) ?
+		  instr__h141519 :
+		  IF_SEL_ARR_IF_NOT_f22f3_empty_33_812_AND_NOT_S_ETC___d4598) ;
+  assign IF_SEL_ARR_IF_NOT_f22f3_empty_33_812_AND_NOT_S_ETC___d4602 =
 	     (SEL_ARR_IF_NOT_f22f3_empty_33_812_AND_NOT_SEL__ETC___d4145[1:0] ==
 	      2'b01 &&
 	      SEL_ARR_IF_NOT_f22f3_empty_33_812_AND_NOT_SEL__ETC___d4145[15:13] ==
 	      3'b001 &&
 	      SEL_ARR_IF_NOT_f22f3_empty_33_812_AND_NOT_SEL__ETC___d4145[11:7] !=
 	      5'd0) ?
-	       instr__h140921 :
+	       instr__h140915 :
 	       ((SEL_ARR_IF_NOT_f22f3_empty_33_812_AND_NOT_SEL__ETC___d4145[1:0] ==
 		 2'b01 &&
 		 SEL_ARR_IF_NOT_f22f3_empty_33_812_AND_NOT_SEL__ETC___d4145[15:13] ==
 		 3'b011 &&
 		 SEL_ARR_IF_NOT_f22f3_empty_33_812_AND_NOT_SEL__ETC___d4145[11:7] ==
 		 5'd2 &&
-		 nzimm10__h140974 != 10'd0) ?
-		  instr__h141181 :
-		  IF_SEL_ARR_IF_NOT_f22f3_empty_33_812_AND_NOT_S_ETC___d4597) ;
-  assign IF_SEL_ARR_IF_NOT_f22f3_empty_33_812_AND_NOT_S_ETC___d4600 =
+		 nzimm10__h140968 != 10'd0) ?
+		  instr__h141175 :
+		  IF_SEL_ARR_IF_NOT_f22f3_empty_33_812_AND_NOT_S_ETC___d4600) ;
+  assign IF_SEL_ARR_IF_NOT_f22f3_empty_33_812_AND_NOT_S_ETC___d4603 =
 	     (SEL_ARR_IF_NOT_f22f3_empty_33_812_AND_NOT_SEL__ETC___d4145[1:0] ==
 	      2'b01 &&
 	      SEL_ARR_IF_NOT_f22f3_empty_33_812_AND_NOT_SEL__ETC___d4145[15:13] ==
 	      3'b0 &&
 	      SEL_ARR_IF_NOT_f22f3_empty_33_812_AND_NOT_SEL__ETC___d4145[11:7] !=
 	      5'd0 &&
-	      imm6__h140290 != 6'd0 ||
+	      imm6__h140284 != 6'd0 ||
 	      SEL_ARR_IF_NOT_f22f3_empty_33_812_AND_NOT_SEL__ETC___d4145[1:0] ==
 	      2'b01 &&
 	      SEL_ARR_IF_NOT_f22f3_empty_33_812_AND_NOT_SEL__ETC___d4145[15:13] ==
 	      3'b0 &&
 	      SEL_ARR_IF_NOT_f22f3_empty_33_812_AND_NOT_SEL__ETC___d4145[11:7] ==
 	      5'd0 &&
-	      imm6__h140290 == 6'd0) ?
-	       instr__h140690 :
-	       IF_SEL_ARR_IF_NOT_f22f3_empty_33_812_AND_NOT_S_ETC___d4599 ;
-  assign IF_SEL_ARR_IF_NOT_f22f3_empty_33_812_AND_NOT_S_ETC___d4602 =
+	      imm6__h140284 == 6'd0) ?
+	       instr__h140684 :
+	       IF_SEL_ARR_IF_NOT_f22f3_empty_33_812_AND_NOT_S_ETC___d4602 ;
+  assign IF_SEL_ARR_IF_NOT_f22f3_empty_33_812_AND_NOT_S_ETC___d4605 =
 	     (SEL_ARR_IF_NOT_f22f3_empty_33_812_AND_NOT_SEL__ETC___d4145[1:0] ==
 	      2'b01 &&
 	      SEL_ARR_IF_NOT_f22f3_empty_33_812_AND_NOT_SEL__ETC___d4145[15:13] ==
 	      3'b010 &&
 	      SEL_ARR_IF_NOT_f22f3_empty_33_812_AND_NOT_SEL__ETC___d4145[11:7] !=
 	      5'd0) ?
-	       instr__h140369 :
+	       instr__h140363 :
 	       ((SEL_ARR_IF_NOT_f22f3_empty_33_812_AND_NOT_SEL__ETC___d4145[1:0] ==
 		 2'b01 &&
 		 SEL_ARR_IF_NOT_f22f3_empty_33_812_AND_NOT_SEL__ETC___d4145[15:13] ==
@@ -11809,22 +11816,22 @@ module mkFetchStage(CLK,
 		 5'd0 &&
 		 SEL_ARR_IF_NOT_f22f3_empty_33_812_AND_NOT_SEL__ETC___d4145[11:7] !=
 		 5'd2 &&
-		 imm6__h140290 != 6'd0) ?
-		  instr__h140558 :
-		  IF_SEL_ARR_IF_NOT_f22f3_empty_33_812_AND_NOT_S_ETC___d4600) ;
-  assign IF_SEL_ARR_IF_NOT_f22f3_empty_33_812_AND_NOT_S_ETC___d4604 =
+		 imm6__h140284 != 6'd0) ?
+		  instr__h140552 :
+		  IF_SEL_ARR_IF_NOT_f22f3_empty_33_812_AND_NOT_S_ETC___d4603) ;
+  assign IF_SEL_ARR_IF_NOT_f22f3_empty_33_812_AND_NOT_S_ETC___d4607 =
 	     (SEL_ARR_IF_NOT_f22f3_empty_33_812_AND_NOT_SEL__ETC___d4145[1:0] ==
 	      2'b01 &&
 	      SEL_ARR_IF_NOT_f22f3_empty_33_812_AND_NOT_SEL__ETC___d4145[15:13] ==
 	      3'b110) ?
-	       instr__h139709 :
+	       instr__h139703 :
 	       ((SEL_ARR_IF_NOT_f22f3_empty_33_812_AND_NOT_SEL__ETC___d4145[1:0] ==
 		 2'b01 &&
 		 SEL_ARR_IF_NOT_f22f3_empty_33_812_AND_NOT_SEL__ETC___d4145[15:13] ==
 		 3'b111) ?
-		  instr__h140028 :
-		  IF_SEL_ARR_IF_NOT_f22f3_empty_33_812_AND_NOT_S_ETC___d4602) ;
-  assign IF_SEL_ARR_IF_NOT_f22f3_empty_33_812_AND_NOT_S_ETC___d4606 =
+		  instr__h140022 :
+		  IF_SEL_ARR_IF_NOT_f22f3_empty_33_812_AND_NOT_S_ETC___d4605) ;
+  assign IF_SEL_ARR_IF_NOT_f22f3_empty_33_812_AND_NOT_S_ETC___d4609 =
 	     (SEL_ARR_IF_NOT_f22f3_empty_33_812_AND_NOT_SEL__ETC___d4145[1:0] ==
 	      2'b10 &&
 	      SEL_ARR_IF_NOT_f22f3_empty_33_812_AND_NOT_SEL__ETC___d4145[15:12] ==
@@ -11833,7 +11840,7 @@ module mkFetchStage(CLK,
 	      5'd0 &&
 	      SEL_ARR_IF_NOT_f22f3_empty_33_812_AND_NOT_SEL__ETC___d4145[6:2] ==
 	      5'd0) ?
-	       instr__h139526 :
+	       instr__h139520 :
 	       ((SEL_ARR_IF_NOT_f22f3_empty_33_812_AND_NOT_SEL__ETC___d4145[1:0] ==
 		 2'b10 &&
 		 SEL_ARR_IF_NOT_f22f3_empty_33_812_AND_NOT_SEL__ETC___d4145[15:12] ==
@@ -11842,92 +11849,88 @@ module mkFetchStage(CLK,
 		 5'd0 &&
 		 SEL_ARR_IF_NOT_f22f3_empty_33_812_AND_NOT_SEL__ETC___d4145[6:2] ==
 		 5'd0) ?
-		  instr__h139644 :
-		  IF_SEL_ARR_IF_NOT_f22f3_empty_33_812_AND_NOT_S_ETC___d4604) ;
-  assign IF_SEL_ARR_IF_NOT_f22f3_empty_33_812_AND_NOT_S_ETC___d4608 =
+		  instr__h139638 :
+		  IF_SEL_ARR_IF_NOT_f22f3_empty_33_812_AND_NOT_S_ETC___d4607) ;
+  assign IF_SEL_ARR_IF_NOT_f22f3_empty_33_812_AND_NOT_S_ETC___d4611 =
 	     (SEL_ARR_IF_NOT_f22f3_empty_33_812_AND_NOT_SEL__ETC___d4145[1:0] ==
 	      2'b0 &&
 	      SEL_ARR_IF_NOT_f22f3_empty_33_812_AND_NOT_SEL__ETC___d4145[15:13] ==
 	      3'b110) ?
-	       instr__h138842 :
+	       instr__h138836 :
 	       ((SEL_ARR_IF_NOT_f22f3_empty_33_812_AND_NOT_SEL__ETC___d4145[1:0] ==
 		 2'b01 &&
 		 SEL_ARR_IF_NOT_f22f3_empty_33_812_AND_NOT_SEL__ETC___d4145[15:13] ==
 		 3'b101) ?
-		  instr__h139072 :
-		  IF_SEL_ARR_IF_NOT_f22f3_empty_33_812_AND_NOT_S_ETC___d4606) ;
-  assign IF_SEL_ARR_IF_NOT_f22f3_empty_33_812_AND_NOT_S_ETC___d4610 =
+		  instr__h139066 :
+		  IF_SEL_ARR_IF_NOT_f22f3_empty_33_812_AND_NOT_S_ETC___d4609) ;
+  assign IF_SEL_ARR_IF_NOT_f22f3_empty_33_812_AND_NOT_S_ETC___d4613 =
 	     (SEL_ARR_IF_NOT_f22f3_empty_33_812_AND_NOT_SEL__ETC___d4145[1:0] ==
 	      2'b10 &&
 	      SEL_ARR_IF_NOT_f22f3_empty_33_812_AND_NOT_SEL__ETC___d4145[15:13] ==
 	      3'b110) ?
-	       instr__h138451 :
+	       instr__h138445 :
 	       ((SEL_ARR_IF_NOT_f22f3_empty_33_812_AND_NOT_SEL__ETC___d4145[1:0] ==
 		 2'b0 &&
 		 SEL_ARR_IF_NOT_f22f3_empty_33_812_AND_NOT_SEL__ETC___d4145[15:13] ==
 		 3'b010) ?
-		  instr__h138645 :
-		  IF_SEL_ARR_IF_NOT_f22f3_empty_33_812_AND_NOT_S_ETC___d4608) ;
-  assign IF_SEL_ARR_IF_NOT_f22f3_empty_33_812_AND_NOT_S_ETC___d4863 =
+		  instr__h138639 :
+		  IF_SEL_ARR_IF_NOT_f22f3_empty_33_812_AND_NOT_S_ETC___d4611) ;
+  assign IF_SEL_ARR_IF_NOT_f22f3_empty_33_812_AND_NOT_S_ETC___d4868 =
 	     (SEL_ARR_IF_NOT_f22f3_empty_33_812_AND_NOT_SEL__ETC___d4156[1:0] ==
 	      2'b0 &&
 	      SEL_ARR_IF_NOT_f22f3_empty_33_812_AND_NOT_SEL__ETC___d4156[15:13] ==
 	      3'b001) ?
-	       instr__h153919 :
+	       instr__h153901 :
 	       ((SEL_ARR_IF_NOT_f22f3_empty_33_812_AND_NOT_SEL__ETC___d4156[1:0] ==
 		 2'b0 &&
 		 SEL_ARR_IF_NOT_f22f3_empty_33_812_AND_NOT_SEL__ETC___d4156[15:13] ==
 		 3'b101) ?
-		  instr__h154072 :
+		  instr__h154054 :
 		  32'h0) ;
-  assign IF_SEL_ARR_IF_NOT_f22f3_empty_33_812_AND_NOT_S_ETC___d4865 =
+  assign IF_SEL_ARR_IF_NOT_f22f3_empty_33_812_AND_NOT_S_ETC___d4870 =
 	     (SEL_ARR_IF_NOT_f22f3_empty_33_812_AND_NOT_SEL__ETC___d4156[1:0] ==
 	      2'b10 &&
-	      SEL_ARR_IF_NOT_f22f3_empty_33_812_AND_NOT_SEL__ETC___d4156[11:7] !=
-	      5'd0 &&
 	      SEL_ARR_IF_NOT_f22f3_empty_33_812_AND_NOT_SEL__ETC___d4156[15:13] ==
 	      3'b001) ?
-	       instr__h153563 :
+	       instr__h153524 :
 	       ((SEL_ARR_IF_NOT_f22f3_empty_33_812_AND_NOT_SEL__ETC___d4156[1:0] ==
 		 2'b10 &&
 		 SEL_ARR_IF_NOT_f22f3_empty_33_812_AND_NOT_SEL__ETC___d4156[15:13] ==
 		 3'b101) ?
-		  instr__h153718 :
-		  IF_SEL_ARR_IF_NOT_f22f3_empty_33_812_AND_NOT_S_ETC___d4863) ;
-  assign IF_SEL_ARR_IF_NOT_f22f3_empty_33_812_AND_NOT_S_ETC___d4867 =
+		  instr__h153700 :
+		  IF_SEL_ARR_IF_NOT_f22f3_empty_33_812_AND_NOT_S_ETC___d4868) ;
+  assign IF_SEL_ARR_IF_NOT_f22f3_empty_33_812_AND_NOT_S_ETC___d4872 =
 	     (SEL_ARR_IF_NOT_f22f3_empty_33_812_AND_NOT_SEL__ETC___d4156[1:0] ==
 	      2'b0 &&
 	      SEL_ARR_IF_NOT_f22f3_empty_33_812_AND_NOT_SEL__ETC___d4156[15:13] ==
-	      3'b011) ?
-	       instr__h152365 :
-	       ((SEL_ARR_IF_NOT_f22f3_empty_33_812_AND_NOT_SEL__ETC___d4156[1:0] ==
-		 2'b0 &&
-		 SEL_ARR_IF_NOT_f22f3_empty_33_812_AND_NOT_SEL__ETC___d4156[15:13] ==
-		 3'b111) ?
-		  instr__h152518 :
-		  IF_SEL_ARR_IF_NOT_f22f3_empty_33_812_AND_NOT_S_ETC___d4865) ;
-  assign IF_SEL_ARR_IF_NOT_f22f3_empty_33_812_AND_NOT_S_ETC___d4869 =
-	     (SEL_ARR_IF_NOT_f22f3_empty_33_812_AND_NOT_SEL__ETC___d4156[1:0] ==
-	      2'b10 &&
-	      SEL_ARR_IF_NOT_f22f3_empty_33_812_AND_NOT_SEL__ETC___d4156[11:7] !=
-	      5'd0 &&
-	      SEL_ARR_IF_NOT_f22f3_empty_33_812_AND_NOT_SEL__ETC___d4156[15:13] ==
-	      3'b011) ?
-	       instr__h152009 :
+	      3'b111) ?
+	       instr__h152506 :
 	       ((SEL_ARR_IF_NOT_f22f3_empty_33_812_AND_NOT_SEL__ETC___d4156[1:0] ==
 		 2'b10 &&
 		 SEL_ARR_IF_NOT_f22f3_empty_33_812_AND_NOT_SEL__ETC___d4156[15:13] ==
-		 3'b111) ?
-		  instr__h152164 :
-		  IF_SEL_ARR_IF_NOT_f22f3_empty_33_812_AND_NOT_S_ETC___d4867) ;
-  assign IF_SEL_ARR_IF_NOT_f22f3_empty_33_812_AND_NOT_S_ETC___d4871 =
+		 3'b011) ?
+		  instr__h152710 :
+		  IF_SEL_ARR_IF_NOT_f22f3_empty_33_812_AND_NOT_S_ETC___d4870) ;
+  assign IF_SEL_ARR_IF_NOT_f22f3_empty_33_812_AND_NOT_S_ETC___d4874 =
+	     (SEL_ARR_IF_NOT_f22f3_empty_33_812_AND_NOT_SEL__ETC___d4156[1:0] ==
+	      2'b10 &&
+	      SEL_ARR_IF_NOT_f22f3_empty_33_812_AND_NOT_SEL__ETC___d4156[15:13] ==
+	      3'b111) ?
+	       instr__h152152 :
+	       ((SEL_ARR_IF_NOT_f22f3_empty_33_812_AND_NOT_SEL__ETC___d4156[1:0] ==
+		 2'b0 &&
+		 SEL_ARR_IF_NOT_f22f3_empty_33_812_AND_NOT_SEL__ETC___d4156[15:13] ==
+		 3'b011) ?
+		  instr__h152353 :
+		  IF_SEL_ARR_IF_NOT_f22f3_empty_33_812_AND_NOT_S_ETC___d4872) ;
+  assign IF_SEL_ARR_IF_NOT_f22f3_empty_33_812_AND_NOT_S_ETC___d4877 =
 	     (SEL_ARR_IF_NOT_f22f3_empty_33_812_AND_NOT_SEL__ETC___d4156[1:0] ==
 	      2'b01 &&
 	      SEL_ARR_IF_NOT_f22f3_empty_33_812_AND_NOT_SEL__ETC___d4156[15:10] ==
 	      6'b100111 &&
 	      SEL_ARR_IF_NOT_f22f3_empty_33_812_AND_NOT_SEL__ETC___d4156[6:5] ==
 	      2'b0) ?
-	       instr__h151752 :
+	       instr__h151740 :
 	       ((SEL_ARR_IF_NOT_f22f3_empty_33_812_AND_NOT_SEL__ETC___d4156[1:0] ==
 		 2'b10 &&
 		 SEL_ARR_IF_NOT_f22f3_empty_33_812_AND_NOT_SEL__ETC___d4156[15:12] ==
@@ -11936,41 +11939,48 @@ module mkFetchStage(CLK,
 		 5'd0 &&
 		 SEL_ARR_IF_NOT_f22f3_empty_33_812_AND_NOT_SEL__ETC___d4156[6:2] ==
 		 5'd0) ?
-		  instr__h151912 :
-		  IF_SEL_ARR_IF_NOT_f22f3_empty_33_812_AND_NOT_S_ETC___d4869) ;
-  assign IF_SEL_ARR_IF_NOT_f22f3_empty_33_812_AND_NOT_S_ETC___d4873 =
+		  instr__h151900 :
+		  ((SEL_ARR_IF_NOT_f22f3_empty_33_812_AND_NOT_SEL__ETC___d4156[1:0] ==
+		    2'b10 &&
+		    SEL_ARR_IF_NOT_f22f3_empty_33_812_AND_NOT_SEL__ETC___d4156[11:7] !=
+		    5'd0 &&
+		    SEL_ARR_IF_NOT_f22f3_empty_33_812_AND_NOT_SEL__ETC___d4156[15:13] ==
+		    3'b011) ?
+		     instr__h151997 :
+		     IF_SEL_ARR_IF_NOT_f22f3_empty_33_812_AND_NOT_S_ETC___d4874)) ;
+  assign IF_SEL_ARR_IF_NOT_f22f3_empty_33_812_AND_NOT_S_ETC___d4879 =
 	     (SEL_ARR_IF_NOT_f22f3_empty_33_812_AND_NOT_SEL__ETC___d4156[1:0] ==
 	      2'b01 &&
 	      SEL_ARR_IF_NOT_f22f3_empty_33_812_AND_NOT_SEL__ETC___d4156[15:10] ==
 	      6'b100011 &&
 	      SEL_ARR_IF_NOT_f22f3_empty_33_812_AND_NOT_SEL__ETC___d4156[6:5] ==
 	      2'b0) ?
-	       instr__h151474 :
+	       instr__h151462 :
 	       ((SEL_ARR_IF_NOT_f22f3_empty_33_812_AND_NOT_SEL__ETC___d4156[1:0] ==
 		 2'b01 &&
 		 SEL_ARR_IF_NOT_f22f3_empty_33_812_AND_NOT_SEL__ETC___d4156[15:10] ==
 		 6'b100111 &&
 		 SEL_ARR_IF_NOT_f22f3_empty_33_812_AND_NOT_SEL__ETC___d4156[6:5] ==
 		 2'b01) ?
-		  instr__h151613 :
-		  IF_SEL_ARR_IF_NOT_f22f3_empty_33_812_AND_NOT_S_ETC___d4871) ;
-  assign IF_SEL_ARR_IF_NOT_f22f3_empty_33_812_AND_NOT_S_ETC___d4875 =
+		  instr__h151601 :
+		  IF_SEL_ARR_IF_NOT_f22f3_empty_33_812_AND_NOT_S_ETC___d4877) ;
+  assign IF_SEL_ARR_IF_NOT_f22f3_empty_33_812_AND_NOT_S_ETC___d4881 =
 	     (SEL_ARR_IF_NOT_f22f3_empty_33_812_AND_NOT_SEL__ETC___d4156[1:0] ==
 	      2'b01 &&
 	      SEL_ARR_IF_NOT_f22f3_empty_33_812_AND_NOT_SEL__ETC___d4156[15:10] ==
 	      6'b100011 &&
 	      SEL_ARR_IF_NOT_f22f3_empty_33_812_AND_NOT_SEL__ETC___d4156[6:5] ==
 	      2'b10) ?
-	       instr__h151200 :
+	       instr__h151188 :
 	       ((SEL_ARR_IF_NOT_f22f3_empty_33_812_AND_NOT_SEL__ETC___d4156[1:0] ==
 		 2'b01 &&
 		 SEL_ARR_IF_NOT_f22f3_empty_33_812_AND_NOT_SEL__ETC___d4156[15:10] ==
 		 6'b100011 &&
 		 SEL_ARR_IF_NOT_f22f3_empty_33_812_AND_NOT_SEL__ETC___d4156[6:5] ==
 		 2'b01) ?
-		  instr__h151337 :
-		  IF_SEL_ARR_IF_NOT_f22f3_empty_33_812_AND_NOT_S_ETC___d4873) ;
-  assign IF_SEL_ARR_IF_NOT_f22f3_empty_33_812_AND_NOT_S_ETC___d4878 =
+		  instr__h151325 :
+		  IF_SEL_ARR_IF_NOT_f22f3_empty_33_812_AND_NOT_S_ETC___d4879) ;
+  assign IF_SEL_ARR_IF_NOT_f22f3_empty_33_812_AND_NOT_S_ETC___d4884 =
 	     (SEL_ARR_IF_NOT_f22f3_empty_33_812_AND_NOT_SEL__ETC___d4156[1:0] ==
 	      2'b10 &&
 	      SEL_ARR_IF_NOT_f22f3_empty_33_812_AND_NOT_SEL__ETC___d4156[15:12] ==
@@ -11979,7 +11989,7 @@ module mkFetchStage(CLK,
 	      5'd0 &&
 	      SEL_ARR_IF_NOT_f22f3_empty_33_812_AND_NOT_SEL__ETC___d4156[6:2] !=
 	      5'd0) ?
-	       instr__h150846 :
+	       instr__h150834 :
 	       ((SEL_ARR_IF_NOT_f22f3_empty_33_812_AND_NOT_SEL__ETC___d4156[1:0] ==
 		 2'b10 &&
 		 SEL_ARR_IF_NOT_f22f3_empty_33_812_AND_NOT_SEL__ETC___d4156[15:12] ==
@@ -11988,98 +11998,98 @@ module mkFetchStage(CLK,
 		 5'd0 &&
 		 SEL_ARR_IF_NOT_f22f3_empty_33_812_AND_NOT_SEL__ETC___d4156[6:2] !=
 		 5'd0) ?
-		  instr__h150967 :
+		  instr__h150955 :
 		  ((SEL_ARR_IF_NOT_f22f3_empty_33_812_AND_NOT_SEL__ETC___d4156[1:0] ==
 		    2'b01 &&
 		    SEL_ARR_IF_NOT_f22f3_empty_33_812_AND_NOT_SEL__ETC___d4156[15:10] ==
 		    6'b100011 &&
 		    SEL_ARR_IF_NOT_f22f3_empty_33_812_AND_NOT_SEL__ETC___d4156[6:5] ==
 		    2'b11) ?
-		     instr__h151063 :
-		     IF_SEL_ARR_IF_NOT_f22f3_empty_33_812_AND_NOT_S_ETC___d4875)) ;
-  assign IF_SEL_ARR_IF_NOT_f22f3_empty_33_812_AND_NOT_S_ETC___d4881 =
+		     instr__h151051 :
+		     IF_SEL_ARR_IF_NOT_f22f3_empty_33_812_AND_NOT_S_ETC___d4881)) ;
+  assign IF_SEL_ARR_IF_NOT_f22f3_empty_33_812_AND_NOT_S_ETC___d4887 =
 	     (SEL_ARR_IF_NOT_f22f3_empty_33_812_AND_NOT_SEL__ETC___d4156[1:0] ==
 	      2'b01 &&
 	      SEL_ARR_IF_NOT_f22f3_empty_33_812_AND_NOT_SEL__ETC___d4156[15:13] ==
 	      3'b100 &&
 	      SEL_ARR_IF_NOT_f22f3_empty_33_812_AND_NOT_SEL__ETC___d4156[11:10] ==
 	      2'b0 &&
-	      imm6__h148932 != 6'd0) ?
-	       instr__h150357 :
+	      imm6__h148920 != 6'd0) ?
+	       instr__h150345 :
 	       ((SEL_ARR_IF_NOT_f22f3_empty_33_812_AND_NOT_SEL__ETC___d4156[1:0] ==
 		 2'b01 &&
 		 SEL_ARR_IF_NOT_f22f3_empty_33_812_AND_NOT_SEL__ETC___d4156[15:13] ==
 		 3'b100 &&
 		 SEL_ARR_IF_NOT_f22f3_empty_33_812_AND_NOT_SEL__ETC___d4156[11:10] ==
 		 2'b01 &&
-		 imm6__h148932 != 6'd0) ?
-		  instr__h150547 :
+		 imm6__h148920 != 6'd0) ?
+		  instr__h150535 :
 		  ((SEL_ARR_IF_NOT_f22f3_empty_33_812_AND_NOT_SEL__ETC___d4156[1:0] ==
 		    2'b01 &&
 		    SEL_ARR_IF_NOT_f22f3_empty_33_812_AND_NOT_SEL__ETC___d4156[15:13] ==
 		    3'b100 &&
 		    SEL_ARR_IF_NOT_f22f3_empty_33_812_AND_NOT_SEL__ETC___d4156[11:10] ==
 		    2'b10) ?
-		     instr__h150665 :
-		     IF_SEL_ARR_IF_NOT_f22f3_empty_33_812_AND_NOT_S_ETC___d4878)) ;
-  assign IF_SEL_ARR_IF_NOT_f22f3_empty_33_812_AND_NOT_S_ETC___d4883 =
+		     instr__h150653 :
+		     IF_SEL_ARR_IF_NOT_f22f3_empty_33_812_AND_NOT_S_ETC___d4884)) ;
+  assign IF_SEL_ARR_IF_NOT_f22f3_empty_33_812_AND_NOT_S_ETC___d4889 =
 	     (SEL_ARR_IF_NOT_f22f3_empty_33_812_AND_NOT_SEL__ETC___d4156[1:0] ==
 	      2'b0 &&
 	      SEL_ARR_IF_NOT_f22f3_empty_33_812_AND_NOT_SEL__ETC___d4156[15:13] ==
 	      3'b0 &&
-	      nzimm10__h149834 != 10'd0) ?
-	       instr__h149996 :
+	      nzimm10__h149822 != 10'd0) ?
+	       instr__h149984 :
 	       ((SEL_ARR_IF_NOT_f22f3_empty_33_812_AND_NOT_SEL__ETC___d4156[1:0] ==
 		 2'b10 &&
 		 SEL_ARR_IF_NOT_f22f3_empty_33_812_AND_NOT_SEL__ETC___d4156[15:13] ==
 		 3'b0 &&
 		 SEL_ARR_IF_NOT_f22f3_empty_33_812_AND_NOT_SEL__ETC___d4156[11:7] !=
 		 5'd0 &&
-		 imm6__h148932 != 6'd0) ?
-		  instr__h150167 :
-		  IF_SEL_ARR_IF_NOT_f22f3_empty_33_812_AND_NOT_S_ETC___d4881) ;
-  assign IF_SEL_ARR_IF_NOT_f22f3_empty_33_812_AND_NOT_S_ETC___d4885 =
+		 imm6__h148920 != 6'd0) ?
+		  instr__h150155 :
+		  IF_SEL_ARR_IF_NOT_f22f3_empty_33_812_AND_NOT_S_ETC___d4887) ;
+  assign IF_SEL_ARR_IF_NOT_f22f3_empty_33_812_AND_NOT_S_ETC___d4891 =
 	     (SEL_ARR_IF_NOT_f22f3_empty_33_812_AND_NOT_SEL__ETC___d4156[1:0] ==
 	      2'b01 &&
 	      SEL_ARR_IF_NOT_f22f3_empty_33_812_AND_NOT_SEL__ETC___d4156[15:13] ==
 	      3'b001 &&
 	      SEL_ARR_IF_NOT_f22f3_empty_33_812_AND_NOT_SEL__ETC___d4156[11:7] !=
 	      5'd0) ?
-	       instr__h149563 :
+	       instr__h149551 :
 	       ((SEL_ARR_IF_NOT_f22f3_empty_33_812_AND_NOT_SEL__ETC___d4156[1:0] ==
 		 2'b01 &&
 		 SEL_ARR_IF_NOT_f22f3_empty_33_812_AND_NOT_SEL__ETC___d4156[15:13] ==
 		 3'b011 &&
 		 SEL_ARR_IF_NOT_f22f3_empty_33_812_AND_NOT_SEL__ETC___d4156[11:7] ==
 		 5'd2 &&
-		 nzimm10__h149616 != 10'd0) ?
-		  instr__h149823 :
-		  IF_SEL_ARR_IF_NOT_f22f3_empty_33_812_AND_NOT_S_ETC___d4883) ;
-  assign IF_SEL_ARR_IF_NOT_f22f3_empty_33_812_AND_NOT_S_ETC___d4886 =
+		 nzimm10__h149604 != 10'd0) ?
+		  instr__h149811 :
+		  IF_SEL_ARR_IF_NOT_f22f3_empty_33_812_AND_NOT_S_ETC___d4889) ;
+  assign IF_SEL_ARR_IF_NOT_f22f3_empty_33_812_AND_NOT_S_ETC___d4892 =
 	     (SEL_ARR_IF_NOT_f22f3_empty_33_812_AND_NOT_SEL__ETC___d4156[1:0] ==
 	      2'b01 &&
 	      SEL_ARR_IF_NOT_f22f3_empty_33_812_AND_NOT_SEL__ETC___d4156[15:13] ==
 	      3'b0 &&
 	      SEL_ARR_IF_NOT_f22f3_empty_33_812_AND_NOT_SEL__ETC___d4156[11:7] !=
 	      5'd0 &&
-	      imm6__h148932 != 6'd0 ||
+	      imm6__h148920 != 6'd0 ||
 	      SEL_ARR_IF_NOT_f22f3_empty_33_812_AND_NOT_SEL__ETC___d4156[1:0] ==
 	      2'b01 &&
 	      SEL_ARR_IF_NOT_f22f3_empty_33_812_AND_NOT_SEL__ETC___d4156[15:13] ==
 	      3'b0 &&
 	      SEL_ARR_IF_NOT_f22f3_empty_33_812_AND_NOT_SEL__ETC___d4156[11:7] ==
 	      5'd0 &&
-	      imm6__h148932 == 6'd0) ?
-	       instr__h149332 :
-	       IF_SEL_ARR_IF_NOT_f22f3_empty_33_812_AND_NOT_S_ETC___d4885 ;
-  assign IF_SEL_ARR_IF_NOT_f22f3_empty_33_812_AND_NOT_S_ETC___d4888 =
+	      imm6__h148920 == 6'd0) ?
+	       instr__h149320 :
+	       IF_SEL_ARR_IF_NOT_f22f3_empty_33_812_AND_NOT_S_ETC___d4891 ;
+  assign IF_SEL_ARR_IF_NOT_f22f3_empty_33_812_AND_NOT_S_ETC___d4894 =
 	     (SEL_ARR_IF_NOT_f22f3_empty_33_812_AND_NOT_SEL__ETC___d4156[1:0] ==
 	      2'b01 &&
 	      SEL_ARR_IF_NOT_f22f3_empty_33_812_AND_NOT_SEL__ETC___d4156[15:13] ==
 	      3'b010 &&
 	      SEL_ARR_IF_NOT_f22f3_empty_33_812_AND_NOT_SEL__ETC___d4156[11:7] !=
 	      5'd0) ?
-	       instr__h149011 :
+	       instr__h148999 :
 	       ((SEL_ARR_IF_NOT_f22f3_empty_33_812_AND_NOT_SEL__ETC___d4156[1:0] ==
 		 2'b01 &&
 		 SEL_ARR_IF_NOT_f22f3_empty_33_812_AND_NOT_SEL__ETC___d4156[15:13] ==
@@ -12088,22 +12098,22 @@ module mkFetchStage(CLK,
 		 5'd0 &&
 		 SEL_ARR_IF_NOT_f22f3_empty_33_812_AND_NOT_SEL__ETC___d4156[11:7] !=
 		 5'd2 &&
-		 imm6__h148932 != 6'd0) ?
-		  instr__h149200 :
-		  IF_SEL_ARR_IF_NOT_f22f3_empty_33_812_AND_NOT_S_ETC___d4886) ;
-  assign IF_SEL_ARR_IF_NOT_f22f3_empty_33_812_AND_NOT_S_ETC___d4890 =
+		 imm6__h148920 != 6'd0) ?
+		  instr__h149188 :
+		  IF_SEL_ARR_IF_NOT_f22f3_empty_33_812_AND_NOT_S_ETC___d4892) ;
+  assign IF_SEL_ARR_IF_NOT_f22f3_empty_33_812_AND_NOT_S_ETC___d4896 =
 	     (SEL_ARR_IF_NOT_f22f3_empty_33_812_AND_NOT_SEL__ETC___d4156[1:0] ==
 	      2'b01 &&
 	      SEL_ARR_IF_NOT_f22f3_empty_33_812_AND_NOT_SEL__ETC___d4156[15:13] ==
 	      3'b110) ?
-	       instr__h148351 :
+	       instr__h148339 :
 	       ((SEL_ARR_IF_NOT_f22f3_empty_33_812_AND_NOT_SEL__ETC___d4156[1:0] ==
 		 2'b01 &&
 		 SEL_ARR_IF_NOT_f22f3_empty_33_812_AND_NOT_SEL__ETC___d4156[15:13] ==
 		 3'b111) ?
-		  instr__h148670 :
-		  IF_SEL_ARR_IF_NOT_f22f3_empty_33_812_AND_NOT_S_ETC___d4888) ;
-  assign IF_SEL_ARR_IF_NOT_f22f3_empty_33_812_AND_NOT_S_ETC___d4892 =
+		  instr__h148658 :
+		  IF_SEL_ARR_IF_NOT_f22f3_empty_33_812_AND_NOT_S_ETC___d4894) ;
+  assign IF_SEL_ARR_IF_NOT_f22f3_empty_33_812_AND_NOT_S_ETC___d4898 =
 	     (SEL_ARR_IF_NOT_f22f3_empty_33_812_AND_NOT_SEL__ETC___d4156[1:0] ==
 	      2'b10 &&
 	      SEL_ARR_IF_NOT_f22f3_empty_33_812_AND_NOT_SEL__ETC___d4156[15:12] ==
@@ -12112,7 +12122,7 @@ module mkFetchStage(CLK,
 	      5'd0 &&
 	      SEL_ARR_IF_NOT_f22f3_empty_33_812_AND_NOT_SEL__ETC___d4156[6:2] ==
 	      5'd0) ?
-	       instr__h148168 :
+	       instr__h148156 :
 	       ((SEL_ARR_IF_NOT_f22f3_empty_33_812_AND_NOT_SEL__ETC___d4156[1:0] ==
 		 2'b10 &&
 		 SEL_ARR_IF_NOT_f22f3_empty_33_812_AND_NOT_SEL__ETC___d4156[15:12] ==
@@ -12121,92 +12131,88 @@ module mkFetchStage(CLK,
 		 5'd0 &&
 		 SEL_ARR_IF_NOT_f22f3_empty_33_812_AND_NOT_SEL__ETC___d4156[6:2] ==
 		 5'd0) ?
-		  instr__h148286 :
-		  IF_SEL_ARR_IF_NOT_f22f3_empty_33_812_AND_NOT_S_ETC___d4890) ;
-  assign IF_SEL_ARR_IF_NOT_f22f3_empty_33_812_AND_NOT_S_ETC___d4894 =
+		  instr__h148274 :
+		  IF_SEL_ARR_IF_NOT_f22f3_empty_33_812_AND_NOT_S_ETC___d4896) ;
+  assign IF_SEL_ARR_IF_NOT_f22f3_empty_33_812_AND_NOT_S_ETC___d4900 =
 	     (SEL_ARR_IF_NOT_f22f3_empty_33_812_AND_NOT_SEL__ETC___d4156[1:0] ==
 	      2'b0 &&
 	      SEL_ARR_IF_NOT_f22f3_empty_33_812_AND_NOT_SEL__ETC___d4156[15:13] ==
 	      3'b110) ?
-	       instr__h147484 :
+	       instr__h147472 :
 	       ((SEL_ARR_IF_NOT_f22f3_empty_33_812_AND_NOT_SEL__ETC___d4156[1:0] ==
 		 2'b01 &&
 		 SEL_ARR_IF_NOT_f22f3_empty_33_812_AND_NOT_SEL__ETC___d4156[15:13] ==
 		 3'b101) ?
-		  instr__h147714 :
-		  IF_SEL_ARR_IF_NOT_f22f3_empty_33_812_AND_NOT_S_ETC___d4892) ;
-  assign IF_SEL_ARR_IF_NOT_f22f3_empty_33_812_AND_NOT_S_ETC___d4896 =
+		  instr__h147702 :
+		  IF_SEL_ARR_IF_NOT_f22f3_empty_33_812_AND_NOT_S_ETC___d4898) ;
+  assign IF_SEL_ARR_IF_NOT_f22f3_empty_33_812_AND_NOT_S_ETC___d4902 =
 	     (SEL_ARR_IF_NOT_f22f3_empty_33_812_AND_NOT_SEL__ETC___d4156[1:0] ==
 	      2'b10 &&
 	      SEL_ARR_IF_NOT_f22f3_empty_33_812_AND_NOT_SEL__ETC___d4156[15:13] ==
 	      3'b110) ?
-	       instr__h147093 :
+	       instr__h147081 :
 	       ((SEL_ARR_IF_NOT_f22f3_empty_33_812_AND_NOT_SEL__ETC___d4156[1:0] ==
 		 2'b0 &&
 		 SEL_ARR_IF_NOT_f22f3_empty_33_812_AND_NOT_SEL__ETC___d4156[15:13] ==
 		 3'b010) ?
-		  instr__h147287 :
-		  IF_SEL_ARR_IF_NOT_f22f3_empty_33_812_AND_NOT_S_ETC___d4894) ;
-  assign IF_SEL_ARR_IF_NOT_f22f3_empty_33_812_AND_NOT_S_ETC___d5149 =
-	     (SEL_ARR_IF_NOT_f22f3_empty_33_812_AND_NOT_SEL__ETC___d4167[1:0] ==
-	      2'b0 &&
-	      SEL_ARR_IF_NOT_f22f3_empty_33_812_AND_NOT_SEL__ETC___d4167[15:13] ==
-	      3'b001) ?
-	       instr__h169937 :
-	       ((SEL_ARR_IF_NOT_f22f3_empty_33_812_AND_NOT_SEL__ETC___d4167[1:0] ==
-		 2'b0 &&
-		 SEL_ARR_IF_NOT_f22f3_empty_33_812_AND_NOT_SEL__ETC___d4167[15:13] ==
-		 3'b101) ?
-		  instr__h170090 :
-		  32'h0) ;
-  assign IF_SEL_ARR_IF_NOT_f22f3_empty_33_812_AND_NOT_S_ETC___d5151 =
-	     (SEL_ARR_IF_NOT_f22f3_empty_33_812_AND_NOT_SEL__ETC___d4167[1:0] ==
-	      2'b10 &&
-	      SEL_ARR_IF_NOT_f22f3_empty_33_812_AND_NOT_SEL__ETC___d4167[11:7] !=
-	      5'd0 &&
-	      SEL_ARR_IF_NOT_f22f3_empty_33_812_AND_NOT_SEL__ETC___d4167[15:13] ==
-	      3'b001) ?
-	       instr__h169581 :
-	       ((SEL_ARR_IF_NOT_f22f3_empty_33_812_AND_NOT_SEL__ETC___d4167[1:0] ==
-		 2'b10 &&
-		 SEL_ARR_IF_NOT_f22f3_empty_33_812_AND_NOT_SEL__ETC___d4167[15:13] ==
-		 3'b101) ?
-		  instr__h169736 :
-		  IF_SEL_ARR_IF_NOT_f22f3_empty_33_812_AND_NOT_S_ETC___d5149) ;
-  assign IF_SEL_ARR_IF_NOT_f22f3_empty_33_812_AND_NOT_S_ETC___d5153 =
-	     (SEL_ARR_IF_NOT_f22f3_empty_33_812_AND_NOT_SEL__ETC___d4167[1:0] ==
-	      2'b0 &&
-	      SEL_ARR_IF_NOT_f22f3_empty_33_812_AND_NOT_SEL__ETC___d4167[15:13] ==
-	      3'b011) ?
-	       instr__h168383 :
-	       ((SEL_ARR_IF_NOT_f22f3_empty_33_812_AND_NOT_SEL__ETC___d4167[1:0] ==
-		 2'b0 &&
-		 SEL_ARR_IF_NOT_f22f3_empty_33_812_AND_NOT_SEL__ETC___d4167[15:13] ==
-		 3'b111) ?
-		  instr__h168536 :
-		  IF_SEL_ARR_IF_NOT_f22f3_empty_33_812_AND_NOT_S_ETC___d5151) ;
-  assign IF_SEL_ARR_IF_NOT_f22f3_empty_33_812_AND_NOT_S_ETC___d5155 =
-	     (SEL_ARR_IF_NOT_f22f3_empty_33_812_AND_NOT_SEL__ETC___d4167[1:0] ==
-	      2'b10 &&
-	      SEL_ARR_IF_NOT_f22f3_empty_33_812_AND_NOT_SEL__ETC___d4167[11:7] !=
-	      5'd0 &&
-	      SEL_ARR_IF_NOT_f22f3_empty_33_812_AND_NOT_SEL__ETC___d4167[15:13] ==
-	      3'b011) ?
-	       instr__h168027 :
-	       ((SEL_ARR_IF_NOT_f22f3_empty_33_812_AND_NOT_SEL__ETC___d4167[1:0] ==
-		 2'b10 &&
-		 SEL_ARR_IF_NOT_f22f3_empty_33_812_AND_NOT_SEL__ETC___d4167[15:13] ==
-		 3'b111) ?
-		  instr__h168182 :
-		  IF_SEL_ARR_IF_NOT_f22f3_empty_33_812_AND_NOT_S_ETC___d5153) ;
+		  instr__h147275 :
+		  IF_SEL_ARR_IF_NOT_f22f3_empty_33_812_AND_NOT_S_ETC___d4900) ;
   assign IF_SEL_ARR_IF_NOT_f22f3_empty_33_812_AND_NOT_S_ETC___d5157 =
+	     (SEL_ARR_IF_NOT_f22f3_empty_33_812_AND_NOT_SEL__ETC___d4167[1:0] ==
+	      2'b0 &&
+	      SEL_ARR_IF_NOT_f22f3_empty_33_812_AND_NOT_SEL__ETC___d4167[15:13] ==
+	      3'b001) ?
+	       instr__h169913 :
+	       ((SEL_ARR_IF_NOT_f22f3_empty_33_812_AND_NOT_SEL__ETC___d4167[1:0] ==
+		 2'b0 &&
+		 SEL_ARR_IF_NOT_f22f3_empty_33_812_AND_NOT_SEL__ETC___d4167[15:13] ==
+		 3'b101) ?
+		  instr__h170066 :
+		  32'h0) ;
+  assign IF_SEL_ARR_IF_NOT_f22f3_empty_33_812_AND_NOT_S_ETC___d5159 =
+	     (SEL_ARR_IF_NOT_f22f3_empty_33_812_AND_NOT_SEL__ETC___d4167[1:0] ==
+	      2'b10 &&
+	      SEL_ARR_IF_NOT_f22f3_empty_33_812_AND_NOT_SEL__ETC___d4167[15:13] ==
+	      3'b001) ?
+	       instr__h169536 :
+	       ((SEL_ARR_IF_NOT_f22f3_empty_33_812_AND_NOT_SEL__ETC___d4167[1:0] ==
+		 2'b10 &&
+		 SEL_ARR_IF_NOT_f22f3_empty_33_812_AND_NOT_SEL__ETC___d4167[15:13] ==
+		 3'b101) ?
+		  instr__h169712 :
+		  IF_SEL_ARR_IF_NOT_f22f3_empty_33_812_AND_NOT_S_ETC___d5157) ;
+  assign IF_SEL_ARR_IF_NOT_f22f3_empty_33_812_AND_NOT_S_ETC___d5161 =
+	     (SEL_ARR_IF_NOT_f22f3_empty_33_812_AND_NOT_SEL__ETC___d4167[1:0] ==
+	      2'b0 &&
+	      SEL_ARR_IF_NOT_f22f3_empty_33_812_AND_NOT_SEL__ETC___d4167[15:13] ==
+	      3'b111) ?
+	       instr__h168518 :
+	       ((SEL_ARR_IF_NOT_f22f3_empty_33_812_AND_NOT_SEL__ETC___d4167[1:0] ==
+		 2'b10 &&
+		 SEL_ARR_IF_NOT_f22f3_empty_33_812_AND_NOT_SEL__ETC___d4167[15:13] ==
+		 3'b011) ?
+		  instr__h168722 :
+		  IF_SEL_ARR_IF_NOT_f22f3_empty_33_812_AND_NOT_S_ETC___d5159) ;
+  assign IF_SEL_ARR_IF_NOT_f22f3_empty_33_812_AND_NOT_S_ETC___d5163 =
+	     (SEL_ARR_IF_NOT_f22f3_empty_33_812_AND_NOT_SEL__ETC___d4167[1:0] ==
+	      2'b10 &&
+	      SEL_ARR_IF_NOT_f22f3_empty_33_812_AND_NOT_SEL__ETC___d4167[15:13] ==
+	      3'b111) ?
+	       instr__h168164 :
+	       ((SEL_ARR_IF_NOT_f22f3_empty_33_812_AND_NOT_SEL__ETC___d4167[1:0] ==
+		 2'b0 &&
+		 SEL_ARR_IF_NOT_f22f3_empty_33_812_AND_NOT_SEL__ETC___d4167[15:13] ==
+		 3'b011) ?
+		  instr__h168365 :
+		  IF_SEL_ARR_IF_NOT_f22f3_empty_33_812_AND_NOT_S_ETC___d5161) ;
+  assign IF_SEL_ARR_IF_NOT_f22f3_empty_33_812_AND_NOT_S_ETC___d5166 =
 	     (SEL_ARR_IF_NOT_f22f3_empty_33_812_AND_NOT_SEL__ETC___d4167[1:0] ==
 	      2'b01 &&
 	      SEL_ARR_IF_NOT_f22f3_empty_33_812_AND_NOT_SEL__ETC___d4167[15:10] ==
 	      6'b100111 &&
 	      SEL_ARR_IF_NOT_f22f3_empty_33_812_AND_NOT_SEL__ETC___d4167[6:5] ==
 	      2'b0) ?
-	       instr__h167770 :
+	       instr__h167752 :
 	       ((SEL_ARR_IF_NOT_f22f3_empty_33_812_AND_NOT_SEL__ETC___d4167[1:0] ==
 		 2'b10 &&
 		 SEL_ARR_IF_NOT_f22f3_empty_33_812_AND_NOT_SEL__ETC___d4167[15:12] ==
@@ -12215,41 +12221,48 @@ module mkFetchStage(CLK,
 		 5'd0 &&
 		 SEL_ARR_IF_NOT_f22f3_empty_33_812_AND_NOT_SEL__ETC___d4167[6:2] ==
 		 5'd0) ?
-		  instr__h167930 :
-		  IF_SEL_ARR_IF_NOT_f22f3_empty_33_812_AND_NOT_S_ETC___d5155) ;
-  assign IF_SEL_ARR_IF_NOT_f22f3_empty_33_812_AND_NOT_S_ETC___d5159 =
+		  instr__h167912 :
+		  ((SEL_ARR_IF_NOT_f22f3_empty_33_812_AND_NOT_SEL__ETC___d4167[1:0] ==
+		    2'b10 &&
+		    SEL_ARR_IF_NOT_f22f3_empty_33_812_AND_NOT_SEL__ETC___d4167[11:7] !=
+		    5'd0 &&
+		    SEL_ARR_IF_NOT_f22f3_empty_33_812_AND_NOT_SEL__ETC___d4167[15:13] ==
+		    3'b011) ?
+		     instr__h168009 :
+		     IF_SEL_ARR_IF_NOT_f22f3_empty_33_812_AND_NOT_S_ETC___d5163)) ;
+  assign IF_SEL_ARR_IF_NOT_f22f3_empty_33_812_AND_NOT_S_ETC___d5168 =
 	     (SEL_ARR_IF_NOT_f22f3_empty_33_812_AND_NOT_SEL__ETC___d4167[1:0] ==
 	      2'b01 &&
 	      SEL_ARR_IF_NOT_f22f3_empty_33_812_AND_NOT_SEL__ETC___d4167[15:10] ==
 	      6'b100011 &&
 	      SEL_ARR_IF_NOT_f22f3_empty_33_812_AND_NOT_SEL__ETC___d4167[6:5] ==
 	      2'b0) ?
-	       instr__h167492 :
+	       instr__h167474 :
 	       ((SEL_ARR_IF_NOT_f22f3_empty_33_812_AND_NOT_SEL__ETC___d4167[1:0] ==
 		 2'b01 &&
 		 SEL_ARR_IF_NOT_f22f3_empty_33_812_AND_NOT_SEL__ETC___d4167[15:10] ==
 		 6'b100111 &&
 		 SEL_ARR_IF_NOT_f22f3_empty_33_812_AND_NOT_SEL__ETC___d4167[6:5] ==
 		 2'b01) ?
-		  instr__h167631 :
-		  IF_SEL_ARR_IF_NOT_f22f3_empty_33_812_AND_NOT_S_ETC___d5157) ;
-  assign IF_SEL_ARR_IF_NOT_f22f3_empty_33_812_AND_NOT_S_ETC___d5161 =
+		  instr__h167613 :
+		  IF_SEL_ARR_IF_NOT_f22f3_empty_33_812_AND_NOT_S_ETC___d5166) ;
+  assign IF_SEL_ARR_IF_NOT_f22f3_empty_33_812_AND_NOT_S_ETC___d5170 =
 	     (SEL_ARR_IF_NOT_f22f3_empty_33_812_AND_NOT_SEL__ETC___d4167[1:0] ==
 	      2'b01 &&
 	      SEL_ARR_IF_NOT_f22f3_empty_33_812_AND_NOT_SEL__ETC___d4167[15:10] ==
 	      6'b100011 &&
 	      SEL_ARR_IF_NOT_f22f3_empty_33_812_AND_NOT_SEL__ETC___d4167[6:5] ==
 	      2'b10) ?
-	       instr__h167218 :
+	       instr__h167200 :
 	       ((SEL_ARR_IF_NOT_f22f3_empty_33_812_AND_NOT_SEL__ETC___d4167[1:0] ==
 		 2'b01 &&
 		 SEL_ARR_IF_NOT_f22f3_empty_33_812_AND_NOT_SEL__ETC___d4167[15:10] ==
 		 6'b100011 &&
 		 SEL_ARR_IF_NOT_f22f3_empty_33_812_AND_NOT_SEL__ETC___d4167[6:5] ==
 		 2'b01) ?
-		  instr__h167355 :
-		  IF_SEL_ARR_IF_NOT_f22f3_empty_33_812_AND_NOT_S_ETC___d5159) ;
-  assign IF_SEL_ARR_IF_NOT_f22f3_empty_33_812_AND_NOT_S_ETC___d5164 =
+		  instr__h167337 :
+		  IF_SEL_ARR_IF_NOT_f22f3_empty_33_812_AND_NOT_S_ETC___d5168) ;
+  assign IF_SEL_ARR_IF_NOT_f22f3_empty_33_812_AND_NOT_S_ETC___d5173 =
 	     (SEL_ARR_IF_NOT_f22f3_empty_33_812_AND_NOT_SEL__ETC___d4167[1:0] ==
 	      2'b10 &&
 	      SEL_ARR_IF_NOT_f22f3_empty_33_812_AND_NOT_SEL__ETC___d4167[15:12] ==
@@ -12258,7 +12271,7 @@ module mkFetchStage(CLK,
 	      5'd0 &&
 	      SEL_ARR_IF_NOT_f22f3_empty_33_812_AND_NOT_SEL__ETC___d4167[6:2] !=
 	      5'd0) ?
-	       instr__h166864 :
+	       instr__h166846 :
 	       ((SEL_ARR_IF_NOT_f22f3_empty_33_812_AND_NOT_SEL__ETC___d4167[1:0] ==
 		 2'b10 &&
 		 SEL_ARR_IF_NOT_f22f3_empty_33_812_AND_NOT_SEL__ETC___d4167[15:12] ==
@@ -12267,98 +12280,98 @@ module mkFetchStage(CLK,
 		 5'd0 &&
 		 SEL_ARR_IF_NOT_f22f3_empty_33_812_AND_NOT_SEL__ETC___d4167[6:2] !=
 		 5'd0) ?
-		  instr__h166985 :
+		  instr__h166967 :
 		  ((SEL_ARR_IF_NOT_f22f3_empty_33_812_AND_NOT_SEL__ETC___d4167[1:0] ==
 		    2'b01 &&
 		    SEL_ARR_IF_NOT_f22f3_empty_33_812_AND_NOT_SEL__ETC___d4167[15:10] ==
 		    6'b100011 &&
 		    SEL_ARR_IF_NOT_f22f3_empty_33_812_AND_NOT_SEL__ETC___d4167[6:5] ==
 		    2'b11) ?
-		     instr__h167081 :
-		     IF_SEL_ARR_IF_NOT_f22f3_empty_33_812_AND_NOT_S_ETC___d5161)) ;
-  assign IF_SEL_ARR_IF_NOT_f22f3_empty_33_812_AND_NOT_S_ETC___d5167 =
+		     instr__h167063 :
+		     IF_SEL_ARR_IF_NOT_f22f3_empty_33_812_AND_NOT_S_ETC___d5170)) ;
+  assign IF_SEL_ARR_IF_NOT_f22f3_empty_33_812_AND_NOT_S_ETC___d5176 =
 	     (SEL_ARR_IF_NOT_f22f3_empty_33_812_AND_NOT_SEL__ETC___d4167[1:0] ==
 	      2'b01 &&
 	      SEL_ARR_IF_NOT_f22f3_empty_33_812_AND_NOT_SEL__ETC___d4167[15:13] ==
 	      3'b100 &&
 	      SEL_ARR_IF_NOT_f22f3_empty_33_812_AND_NOT_SEL__ETC___d4167[11:10] ==
 	      2'b0 &&
-	      imm6__h164950 != 6'd0) ?
-	       instr__h166375 :
+	      imm6__h164932 != 6'd0) ?
+	       instr__h166357 :
 	       ((SEL_ARR_IF_NOT_f22f3_empty_33_812_AND_NOT_SEL__ETC___d4167[1:0] ==
 		 2'b01 &&
 		 SEL_ARR_IF_NOT_f22f3_empty_33_812_AND_NOT_SEL__ETC___d4167[15:13] ==
 		 3'b100 &&
 		 SEL_ARR_IF_NOT_f22f3_empty_33_812_AND_NOT_SEL__ETC___d4167[11:10] ==
 		 2'b01 &&
-		 imm6__h164950 != 6'd0) ?
-		  instr__h166565 :
+		 imm6__h164932 != 6'd0) ?
+		  instr__h166547 :
 		  ((SEL_ARR_IF_NOT_f22f3_empty_33_812_AND_NOT_SEL__ETC___d4167[1:0] ==
 		    2'b01 &&
 		    SEL_ARR_IF_NOT_f22f3_empty_33_812_AND_NOT_SEL__ETC___d4167[15:13] ==
 		    3'b100 &&
 		    SEL_ARR_IF_NOT_f22f3_empty_33_812_AND_NOT_SEL__ETC___d4167[11:10] ==
 		    2'b10) ?
-		     instr__h166683 :
-		     IF_SEL_ARR_IF_NOT_f22f3_empty_33_812_AND_NOT_S_ETC___d5164)) ;
-  assign IF_SEL_ARR_IF_NOT_f22f3_empty_33_812_AND_NOT_S_ETC___d5169 =
+		     instr__h166665 :
+		     IF_SEL_ARR_IF_NOT_f22f3_empty_33_812_AND_NOT_S_ETC___d5173)) ;
+  assign IF_SEL_ARR_IF_NOT_f22f3_empty_33_812_AND_NOT_S_ETC___d5178 =
 	     (SEL_ARR_IF_NOT_f22f3_empty_33_812_AND_NOT_SEL__ETC___d4167[1:0] ==
 	      2'b0 &&
 	      SEL_ARR_IF_NOT_f22f3_empty_33_812_AND_NOT_SEL__ETC___d4167[15:13] ==
 	      3'b0 &&
-	      nzimm10__h165852 != 10'd0) ?
-	       instr__h166014 :
+	      nzimm10__h165834 != 10'd0) ?
+	       instr__h165996 :
 	       ((SEL_ARR_IF_NOT_f22f3_empty_33_812_AND_NOT_SEL__ETC___d4167[1:0] ==
 		 2'b10 &&
 		 SEL_ARR_IF_NOT_f22f3_empty_33_812_AND_NOT_SEL__ETC___d4167[15:13] ==
 		 3'b0 &&
 		 SEL_ARR_IF_NOT_f22f3_empty_33_812_AND_NOT_SEL__ETC___d4167[11:7] !=
 		 5'd0 &&
-		 imm6__h164950 != 6'd0) ?
-		  instr__h166185 :
-		  IF_SEL_ARR_IF_NOT_f22f3_empty_33_812_AND_NOT_S_ETC___d5167) ;
-  assign IF_SEL_ARR_IF_NOT_f22f3_empty_33_812_AND_NOT_S_ETC___d5171 =
+		 imm6__h164932 != 6'd0) ?
+		  instr__h166167 :
+		  IF_SEL_ARR_IF_NOT_f22f3_empty_33_812_AND_NOT_S_ETC___d5176) ;
+  assign IF_SEL_ARR_IF_NOT_f22f3_empty_33_812_AND_NOT_S_ETC___d5180 =
 	     (SEL_ARR_IF_NOT_f22f3_empty_33_812_AND_NOT_SEL__ETC___d4167[1:0] ==
 	      2'b01 &&
 	      SEL_ARR_IF_NOT_f22f3_empty_33_812_AND_NOT_SEL__ETC___d4167[15:13] ==
 	      3'b001 &&
 	      SEL_ARR_IF_NOT_f22f3_empty_33_812_AND_NOT_SEL__ETC___d4167[11:7] !=
 	      5'd0) ?
-	       instr__h165581 :
+	       instr__h165563 :
 	       ((SEL_ARR_IF_NOT_f22f3_empty_33_812_AND_NOT_SEL__ETC___d4167[1:0] ==
 		 2'b01 &&
 		 SEL_ARR_IF_NOT_f22f3_empty_33_812_AND_NOT_SEL__ETC___d4167[15:13] ==
 		 3'b011 &&
 		 SEL_ARR_IF_NOT_f22f3_empty_33_812_AND_NOT_SEL__ETC___d4167[11:7] ==
 		 5'd2 &&
-		 nzimm10__h165634 != 10'd0) ?
-		  instr__h165841 :
-		  IF_SEL_ARR_IF_NOT_f22f3_empty_33_812_AND_NOT_S_ETC___d5169) ;
-  assign IF_SEL_ARR_IF_NOT_f22f3_empty_33_812_AND_NOT_S_ETC___d5172 =
+		 nzimm10__h165616 != 10'd0) ?
+		  instr__h165823 :
+		  IF_SEL_ARR_IF_NOT_f22f3_empty_33_812_AND_NOT_S_ETC___d5178) ;
+  assign IF_SEL_ARR_IF_NOT_f22f3_empty_33_812_AND_NOT_S_ETC___d5181 =
 	     (SEL_ARR_IF_NOT_f22f3_empty_33_812_AND_NOT_SEL__ETC___d4167[1:0] ==
 	      2'b01 &&
 	      SEL_ARR_IF_NOT_f22f3_empty_33_812_AND_NOT_SEL__ETC___d4167[15:13] ==
 	      3'b0 &&
 	      SEL_ARR_IF_NOT_f22f3_empty_33_812_AND_NOT_SEL__ETC___d4167[11:7] !=
 	      5'd0 &&
-	      imm6__h164950 != 6'd0 ||
+	      imm6__h164932 != 6'd0 ||
 	      SEL_ARR_IF_NOT_f22f3_empty_33_812_AND_NOT_SEL__ETC___d4167[1:0] ==
 	      2'b01 &&
 	      SEL_ARR_IF_NOT_f22f3_empty_33_812_AND_NOT_SEL__ETC___d4167[15:13] ==
 	      3'b0 &&
 	      SEL_ARR_IF_NOT_f22f3_empty_33_812_AND_NOT_SEL__ETC___d4167[11:7] ==
 	      5'd0 &&
-	      imm6__h164950 == 6'd0) ?
-	       instr__h165350 :
-	       IF_SEL_ARR_IF_NOT_f22f3_empty_33_812_AND_NOT_S_ETC___d5171 ;
-  assign IF_SEL_ARR_IF_NOT_f22f3_empty_33_812_AND_NOT_S_ETC___d5174 =
+	      imm6__h164932 == 6'd0) ?
+	       instr__h165332 :
+	       IF_SEL_ARR_IF_NOT_f22f3_empty_33_812_AND_NOT_S_ETC___d5180 ;
+  assign IF_SEL_ARR_IF_NOT_f22f3_empty_33_812_AND_NOT_S_ETC___d5183 =
 	     (SEL_ARR_IF_NOT_f22f3_empty_33_812_AND_NOT_SEL__ETC___d4167[1:0] ==
 	      2'b01 &&
 	      SEL_ARR_IF_NOT_f22f3_empty_33_812_AND_NOT_SEL__ETC___d4167[15:13] ==
 	      3'b010 &&
 	      SEL_ARR_IF_NOT_f22f3_empty_33_812_AND_NOT_SEL__ETC___d4167[11:7] !=
 	      5'd0) ?
-	       instr__h165029 :
+	       instr__h165011 :
 	       ((SEL_ARR_IF_NOT_f22f3_empty_33_812_AND_NOT_SEL__ETC___d4167[1:0] ==
 		 2'b01 &&
 		 SEL_ARR_IF_NOT_f22f3_empty_33_812_AND_NOT_SEL__ETC___d4167[15:13] ==
@@ -12367,22 +12380,22 @@ module mkFetchStage(CLK,
 		 5'd0 &&
 		 SEL_ARR_IF_NOT_f22f3_empty_33_812_AND_NOT_SEL__ETC___d4167[11:7] !=
 		 5'd2 &&
-		 imm6__h164950 != 6'd0) ?
-		  instr__h165218 :
-		  IF_SEL_ARR_IF_NOT_f22f3_empty_33_812_AND_NOT_S_ETC___d5172) ;
-  assign IF_SEL_ARR_IF_NOT_f22f3_empty_33_812_AND_NOT_S_ETC___d5176 =
+		 imm6__h164932 != 6'd0) ?
+		  instr__h165200 :
+		  IF_SEL_ARR_IF_NOT_f22f3_empty_33_812_AND_NOT_S_ETC___d5181) ;
+  assign IF_SEL_ARR_IF_NOT_f22f3_empty_33_812_AND_NOT_S_ETC___d5185 =
 	     (SEL_ARR_IF_NOT_f22f3_empty_33_812_AND_NOT_SEL__ETC___d4167[1:0] ==
 	      2'b01 &&
 	      SEL_ARR_IF_NOT_f22f3_empty_33_812_AND_NOT_SEL__ETC___d4167[15:13] ==
 	      3'b110) ?
-	       instr__h164369 :
+	       instr__h164351 :
 	       ((SEL_ARR_IF_NOT_f22f3_empty_33_812_AND_NOT_SEL__ETC___d4167[1:0] ==
 		 2'b01 &&
 		 SEL_ARR_IF_NOT_f22f3_empty_33_812_AND_NOT_SEL__ETC___d4167[15:13] ==
 		 3'b111) ?
-		  instr__h164688 :
-		  IF_SEL_ARR_IF_NOT_f22f3_empty_33_812_AND_NOT_S_ETC___d5174) ;
-  assign IF_SEL_ARR_IF_NOT_f22f3_empty_33_812_AND_NOT_S_ETC___d5178 =
+		  instr__h164670 :
+		  IF_SEL_ARR_IF_NOT_f22f3_empty_33_812_AND_NOT_S_ETC___d5183) ;
+  assign IF_SEL_ARR_IF_NOT_f22f3_empty_33_812_AND_NOT_S_ETC___d5187 =
 	     (SEL_ARR_IF_NOT_f22f3_empty_33_812_AND_NOT_SEL__ETC___d4167[1:0] ==
 	      2'b10 &&
 	      SEL_ARR_IF_NOT_f22f3_empty_33_812_AND_NOT_SEL__ETC___d4167[15:12] ==
@@ -12391,7 +12404,7 @@ module mkFetchStage(CLK,
 	      5'd0 &&
 	      SEL_ARR_IF_NOT_f22f3_empty_33_812_AND_NOT_SEL__ETC___d4167[6:2] ==
 	      5'd0) ?
-	       instr__h164186 :
+	       instr__h164168 :
 	       ((SEL_ARR_IF_NOT_f22f3_empty_33_812_AND_NOT_SEL__ETC___d4167[1:0] ==
 		 2'b10 &&
 		 SEL_ARR_IF_NOT_f22f3_empty_33_812_AND_NOT_SEL__ETC___d4167[15:12] ==
@@ -12400,85 +12413,81 @@ module mkFetchStage(CLK,
 		 5'd0 &&
 		 SEL_ARR_IF_NOT_f22f3_empty_33_812_AND_NOT_SEL__ETC___d4167[6:2] ==
 		 5'd0) ?
-		  instr__h164304 :
-		  IF_SEL_ARR_IF_NOT_f22f3_empty_33_812_AND_NOT_S_ETC___d5176) ;
-  assign IF_SEL_ARR_IF_NOT_f22f3_empty_33_812_AND_NOT_S_ETC___d5180 =
+		  instr__h164286 :
+		  IF_SEL_ARR_IF_NOT_f22f3_empty_33_812_AND_NOT_S_ETC___d5185) ;
+  assign IF_SEL_ARR_IF_NOT_f22f3_empty_33_812_AND_NOT_S_ETC___d5189 =
 	     (SEL_ARR_IF_NOT_f22f3_empty_33_812_AND_NOT_SEL__ETC___d4167[1:0] ==
 	      2'b0 &&
 	      SEL_ARR_IF_NOT_f22f3_empty_33_812_AND_NOT_SEL__ETC___d4167[15:13] ==
 	      3'b110) ?
-	       instr__h163502 :
+	       instr__h163484 :
 	       ((SEL_ARR_IF_NOT_f22f3_empty_33_812_AND_NOT_SEL__ETC___d4167[1:0] ==
 		 2'b01 &&
 		 SEL_ARR_IF_NOT_f22f3_empty_33_812_AND_NOT_SEL__ETC___d4167[15:13] ==
 		 3'b101) ?
-		  instr__h163732 :
-		  IF_SEL_ARR_IF_NOT_f22f3_empty_33_812_AND_NOT_S_ETC___d5178) ;
-  assign IF_SEL_ARR_IF_NOT_f22f3_empty_33_812_AND_NOT_S_ETC___d5182 =
+		  instr__h163714 :
+		  IF_SEL_ARR_IF_NOT_f22f3_empty_33_812_AND_NOT_S_ETC___d5187) ;
+  assign IF_SEL_ARR_IF_NOT_f22f3_empty_33_812_AND_NOT_S_ETC___d5191 =
 	     (SEL_ARR_IF_NOT_f22f3_empty_33_812_AND_NOT_SEL__ETC___d4167[1:0] ==
 	      2'b10 &&
 	      SEL_ARR_IF_NOT_f22f3_empty_33_812_AND_NOT_SEL__ETC___d4167[15:13] ==
 	      3'b110) ?
-	       instr__h163111 :
+	       instr__h163093 :
 	       ((SEL_ARR_IF_NOT_f22f3_empty_33_812_AND_NOT_SEL__ETC___d4167[1:0] ==
 		 2'b0 &&
 		 SEL_ARR_IF_NOT_f22f3_empty_33_812_AND_NOT_SEL__ETC___d4167[15:13] ==
 		 3'b010) ?
-		  instr__h163305 :
-		  IF_SEL_ARR_IF_NOT_f22f3_empty_33_812_AND_NOT_S_ETC___d5180) ;
-  assign IF_SEL_ARR_IF_NOT_f22f3_empty_33_812_AND_NOT_S_ETC___d5467 =
+		  instr__h163287 :
+		  IF_SEL_ARR_IF_NOT_f22f3_empty_33_812_AND_NOT_S_ETC___d5189) ;
+  assign IF_SEL_ARR_IF_NOT_f22f3_empty_33_812_AND_NOT_S_ETC___d5478 =
 	     (SEL_ARR_IF_NOT_f22f3_empty_33_812_AND_NOT_SEL__ETC___d4134[1:0] ==
 	      2'b0 &&
 	      SEL_ARR_IF_NOT_f22f3_empty_33_812_AND_NOT_SEL__ETC___d4134[15:13] ==
 	      3'b001) ?
-	       instr__h136648 :
+	       instr__h136642 :
 	       ((SEL_ARR_IF_NOT_f22f3_empty_33_812_AND_NOT_SEL__ETC___d4134[1:0] ==
 		 2'b0 &&
 		 SEL_ARR_IF_NOT_f22f3_empty_33_812_AND_NOT_SEL__ETC___d4134[15:13] ==
 		 3'b101) ?
-		  instr__h136801 :
+		  instr__h136795 :
 		  32'h0) ;
-  assign IF_SEL_ARR_IF_NOT_f22f3_empty_33_812_AND_NOT_S_ETC___d5469 =
+  assign IF_SEL_ARR_IF_NOT_f22f3_empty_33_812_AND_NOT_S_ETC___d5480 =
 	     (SEL_ARR_IF_NOT_f22f3_empty_33_812_AND_NOT_SEL__ETC___d4134[1:0] ==
 	      2'b10 &&
-	      SEL_ARR_IF_NOT_f22f3_empty_33_812_AND_NOT_SEL__ETC___d4134[11:7] !=
-	      5'd0 &&
 	      SEL_ARR_IF_NOT_f22f3_empty_33_812_AND_NOT_SEL__ETC___d4134[15:13] ==
 	      3'b001) ?
-	       instr__h136292 :
+	       instr__h136265 :
 	       ((SEL_ARR_IF_NOT_f22f3_empty_33_812_AND_NOT_SEL__ETC___d4134[1:0] ==
 		 2'b10 &&
 		 SEL_ARR_IF_NOT_f22f3_empty_33_812_AND_NOT_SEL__ETC___d4134[15:13] ==
 		 3'b101) ?
-		  instr__h136447 :
-		  IF_SEL_ARR_IF_NOT_f22f3_empty_33_812_AND_NOT_S_ETC___d5467) ;
-  assign IF_SEL_ARR_IF_NOT_f22f3_empty_33_812_AND_NOT_S_ETC___d5471 =
+		  instr__h136441 :
+		  IF_SEL_ARR_IF_NOT_f22f3_empty_33_812_AND_NOT_S_ETC___d5478) ;
+  assign IF_SEL_ARR_IF_NOT_f22f3_empty_33_812_AND_NOT_S_ETC___d5482 =
 	     (SEL_ARR_IF_NOT_f22f3_empty_33_812_AND_NOT_SEL__ETC___d4134[1:0] ==
 	      2'b0 &&
 	      SEL_ARR_IF_NOT_f22f3_empty_33_812_AND_NOT_SEL__ETC___d4134[15:13] ==
-	      3'b011) ?
-	       instr__h135038 :
-	       ((SEL_ARR_IF_NOT_f22f3_empty_33_812_AND_NOT_SEL__ETC___d4134[1:0] ==
-		 2'b0 &&
-		 SEL_ARR_IF_NOT_f22f3_empty_33_812_AND_NOT_SEL__ETC___d4134[15:13] ==
-		 3'b111) ?
-		  instr__h135191 :
-		  IF_SEL_ARR_IF_NOT_f22f3_empty_33_812_AND_NOT_S_ETC___d5469) ;
-  assign IF_SEL_ARR_IF_NOT_f22f3_empty_33_812_AND_NOT_S_ETC___d5473 =
-	     (SEL_ARR_IF_NOT_f22f3_empty_33_812_AND_NOT_SEL__ETC___d4134[1:0] ==
-	      2'b10 &&
-	      SEL_ARR_IF_NOT_f22f3_empty_33_812_AND_NOT_SEL__ETC___d4134[11:7] !=
-	      5'd0 &&
-	      SEL_ARR_IF_NOT_f22f3_empty_33_812_AND_NOT_SEL__ETC___d4134[15:13] ==
-	      3'b011) ?
-	       instr__h134682 :
+	      3'b111) ?
+	       instr__h135191 :
 	       ((SEL_ARR_IF_NOT_f22f3_empty_33_812_AND_NOT_SEL__ETC___d4134[1:0] ==
 		 2'b10 &&
 		 SEL_ARR_IF_NOT_f22f3_empty_33_812_AND_NOT_SEL__ETC___d4134[15:13] ==
-		 3'b111) ?
-		  instr__h134837 :
-		  IF_SEL_ARR_IF_NOT_f22f3_empty_33_812_AND_NOT_S_ETC___d5471) ;
-  assign IF_SEL_ARR_IF_NOT_f22f3_empty_33_812_AND_NOT_S_ETC___d5475 =
+		 3'b011) ?
+		  instr__h135450 :
+		  IF_SEL_ARR_IF_NOT_f22f3_empty_33_812_AND_NOT_S_ETC___d5480) ;
+  assign IF_SEL_ARR_IF_NOT_f22f3_empty_33_812_AND_NOT_S_ETC___d5484 =
+	     (SEL_ARR_IF_NOT_f22f3_empty_33_812_AND_NOT_SEL__ETC___d4134[1:0] ==
+	      2'b10 &&
+	      SEL_ARR_IF_NOT_f22f3_empty_33_812_AND_NOT_SEL__ETC___d4134[15:13] ==
+	      3'b111) ?
+	       instr__h134837 :
+	       ((SEL_ARR_IF_NOT_f22f3_empty_33_812_AND_NOT_SEL__ETC___d4134[1:0] ==
+		 2'b0 &&
+		 SEL_ARR_IF_NOT_f22f3_empty_33_812_AND_NOT_SEL__ETC___d4134[15:13] ==
+		 3'b011) ?
+		  instr__h135038 :
+		  IF_SEL_ARR_IF_NOT_f22f3_empty_33_812_AND_NOT_S_ETC___d5482) ;
+  assign IF_SEL_ARR_IF_NOT_f22f3_empty_33_812_AND_NOT_S_ETC___d5487 =
 	     (SEL_ARR_IF_NOT_f22f3_empty_33_812_AND_NOT_SEL__ETC___d4134[1:0] ==
 	      2'b01 &&
 	      SEL_ARR_IF_NOT_f22f3_empty_33_812_AND_NOT_SEL__ETC___d4134[15:10] ==
@@ -12495,8 +12504,15 @@ module mkFetchStage(CLK,
 		 SEL_ARR_IF_NOT_f22f3_empty_33_812_AND_NOT_SEL__ETC___d4134[6:2] ==
 		 5'd0) ?
 		  instr__h134585 :
-		  IF_SEL_ARR_IF_NOT_f22f3_empty_33_812_AND_NOT_S_ETC___d5473) ;
-  assign IF_SEL_ARR_IF_NOT_f22f3_empty_33_812_AND_NOT_S_ETC___d5477 =
+		  ((SEL_ARR_IF_NOT_f22f3_empty_33_812_AND_NOT_SEL__ETC___d4134[1:0] ==
+		    2'b10 &&
+		    SEL_ARR_IF_NOT_f22f3_empty_33_812_AND_NOT_SEL__ETC___d4134[11:7] !=
+		    5'd0 &&
+		    SEL_ARR_IF_NOT_f22f3_empty_33_812_AND_NOT_SEL__ETC___d4134[15:13] ==
+		    3'b011) ?
+		     instr__h134682 :
+		     IF_SEL_ARR_IF_NOT_f22f3_empty_33_812_AND_NOT_S_ETC___d5484)) ;
+  assign IF_SEL_ARR_IF_NOT_f22f3_empty_33_812_AND_NOT_S_ETC___d5489 =
 	     (SEL_ARR_IF_NOT_f22f3_empty_33_812_AND_NOT_SEL__ETC___d4134[1:0] ==
 	      2'b01 &&
 	      SEL_ARR_IF_NOT_f22f3_empty_33_812_AND_NOT_SEL__ETC___d4134[15:10] ==
@@ -12511,8 +12527,8 @@ module mkFetchStage(CLK,
 		 SEL_ARR_IF_NOT_f22f3_empty_33_812_AND_NOT_SEL__ETC___d4134[6:5] ==
 		 2'b01) ?
 		  instr__h134286 :
-		  IF_SEL_ARR_IF_NOT_f22f3_empty_33_812_AND_NOT_S_ETC___d5475) ;
-  assign IF_SEL_ARR_IF_NOT_f22f3_empty_33_812_AND_NOT_S_ETC___d5479 =
+		  IF_SEL_ARR_IF_NOT_f22f3_empty_33_812_AND_NOT_S_ETC___d5487) ;
+  assign IF_SEL_ARR_IF_NOT_f22f3_empty_33_812_AND_NOT_S_ETC___d5491 =
 	     (SEL_ARR_IF_NOT_f22f3_empty_33_812_AND_NOT_SEL__ETC___d4134[1:0] ==
 	      2'b01 &&
 	      SEL_ARR_IF_NOT_f22f3_empty_33_812_AND_NOT_SEL__ETC___d4134[15:10] ==
@@ -12527,8 +12543,8 @@ module mkFetchStage(CLK,
 		 SEL_ARR_IF_NOT_f22f3_empty_33_812_AND_NOT_SEL__ETC___d4134[6:5] ==
 		 2'b01) ?
 		  instr__h134010 :
-		  IF_SEL_ARR_IF_NOT_f22f3_empty_33_812_AND_NOT_S_ETC___d5477) ;
-  assign IF_SEL_ARR_IF_NOT_f22f3_empty_33_812_AND_NOT_S_ETC___d5482 =
+		  IF_SEL_ARR_IF_NOT_f22f3_empty_33_812_AND_NOT_S_ETC___d5489) ;
+  assign IF_SEL_ARR_IF_NOT_f22f3_empty_33_812_AND_NOT_S_ETC___d5494 =
 	     (SEL_ARR_IF_NOT_f22f3_empty_33_812_AND_NOT_SEL__ETC___d4134[1:0] ==
 	      2'b10 &&
 	      SEL_ARR_IF_NOT_f22f3_empty_33_812_AND_NOT_SEL__ETC___d4134[15:12] ==
@@ -12554,8 +12570,8 @@ module mkFetchStage(CLK,
 		    SEL_ARR_IF_NOT_f22f3_empty_33_812_AND_NOT_SEL__ETC___d4134[6:5] ==
 		    2'b11) ?
 		     instr__h133736 :
-		     IF_SEL_ARR_IF_NOT_f22f3_empty_33_812_AND_NOT_S_ETC___d5479)) ;
-  assign IF_SEL_ARR_IF_NOT_f22f3_empty_33_812_AND_NOT_S_ETC___d5485 =
+		     IF_SEL_ARR_IF_NOT_f22f3_empty_33_812_AND_NOT_S_ETC___d5491)) ;
+  assign IF_SEL_ARR_IF_NOT_f22f3_empty_33_812_AND_NOT_S_ETC___d5497 =
 	     (SEL_ARR_IF_NOT_f22f3_empty_33_812_AND_NOT_SEL__ETC___d4134[1:0] ==
 	      2'b01 &&
 	      SEL_ARR_IF_NOT_f22f3_empty_33_812_AND_NOT_SEL__ETC___d4134[15:13] ==
@@ -12579,8 +12595,8 @@ module mkFetchStage(CLK,
 		    SEL_ARR_IF_NOT_f22f3_empty_33_812_AND_NOT_SEL__ETC___d4134[11:10] ==
 		    2'b10) ?
 		     instr__h133338 :
-		     IF_SEL_ARR_IF_NOT_f22f3_empty_33_812_AND_NOT_S_ETC___d5482)) ;
-  assign IF_SEL_ARR_IF_NOT_f22f3_empty_33_812_AND_NOT_S_ETC___d5487 =
+		     IF_SEL_ARR_IF_NOT_f22f3_empty_33_812_AND_NOT_S_ETC___d5494)) ;
+  assign IF_SEL_ARR_IF_NOT_f22f3_empty_33_812_AND_NOT_S_ETC___d5499 =
 	     (SEL_ARR_IF_NOT_f22f3_empty_33_812_AND_NOT_SEL__ETC___d4134[1:0] ==
 	      2'b0 &&
 	      SEL_ARR_IF_NOT_f22f3_empty_33_812_AND_NOT_SEL__ETC___d4134[15:13] ==
@@ -12595,8 +12611,8 @@ module mkFetchStage(CLK,
 		 5'd0 &&
 		 imm6__h131605 != 6'd0) ?
 		  instr__h132840 :
-		  IF_SEL_ARR_IF_NOT_f22f3_empty_33_812_AND_NOT_S_ETC___d5485) ;
-  assign IF_SEL_ARR_IF_NOT_f22f3_empty_33_812_AND_NOT_S_ETC___d5489 =
+		  IF_SEL_ARR_IF_NOT_f22f3_empty_33_812_AND_NOT_S_ETC___d5497) ;
+  assign IF_SEL_ARR_IF_NOT_f22f3_empty_33_812_AND_NOT_S_ETC___d5501 =
 	     (SEL_ARR_IF_NOT_f22f3_empty_33_812_AND_NOT_SEL__ETC___d4134[1:0] ==
 	      2'b01 &&
 	      SEL_ARR_IF_NOT_f22f3_empty_33_812_AND_NOT_SEL__ETC___d4134[15:13] ==
@@ -12612,8 +12628,8 @@ module mkFetchStage(CLK,
 		 5'd2 &&
 		 nzimm10__h132289 != 10'd0) ?
 		  instr__h132496 :
-		  IF_SEL_ARR_IF_NOT_f22f3_empty_33_812_AND_NOT_S_ETC___d5487) ;
-  assign IF_SEL_ARR_IF_NOT_f22f3_empty_33_812_AND_NOT_S_ETC___d5490 =
+		  IF_SEL_ARR_IF_NOT_f22f3_empty_33_812_AND_NOT_S_ETC___d5499) ;
+  assign IF_SEL_ARR_IF_NOT_f22f3_empty_33_812_AND_NOT_S_ETC___d5502 =
 	     (SEL_ARR_IF_NOT_f22f3_empty_33_812_AND_NOT_SEL__ETC___d4134[1:0] ==
 	      2'b01 &&
 	      SEL_ARR_IF_NOT_f22f3_empty_33_812_AND_NOT_SEL__ETC___d4134[15:13] ==
@@ -12629,8 +12645,8 @@ module mkFetchStage(CLK,
 	      5'd0 &&
 	      imm6__h131605 == 6'd0) ?
 	       instr__h132005 :
-	       IF_SEL_ARR_IF_NOT_f22f3_empty_33_812_AND_NOT_S_ETC___d5489 ;
-  assign IF_SEL_ARR_IF_NOT_f22f3_empty_33_812_AND_NOT_S_ETC___d5492 =
+	       IF_SEL_ARR_IF_NOT_f22f3_empty_33_812_AND_NOT_S_ETC___d5501 ;
+  assign IF_SEL_ARR_IF_NOT_f22f3_empty_33_812_AND_NOT_S_ETC___d5504 =
 	     (SEL_ARR_IF_NOT_f22f3_empty_33_812_AND_NOT_SEL__ETC___d4134[1:0] ==
 	      2'b01 &&
 	      SEL_ARR_IF_NOT_f22f3_empty_33_812_AND_NOT_SEL__ETC___d4134[15:13] ==
@@ -12648,8 +12664,8 @@ module mkFetchStage(CLK,
 		 5'd2 &&
 		 imm6__h131605 != 6'd0) ?
 		  instr__h131873 :
-		  IF_SEL_ARR_IF_NOT_f22f3_empty_33_812_AND_NOT_S_ETC___d5490) ;
-  assign IF_SEL_ARR_IF_NOT_f22f3_empty_33_812_AND_NOT_S_ETC___d5494 =
+		  IF_SEL_ARR_IF_NOT_f22f3_empty_33_812_AND_NOT_S_ETC___d5502) ;
+  assign IF_SEL_ARR_IF_NOT_f22f3_empty_33_812_AND_NOT_S_ETC___d5506 =
 	     (SEL_ARR_IF_NOT_f22f3_empty_33_812_AND_NOT_SEL__ETC___d4134[1:0] ==
 	      2'b01 &&
 	      SEL_ARR_IF_NOT_f22f3_empty_33_812_AND_NOT_SEL__ETC___d4134[15:13] ==
@@ -12660,8 +12676,8 @@ module mkFetchStage(CLK,
 		 SEL_ARR_IF_NOT_f22f3_empty_33_812_AND_NOT_SEL__ETC___d4134[15:13] ==
 		 3'b111) ?
 		  instr__h131343 :
-		  IF_SEL_ARR_IF_NOT_f22f3_empty_33_812_AND_NOT_S_ETC___d5492) ;
-  assign IF_SEL_ARR_IF_NOT_f22f3_empty_33_812_AND_NOT_S_ETC___d5496 =
+		  IF_SEL_ARR_IF_NOT_f22f3_empty_33_812_AND_NOT_S_ETC___d5504) ;
+  assign IF_SEL_ARR_IF_NOT_f22f3_empty_33_812_AND_NOT_S_ETC___d5508 =
 	     (SEL_ARR_IF_NOT_f22f3_empty_33_812_AND_NOT_SEL__ETC___d4134[1:0] ==
 	      2'b10 &&
 	      SEL_ARR_IF_NOT_f22f3_empty_33_812_AND_NOT_SEL__ETC___d4134[15:12] ==
@@ -12680,8 +12696,8 @@ module mkFetchStage(CLK,
 		 SEL_ARR_IF_NOT_f22f3_empty_33_812_AND_NOT_SEL__ETC___d4134[6:2] ==
 		 5'd0) ?
 		  instr__h130959 :
-		  IF_SEL_ARR_IF_NOT_f22f3_empty_33_812_AND_NOT_S_ETC___d5494) ;
-  assign IF_SEL_ARR_IF_NOT_f22f3_empty_33_812_AND_NOT_S_ETC___d5498 =
+		  IF_SEL_ARR_IF_NOT_f22f3_empty_33_812_AND_NOT_S_ETC___d5506) ;
+  assign IF_SEL_ARR_IF_NOT_f22f3_empty_33_812_AND_NOT_S_ETC___d5510 =
 	     (SEL_ARR_IF_NOT_f22f3_empty_33_812_AND_NOT_SEL__ETC___d4134[1:0] ==
 	      2'b0 &&
 	      SEL_ARR_IF_NOT_f22f3_empty_33_812_AND_NOT_SEL__ETC___d4134[15:13] ==
@@ -12692,8 +12708,8 @@ module mkFetchStage(CLK,
 		 SEL_ARR_IF_NOT_f22f3_empty_33_812_AND_NOT_SEL__ETC___d4134[15:13] ==
 		 3'b101) ?
 		  instr__h130385 :
-		  IF_SEL_ARR_IF_NOT_f22f3_empty_33_812_AND_NOT_S_ETC___d5496) ;
-  assign IF_SEL_ARR_IF_NOT_f22f3_empty_33_812_AND_NOT_S_ETC___d5500 =
+		  IF_SEL_ARR_IF_NOT_f22f3_empty_33_812_AND_NOT_S_ETC___d5508) ;
+  assign IF_SEL_ARR_IF_NOT_f22f3_empty_33_812_AND_NOT_S_ETC___d5512 =
 	     (SEL_ARR_IF_NOT_f22f3_empty_33_812_AND_NOT_SEL__ETC___d4134[1:0] ==
 	      2'b10 &&
 	      SEL_ARR_IF_NOT_f22f3_empty_33_812_AND_NOT_SEL__ETC___d4134[15:13] ==
@@ -12704,181 +12720,181 @@ module mkFetchStage(CLK,
 		 SEL_ARR_IF_NOT_f22f3_empty_33_812_AND_NOT_SEL__ETC___d4134[15:13] ==
 		 3'b010) ?
 		  instr__h129957 :
-		  IF_SEL_ARR_IF_NOT_f22f3_empty_33_812_AND_NOT_S_ETC___d5498) ;
-  assign IF_SEL_ARR_IF_f32d_data_0_988_BITS_72_TO_69_33_ETC___d6448 =
-	     CASE_f32d_deqP_0_IF_f32d_data_0_988_BITS_72_TO_ETC__q41 ?
+		  IF_SEL_ARR_IF_NOT_f22f3_empty_33_812_AND_NOT_S_ETC___d5510) ;
+  assign IF_SEL_ARR_IF_f32d_data_0_000_BITS_72_TO_69_35_ETC___d6460 =
+	     CASE_f32d_deqP_0_IF_f32d_data_0_000_BITS_72_TO_ETC__q41 ?
 	       4'd12 :
-	       (CASE_f32d_deqP_0_IF_f32d_data_0_988_BITS_72_TO_ETC__q42 ?
+	       (CASE_f32d_deqP_0_IF_f32d_data_0_000_BITS_72_TO_ETC__q42 ?
 		  4'd13 :
 		  4'd15) ;
-  assign IF_SEL_ARR_IF_f32d_data_0_988_BITS_72_TO_69_33_ETC___d6449 =
-	     CASE_f32d_deqP_0_IF_f32d_data_0_988_BITS_72_TO_ETC__q43 ?
+  assign IF_SEL_ARR_IF_f32d_data_0_000_BITS_72_TO_69_35_ETC___d6461 =
+	     CASE_f32d_deqP_0_IF_f32d_data_0_000_BITS_72_TO_ETC__q43 ?
 	       4'd11 :
-	       IF_SEL_ARR_IF_f32d_data_0_988_BITS_72_TO_69_33_ETC___d6448 ;
-  assign IF_SEL_ARR_IF_f32d_data_0_988_BITS_72_TO_69_33_ETC___d6450 =
-	     CASE_f32d_deqP_0_IF_f32d_data_0_988_BITS_72_TO_ETC__q44 ?
+	       IF_SEL_ARR_IF_f32d_data_0_000_BITS_72_TO_69_35_ETC___d6460 ;
+  assign IF_SEL_ARR_IF_f32d_data_0_000_BITS_72_TO_69_35_ETC___d6462 =
+	     CASE_f32d_deqP_0_IF_f32d_data_0_000_BITS_72_TO_ETC__q44 ?
 	       4'd9 :
-	       IF_SEL_ARR_IF_f32d_data_0_988_BITS_72_TO_69_33_ETC___d6449 ;
-  assign IF_SEL_ARR_IF_f32d_data_0_988_BITS_72_TO_69_33_ETC___d6451 =
-	     CASE_f32d_deqP_0_IF_f32d_data_0_988_BITS_72_TO_ETC__q45 ?
+	       IF_SEL_ARR_IF_f32d_data_0_000_BITS_72_TO_69_35_ETC___d6461 ;
+  assign IF_SEL_ARR_IF_f32d_data_0_000_BITS_72_TO_69_35_ETC___d6463 =
+	     CASE_f32d_deqP_0_IF_f32d_data_0_000_BITS_72_TO_ETC__q45 ?
 	       4'd8 :
-	       IF_SEL_ARR_IF_f32d_data_0_988_BITS_72_TO_69_33_ETC___d6450 ;
-  assign IF_SEL_ARR_IF_f32d_data_0_988_BITS_72_TO_69_33_ETC___d6452 =
-	     CASE_f32d_deqP_0_IF_f32d_data_0_988_BITS_72_TO_ETC__q46 ?
+	       IF_SEL_ARR_IF_f32d_data_0_000_BITS_72_TO_69_35_ETC___d6462 ;
+  assign IF_SEL_ARR_IF_f32d_data_0_000_BITS_72_TO_69_35_ETC___d6464 =
+	     CASE_f32d_deqP_0_IF_f32d_data_0_000_BITS_72_TO_ETC__q46 ?
 	       4'd7 :
-	       IF_SEL_ARR_IF_f32d_data_0_988_BITS_72_TO_69_33_ETC___d6451 ;
-  assign IF_SEL_ARR_IF_f32d_data_0_988_BITS_72_TO_69_33_ETC___d6453 =
-	     CASE_f32d_deqP_0_IF_f32d_data_0_988_BITS_72_TO_ETC__q47 ?
+	       IF_SEL_ARR_IF_f32d_data_0_000_BITS_72_TO_69_35_ETC___d6463 ;
+  assign IF_SEL_ARR_IF_f32d_data_0_000_BITS_72_TO_69_35_ETC___d6465 =
+	     CASE_f32d_deqP_0_IF_f32d_data_0_000_BITS_72_TO_ETC__q47 ?
 	       4'd6 :
-	       IF_SEL_ARR_IF_f32d_data_0_988_BITS_72_TO_69_33_ETC___d6452 ;
-  assign IF_SEL_ARR_IF_f32d_data_0_988_BITS_72_TO_69_33_ETC___d6454 =
-	     CASE_f32d_deqP_0_IF_f32d_data_0_988_BITS_72_TO_ETC__q48 ?
+	       IF_SEL_ARR_IF_f32d_data_0_000_BITS_72_TO_69_35_ETC___d6464 ;
+  assign IF_SEL_ARR_IF_f32d_data_0_000_BITS_72_TO_69_35_ETC___d6466 =
+	     CASE_f32d_deqP_0_IF_f32d_data_0_000_BITS_72_TO_ETC__q48 ?
 	       4'd5 :
-	       IF_SEL_ARR_IF_f32d_data_0_988_BITS_72_TO_69_33_ETC___d6453 ;
-  assign IF_SEL_ARR_IF_f32d_data_0_988_BITS_72_TO_69_33_ETC___d6455 =
-	     CASE_f32d_deqP_0_IF_f32d_data_0_988_BITS_72_TO_ETC__q49 ?
+	       IF_SEL_ARR_IF_f32d_data_0_000_BITS_72_TO_69_35_ETC___d6465 ;
+  assign IF_SEL_ARR_IF_f32d_data_0_000_BITS_72_TO_69_35_ETC___d6467 =
+	     CASE_f32d_deqP_0_IF_f32d_data_0_000_BITS_72_TO_ETC__q49 ?
 	       4'd4 :
-	       IF_SEL_ARR_IF_f32d_data_0_988_BITS_72_TO_69_33_ETC___d6454 ;
-  assign IF_SEL_ARR_IF_f32d_data_0_988_BITS_72_TO_69_33_ETC___d6456 =
-	     CASE_f32d_deqP_0_IF_f32d_data_0_988_BITS_72_TO_ETC__q50 ?
+	       IF_SEL_ARR_IF_f32d_data_0_000_BITS_72_TO_69_35_ETC___d6466 ;
+  assign IF_SEL_ARR_IF_f32d_data_0_000_BITS_72_TO_69_35_ETC___d6468 =
+	     CASE_f32d_deqP_0_IF_f32d_data_0_000_BITS_72_TO_ETC__q50 ?
 	       4'd3 :
-	       IF_SEL_ARR_IF_f32d_data_0_988_BITS_72_TO_69_33_ETC___d6455 ;
-  assign IF_SEL_ARR_IF_out_fifo_internalFifos_0_first___ETC___d7037 =
+	       IF_SEL_ARR_IF_f32d_data_0_000_BITS_72_TO_69_35_ETC___d6467 ;
+  assign IF_SEL_ARR_IF_out_fifo_internalFifos_0_first___ETC___d7049 =
 	     CASE_x8242_0_IF_out_fifo_internalFifos_0_first_ETC__q14 ?
 	       3'd3 :
 	       (CASE_x8242_0_IF_out_fifo_internalFifos_0_first_ETC__q15 ?
 		  3'd4 :
 		  3'd7) ;
-  assign IF_SEL_ARR_IF_out_fifo_internalFifos_0_first___ETC___d7038 =
+  assign IF_SEL_ARR_IF_out_fifo_internalFifos_0_first___ETC___d7050 =
 	     CASE_x8242_0_IF_out_fifo_internalFifos_0_first_ETC__q16 ?
 	       3'd2 :
-	       IF_SEL_ARR_IF_out_fifo_internalFifos_0_first___ETC___d7037 ;
-  assign IF_SEL_ARR_IF_out_fifo_internalFifos_0_first___ETC___d7039 =
+	       IF_SEL_ARR_IF_out_fifo_internalFifos_0_first___ETC___d7049 ;
+  assign IF_SEL_ARR_IF_out_fifo_internalFifos_0_first___ETC___d7051 =
 	     CASE_x8242_0_IF_out_fifo_internalFifos_0_first_ETC__q17 ?
 	       3'd1 :
-	       IF_SEL_ARR_IF_out_fifo_internalFifos_0_first___ETC___d7038 ;
-  assign IF_SEL_ARR_IF_out_fifo_internalFifos_0_first___ETC___d7040 =
+	       IF_SEL_ARR_IF_out_fifo_internalFifos_0_first___ETC___d7050 ;
+  assign IF_SEL_ARR_IF_out_fifo_internalFifos_0_first___ETC___d7052 =
 	     CASE_x8242_0_IF_out_fifo_internalFifos_0_first_ETC__q18 ?
 	       3'd0 :
-	       IF_SEL_ARR_IF_out_fifo_internalFifos_0_first___ETC___d7039 ;
-  assign IF_SEL_ARR_IF_out_fifo_internalFifos_0_first___ETC___d7485 =
+	       IF_SEL_ARR_IF_out_fifo_internalFifos_0_first___ETC___d7051 ;
+  assign IF_SEL_ARR_IF_out_fifo_internalFifos_0_first___ETC___d7497 =
 	     CASE_x8242_0_IF_out_fifo_internalFifos_0_first_ETC__q158 ?
 	       4'd12 :
 	       (CASE_x8242_0_IF_out_fifo_internalFifos_0_first_ETC__q159 ?
 		  4'd13 :
 		  4'd15) ;
-  assign IF_SEL_ARR_IF_out_fifo_internalFifos_0_first___ETC___d7486 =
+  assign IF_SEL_ARR_IF_out_fifo_internalFifos_0_first___ETC___d7498 =
 	     CASE_x8242_0_IF_out_fifo_internalFifos_0_first_ETC__q160 ?
 	       4'd11 :
-	       IF_SEL_ARR_IF_out_fifo_internalFifos_0_first___ETC___d7485 ;
-  assign IF_SEL_ARR_IF_out_fifo_internalFifos_0_first___ETC___d7487 =
+	       IF_SEL_ARR_IF_out_fifo_internalFifos_0_first___ETC___d7497 ;
+  assign IF_SEL_ARR_IF_out_fifo_internalFifos_0_first___ETC___d7499 =
 	     CASE_x8242_0_IF_out_fifo_internalFifos_0_first_ETC__q161 ?
 	       4'd9 :
-	       IF_SEL_ARR_IF_out_fifo_internalFifos_0_first___ETC___d7486 ;
-  assign IF_SEL_ARR_IF_out_fifo_internalFifos_0_first___ETC___d7488 =
+	       IF_SEL_ARR_IF_out_fifo_internalFifos_0_first___ETC___d7498 ;
+  assign IF_SEL_ARR_IF_out_fifo_internalFifos_0_first___ETC___d7500 =
 	     CASE_x8242_0_IF_out_fifo_internalFifos_0_first_ETC__q162 ?
 	       4'd8 :
-	       IF_SEL_ARR_IF_out_fifo_internalFifos_0_first___ETC___d7487 ;
-  assign IF_SEL_ARR_IF_out_fifo_internalFifos_0_first___ETC___d7489 =
+	       IF_SEL_ARR_IF_out_fifo_internalFifos_0_first___ETC___d7499 ;
+  assign IF_SEL_ARR_IF_out_fifo_internalFifos_0_first___ETC___d7501 =
 	     CASE_x8242_0_IF_out_fifo_internalFifos_0_first_ETC__q163 ?
 	       4'd7 :
-	       IF_SEL_ARR_IF_out_fifo_internalFifos_0_first___ETC___d7488 ;
-  assign IF_SEL_ARR_IF_out_fifo_internalFifos_0_first___ETC___d7490 =
+	       IF_SEL_ARR_IF_out_fifo_internalFifos_0_first___ETC___d7500 ;
+  assign IF_SEL_ARR_IF_out_fifo_internalFifos_0_first___ETC___d7502 =
 	     CASE_x8242_0_IF_out_fifo_internalFifos_0_first_ETC__q164 ?
 	       4'd6 :
-	       IF_SEL_ARR_IF_out_fifo_internalFifos_0_first___ETC___d7489 ;
-  assign IF_SEL_ARR_IF_out_fifo_internalFifos_0_first___ETC___d7491 =
+	       IF_SEL_ARR_IF_out_fifo_internalFifos_0_first___ETC___d7501 ;
+  assign IF_SEL_ARR_IF_out_fifo_internalFifos_0_first___ETC___d7503 =
 	     CASE_x8242_0_IF_out_fifo_internalFifos_0_first_ETC__q165 ?
 	       4'd5 :
-	       IF_SEL_ARR_IF_out_fifo_internalFifos_0_first___ETC___d7490 ;
-  assign IF_SEL_ARR_IF_out_fifo_internalFifos_0_first___ETC___d7492 =
+	       IF_SEL_ARR_IF_out_fifo_internalFifos_0_first___ETC___d7502 ;
+  assign IF_SEL_ARR_IF_out_fifo_internalFifos_0_first___ETC___d7504 =
 	     CASE_x8242_0_IF_out_fifo_internalFifos_0_first_ETC__q166 ?
 	       4'd4 :
-	       IF_SEL_ARR_IF_out_fifo_internalFifos_0_first___ETC___d7491 ;
-  assign IF_SEL_ARR_IF_out_fifo_internalFifos_0_first___ETC___d7493 =
+	       IF_SEL_ARR_IF_out_fifo_internalFifos_0_first___ETC___d7503 ;
+  assign IF_SEL_ARR_IF_out_fifo_internalFifos_0_first___ETC___d7505 =
 	     CASE_x8242_0_IF_out_fifo_internalFifos_0_first_ETC__q167 ?
 	       4'd3 :
-	       IF_SEL_ARR_IF_out_fifo_internalFifos_0_first___ETC___d7492 ;
-  assign IF_SEL_ARR_IF_out_fifo_internalFifos_0_first___ETC___d7494 =
+	       IF_SEL_ARR_IF_out_fifo_internalFifos_0_first___ETC___d7504 ;
+  assign IF_SEL_ARR_IF_out_fifo_internalFifos_0_first___ETC___d7506 =
 	     CASE_x8242_0_IF_out_fifo_internalFifos_0_first_ETC__q168 ?
 	       4'd2 :
-	       IF_SEL_ARR_IF_out_fifo_internalFifos_0_first___ETC___d7493 ;
-  assign IF_SEL_ARR_IF_out_fifo_internalFifos_0_first___ETC___d7495 =
+	       IF_SEL_ARR_IF_out_fifo_internalFifos_0_first___ETC___d7505 ;
+  assign IF_SEL_ARR_IF_out_fifo_internalFifos_0_first___ETC___d7507 =
 	     CASE_x8242_0_IF_out_fifo_internalFifos_0_first_ETC__q169 ?
 	       4'd1 :
-	       IF_SEL_ARR_IF_out_fifo_internalFifos_0_first___ETC___d7494 ;
-  assign IF_SEL_ARR_IF_out_fifo_internalFifos_0_first___ETC___d7496 =
+	       IF_SEL_ARR_IF_out_fifo_internalFifos_0_first___ETC___d7506 ;
+  assign IF_SEL_ARR_IF_out_fifo_internalFifos_0_first___ETC___d7508 =
 	     CASE_x8242_0_IF_out_fifo_internalFifos_0_first_ETC__q170 ?
 	       4'd0 :
-	       IF_SEL_ARR_IF_out_fifo_internalFifos_0_first___ETC___d7495 ;
-  assign IF_SEL_ARR_IF_out_fifo_internalFifos_0_first___ETC___d7557 =
+	       IF_SEL_ARR_IF_out_fifo_internalFifos_0_first___ETC___d7507 ;
+  assign IF_SEL_ARR_IF_out_fifo_internalFifos_0_first___ETC___d7569 =
 	     CASE_x8412_0_IF_out_fifo_internalFifos_0_first_ETC__q35 ?
 	       3'd3 :
 	       (CASE_x8412_0_IF_out_fifo_internalFifos_0_first_ETC__q36 ?
 		  3'd4 :
 		  3'd7) ;
-  assign IF_SEL_ARR_IF_out_fifo_internalFifos_0_first___ETC___d7558 =
+  assign IF_SEL_ARR_IF_out_fifo_internalFifos_0_first___ETC___d7570 =
 	     CASE_x8412_0_IF_out_fifo_internalFifos_0_first_ETC__q37 ?
 	       3'd2 :
-	       IF_SEL_ARR_IF_out_fifo_internalFifos_0_first___ETC___d7557 ;
-  assign IF_SEL_ARR_IF_out_fifo_internalFifos_0_first___ETC___d7559 =
+	       IF_SEL_ARR_IF_out_fifo_internalFifos_0_first___ETC___d7569 ;
+  assign IF_SEL_ARR_IF_out_fifo_internalFifos_0_first___ETC___d7571 =
 	     CASE_x8412_0_IF_out_fifo_internalFifos_0_first_ETC__q38 ?
 	       3'd1 :
-	       IF_SEL_ARR_IF_out_fifo_internalFifos_0_first___ETC___d7558 ;
-  assign IF_SEL_ARR_IF_out_fifo_internalFifos_0_first___ETC___d7560 =
+	       IF_SEL_ARR_IF_out_fifo_internalFifos_0_first___ETC___d7570 ;
+  assign IF_SEL_ARR_IF_out_fifo_internalFifos_0_first___ETC___d7572 =
 	     CASE_x8412_0_IF_out_fifo_internalFifos_0_first_ETC__q39 ?
 	       3'd0 :
-	       IF_SEL_ARR_IF_out_fifo_internalFifos_0_first___ETC___d7559 ;
-  assign IF_SEL_ARR_IF_out_fifo_internalFifos_0_first___ETC___d7710 =
+	       IF_SEL_ARR_IF_out_fifo_internalFifos_0_first___ETC___d7571 ;
+  assign IF_SEL_ARR_IF_out_fifo_internalFifos_0_first___ETC___d7722 =
 	     CASE_x8412_0_IF_out_fifo_internalFifos_0_first_ETC__q171 ?
 	       4'd12 :
 	       (CASE_x8412_0_IF_out_fifo_internalFifos_0_first_ETC__q172 ?
 		  4'd13 :
 		  4'd15) ;
-  assign IF_SEL_ARR_IF_out_fifo_internalFifos_0_first___ETC___d7711 =
+  assign IF_SEL_ARR_IF_out_fifo_internalFifos_0_first___ETC___d7723 =
 	     CASE_x8412_0_IF_out_fifo_internalFifos_0_first_ETC__q173 ?
 	       4'd11 :
-	       IF_SEL_ARR_IF_out_fifo_internalFifos_0_first___ETC___d7710 ;
-  assign IF_SEL_ARR_IF_out_fifo_internalFifos_0_first___ETC___d7712 =
+	       IF_SEL_ARR_IF_out_fifo_internalFifos_0_first___ETC___d7722 ;
+  assign IF_SEL_ARR_IF_out_fifo_internalFifos_0_first___ETC___d7724 =
 	     CASE_x8412_0_IF_out_fifo_internalFifos_0_first_ETC__q174 ?
 	       4'd9 :
-	       IF_SEL_ARR_IF_out_fifo_internalFifos_0_first___ETC___d7711 ;
-  assign IF_SEL_ARR_IF_out_fifo_internalFifos_0_first___ETC___d7713 =
+	       IF_SEL_ARR_IF_out_fifo_internalFifos_0_first___ETC___d7723 ;
+  assign IF_SEL_ARR_IF_out_fifo_internalFifos_0_first___ETC___d7725 =
 	     CASE_x8412_0_IF_out_fifo_internalFifos_0_first_ETC__q175 ?
 	       4'd8 :
-	       IF_SEL_ARR_IF_out_fifo_internalFifos_0_first___ETC___d7712 ;
-  assign IF_SEL_ARR_IF_out_fifo_internalFifos_0_first___ETC___d7714 =
+	       IF_SEL_ARR_IF_out_fifo_internalFifos_0_first___ETC___d7724 ;
+  assign IF_SEL_ARR_IF_out_fifo_internalFifos_0_first___ETC___d7726 =
 	     CASE_x8412_0_IF_out_fifo_internalFifos_0_first_ETC__q176 ?
 	       4'd7 :
-	       IF_SEL_ARR_IF_out_fifo_internalFifos_0_first___ETC___d7713 ;
-  assign IF_SEL_ARR_IF_out_fifo_internalFifos_0_first___ETC___d7715 =
+	       IF_SEL_ARR_IF_out_fifo_internalFifos_0_first___ETC___d7725 ;
+  assign IF_SEL_ARR_IF_out_fifo_internalFifos_0_first___ETC___d7727 =
 	     CASE_x8412_0_IF_out_fifo_internalFifos_0_first_ETC__q177 ?
 	       4'd6 :
-	       IF_SEL_ARR_IF_out_fifo_internalFifos_0_first___ETC___d7714 ;
-  assign IF_SEL_ARR_IF_out_fifo_internalFifos_0_first___ETC___d7716 =
+	       IF_SEL_ARR_IF_out_fifo_internalFifos_0_first___ETC___d7726 ;
+  assign IF_SEL_ARR_IF_out_fifo_internalFifos_0_first___ETC___d7728 =
 	     CASE_x8412_0_IF_out_fifo_internalFifos_0_first_ETC__q178 ?
 	       4'd5 :
-	       IF_SEL_ARR_IF_out_fifo_internalFifos_0_first___ETC___d7715 ;
-  assign IF_SEL_ARR_IF_out_fifo_internalFifos_0_first___ETC___d7717 =
+	       IF_SEL_ARR_IF_out_fifo_internalFifos_0_first___ETC___d7727 ;
+  assign IF_SEL_ARR_IF_out_fifo_internalFifos_0_first___ETC___d7729 =
 	     CASE_x8412_0_IF_out_fifo_internalFifos_0_first_ETC__q179 ?
 	       4'd4 :
-	       IF_SEL_ARR_IF_out_fifo_internalFifos_0_first___ETC___d7716 ;
-  assign IF_SEL_ARR_IF_out_fifo_internalFifos_0_first___ETC___d7718 =
+	       IF_SEL_ARR_IF_out_fifo_internalFifos_0_first___ETC___d7728 ;
+  assign IF_SEL_ARR_IF_out_fifo_internalFifos_0_first___ETC___d7730 =
 	     CASE_x8412_0_IF_out_fifo_internalFifos_0_first_ETC__q180 ?
 	       4'd3 :
-	       IF_SEL_ARR_IF_out_fifo_internalFifos_0_first___ETC___d7717 ;
-  assign IF_SEL_ARR_IF_out_fifo_internalFifos_0_first___ETC___d7719 =
+	       IF_SEL_ARR_IF_out_fifo_internalFifos_0_first___ETC___d7729 ;
+  assign IF_SEL_ARR_IF_out_fifo_internalFifos_0_first___ETC___d7731 =
 	     CASE_x8412_0_IF_out_fifo_internalFifos_0_first_ETC__q181 ?
 	       4'd2 :
-	       IF_SEL_ARR_IF_out_fifo_internalFifos_0_first___ETC___d7718 ;
-  assign IF_SEL_ARR_IF_out_fifo_internalFifos_0_first___ETC___d7720 =
+	       IF_SEL_ARR_IF_out_fifo_internalFifos_0_first___ETC___d7730 ;
+  assign IF_SEL_ARR_IF_out_fifo_internalFifos_0_first___ETC___d7732 =
 	     CASE_x8412_0_IF_out_fifo_internalFifos_0_first_ETC__q182 ?
 	       4'd1 :
-	       IF_SEL_ARR_IF_out_fifo_internalFifos_0_first___ETC___d7719 ;
-  assign IF_SEL_ARR_IF_out_fifo_internalFifos_0_first___ETC___d7721 =
+	       IF_SEL_ARR_IF_out_fifo_internalFifos_0_first___ETC___d7731 ;
+  assign IF_SEL_ARR_IF_out_fifo_internalFifos_0_first___ETC___d7733 =
 	     CASE_x8412_0_IF_out_fifo_internalFifos_0_first_ETC__q183 ?
 	       4'd0 :
-	       IF_SEL_ARR_IF_out_fifo_internalFifos_0_first___ETC___d7720 ;
+	       IF_SEL_ARR_IF_out_fifo_internalFifos_0_first___ETC___d7732 ;
   assign IF_SEL_ARR_NOT_f22f3_data_0_813_BIT_75_862_863_ETC___d4115 =
 	     SEL_ARR_NOT_f22f3_data_0_813_BIT_75_862_863_NO_ETC___d3871 ?
 	       (SEL_ARR_f22f3_data_0_813_BIT_6_896_f22f3_data__ETC___d3901 ?
@@ -12891,69 +12907,69 @@ module mkFetchStage(CLK,
 		  mmio$bootRomResp[64:33] :
 		  iMem$to_proc_response_get[64:33]) :
 	       32'd0 ;
-  assign IF_SEL_ARR_NOT_f32d_data_0_988_BIT_73_051_052__ETC___d6317 =
-	     (SEL_ARR_NOT_f32d_data_0_988_BIT_73_051_052_NOT_ETC___d6056 &&
-	      !decode___d6061[0]) ?
-	       ((decode___d6061[99:95] == 5'd10) ?
+  assign IF_SEL_ARR_NOT_f32d_data_0_000_BIT_73_063_064__ETC___d6329 =
+	     (SEL_ARR_NOT_f32d_data_0_000_BIT_73_063_064_NOT_ETC___d6068 &&
+	      !decode___d6073[0]) ?
+	       ((decode___d6073[99:95] == 5'd10) ?
 		  dirPred$pred_0_pred[23:0] :
 		  24'hAAAAAA) :
 	       24'hAAAAAA ;
-  assign IF_SEL_ARR_NOT_f32d_data_0_988_BIT_73_051_052__ETC___d6457 =
-	     (SEL_ARR_NOT_f32d_data_0_988_BIT_73_051_052_NOT_ETC___d6056 ||
-	      CASE_f32d_deqP_0_IF_f32d_data_0_988_BITS_72_TO_ETC__q51) ?
+  assign IF_SEL_ARR_NOT_f32d_data_0_000_BIT_73_063_064__ETC___d6469 =
+	     (SEL_ARR_NOT_f32d_data_0_000_BIT_73_063_064_NOT_ETC___d6068 ||
+	      CASE_f32d_deqP_0_IF_f32d_data_0_000_BITS_72_TO_ETC__q51) ?
 	       4'd2 :
-	       IF_SEL_ARR_IF_f32d_data_0_988_BITS_72_TO_69_33_ETC___d6456 ;
-  assign IF_SEL_ARR_NOT_f32d_data_0_988_BIT_73_051_052__ETC___d6479 =
-	     (SEL_ARR_NOT_f32d_data_0_988_BIT_73_051_052_NOT_ETC___d6056 &&
-	      !decode___d6061[0]) ?
-	       IF_IF_decode_061_BITS_99_TO_95_065_EQ_8_075_AN_ETC___d6478 :
+	       IF_SEL_ARR_IF_f32d_data_0_000_BITS_72_TO_69_35_ETC___d6468 ;
+  assign IF_SEL_ARR_NOT_f32d_data_0_000_BIT_73_063_064__ETC___d6491 =
+	     (SEL_ARR_NOT_f32d_data_0_000_BIT_73_063_064_NOT_ETC___d6068 &&
+	      !decode___d6073[0]) ?
+	       IF_IF_decode_073_BITS_99_TO_95_077_EQ_8_087_AN_ETC___d6490 :
 	       decode_epoch_dummy2_0$Q_OUT && decode_epoch_dummy2_1$Q_OUT &&
 	       decode_epoch_rl ;
-  assign IF_SEL_ARR_NOT_f32d_data_0_988_BIT_73_051_052__ETC___d6731 =
-	     (SEL_ARR_NOT_f32d_data_0_988_BIT_73_051_052_NOT_ETC___d6056 &&
-	      !decode___d6487[0]) ?
-	       ((decode___d6487[99:95] == 5'd10) ?
+  assign IF_SEL_ARR_NOT_f32d_data_0_000_BIT_73_063_064__ETC___d6743 =
+	     (SEL_ARR_NOT_f32d_data_0_000_BIT_73_063_064_NOT_ETC___d6068 &&
+	      !decode___d6499[0]) ?
+	       ((decode___d6499[99:95] == 5'd10) ?
 		  dirPred$pred_1_pred[23:0] :
 		  24'hAAAAAA) :
 	       24'hAAAAAA ;
-  assign IF_SEL_ARR_NOT_f32d_data_0_988_BIT_73_051_052__ETC___d6767 =
-	     (SEL_ARR_NOT_f32d_data_0_988_BIT_73_051_052_NOT_ETC___d6056 &&
-	      !decode___d6487[0]) ?
-	       IF_decode_487_BITS_99_TO_95_491_EQ_8_497_AND_d_ETC___d6763 :
-	       SEL_ARR_instdata_data_0_996_BITS_65_TO_64_997__ETC___d6004 !=
+  assign IF_SEL_ARR_NOT_f32d_data_0_000_BIT_73_063_064__ETC___d6779 =
+	     (SEL_ARR_NOT_f32d_data_0_000_BIT_73_063_064_NOT_ETC___d6068 &&
+	      !decode___d6499[0]) ?
+	       IF_decode_499_BITS_99_TO_95_503_EQ_8_509_AND_d_ETC___d6775 :
+	       SEL_ARR_instdata_data_0_008_BITS_65_TO_64_009__ETC___d6016 !=
 	       2'd0 &&
-	       SEL_ARR_f32d_data_0_988_BIT_4_006_f32d_data_1__ETC___d6010 &&
-	       SEL_ARR_NOT_f32d_data_0_988_BIT_73_051_052_NOT_ETC___d6764 ;
-  assign IF_SEL_ARR_NOT_f32d_data_0_988_BIT_73_051_052__ETC___d6772 =
-	     (SEL_ARR_NOT_f32d_data_0_988_BIT_73_051_052_NOT_ETC___d6056 &&
-	      !decode___d6487[0]) ?
-	       IF_IF_decode_487_BITS_99_TO_95_491_EQ_8_497_AN_ETC___d6771 :
-	       decode_pred_next_pc__h186793 ;
-  assign IF_SEL_ARR_NOT_f32d_data_0_988_BIT_73_051_052__ETC___d6780 =
-	     (SEL_ARR_NOT_f32d_data_0_988_BIT_73_051_052_NOT_ETC___d6056 &&
-	      !decode___d6487[0]) ?
-	       IF_IF_decode_487_BITS_99_TO_95_491_EQ_8_497_AN_ETC___d6779 :
-	       IF_SEL_ARR_instdata_data_0_996_BITS_65_TO_64_9_ETC___d6481 ;
-  assign IF_SEL_ARR_NOT_f32d_data_0_988_BIT_73_051_052__ETC___d6801 =
-	     (SEL_ARR_NOT_f32d_data_0_988_BIT_73_051_052_NOT_ETC___d6056 &&
-	      !decode___d6487[0]) ?
-	       IF_IF_decode_487_BITS_99_TO_95_491_EQ_8_497_AN_ETC___d6797 :
-	       SEL_ARR_instdata_data_0_996_BITS_65_TO_64_997__ETC___d6004 !=
+	       SEL_ARR_f32d_data_0_000_BIT_4_018_f32d_data_1__ETC___d6022 &&
+	       SEL_ARR_NOT_f32d_data_0_000_BIT_73_063_064_NOT_ETC___d6776 ;
+  assign IF_SEL_ARR_NOT_f32d_data_0_000_BIT_73_063_064__ETC___d6784 =
+	     (SEL_ARR_NOT_f32d_data_0_000_BIT_73_063_064_NOT_ETC___d6068 &&
+	      !decode___d6499[0]) ?
+	       IF_IF_decode_499_BITS_99_TO_95_503_EQ_8_509_AN_ETC___d6783 :
+	       decode_pred_next_pc__h186753 ;
+  assign IF_SEL_ARR_NOT_f32d_data_0_000_BIT_73_063_064__ETC___d6792 =
+	     (SEL_ARR_NOT_f32d_data_0_000_BIT_73_063_064_NOT_ETC___d6068 &&
+	      !decode___d6499[0]) ?
+	       IF_IF_decode_499_BITS_99_TO_95_503_EQ_8_509_AN_ETC___d6791 :
+	       IF_SEL_ARR_instdata_data_0_008_BITS_65_TO_64_0_ETC___d6493 ;
+  assign IF_SEL_ARR_NOT_f32d_data_0_000_BIT_73_063_064__ETC___d6813 =
+	     (SEL_ARR_NOT_f32d_data_0_000_BIT_73_063_064_NOT_ETC___d6068 &&
+	      !decode___d6499[0]) ?
+	       IF_IF_decode_499_BITS_99_TO_95_503_EQ_8_509_AN_ETC___d6809 :
+	       SEL_ARR_instdata_data_0_008_BITS_65_TO_64_009__ETC___d6016 !=
 	       2'd0 &&
-	       SEL_ARR_f32d_data_0_988_BIT_4_006_f32d_data_1__ETC___d6799 ;
-  assign IF_SEL_ARR_NOT_f32d_data_0_988_BIT_73_051_052__ETC___d6817 =
-	     (SEL_ARR_NOT_f32d_data_0_988_BIT_73_051_052_NOT_ETC___d6056 &&
-	      !decode___d6487[0]) ?
-	       IF_IF_decode_487_BITS_99_TO_95_491_EQ_8_497_AN_ETC___d6816 :
-	       IF_IF_decode_061_BITS_99_TO_95_065_EQ_8_075_AN_ETC___d6815 ;
-  assign IF_SEL_ARR_NOT_f32d_data_0_988_BIT_74_783_784__ETC___d6810 =
-	     SEL_ARR_NOT_f32d_data_0_988_BIT_74_783_784_NOT_ETC___d6788 ?
-	       { last_x16_pc__h193642, decode_pred_next_pc__h193609 } :
-	       { in_pc__h183297, nextPc__h198099 } ;
-  assign IF_SEL_ARR_NOT_f32d_data_0_988_BIT_74_783_784__ETC___d6814 =
-	     SEL_ARR_NOT_f32d_data_0_988_BIT_74_783_784_NOT_ETC___d6788 ?
-	       { last_x16_pc__h186826, decode_pred_next_pc__h186793 } :
-	       { in_pc__h183297, nextPc__h198099 } ;
+	       SEL_ARR_f32d_data_0_000_BIT_4_018_f32d_data_1__ETC___d6811 ;
+  assign IF_SEL_ARR_NOT_f32d_data_0_000_BIT_73_063_064__ETC___d6829 =
+	     (SEL_ARR_NOT_f32d_data_0_000_BIT_73_063_064_NOT_ETC___d6068 &&
+	      !decode___d6499[0]) ?
+	       IF_IF_decode_499_BITS_99_TO_95_503_EQ_8_509_AN_ETC___d6828 :
+	       IF_IF_decode_073_BITS_99_TO_95_077_EQ_8_087_AN_ETC___d6827 ;
+  assign IF_SEL_ARR_NOT_f32d_data_0_000_BIT_74_795_796__ETC___d6822 =
+	     SEL_ARR_NOT_f32d_data_0_000_BIT_74_795_796_NOT_ETC___d6800 ?
+	       { last_x16_pc__h193602, decode_pred_next_pc__h193569 } :
+	       { in_pc__h183257, nextPc__h198059 } ;
+  assign IF_SEL_ARR_NOT_f32d_data_0_000_BIT_74_795_796__ETC___d6826 =
+	     SEL_ARR_NOT_f32d_data_0_000_BIT_74_795_796_NOT_ETC___d6800 ?
+	       { last_x16_pc__h186786, decode_pred_next_pc__h186753 } :
+	       { in_pc__h183257, nextPc__h198059 } ;
   assign IF_SEL_ARR_f22f3_data_0_813_BITS_204_TO_141_90_ETC___d4098 =
 	     j__h125924 < n_x16s__h125921 ;
   assign IF_SEL_ARR_f22f3_data_0_813_BITS_204_TO_141_90_ETC___d4104 =
@@ -12968,483 +12984,483 @@ module mkFetchStage(CLK,
 	     SEL_ARR_IF_NOT_f22f3_empty_33_812_AND_NOT_SEL__ETC___d4134[1:0] ==
 	     2'b11 &&
 	     !IF_SEL_ARR_f22f3_data_0_813_BITS_204_TO_141_90_ETC___d4137 ;
-  assign IF_SEL_ARR_f32d_data_0_988_BIT_4_006_f32d_data_ETC___d6480 =
-	     SEL_ARR_f32d_data_0_988_BIT_4_006_f32d_data_1__ETC___d6010 ?
-	       IF_SEL_ARR_NOT_f32d_data_0_988_BIT_73_051_052__ETC___d6479 :
+  assign IF_SEL_ARR_f32d_data_0_000_BIT_4_018_f32d_data_ETC___d6492 =
+	     SEL_ARR_f32d_data_0_000_BIT_4_018_f32d_data_1__ETC___d6022 ?
+	       IF_SEL_ARR_NOT_f32d_data_0_000_BIT_73_063_064__ETC___d6491 :
 	       decode_epoch_dummy2_0$Q_OUT && decode_epoch_dummy2_1$Q_OUT &&
 	       decode_epoch_rl ;
-  assign IF_SEL_ARR_f32d_data_0_988_BIT_4_006_f32d_data_ETC___d6768 =
-	     SEL_ARR_f32d_data_0_988_BIT_4_006_f32d_data_1__ETC___d6482 ?
-	       IF_SEL_ARR_NOT_f32d_data_0_988_BIT_73_051_052__ETC___d6767 :
-	       SEL_ARR_instdata_data_0_996_BITS_65_TO_64_997__ETC___d6004 !=
+  assign IF_SEL_ARR_f32d_data_0_000_BIT_4_018_f32d_data_ETC___d6780 =
+	     SEL_ARR_f32d_data_0_000_BIT_4_018_f32d_data_1__ETC___d6494 ?
+	       IF_SEL_ARR_NOT_f32d_data_0_000_BIT_73_063_064__ETC___d6779 :
+	       SEL_ARR_instdata_data_0_008_BITS_65_TO_64_009__ETC___d6016 !=
 	       2'd0 &&
-	       SEL_ARR_f32d_data_0_988_BIT_4_006_f32d_data_1__ETC___d6010 &&
-	       SEL_ARR_NOT_f32d_data_0_988_BIT_73_051_052_NOT_ETC___d6764 ;
-  assign IF_SEL_ARR_f32d_data_0_988_BIT_4_006_f32d_data_ETC___d6777 =
-	     SEL_ARR_f32d_data_0_988_BIT_4_006_f32d_data_1__ETC___d6010 ?
-	       IF_decode_061_BIT_0_062_THEN_NOT_decode_epoch__ETC___d6776 :
+	       SEL_ARR_f32d_data_0_000_BIT_4_018_f32d_data_1__ETC___d6022 &&
+	       SEL_ARR_NOT_f32d_data_0_000_BIT_73_063_064_NOT_ETC___d6776 ;
+  assign IF_SEL_ARR_f32d_data_0_000_BIT_4_018_f32d_data_ETC___d6789 =
+	     SEL_ARR_f32d_data_0_000_BIT_4_018_f32d_data_1__ETC___d6022 ?
+	       IF_decode_073_BIT_0_074_THEN_NOT_decode_epoch__ETC___d6788 :
 	       !decode_epoch_dummy2_0$Q_OUT || !decode_epoch_dummy2_1$Q_OUT ||
 	       !decode_epoch_rl ;
-  assign IF_SEL_ARR_f32d_data_0_988_BIT_4_006_f32d_data_ETC___d6802 =
-	     SEL_ARR_f32d_data_0_988_BIT_4_006_f32d_data_1__ETC___d6482 ?
-	       IF_SEL_ARR_NOT_f32d_data_0_988_BIT_73_051_052__ETC___d6801 :
-	       SEL_ARR_instdata_data_0_996_BITS_65_TO_64_997__ETC___d6004 !=
+  assign IF_SEL_ARR_f32d_data_0_000_BIT_4_018_f32d_data_ETC___d6814 =
+	     SEL_ARR_f32d_data_0_000_BIT_4_018_f32d_data_1__ETC___d6494 ?
+	       IF_SEL_ARR_NOT_f32d_data_0_000_BIT_73_063_064__ETC___d6813 :
+	       SEL_ARR_instdata_data_0_008_BITS_65_TO_64_009__ETC___d6016 !=
 	       2'd0 &&
-	       SEL_ARR_f32d_data_0_988_BIT_4_006_f32d_data_1__ETC___d6799 ;
-  assign IF_SEL_ARR_instdata_data_0_996_BITS_65_TO_64_9_ETC___d6481 =
-	     (SEL_ARR_instdata_data_0_996_BITS_65_TO_64_997__ETC___d6004 ==
+	       SEL_ARR_f32d_data_0_000_BIT_4_018_f32d_data_1__ETC___d6811 ;
+  assign IF_SEL_ARR_instdata_data_0_008_BITS_65_TO_64_0_ETC___d6493 =
+	     (SEL_ARR_instdata_data_0_008_BITS_65_TO_64_009__ETC___d6016 ==
 	      2'd0) ?
 	       decode_epoch_dummy2_0$Q_OUT && decode_epoch_dummy2_1$Q_OUT &&
 	       decode_epoch_rl :
-	       IF_SEL_ARR_f32d_data_0_988_BIT_4_006_f32d_data_ETC___d6480 ;
-  assign IF_SEL_ARR_instdata_data_0_996_BITS_65_TO_64_9_ETC___d6778 =
-	     (SEL_ARR_instdata_data_0_996_BITS_65_TO_64_997__ETC___d6004 ==
+	       IF_SEL_ARR_f32d_data_0_000_BIT_4_018_f32d_data_ETC___d6492 ;
+  assign IF_SEL_ARR_instdata_data_0_008_BITS_65_TO_64_0_ETC___d6790 =
+	     (SEL_ARR_instdata_data_0_008_BITS_65_TO_64_009__ETC___d6016 ==
 	      2'd0) ?
 	       !decode_epoch_dummy2_0$Q_OUT || !decode_epoch_dummy2_1$Q_OUT ||
 	       !decode_epoch_rl :
-	       IF_SEL_ARR_f32d_data_0_988_BIT_4_006_f32d_data_ETC___d6777 ;
-  assign IF_SEL_ARR_out_fifo_internalFifos_0_first__850_ETC___d7043 =
+	       IF_SEL_ARR_f32d_data_0_000_BIT_4_018_f32d_data_ETC___d6789 ;
+  assign IF_SEL_ARR_out_fifo_internalFifos_0_first__862_ETC___d7055 =
 	     CASE_x8242_0_out_fifo_internalFifos_0D_OUT_BI_ETC__q184 ?
 	       { 12'd2218,
-		 SEL_ARR_out_fifo_internalFifos_0_first__850_BI_ETC___d7041 } :
+		 SEL_ARR_out_fifo_internalFifos_0_first__862_BI_ETC___d7053 } :
 	       21'd1485482 ;
-  assign IF_SEL_ARR_out_fifo_internalFifos_0_first__850_ETC___d7044 =
+  assign IF_SEL_ARR_out_fifo_internalFifos_0_first__862_ETC___d7056 =
 	     CASE_x8242_0_out_fifo_internalFifos_0D_OUT_BI_ETC__q185 ?
 	       { 16'd27306,
-		 SEL_ARR_out_fifo_internalFifos_0_first__850_BI_ETC___d6984 } :
-	       IF_SEL_ARR_out_fifo_internalFifos_0_first__850_ETC___d7043 ;
-  assign IF_SEL_ARR_out_fifo_internalFifos_0_first__850_ETC___d7045 =
+		 SEL_ARR_out_fifo_internalFifos_0_first__862_BI_ETC___d6996 } :
+	       IF_SEL_ARR_out_fifo_internalFifos_0_first__862_ETC___d7055 ;
+  assign IF_SEL_ARR_out_fifo_internalFifos_0_first__862_ETC___d7057 =
 	     CASE_x8242_0_out_fifo_internalFifos_0D_OUT_BI_ETC__q186 ?
 	       { 3'd2,
 		 CASE_x8242_0_out_fifo_internalFifos_0D_OUT_BI_ETC__q187,
-		 SEL_ARR_out_fifo_internalFifos_0_first__850_BI_ETC___d6970 } :
-	       IF_SEL_ARR_out_fifo_internalFifos_0_first__850_ETC___d7044 ;
-  assign IF_SEL_ARR_out_fifo_internalFifos_0_first__850_ETC___d7046 =
+		 SEL_ARR_out_fifo_internalFifos_0_first__862_BI_ETC___d6982 } :
+	       IF_SEL_ARR_out_fifo_internalFifos_0_first__862_ETC___d7056 ;
+  assign IF_SEL_ARR_out_fifo_internalFifos_0_first__862_ETC___d7058 =
 	     CASE_x8242_0_out_fifo_internalFifos_0D_OUT_BI_ETC__q188 ?
 	       { 18'd43690,
 		 CASE_x8242_0_out_fifo_internalFifos_0D_OUT_BI_ETC__q189 } :
-	       IF_SEL_ARR_out_fifo_internalFifos_0_first__850_ETC___d7045 ;
-  assign IF_SEL_ARR_out_fifo_internalFifos_0_first__850_ETC___d7047 =
+	       IF_SEL_ARR_out_fifo_internalFifos_0_first__862_ETC___d7057 ;
+  assign IF_SEL_ARR_out_fifo_internalFifos_0_first__862_ETC___d7059 =
 	     CASE_x8242_0_out_fifo_internalFifos_0D_OUT_BI_ETC__q190 ?
 	       { 16'd2730,
 		 CASE_x8242_0_out_fifo_internalFifos_0D_OUT_BI_ETC__q191 } :
-	       IF_SEL_ARR_out_fifo_internalFifos_0_first__850_ETC___d7046 ;
-  assign IF_SEL_ARR_out_fifo_internalFifos_0_first__850_ETC___d7234 =
+	       IF_SEL_ARR_out_fifo_internalFifos_0_first__862_ETC___d7058 ;
+  assign IF_SEL_ARR_out_fifo_internalFifos_0_first__862_ETC___d7246 =
 	     CASE_x8242_0_out_fifo_internalFifos_0D_OUT_BI_ETC__q70 ?
 	       12'd1970 :
 	       (CASE_x8242_0_out_fifo_internalFifos_0D_OUT_BI_ETC__q71 ?
 		  12'd1971 :
 		  12'd2303) ;
-  assign IF_SEL_ARR_out_fifo_internalFifos_0_first__850_ETC___d7235 =
+  assign IF_SEL_ARR_out_fifo_internalFifos_0_first__862_ETC___d7247 =
 	     CASE_x8242_0_out_fifo_internalFifos_0D_OUT_BI_ETC__q72 ?
 	       12'd1969 :
-	       IF_SEL_ARR_out_fifo_internalFifos_0_first__850_ETC___d7234 ;
-  assign IF_SEL_ARR_out_fifo_internalFifos_0_first__850_ETC___d7236 =
+	       IF_SEL_ARR_out_fifo_internalFifos_0_first__862_ETC___d7246 ;
+  assign IF_SEL_ARR_out_fifo_internalFifos_0_first__862_ETC___d7248 =
 	     CASE_x8242_0_out_fifo_internalFifos_0D_OUT_BI_ETC__q73 ?
 	       12'd1968 :
-	       IF_SEL_ARR_out_fifo_internalFifos_0_first__850_ETC___d7235 ;
-  assign IF_SEL_ARR_out_fifo_internalFifos_0_first__850_ETC___d7237 =
+	       IF_SEL_ARR_out_fifo_internalFifos_0_first__862_ETC___d7247 ;
+  assign IF_SEL_ARR_out_fifo_internalFifos_0_first__862_ETC___d7249 =
 	     CASE_x8242_0_out_fifo_internalFifos_0D_OUT_BI_ETC__q74 ?
 	       12'd1955 :
-	       IF_SEL_ARR_out_fifo_internalFifos_0_first__850_ETC___d7236 ;
-  assign IF_SEL_ARR_out_fifo_internalFifos_0_first__850_ETC___d7238 =
+	       IF_SEL_ARR_out_fifo_internalFifos_0_first__862_ETC___d7248 ;
+  assign IF_SEL_ARR_out_fifo_internalFifos_0_first__862_ETC___d7250 =
 	     CASE_x8242_0_out_fifo_internalFifos_0D_OUT_BI_ETC__q75 ?
 	       12'd1954 :
-	       IF_SEL_ARR_out_fifo_internalFifos_0_first__850_ETC___d7237 ;
-  assign IF_SEL_ARR_out_fifo_internalFifos_0_first__850_ETC___d7239 =
+	       IF_SEL_ARR_out_fifo_internalFifos_0_first__862_ETC___d7249 ;
+  assign IF_SEL_ARR_out_fifo_internalFifos_0_first__862_ETC___d7251 =
 	     CASE_x8242_0_out_fifo_internalFifos_0D_OUT_BI_ETC__q76 ?
 	       12'd1953 :
-	       IF_SEL_ARR_out_fifo_internalFifos_0_first__850_ETC___d7238 ;
-  assign IF_SEL_ARR_out_fifo_internalFifos_0_first__850_ETC___d7240 =
+	       IF_SEL_ARR_out_fifo_internalFifos_0_first__862_ETC___d7250 ;
+  assign IF_SEL_ARR_out_fifo_internalFifos_0_first__862_ETC___d7252 =
 	     CASE_x8242_0_out_fifo_internalFifos_0D_OUT_BI_ETC__q77 ?
 	       12'd1952 :
-	       IF_SEL_ARR_out_fifo_internalFifos_0_first__850_ETC___d7239 ;
-  assign IF_SEL_ARR_out_fifo_internalFifos_0_first__850_ETC___d7241 =
+	       IF_SEL_ARR_out_fifo_internalFifos_0_first__862_ETC___d7251 ;
+  assign IF_SEL_ARR_out_fifo_internalFifos_0_first__862_ETC___d7253 =
 	     CASE_x8242_0_out_fifo_internalFifos_0D_OUT_BI_ETC__q78 ?
 	       12'd3860 :
-	       IF_SEL_ARR_out_fifo_internalFifos_0_first__850_ETC___d7240 ;
-  assign IF_SEL_ARR_out_fifo_internalFifos_0_first__850_ETC___d7242 =
+	       IF_SEL_ARR_out_fifo_internalFifos_0_first__862_ETC___d7252 ;
+  assign IF_SEL_ARR_out_fifo_internalFifos_0_first__862_ETC___d7254 =
 	     CASE_x8242_0_out_fifo_internalFifos_0D_OUT_BI_ETC__q79 ?
 	       12'd3859 :
-	       IF_SEL_ARR_out_fifo_internalFifos_0_first__850_ETC___d7241 ;
-  assign IF_SEL_ARR_out_fifo_internalFifos_0_first__850_ETC___d7243 =
+	       IF_SEL_ARR_out_fifo_internalFifos_0_first__862_ETC___d7253 ;
+  assign IF_SEL_ARR_out_fifo_internalFifos_0_first__862_ETC___d7255 =
 	     CASE_x8242_0_out_fifo_internalFifos_0D_OUT_BI_ETC__q80 ?
 	       12'd3858 :
-	       IF_SEL_ARR_out_fifo_internalFifos_0_first__850_ETC___d7242 ;
-  assign IF_SEL_ARR_out_fifo_internalFifos_0_first__850_ETC___d7244 =
+	       IF_SEL_ARR_out_fifo_internalFifos_0_first__862_ETC___d7254 ;
+  assign IF_SEL_ARR_out_fifo_internalFifos_0_first__862_ETC___d7256 =
 	     CASE_x8242_0_out_fifo_internalFifos_0D_OUT_BI_ETC__q81 ?
 	       12'd3857 :
-	       IF_SEL_ARR_out_fifo_internalFifos_0_first__850_ETC___d7243 ;
-  assign IF_SEL_ARR_out_fifo_internalFifos_0_first__850_ETC___d7245 =
+	       IF_SEL_ARR_out_fifo_internalFifos_0_first__862_ETC___d7255 ;
+  assign IF_SEL_ARR_out_fifo_internalFifos_0_first__862_ETC___d7257 =
 	     CASE_x8242_0_out_fifo_internalFifos_0D_OUT_BI_ETC__q82 ?
 	       12'd2818 :
-	       IF_SEL_ARR_out_fifo_internalFifos_0_first__850_ETC___d7244 ;
-  assign IF_SEL_ARR_out_fifo_internalFifos_0_first__850_ETC___d7246 =
+	       IF_SEL_ARR_out_fifo_internalFifos_0_first__862_ETC___d7256 ;
+  assign IF_SEL_ARR_out_fifo_internalFifos_0_first__862_ETC___d7258 =
 	     CASE_x8242_0_out_fifo_internalFifos_0D_OUT_BI_ETC__q83 ?
 	       12'd2816 :
-	       IF_SEL_ARR_out_fifo_internalFifos_0_first__850_ETC___d7245 ;
-  assign IF_SEL_ARR_out_fifo_internalFifos_0_first__850_ETC___d7247 =
+	       IF_SEL_ARR_out_fifo_internalFifos_0_first__862_ETC___d7257 ;
+  assign IF_SEL_ARR_out_fifo_internalFifos_0_first__862_ETC___d7259 =
 	     CASE_x8242_0_out_fifo_internalFifos_0D_OUT_BI_ETC__q84 ?
 	       12'd836 :
-	       IF_SEL_ARR_out_fifo_internalFifos_0_first__850_ETC___d7246 ;
-  assign IF_SEL_ARR_out_fifo_internalFifos_0_first__850_ETC___d7248 =
+	       IF_SEL_ARR_out_fifo_internalFifos_0_first__862_ETC___d7258 ;
+  assign IF_SEL_ARR_out_fifo_internalFifos_0_first__862_ETC___d7260 =
 	     CASE_x8242_0_out_fifo_internalFifos_0D_OUT_BI_ETC__q85 ?
 	       12'd835 :
-	       IF_SEL_ARR_out_fifo_internalFifos_0_first__850_ETC___d7247 ;
-  assign IF_SEL_ARR_out_fifo_internalFifos_0_first__850_ETC___d7249 =
+	       IF_SEL_ARR_out_fifo_internalFifos_0_first__862_ETC___d7259 ;
+  assign IF_SEL_ARR_out_fifo_internalFifos_0_first__862_ETC___d7261 =
 	     CASE_x8242_0_out_fifo_internalFifos_0D_OUT_BI_ETC__q86 ?
 	       12'd834 :
-	       IF_SEL_ARR_out_fifo_internalFifos_0_first__850_ETC___d7248 ;
-  assign IF_SEL_ARR_out_fifo_internalFifos_0_first__850_ETC___d7250 =
+	       IF_SEL_ARR_out_fifo_internalFifos_0_first__862_ETC___d7260 ;
+  assign IF_SEL_ARR_out_fifo_internalFifos_0_first__862_ETC___d7262 =
 	     CASE_x8242_0_out_fifo_internalFifos_0D_OUT_BI_ETC__q87 ?
 	       12'd833 :
-	       IF_SEL_ARR_out_fifo_internalFifos_0_first__850_ETC___d7249 ;
-  assign IF_SEL_ARR_out_fifo_internalFifos_0_first__850_ETC___d7251 =
+	       IF_SEL_ARR_out_fifo_internalFifos_0_first__862_ETC___d7261 ;
+  assign IF_SEL_ARR_out_fifo_internalFifos_0_first__862_ETC___d7263 =
 	     CASE_x8242_0_out_fifo_internalFifos_0D_OUT_BI_ETC__q88 ?
 	       12'd832 :
-	       IF_SEL_ARR_out_fifo_internalFifos_0_first__850_ETC___d7250 ;
-  assign IF_SEL_ARR_out_fifo_internalFifos_0_first__850_ETC___d7252 =
+	       IF_SEL_ARR_out_fifo_internalFifos_0_first__862_ETC___d7262 ;
+  assign IF_SEL_ARR_out_fifo_internalFifos_0_first__862_ETC___d7264 =
 	     CASE_x8242_0_out_fifo_internalFifos_0D_OUT_BI_ETC__q89 ?
 	       12'd774 :
-	       IF_SEL_ARR_out_fifo_internalFifos_0_first__850_ETC___d7251 ;
-  assign IF_SEL_ARR_out_fifo_internalFifos_0_first__850_ETC___d7253 =
+	       IF_SEL_ARR_out_fifo_internalFifos_0_first__862_ETC___d7263 ;
+  assign IF_SEL_ARR_out_fifo_internalFifos_0_first__862_ETC___d7265 =
 	     CASE_x8242_0_out_fifo_internalFifos_0D_OUT_BI_ETC__q90 ?
 	       12'd773 :
-	       IF_SEL_ARR_out_fifo_internalFifos_0_first__850_ETC___d7252 ;
-  assign IF_SEL_ARR_out_fifo_internalFifos_0_first__850_ETC___d7254 =
+	       IF_SEL_ARR_out_fifo_internalFifos_0_first__862_ETC___d7264 ;
+  assign IF_SEL_ARR_out_fifo_internalFifos_0_first__862_ETC___d7266 =
 	     CASE_x8242_0_out_fifo_internalFifos_0D_OUT_BI_ETC__q91 ?
 	       12'd772 :
-	       IF_SEL_ARR_out_fifo_internalFifos_0_first__850_ETC___d7253 ;
-  assign IF_SEL_ARR_out_fifo_internalFifos_0_first__850_ETC___d7255 =
+	       IF_SEL_ARR_out_fifo_internalFifos_0_first__862_ETC___d7265 ;
+  assign IF_SEL_ARR_out_fifo_internalFifos_0_first__862_ETC___d7267 =
 	     CASE_x8242_0_out_fifo_internalFifos_0D_OUT_BI_ETC__q92 ?
 	       12'd771 :
-	       IF_SEL_ARR_out_fifo_internalFifos_0_first__850_ETC___d7254 ;
-  assign IF_SEL_ARR_out_fifo_internalFifos_0_first__850_ETC___d7256 =
+	       IF_SEL_ARR_out_fifo_internalFifos_0_first__862_ETC___d7266 ;
+  assign IF_SEL_ARR_out_fifo_internalFifos_0_first__862_ETC___d7268 =
 	     CASE_x8242_0_out_fifo_internalFifos_0D_OUT_BI_ETC__q93 ?
 	       12'd770 :
-	       IF_SEL_ARR_out_fifo_internalFifos_0_first__850_ETC___d7255 ;
-  assign IF_SEL_ARR_out_fifo_internalFifos_0_first__850_ETC___d7257 =
+	       IF_SEL_ARR_out_fifo_internalFifos_0_first__862_ETC___d7267 ;
+  assign IF_SEL_ARR_out_fifo_internalFifos_0_first__862_ETC___d7269 =
 	     CASE_x8242_0_out_fifo_internalFifos_0D_OUT_BI_ETC__q94 ?
 	       12'd769 :
-	       IF_SEL_ARR_out_fifo_internalFifos_0_first__850_ETC___d7256 ;
-  assign IF_SEL_ARR_out_fifo_internalFifos_0_first__850_ETC___d7258 =
+	       IF_SEL_ARR_out_fifo_internalFifos_0_first__862_ETC___d7268 ;
+  assign IF_SEL_ARR_out_fifo_internalFifos_0_first__862_ETC___d7270 =
 	     CASE_x8242_0_out_fifo_internalFifos_0D_OUT_BI_ETC__q95 ?
 	       12'd768 :
-	       IF_SEL_ARR_out_fifo_internalFifos_0_first__850_ETC___d7257 ;
-  assign IF_SEL_ARR_out_fifo_internalFifos_0_first__850_ETC___d7259 =
+	       IF_SEL_ARR_out_fifo_internalFifos_0_first__862_ETC___d7269 ;
+  assign IF_SEL_ARR_out_fifo_internalFifos_0_first__862_ETC___d7271 =
 	     CASE_x8242_0_out_fifo_internalFifos_0D_OUT_BI_ETC__q96 ?
 	       12'd384 :
-	       IF_SEL_ARR_out_fifo_internalFifos_0_first__850_ETC___d7258 ;
-  assign IF_SEL_ARR_out_fifo_internalFifos_0_first__850_ETC___d7260 =
+	       IF_SEL_ARR_out_fifo_internalFifos_0_first__862_ETC___d7270 ;
+  assign IF_SEL_ARR_out_fifo_internalFifos_0_first__862_ETC___d7272 =
 	     CASE_x8242_0_out_fifo_internalFifos_0D_OUT_BI_ETC__q97 ?
 	       12'd324 :
-	       IF_SEL_ARR_out_fifo_internalFifos_0_first__850_ETC___d7259 ;
-  assign IF_SEL_ARR_out_fifo_internalFifos_0_first__850_ETC___d7261 =
+	       IF_SEL_ARR_out_fifo_internalFifos_0_first__862_ETC___d7271 ;
+  assign IF_SEL_ARR_out_fifo_internalFifos_0_first__862_ETC___d7273 =
 	     CASE_x8242_0_out_fifo_internalFifos_0D_OUT_BI_ETC__q98 ?
 	       12'd323 :
-	       IF_SEL_ARR_out_fifo_internalFifos_0_first__850_ETC___d7260 ;
-  assign IF_SEL_ARR_out_fifo_internalFifos_0_first__850_ETC___d7262 =
+	       IF_SEL_ARR_out_fifo_internalFifos_0_first__862_ETC___d7272 ;
+  assign IF_SEL_ARR_out_fifo_internalFifos_0_first__862_ETC___d7274 =
 	     CASE_x8242_0_out_fifo_internalFifos_0D_OUT_BI_ETC__q99 ?
 	       12'd322 :
-	       IF_SEL_ARR_out_fifo_internalFifos_0_first__850_ETC___d7261 ;
-  assign IF_SEL_ARR_out_fifo_internalFifos_0_first__850_ETC___d7263 =
+	       IF_SEL_ARR_out_fifo_internalFifos_0_first__862_ETC___d7273 ;
+  assign IF_SEL_ARR_out_fifo_internalFifos_0_first__862_ETC___d7275 =
 	     CASE_x8242_0_out_fifo_internalFifos_0D_OUT_BI_ETC__q100 ?
 	       12'd321 :
-	       IF_SEL_ARR_out_fifo_internalFifos_0_first__850_ETC___d7262 ;
-  assign IF_SEL_ARR_out_fifo_internalFifos_0_first__850_ETC___d7264 =
+	       IF_SEL_ARR_out_fifo_internalFifos_0_first__862_ETC___d7274 ;
+  assign IF_SEL_ARR_out_fifo_internalFifos_0_first__862_ETC___d7276 =
 	     CASE_x8242_0_out_fifo_internalFifos_0D_OUT_BI_ETC__q101 ?
 	       12'd320 :
-	       IF_SEL_ARR_out_fifo_internalFifos_0_first__850_ETC___d7263 ;
-  assign IF_SEL_ARR_out_fifo_internalFifos_0_first__850_ETC___d7265 =
+	       IF_SEL_ARR_out_fifo_internalFifos_0_first__862_ETC___d7275 ;
+  assign IF_SEL_ARR_out_fifo_internalFifos_0_first__862_ETC___d7277 =
 	     CASE_x8242_0_out_fifo_internalFifos_0D_OUT_BI_ETC__q102 ?
 	       12'd262 :
-	       IF_SEL_ARR_out_fifo_internalFifos_0_first__850_ETC___d7264 ;
-  assign IF_SEL_ARR_out_fifo_internalFifos_0_first__850_ETC___d7266 =
+	       IF_SEL_ARR_out_fifo_internalFifos_0_first__862_ETC___d7276 ;
+  assign IF_SEL_ARR_out_fifo_internalFifos_0_first__862_ETC___d7278 =
 	     CASE_x8242_0_out_fifo_internalFifos_0D_OUT_BI_ETC__q103 ?
 	       12'd261 :
-	       IF_SEL_ARR_out_fifo_internalFifos_0_first__850_ETC___d7265 ;
-  assign IF_SEL_ARR_out_fifo_internalFifos_0_first__850_ETC___d7267 =
+	       IF_SEL_ARR_out_fifo_internalFifos_0_first__862_ETC___d7277 ;
+  assign IF_SEL_ARR_out_fifo_internalFifos_0_first__862_ETC___d7279 =
 	     CASE_x8242_0_out_fifo_internalFifos_0D_OUT_BI_ETC__q104 ?
 	       12'd260 :
-	       IF_SEL_ARR_out_fifo_internalFifos_0_first__850_ETC___d7266 ;
-  assign IF_SEL_ARR_out_fifo_internalFifos_0_first__850_ETC___d7268 =
+	       IF_SEL_ARR_out_fifo_internalFifos_0_first__862_ETC___d7278 ;
+  assign IF_SEL_ARR_out_fifo_internalFifos_0_first__862_ETC___d7280 =
 	     CASE_x8242_0_out_fifo_internalFifos_0D_OUT_BI_ETC__q105 ?
 	       12'd256 :
-	       IF_SEL_ARR_out_fifo_internalFifos_0_first__850_ETC___d7267 ;
-  assign IF_SEL_ARR_out_fifo_internalFifos_0_first__850_ETC___d7269 =
+	       IF_SEL_ARR_out_fifo_internalFifos_0_first__862_ETC___d7279 ;
+  assign IF_SEL_ARR_out_fifo_internalFifos_0_first__862_ETC___d7281 =
 	     CASE_x8242_0_out_fifo_internalFifos_0D_OUT_BI_ETC__q106 ?
 	       12'd2049 :
-	       IF_SEL_ARR_out_fifo_internalFifos_0_first__850_ETC___d7268 ;
-  assign IF_SEL_ARR_out_fifo_internalFifos_0_first__850_ETC___d7270 =
+	       IF_SEL_ARR_out_fifo_internalFifos_0_first__862_ETC___d7280 ;
+  assign IF_SEL_ARR_out_fifo_internalFifos_0_first__862_ETC___d7282 =
 	     CASE_x8242_0_out_fifo_internalFifos_0D_OUT_BI_ETC__q107 ?
 	       12'd2048 :
-	       IF_SEL_ARR_out_fifo_internalFifos_0_first__850_ETC___d7269 ;
-  assign IF_SEL_ARR_out_fifo_internalFifos_0_first__850_ETC___d7271 =
+	       IF_SEL_ARR_out_fifo_internalFifos_0_first__862_ETC___d7281 ;
+  assign IF_SEL_ARR_out_fifo_internalFifos_0_first__862_ETC___d7283 =
 	     CASE_x8242_0_out_fifo_internalFifos_0D_OUT_BI_ETC__q108 ?
 	       12'd3074 :
-	       IF_SEL_ARR_out_fifo_internalFifos_0_first__850_ETC___d7270 ;
-  assign IF_SEL_ARR_out_fifo_internalFifos_0_first__850_ETC___d7272 =
+	       IF_SEL_ARR_out_fifo_internalFifos_0_first__862_ETC___d7282 ;
+  assign IF_SEL_ARR_out_fifo_internalFifos_0_first__862_ETC___d7284 =
 	     CASE_x8242_0_out_fifo_internalFifos_0D_OUT_BI_ETC__q109 ?
 	       12'd3073 :
-	       IF_SEL_ARR_out_fifo_internalFifos_0_first__850_ETC___d7271 ;
-  assign IF_SEL_ARR_out_fifo_internalFifos_0_first__850_ETC___d7273 =
+	       IF_SEL_ARR_out_fifo_internalFifos_0_first__862_ETC___d7283 ;
+  assign IF_SEL_ARR_out_fifo_internalFifos_0_first__862_ETC___d7285 =
 	     CASE_x8242_0_out_fifo_internalFifos_0D_OUT_BI_ETC__q110 ?
 	       12'd3072 :
-	       IF_SEL_ARR_out_fifo_internalFifos_0_first__850_ETC___d7272 ;
-  assign IF_SEL_ARR_out_fifo_internalFifos_0_first__850_ETC___d7274 =
+	       IF_SEL_ARR_out_fifo_internalFifos_0_first__862_ETC___d7284 ;
+  assign IF_SEL_ARR_out_fifo_internalFifos_0_first__862_ETC___d7286 =
 	     CASE_x8242_0_out_fifo_internalFifos_0D_OUT_BI_ETC__q111 ?
 	       12'd3 :
-	       IF_SEL_ARR_out_fifo_internalFifos_0_first__850_ETC___d7273 ;
-  assign IF_SEL_ARR_out_fifo_internalFifos_0_first__850_ETC___d7275 =
+	       IF_SEL_ARR_out_fifo_internalFifos_0_first__862_ETC___d7285 ;
+  assign IF_SEL_ARR_out_fifo_internalFifos_0_first__862_ETC___d7287 =
 	     CASE_x8242_0_out_fifo_internalFifos_0D_OUT_BI_ETC__q112 ?
 	       12'd2 :
-	       IF_SEL_ARR_out_fifo_internalFifos_0_first__850_ETC___d7274 ;
-  assign IF_SEL_ARR_out_fifo_internalFifos_0_first__850_ETC___d7276 =
+	       IF_SEL_ARR_out_fifo_internalFifos_0_first__862_ETC___d7286 ;
+  assign IF_SEL_ARR_out_fifo_internalFifos_0_first__862_ETC___d7288 =
 	     CASE_x8242_0_out_fifo_internalFifos_0D_OUT_BI_ETC__q113 ?
 	       12'd1 :
-	       IF_SEL_ARR_out_fifo_internalFifos_0_first__850_ETC___d7275 ;
-  assign IF_SEL_ARR_out_fifo_internalFifos_0_first__850_ETC___d7563 =
+	       IF_SEL_ARR_out_fifo_internalFifos_0_first__862_ETC___d7287 ;
+  assign IF_SEL_ARR_out_fifo_internalFifos_0_first__862_ETC___d7575 =
 	     CASE_x8412_0_out_fifo_internalFifos_0D_OUT_BI_ETC__q195 ?
 	       { 12'd2218,
-		 SEL_ARR_out_fifo_internalFifos_0_first__850_BI_ETC___d7561 } :
+		 SEL_ARR_out_fifo_internalFifos_0_first__862_BI_ETC___d7573 } :
 	       21'd1485482 ;
-  assign IF_SEL_ARR_out_fifo_internalFifos_0_first__850_ETC___d7564 =
+  assign IF_SEL_ARR_out_fifo_internalFifos_0_first__862_ETC___d7576 =
 	     CASE_x8412_0_out_fifo_internalFifos_0D_OUT_BI_ETC__q196 ?
 	       { 16'd27306,
-		 SEL_ARR_out_fifo_internalFifos_0_first__850_BI_ETC___d7547 } :
-	       IF_SEL_ARR_out_fifo_internalFifos_0_first__850_ETC___d7563 ;
-  assign IF_SEL_ARR_out_fifo_internalFifos_0_first__850_ETC___d7565 =
+		 SEL_ARR_out_fifo_internalFifos_0_first__862_BI_ETC___d7559 } :
+	       IF_SEL_ARR_out_fifo_internalFifos_0_first__862_ETC___d7575 ;
+  assign IF_SEL_ARR_out_fifo_internalFifos_0_first__862_ETC___d7577 =
 	     CASE_x8412_0_out_fifo_internalFifos_0D_OUT_BI_ETC__q197 ?
 	       { 3'd2,
 		 CASE_x8412_0_out_fifo_internalFifos_0D_OUT_BI_ETC__q198,
-		 SEL_ARR_out_fifo_internalFifos_0_first__850_BI_ETC___d7542 } :
-	       IF_SEL_ARR_out_fifo_internalFifos_0_first__850_ETC___d7564 ;
-  assign IF_SEL_ARR_out_fifo_internalFifos_0_first__850_ETC___d7566 =
+		 SEL_ARR_out_fifo_internalFifos_0_first__862_BI_ETC___d7554 } :
+	       IF_SEL_ARR_out_fifo_internalFifos_0_first__862_ETC___d7576 ;
+  assign IF_SEL_ARR_out_fifo_internalFifos_0_first__862_ETC___d7578 =
 	     CASE_x8412_0_out_fifo_internalFifos_0D_OUT_BI_ETC__q199 ?
 	       { 18'd43690,
 		 CASE_x8412_0_out_fifo_internalFifos_0D_OUT_BI_ETC__q200 } :
-	       IF_SEL_ARR_out_fifo_internalFifos_0_first__850_ETC___d7565 ;
-  assign IF_SEL_ARR_out_fifo_internalFifos_0_first__850_ETC___d7567 =
+	       IF_SEL_ARR_out_fifo_internalFifos_0_first__862_ETC___d7577 ;
+  assign IF_SEL_ARR_out_fifo_internalFifos_0_first__862_ETC___d7579 =
 	     CASE_x8412_0_out_fifo_internalFifos_0D_OUT_BI_ETC__q201 ?
 	       { 16'd2730,
 		 CASE_x8412_0_out_fifo_internalFifos_0D_OUT_BI_ETC__q202 } :
-	       IF_SEL_ARR_out_fifo_internalFifos_0_first__850_ETC___d7566 ;
-  assign IF_SEL_ARR_out_fifo_internalFifos_0_first__850_ETC___d7615 =
+	       IF_SEL_ARR_out_fifo_internalFifos_0_first__862_ETC___d7578 ;
+  assign IF_SEL_ARR_out_fifo_internalFifos_0_first__862_ETC___d7627 =
 	     CASE_x8412_0_out_fifo_internalFifos_0D_OUT_BI_ETC__q114 ?
 	       12'd1970 :
 	       (CASE_x8412_0_out_fifo_internalFifos_0D_OUT_BI_ETC__q115 ?
 		  12'd1971 :
 		  12'd2303) ;
-  assign IF_SEL_ARR_out_fifo_internalFifos_0_first__850_ETC___d7616 =
+  assign IF_SEL_ARR_out_fifo_internalFifos_0_first__862_ETC___d7628 =
 	     CASE_x8412_0_out_fifo_internalFifos_0D_OUT_BI_ETC__q116 ?
 	       12'd1969 :
-	       IF_SEL_ARR_out_fifo_internalFifos_0_first__850_ETC___d7615 ;
-  assign IF_SEL_ARR_out_fifo_internalFifos_0_first__850_ETC___d7617 =
+	       IF_SEL_ARR_out_fifo_internalFifos_0_first__862_ETC___d7627 ;
+  assign IF_SEL_ARR_out_fifo_internalFifos_0_first__862_ETC___d7629 =
 	     CASE_x8412_0_out_fifo_internalFifos_0D_OUT_BI_ETC__q117 ?
 	       12'd1968 :
-	       IF_SEL_ARR_out_fifo_internalFifos_0_first__850_ETC___d7616 ;
-  assign IF_SEL_ARR_out_fifo_internalFifos_0_first__850_ETC___d7618 =
+	       IF_SEL_ARR_out_fifo_internalFifos_0_first__862_ETC___d7628 ;
+  assign IF_SEL_ARR_out_fifo_internalFifos_0_first__862_ETC___d7630 =
 	     CASE_x8412_0_out_fifo_internalFifos_0D_OUT_BI_ETC__q118 ?
 	       12'd1955 :
-	       IF_SEL_ARR_out_fifo_internalFifos_0_first__850_ETC___d7617 ;
-  assign IF_SEL_ARR_out_fifo_internalFifos_0_first__850_ETC___d7619 =
+	       IF_SEL_ARR_out_fifo_internalFifos_0_first__862_ETC___d7629 ;
+  assign IF_SEL_ARR_out_fifo_internalFifos_0_first__862_ETC___d7631 =
 	     CASE_x8412_0_out_fifo_internalFifos_0D_OUT_BI_ETC__q119 ?
 	       12'd1954 :
-	       IF_SEL_ARR_out_fifo_internalFifos_0_first__850_ETC___d7618 ;
-  assign IF_SEL_ARR_out_fifo_internalFifos_0_first__850_ETC___d7620 =
+	       IF_SEL_ARR_out_fifo_internalFifos_0_first__862_ETC___d7630 ;
+  assign IF_SEL_ARR_out_fifo_internalFifos_0_first__862_ETC___d7632 =
 	     CASE_x8412_0_out_fifo_internalFifos_0D_OUT_BI_ETC__q120 ?
 	       12'd1953 :
-	       IF_SEL_ARR_out_fifo_internalFifos_0_first__850_ETC___d7619 ;
-  assign IF_SEL_ARR_out_fifo_internalFifos_0_first__850_ETC___d7621 =
+	       IF_SEL_ARR_out_fifo_internalFifos_0_first__862_ETC___d7631 ;
+  assign IF_SEL_ARR_out_fifo_internalFifos_0_first__862_ETC___d7633 =
 	     CASE_x8412_0_out_fifo_internalFifos_0D_OUT_BI_ETC__q121 ?
 	       12'd1952 :
-	       IF_SEL_ARR_out_fifo_internalFifos_0_first__850_ETC___d7620 ;
-  assign IF_SEL_ARR_out_fifo_internalFifos_0_first__850_ETC___d7622 =
+	       IF_SEL_ARR_out_fifo_internalFifos_0_first__862_ETC___d7632 ;
+  assign IF_SEL_ARR_out_fifo_internalFifos_0_first__862_ETC___d7634 =
 	     CASE_x8412_0_out_fifo_internalFifos_0D_OUT_BI_ETC__q122 ?
 	       12'd3860 :
-	       IF_SEL_ARR_out_fifo_internalFifos_0_first__850_ETC___d7621 ;
-  assign IF_SEL_ARR_out_fifo_internalFifos_0_first__850_ETC___d7623 =
+	       IF_SEL_ARR_out_fifo_internalFifos_0_first__862_ETC___d7633 ;
+  assign IF_SEL_ARR_out_fifo_internalFifos_0_first__862_ETC___d7635 =
 	     CASE_x8412_0_out_fifo_internalFifos_0D_OUT_BI_ETC__q123 ?
 	       12'd3859 :
-	       IF_SEL_ARR_out_fifo_internalFifos_0_first__850_ETC___d7622 ;
-  assign IF_SEL_ARR_out_fifo_internalFifos_0_first__850_ETC___d7624 =
+	       IF_SEL_ARR_out_fifo_internalFifos_0_first__862_ETC___d7634 ;
+  assign IF_SEL_ARR_out_fifo_internalFifos_0_first__862_ETC___d7636 =
 	     CASE_x8412_0_out_fifo_internalFifos_0D_OUT_BI_ETC__q124 ?
 	       12'd3858 :
-	       IF_SEL_ARR_out_fifo_internalFifos_0_first__850_ETC___d7623 ;
-  assign IF_SEL_ARR_out_fifo_internalFifos_0_first__850_ETC___d7625 =
+	       IF_SEL_ARR_out_fifo_internalFifos_0_first__862_ETC___d7635 ;
+  assign IF_SEL_ARR_out_fifo_internalFifos_0_first__862_ETC___d7637 =
 	     CASE_x8412_0_out_fifo_internalFifos_0D_OUT_BI_ETC__q125 ?
 	       12'd3857 :
-	       IF_SEL_ARR_out_fifo_internalFifos_0_first__850_ETC___d7624 ;
-  assign IF_SEL_ARR_out_fifo_internalFifos_0_first__850_ETC___d7626 =
+	       IF_SEL_ARR_out_fifo_internalFifos_0_first__862_ETC___d7636 ;
+  assign IF_SEL_ARR_out_fifo_internalFifos_0_first__862_ETC___d7638 =
 	     CASE_x8412_0_out_fifo_internalFifos_0D_OUT_BI_ETC__q126 ?
 	       12'd2818 :
-	       IF_SEL_ARR_out_fifo_internalFifos_0_first__850_ETC___d7625 ;
-  assign IF_SEL_ARR_out_fifo_internalFifos_0_first__850_ETC___d7627 =
+	       IF_SEL_ARR_out_fifo_internalFifos_0_first__862_ETC___d7637 ;
+  assign IF_SEL_ARR_out_fifo_internalFifos_0_first__862_ETC___d7639 =
 	     CASE_x8412_0_out_fifo_internalFifos_0D_OUT_BI_ETC__q127 ?
 	       12'd2816 :
-	       IF_SEL_ARR_out_fifo_internalFifos_0_first__850_ETC___d7626 ;
-  assign IF_SEL_ARR_out_fifo_internalFifos_0_first__850_ETC___d7628 =
+	       IF_SEL_ARR_out_fifo_internalFifos_0_first__862_ETC___d7638 ;
+  assign IF_SEL_ARR_out_fifo_internalFifos_0_first__862_ETC___d7640 =
 	     CASE_x8412_0_out_fifo_internalFifos_0D_OUT_BI_ETC__q128 ?
 	       12'd836 :
-	       IF_SEL_ARR_out_fifo_internalFifos_0_first__850_ETC___d7627 ;
-  assign IF_SEL_ARR_out_fifo_internalFifos_0_first__850_ETC___d7629 =
+	       IF_SEL_ARR_out_fifo_internalFifos_0_first__862_ETC___d7639 ;
+  assign IF_SEL_ARR_out_fifo_internalFifos_0_first__862_ETC___d7641 =
 	     CASE_x8412_0_out_fifo_internalFifos_0D_OUT_BI_ETC__q129 ?
 	       12'd835 :
-	       IF_SEL_ARR_out_fifo_internalFifos_0_first__850_ETC___d7628 ;
-  assign IF_SEL_ARR_out_fifo_internalFifos_0_first__850_ETC___d7630 =
+	       IF_SEL_ARR_out_fifo_internalFifos_0_first__862_ETC___d7640 ;
+  assign IF_SEL_ARR_out_fifo_internalFifos_0_first__862_ETC___d7642 =
 	     CASE_x8412_0_out_fifo_internalFifos_0D_OUT_BI_ETC__q130 ?
 	       12'd834 :
-	       IF_SEL_ARR_out_fifo_internalFifos_0_first__850_ETC___d7629 ;
-  assign IF_SEL_ARR_out_fifo_internalFifos_0_first__850_ETC___d7631 =
+	       IF_SEL_ARR_out_fifo_internalFifos_0_first__862_ETC___d7641 ;
+  assign IF_SEL_ARR_out_fifo_internalFifos_0_first__862_ETC___d7643 =
 	     CASE_x8412_0_out_fifo_internalFifos_0D_OUT_BI_ETC__q131 ?
 	       12'd833 :
-	       IF_SEL_ARR_out_fifo_internalFifos_0_first__850_ETC___d7630 ;
-  assign IF_SEL_ARR_out_fifo_internalFifos_0_first__850_ETC___d7632 =
+	       IF_SEL_ARR_out_fifo_internalFifos_0_first__862_ETC___d7642 ;
+  assign IF_SEL_ARR_out_fifo_internalFifos_0_first__862_ETC___d7644 =
 	     CASE_x8412_0_out_fifo_internalFifos_0D_OUT_BI_ETC__q132 ?
 	       12'd832 :
-	       IF_SEL_ARR_out_fifo_internalFifos_0_first__850_ETC___d7631 ;
-  assign IF_SEL_ARR_out_fifo_internalFifos_0_first__850_ETC___d7633 =
+	       IF_SEL_ARR_out_fifo_internalFifos_0_first__862_ETC___d7643 ;
+  assign IF_SEL_ARR_out_fifo_internalFifos_0_first__862_ETC___d7645 =
 	     CASE_x8412_0_out_fifo_internalFifos_0D_OUT_BI_ETC__q133 ?
 	       12'd774 :
-	       IF_SEL_ARR_out_fifo_internalFifos_0_first__850_ETC___d7632 ;
-  assign IF_SEL_ARR_out_fifo_internalFifos_0_first__850_ETC___d7634 =
+	       IF_SEL_ARR_out_fifo_internalFifos_0_first__862_ETC___d7644 ;
+  assign IF_SEL_ARR_out_fifo_internalFifos_0_first__862_ETC___d7646 =
 	     CASE_x8412_0_out_fifo_internalFifos_0D_OUT_BI_ETC__q134 ?
 	       12'd773 :
-	       IF_SEL_ARR_out_fifo_internalFifos_0_first__850_ETC___d7633 ;
-  assign IF_SEL_ARR_out_fifo_internalFifos_0_first__850_ETC___d7635 =
+	       IF_SEL_ARR_out_fifo_internalFifos_0_first__862_ETC___d7645 ;
+  assign IF_SEL_ARR_out_fifo_internalFifos_0_first__862_ETC___d7647 =
 	     CASE_x8412_0_out_fifo_internalFifos_0D_OUT_BI_ETC__q135 ?
 	       12'd772 :
-	       IF_SEL_ARR_out_fifo_internalFifos_0_first__850_ETC___d7634 ;
-  assign IF_SEL_ARR_out_fifo_internalFifos_0_first__850_ETC___d7636 =
+	       IF_SEL_ARR_out_fifo_internalFifos_0_first__862_ETC___d7646 ;
+  assign IF_SEL_ARR_out_fifo_internalFifos_0_first__862_ETC___d7648 =
 	     CASE_x8412_0_out_fifo_internalFifos_0D_OUT_BI_ETC__q136 ?
 	       12'd771 :
-	       IF_SEL_ARR_out_fifo_internalFifos_0_first__850_ETC___d7635 ;
-  assign IF_SEL_ARR_out_fifo_internalFifos_0_first__850_ETC___d7637 =
+	       IF_SEL_ARR_out_fifo_internalFifos_0_first__862_ETC___d7647 ;
+  assign IF_SEL_ARR_out_fifo_internalFifos_0_first__862_ETC___d7649 =
 	     CASE_x8412_0_out_fifo_internalFifos_0D_OUT_BI_ETC__q137 ?
 	       12'd770 :
-	       IF_SEL_ARR_out_fifo_internalFifos_0_first__850_ETC___d7636 ;
-  assign IF_SEL_ARR_out_fifo_internalFifos_0_first__850_ETC___d7638 =
+	       IF_SEL_ARR_out_fifo_internalFifos_0_first__862_ETC___d7648 ;
+  assign IF_SEL_ARR_out_fifo_internalFifos_0_first__862_ETC___d7650 =
 	     CASE_x8412_0_out_fifo_internalFifos_0D_OUT_BI_ETC__q138 ?
 	       12'd769 :
-	       IF_SEL_ARR_out_fifo_internalFifos_0_first__850_ETC___d7637 ;
-  assign IF_SEL_ARR_out_fifo_internalFifos_0_first__850_ETC___d7639 =
+	       IF_SEL_ARR_out_fifo_internalFifos_0_first__862_ETC___d7649 ;
+  assign IF_SEL_ARR_out_fifo_internalFifos_0_first__862_ETC___d7651 =
 	     CASE_x8412_0_out_fifo_internalFifos_0D_OUT_BI_ETC__q139 ?
 	       12'd768 :
-	       IF_SEL_ARR_out_fifo_internalFifos_0_first__850_ETC___d7638 ;
-  assign IF_SEL_ARR_out_fifo_internalFifos_0_first__850_ETC___d7640 =
+	       IF_SEL_ARR_out_fifo_internalFifos_0_first__862_ETC___d7650 ;
+  assign IF_SEL_ARR_out_fifo_internalFifos_0_first__862_ETC___d7652 =
 	     CASE_x8412_0_out_fifo_internalFifos_0D_OUT_BI_ETC__q140 ?
 	       12'd384 :
-	       IF_SEL_ARR_out_fifo_internalFifos_0_first__850_ETC___d7639 ;
-  assign IF_SEL_ARR_out_fifo_internalFifos_0_first__850_ETC___d7641 =
+	       IF_SEL_ARR_out_fifo_internalFifos_0_first__862_ETC___d7651 ;
+  assign IF_SEL_ARR_out_fifo_internalFifos_0_first__862_ETC___d7653 =
 	     CASE_x8412_0_out_fifo_internalFifos_0D_OUT_BI_ETC__q141 ?
 	       12'd324 :
-	       IF_SEL_ARR_out_fifo_internalFifos_0_first__850_ETC___d7640 ;
-  assign IF_SEL_ARR_out_fifo_internalFifos_0_first__850_ETC___d7642 =
+	       IF_SEL_ARR_out_fifo_internalFifos_0_first__862_ETC___d7652 ;
+  assign IF_SEL_ARR_out_fifo_internalFifos_0_first__862_ETC___d7654 =
 	     CASE_x8412_0_out_fifo_internalFifos_0D_OUT_BI_ETC__q142 ?
 	       12'd323 :
-	       IF_SEL_ARR_out_fifo_internalFifos_0_first__850_ETC___d7641 ;
-  assign IF_SEL_ARR_out_fifo_internalFifos_0_first__850_ETC___d7643 =
+	       IF_SEL_ARR_out_fifo_internalFifos_0_first__862_ETC___d7653 ;
+  assign IF_SEL_ARR_out_fifo_internalFifos_0_first__862_ETC___d7655 =
 	     CASE_x8412_0_out_fifo_internalFifos_0D_OUT_BI_ETC__q143 ?
 	       12'd322 :
-	       IF_SEL_ARR_out_fifo_internalFifos_0_first__850_ETC___d7642 ;
-  assign IF_SEL_ARR_out_fifo_internalFifos_0_first__850_ETC___d7644 =
+	       IF_SEL_ARR_out_fifo_internalFifos_0_first__862_ETC___d7654 ;
+  assign IF_SEL_ARR_out_fifo_internalFifos_0_first__862_ETC___d7656 =
 	     CASE_x8412_0_out_fifo_internalFifos_0D_OUT_BI_ETC__q144 ?
 	       12'd321 :
-	       IF_SEL_ARR_out_fifo_internalFifos_0_first__850_ETC___d7643 ;
-  assign IF_SEL_ARR_out_fifo_internalFifos_0_first__850_ETC___d7645 =
+	       IF_SEL_ARR_out_fifo_internalFifos_0_first__862_ETC___d7655 ;
+  assign IF_SEL_ARR_out_fifo_internalFifos_0_first__862_ETC___d7657 =
 	     CASE_x8412_0_out_fifo_internalFifos_0D_OUT_BI_ETC__q145 ?
 	       12'd320 :
-	       IF_SEL_ARR_out_fifo_internalFifos_0_first__850_ETC___d7644 ;
-  assign IF_SEL_ARR_out_fifo_internalFifos_0_first__850_ETC___d7646 =
+	       IF_SEL_ARR_out_fifo_internalFifos_0_first__862_ETC___d7656 ;
+  assign IF_SEL_ARR_out_fifo_internalFifos_0_first__862_ETC___d7658 =
 	     CASE_x8412_0_out_fifo_internalFifos_0D_OUT_BI_ETC__q146 ?
 	       12'd262 :
-	       IF_SEL_ARR_out_fifo_internalFifos_0_first__850_ETC___d7645 ;
-  assign IF_SEL_ARR_out_fifo_internalFifos_0_first__850_ETC___d7647 =
+	       IF_SEL_ARR_out_fifo_internalFifos_0_first__862_ETC___d7657 ;
+  assign IF_SEL_ARR_out_fifo_internalFifos_0_first__862_ETC___d7659 =
 	     CASE_x8412_0_out_fifo_internalFifos_0D_OUT_BI_ETC__q147 ?
 	       12'd261 :
-	       IF_SEL_ARR_out_fifo_internalFifos_0_first__850_ETC___d7646 ;
-  assign IF_SEL_ARR_out_fifo_internalFifos_0_first__850_ETC___d7648 =
+	       IF_SEL_ARR_out_fifo_internalFifos_0_first__862_ETC___d7658 ;
+  assign IF_SEL_ARR_out_fifo_internalFifos_0_first__862_ETC___d7660 =
 	     CASE_x8412_0_out_fifo_internalFifos_0D_OUT_BI_ETC__q148 ?
 	       12'd260 :
-	       IF_SEL_ARR_out_fifo_internalFifos_0_first__850_ETC___d7647 ;
-  assign IF_SEL_ARR_out_fifo_internalFifos_0_first__850_ETC___d7649 =
+	       IF_SEL_ARR_out_fifo_internalFifos_0_first__862_ETC___d7659 ;
+  assign IF_SEL_ARR_out_fifo_internalFifos_0_first__862_ETC___d7661 =
 	     CASE_x8412_0_out_fifo_internalFifos_0D_OUT_BI_ETC__q149 ?
 	       12'd256 :
-	       IF_SEL_ARR_out_fifo_internalFifos_0_first__850_ETC___d7648 ;
-  assign IF_SEL_ARR_out_fifo_internalFifos_0_first__850_ETC___d7650 =
+	       IF_SEL_ARR_out_fifo_internalFifos_0_first__862_ETC___d7660 ;
+  assign IF_SEL_ARR_out_fifo_internalFifos_0_first__862_ETC___d7662 =
 	     CASE_x8412_0_out_fifo_internalFifos_0D_OUT_BI_ETC__q150 ?
 	       12'd2049 :
-	       IF_SEL_ARR_out_fifo_internalFifos_0_first__850_ETC___d7649 ;
-  assign IF_SEL_ARR_out_fifo_internalFifos_0_first__850_ETC___d7651 =
+	       IF_SEL_ARR_out_fifo_internalFifos_0_first__862_ETC___d7661 ;
+  assign IF_SEL_ARR_out_fifo_internalFifos_0_first__862_ETC___d7663 =
 	     CASE_x8412_0_out_fifo_internalFifos_0D_OUT_BI_ETC__q151 ?
 	       12'd2048 :
-	       IF_SEL_ARR_out_fifo_internalFifos_0_first__850_ETC___d7650 ;
-  assign IF_SEL_ARR_out_fifo_internalFifos_0_first__850_ETC___d7652 =
+	       IF_SEL_ARR_out_fifo_internalFifos_0_first__862_ETC___d7662 ;
+  assign IF_SEL_ARR_out_fifo_internalFifos_0_first__862_ETC___d7664 =
 	     CASE_x8412_0_out_fifo_internalFifos_0D_OUT_BI_ETC__q152 ?
 	       12'd3074 :
-	       IF_SEL_ARR_out_fifo_internalFifos_0_first__850_ETC___d7651 ;
-  assign IF_SEL_ARR_out_fifo_internalFifos_0_first__850_ETC___d7653 =
+	       IF_SEL_ARR_out_fifo_internalFifos_0_first__862_ETC___d7663 ;
+  assign IF_SEL_ARR_out_fifo_internalFifos_0_first__862_ETC___d7665 =
 	     CASE_x8412_0_out_fifo_internalFifos_0D_OUT_BI_ETC__q153 ?
 	       12'd3073 :
-	       IF_SEL_ARR_out_fifo_internalFifos_0_first__850_ETC___d7652 ;
-  assign IF_SEL_ARR_out_fifo_internalFifos_0_first__850_ETC___d7654 =
+	       IF_SEL_ARR_out_fifo_internalFifos_0_first__862_ETC___d7664 ;
+  assign IF_SEL_ARR_out_fifo_internalFifos_0_first__862_ETC___d7666 =
 	     CASE_x8412_0_out_fifo_internalFifos_0D_OUT_BI_ETC__q154 ?
 	       12'd3072 :
-	       IF_SEL_ARR_out_fifo_internalFifos_0_first__850_ETC___d7653 ;
-  assign IF_SEL_ARR_out_fifo_internalFifos_0_first__850_ETC___d7655 =
+	       IF_SEL_ARR_out_fifo_internalFifos_0_first__862_ETC___d7665 ;
+  assign IF_SEL_ARR_out_fifo_internalFifos_0_first__862_ETC___d7667 =
 	     CASE_x8412_0_out_fifo_internalFifos_0D_OUT_BI_ETC__q155 ?
 	       12'd3 :
-	       IF_SEL_ARR_out_fifo_internalFifos_0_first__850_ETC___d7654 ;
-  assign IF_SEL_ARR_out_fifo_internalFifos_0_first__850_ETC___d7656 =
+	       IF_SEL_ARR_out_fifo_internalFifos_0_first__862_ETC___d7666 ;
+  assign IF_SEL_ARR_out_fifo_internalFifos_0_first__862_ETC___d7668 =
 	     CASE_x8412_0_out_fifo_internalFifos_0D_OUT_BI_ETC__q156 ?
 	       12'd2 :
-	       IF_SEL_ARR_out_fifo_internalFifos_0_first__850_ETC___d7655 ;
-  assign IF_SEL_ARR_out_fifo_internalFifos_0_first__850_ETC___d7657 =
+	       IF_SEL_ARR_out_fifo_internalFifos_0_first__862_ETC___d7667 ;
+  assign IF_SEL_ARR_out_fifo_internalFifos_0_first__862_ETC___d7669 =
 	     CASE_x8412_0_out_fifo_internalFifos_0D_OUT_BI_ETC__q157 ?
 	       12'd1 :
-	       IF_SEL_ARR_out_fifo_internalFifos_0_first__850_ETC___d7656 ;
-  assign IF_decode_061_BITS_99_TO_95_065_EQ_8_075_AND_d_ETC___d6292 =
-	     (decode___d6061[99:95] == 5'd8 && decode___d6061[7] &&
-	      !decode___d6061[6] &&
-	      (decode___d6061[5:1] == 5'd1 || decode___d6061[5:1] == 5'd5)) ?
-	       decodeBrPred___d6283[64] :
-	       ((decode___d6061[99:95] == 5'd9) ?
-		  NOT_decode_061_BIT_7_076_087_OR_decode_061_BIT_ETC___d6290 :
-		  decodeBrPred___d6283[64]) ;
-  assign IF_decode_061_BIT_0_062_THEN_NOT_decode_epoch__ETC___d6776 =
-	     decode___d6061[0] ?
+	       IF_SEL_ARR_out_fifo_internalFifos_0_first__862_ETC___d7668 ;
+  assign IF_decode_073_BITS_99_TO_95_077_EQ_8_087_AND_d_ETC___d6304 =
+	     (decode___d6073[99:95] == 5'd8 && decode___d6073[7] &&
+	      !decode___d6073[6] &&
+	      (decode___d6073[5:1] == 5'd1 || decode___d6073[5:1] == 5'd5)) ?
+	       decodeBrPred___d6295[64] :
+	       ((decode___d6073[99:95] == 5'd9) ?
+		  NOT_decode_073_BIT_7_088_099_OR_decode_073_BIT_ETC___d6302 :
+		  decodeBrPred___d6295[64]) ;
+  assign IF_decode_073_BIT_0_074_THEN_NOT_decode_epoch__ETC___d6788 =
+	     decode___d6073[0] ?
 	       !decode_epoch_dummy2_0$Q_OUT || !decode_epoch_dummy2_1$Q_OUT ||
 	       !decode_epoch_rl :
-	       IF_IF_decode_061_BITS_99_TO_95_065_EQ_8_075_AN_ETC___d6775 ;
-  assign IF_decode_061_BIT_7_076_AND_NOT_decode_061_BIT_ETC___d6296 =
-	     decode_061_BIT_7_076_AND_NOT_decode_061_BIT_6__ETC___d6112 ?
-	       (IF_NOT_decode_061_BIT_26_095_096_AND_NOT_decod_ETC___d6136 ?
+	       IF_IF_decode_073_BITS_99_TO_95_077_EQ_8_087_AN_ETC___d6787 ;
+  assign IF_decode_073_BIT_7_088_AND_NOT_decode_073_BIT_ETC___d6308 =
+	     decode_073_BIT_7_088_AND_NOT_decode_073_BIT_6__ETC___d6124 ?
+	       (IF_NOT_decode_073_BIT_26_107_108_AND_NOT_decod_ETC___d6148 ?
 		  ras$ras_0_first :
-		  decodeBrPred___d6283[63:0]) :
-	       decodeBrPred___d6283[63:0] ;
-  assign IF_decode_487_BITS_99_TO_95_491_EQ_8_497_AND_d_ETC___d6714 =
-	     (decode___d6487[99:95] == 5'd8 && decode___d6487[7] &&
-	      !decode___d6487[6] &&
-	      (decode___d6487[5:1] == 5'd1 || decode___d6487[5:1] == 5'd5)) ?
-	       decodeBrPred___d6705[64] :
-	       ((decode___d6487[99:95] == 5'd9) ?
-		  NOT_decode_487_BIT_7_498_509_OR_decode_487_BIT_ETC___d6712 :
-		  decodeBrPred___d6705[64]) ;
-  assign IF_decode_487_BITS_99_TO_95_491_EQ_8_497_AND_d_ETC___d6763 =
-	     IF_decode_487_BITS_99_TO_95_491_EQ_8_497_AND_d_ETC___d6714 &&
-	     decode_pred_next_pc__h193609 != in_ppc__h190370 ||
-	     SEL_ARR_instdata_data_0_996_BITS_65_TO_64_997__ETC___d6004 !=
+		  decodeBrPred___d6295[63:0]) :
+	       decodeBrPred___d6295[63:0] ;
+  assign IF_decode_499_BITS_99_TO_95_503_EQ_8_509_AND_d_ETC___d6726 =
+	     (decode___d6499[99:95] == 5'd8 && decode___d6499[7] &&
+	      !decode___d6499[6] &&
+	      (decode___d6499[5:1] == 5'd1 || decode___d6499[5:1] == 5'd5)) ?
+	       decodeBrPred___d6717[64] :
+	       ((decode___d6499[99:95] == 5'd9) ?
+		  NOT_decode_499_BIT_7_510_521_OR_decode_499_BIT_ETC___d6724 :
+		  decodeBrPred___d6717[64]) ;
+  assign IF_decode_499_BITS_99_TO_95_503_EQ_8_509_AND_d_ETC___d6775 =
+	     IF_decode_499_BITS_99_TO_95_503_EQ_8_509_AND_d_ETC___d6726 &&
+	     decode_pred_next_pc__h193569 != in_ppc__h190330 ||
+	     SEL_ARR_instdata_data_0_008_BITS_65_TO_64_009__ETC___d6016 !=
 	     2'd0 &&
-	     SEL_ARR_f32d_data_0_988_BIT_4_006_f32d_data_1__ETC___d6010 &&
-	     !decode___d6061[0] &&
-	     IF_decode_061_BITS_99_TO_95_065_EQ_8_075_AND_d_ETC___d6292 &&
-	     decode_pred_next_pc__h186793 != in_ppc__h183298 ;
-  assign IF_decode_487_BIT_7_498_AND_NOT_decode_487_BIT_ETC___d6718 =
-	     decode_487_BIT_7_498_AND_NOT_decode_487_BIT_6__ETC___d6534 ?
-	       (IF_NOT_decode_487_BIT_26_517_518_AND_NOT_decod_ETC___d6558 ?
+	     SEL_ARR_f32d_data_0_000_BIT_4_018_f32d_data_1__ETC___d6022 &&
+	     !decode___d6073[0] &&
+	     IF_decode_073_BITS_99_TO_95_077_EQ_8_087_AND_d_ETC___d6304 &&
+	     decode_pred_next_pc__h186753 != in_ppc__h183258 ;
+  assign IF_decode_499_BIT_7_510_AND_NOT_decode_499_BIT_ETC___d6730 =
+	     decode_499_BIT_7_510_AND_NOT_decode_499_BIT_6__ETC___d6546 ?
+	       (IF_NOT_decode_499_BIT_26_529_530_AND_NOT_decod_ETC___d6570 ?
 		  ras$ras_1_first :
-		  decodeBrPred___d6705[63:0]) :
-	       decodeBrPred___d6705[63:0] ;
+		  decodeBrPred___d6717[63:0]) :
+	       decodeBrPred___d6717[63:0] ;
   assign IF_decode_epoch_lat_0_whas__6_THEN_decode_epoc_ETC___d19 =
 	     decode_epoch_lat_0$whas ?
 	       decode_epoch_lat_0$wget :
@@ -13596,7 +13612,7 @@ module mkFetchStage(CLK,
 	       IF_iTlb_to_proc_response_get_672_BITS_3_TO_0_7_ETC___d3737 ==
 	       4'd12 ;
   assign IF_instdata_deqP_lat_0_whas__58_THEN_instdata__ETC___d861 =
-	     CAN_FIRE_RL_doDecode ? upd__h176701 : instdata_deqP_rl ;
+	     CAN_FIRE_RL_doDecode ? upd__h176677 : instdata_deqP_rl ;
   assign IF_out_fifo_dequeueFifo_lat_1_whas__95_THEN_ou_ETC___d901 =
 	     out_fifo_dequeueFifo_lat_1$whas ?
 	       upd__h44172 :
@@ -13796,11 +13812,11 @@ module mkFetchStage(CLK,
   assign IF_out_fifo_willDequeue_1_lat_0_whas__143_THEN_ETC___d2146 =
 	     EN_pipelines_1_deq || out_fifo_willDequeue_1_rl ;
   assign IF_pc_reg_dummy2_0_read__283_AND_pc_reg_dummy2_ETC___d3559 =
-	     getFetchState_pc__h222980[63:9] == nextAddrPred_tags$D_OUT_5 ;
+	     getFetchState_pc__h222940[63:9] == nextAddrPred_tags$D_OUT_5 ;
   assign IF_pc_reg_dummy2_0_read__283_AND_pc_reg_dummy2_ETC___d3576 =
 	     prev_PC__h121324[63:9] == nextAddrPred_tags$D_OUT_4 ;
   assign IF_pc_reg_dummy2_0_read__283_AND_pc_reg_dummy2_ETC___d3618 =
-	     getFetchState_pc__h222980[1:0] == 2'b0 &&
+	     getFetchState_pc__h222940[1:0] == 2'b0 &&
 	     (IF_NOT_SEL_ARR_nextAddrPred_valid_0_read__297__ETC___d3585[5:2] !=
 	      4'd15 ||
 	      IF_NOT_SEL_ARR_nextAddrPred_valid_0_read__297__ETC___d3585[1:0] ==
@@ -13853,20 +13869,20 @@ module mkFetchStage(CLK,
 	     SEL_ARR_f22f3_data_0_813_BIT_4_825_f22f3_data__ETC___d3877 &&
 	     (IF_rg_pending_n_items_845_EQ_0_846_THEN_NOT_eh_ETC___d3973 ||
 	      !ehr_pending_straddle_rl[0]) ;
-  assign NOT_0_CONCAT_IF_rg_pending_n_items_845_EQ_0_84_ETC___d5634 =
-	     n_items__h156605 != 3'd0 &&
-	     next_enqP__h176398 ==
+  assign NOT_0_CONCAT_IF_rg_pending_n_items_845_EQ_0_84_ETC___d5646 =
+	     n_items__h156587 != 3'd0 &&
+	     next_enqP__h176374 ==
 	     (instdata_deqP_dummy2_1$Q_OUT &&
 	      IF_instdata_deqP_lat_0_whas__58_THEN_instdata__ETC___d861) ;
-  assign NOT_IF_SEL_ARR_f22f3_data_0_813_BITS_204_TO_14_ETC___d5951 =
+  assign NOT_IF_SEL_ARR_f22f3_data_0_813_BITS_204_TO_14_ETC___d5963 =
 	     !IF_SEL_ARR_f22f3_data_0_813_BITS_204_TO_141_90_ETC___d4098 ||
 	     IF_rg_pending_n_items_845_EQ_0_846_THEN_ehr_pe_ETC___d3886 ||
 	     SEL_ARR_IF_NOT_f22f3_empty_33_812_AND_NOT_SEL__ETC___d4134[1:0] !=
 	     2'b11 ||
 	     IF_SEL_ARR_f22f3_data_0_813_BITS_204_TO_141_90_ETC___d4137 ;
   assign NOT_IF_pc_reg_dummy2_0_read__283_AND_pc_reg_du_ETC___d3580 =
-	     (getFetchState_pc__h222980[5:2] != 4'd15 ||
-	      getFetchState_pc__h222980[1:0] == 2'b0) &&
+	     (getFetchState_pc__h222940[5:2] != 4'd15 ||
+	      getFetchState_pc__h222940[1:0] == 2'b0) &&
 	     (!SEL_ARR_nextAddrPred_valid_0_read__297_nextAdd_ETC___d3555 ||
 	      !IF_pc_reg_dummy2_0_read__283_AND_pc_reg_dummy2_ETC___d3559) &&
 	     (IF_NOT_IF_pc_reg_dummy2_0_read__283_AND_pc_reg_ETC___d3564[5:2] !=
@@ -13979,52 +13995,52 @@ module mkFetchStage(CLK,
 	     (SEL_ARR_f22f3_data_0_813_BIT_6_896_f22f3_data__ETC___d3901 ?
 		mmio$bootRomResp[32] :
 		iMem$to_proc_response_get[32]) ;
-  assign NOT_SEL_ARR_NOT_out_fifo_internalFifos_0_first_ETC___d7290 =
+  assign NOT_SEL_ARR_NOT_out_fifo_internalFifos_0_first_ETC___d7302 =
 	     { !CASE_x8242_0_NOT_out_fifo_internalFifos_0D_OU_ETC__q192,
-	       IF_SEL_ARR_out_fifo_internalFifos_0_first__850_ETC___d7276,
+	       IF_SEL_ARR_out_fifo_internalFifos_0_first__862_ETC___d7288,
 	       !CASE_x8242_0_NOT_out_fifo_internalFifos_0D_OU_ETC__q193,
 	       CASE_x8242_0_out_fifo_internalFifos_0D_OUT_BI_ETC__q194 } ;
-  assign NOT_SEL_ARR_NOT_out_fifo_internalFifos_0_first_ETC___d7369 =
+  assign NOT_SEL_ARR_NOT_out_fifo_internalFifos_0_first_ETC___d7381 =
 	     { !CASE_x8242_0_NOT_out_fifo_internalFifos_0D_OU_ETC__q60,
 	       CASE_x8242_0_out_fifo_internalFifos_0D_OUT_BI_ETC__q61,
 	       !CASE_x8242_0_NOT_out_fifo_internalFifos_0D_OU_ETC__q62,
 	       !CASE_x8242_0_NOT_out_fifo_internalFifos_0D_OU_ETC__q63,
 	       CASE_x8242_0_out_fifo_internalFifos_0D_OUT_BI_ETC__q64 } ;
-  assign NOT_SEL_ARR_NOT_out_fifo_internalFifos_0_first_ETC___d7370 =
+  assign NOT_SEL_ARR_NOT_out_fifo_internalFifos_0_first_ETC___d7382 =
 	     { !CASE_x8242_0_NOT_out_fifo_internalFifos_0D_OU_ETC__q208,
 	       !CASE_x8242_0_NOT_out_fifo_internalFifos_0D_OU_ETC__q209,
 	       CASE_x8242_0_out_fifo_internalFifos_0D_OUT_BI_ETC__q210,
 	       !CASE_x8242_0_NOT_out_fifo_internalFifos_0D_OU_ETC__q211,
 	       !CASE_x8242_0_NOT_out_fifo_internalFifos_0D_OU_ETC__q212,
 	       CASE_x8242_0_out_fifo_internalFifos_0D_OUT_BI_ETC__q213,
-	       NOT_SEL_ARR_NOT_out_fifo_internalFifos_0_first_ETC___d7369 } ;
-  assign NOT_SEL_ARR_NOT_out_fifo_internalFifos_0_first_ETC___d7502 =
+	       NOT_SEL_ARR_NOT_out_fifo_internalFifos_0_first_ETC___d7381 } ;
+  assign NOT_SEL_ARR_NOT_out_fifo_internalFifos_0_first_ETC___d7514 =
 	     { !CASE_x8242_0_NOT_out_fifo_internalFifos_0D_OU_ETC__q214,
-	       IF_SEL_ARR_IF_out_fifo_internalFifos_0_first___ETC___d7496,
-	       x__h209366 } ;
-  assign NOT_SEL_ARR_NOT_out_fifo_internalFifos_0_first_ETC___d7663 =
+	       IF_SEL_ARR_IF_out_fifo_internalFifos_0_first___ETC___d7508,
+	       x__h209326 } ;
+  assign NOT_SEL_ARR_NOT_out_fifo_internalFifos_0_first_ETC___d7675 =
 	     { !CASE_x8412_0_NOT_out_fifo_internalFifos_0D_OU_ETC__q203,
-	       IF_SEL_ARR_out_fifo_internalFifos_0_first__850_ETC___d7657,
+	       IF_SEL_ARR_out_fifo_internalFifos_0_first__862_ETC___d7669,
 	       !CASE_x8412_0_NOT_out_fifo_internalFifos_0D_OU_ETC__q204,
 	       CASE_x8412_0_out_fifo_internalFifos_0D_OUT_BI_ETC__q205 } ;
-  assign NOT_SEL_ARR_NOT_out_fifo_internalFifos_0_first_ETC___d7692 =
+  assign NOT_SEL_ARR_NOT_out_fifo_internalFifos_0_first_ETC___d7704 =
 	     { !CASE_x8412_0_NOT_out_fifo_internalFifos_0D_OU_ETC__q65,
 	       CASE_x8412_0_out_fifo_internalFifos_0D_OUT_BI_ETC__q66,
 	       !CASE_x8412_0_NOT_out_fifo_internalFifos_0D_OU_ETC__q67,
 	       !CASE_x8412_0_NOT_out_fifo_internalFifos_0D_OU_ETC__q68,
 	       CASE_x8412_0_out_fifo_internalFifos_0D_OUT_BI_ETC__q69 } ;
-  assign NOT_SEL_ARR_NOT_out_fifo_internalFifos_0_first_ETC___d7693 =
+  assign NOT_SEL_ARR_NOT_out_fifo_internalFifos_0_first_ETC___d7705 =
 	     { !CASE_x8412_0_NOT_out_fifo_internalFifos_0D_OU_ETC__q215,
 	       !CASE_x8412_0_NOT_out_fifo_internalFifos_0D_OU_ETC__q216,
 	       CASE_x8412_0_out_fifo_internalFifos_0D_OUT_BI_ETC__q217,
 	       !CASE_x8412_0_NOT_out_fifo_internalFifos_0D_OU_ETC__q218,
 	       !CASE_x8412_0_NOT_out_fifo_internalFifos_0D_OU_ETC__q219,
 	       CASE_x8412_0_out_fifo_internalFifos_0D_OUT_BI_ETC__q220,
-	       NOT_SEL_ARR_NOT_out_fifo_internalFifos_0_first_ETC___d7692 } ;
-  assign NOT_SEL_ARR_NOT_out_fifo_internalFifos_0_first_ETC___d7724 =
-	     { !CASE_x8412_0_NOT_out_fifo_internalFifos_0D_OU_ETC__q221,
-	       IF_SEL_ARR_IF_out_fifo_internalFifos_0_first___ETC___d7721,
-	       x__h217268 } ;
+	       NOT_SEL_ARR_NOT_out_fifo_internalFifos_0_first_ETC___d7704 } ;
+  assign NOT_SEL_ARR_NOT_out_fifo_internalFifos_0_first_ETC___d7736 =
+	     { !CASE_x8412_0_NOT_out_fifo_internalFifos_0D_OU_ETC__q222,
+	       IF_SEL_ARR_IF_out_fifo_internalFifos_0_first___ETC___d7733,
+	       x__h217228 } ;
   assign NOT_SEL_ARR_f22f3_data_0_813_BITS_3_TO_0_814_f_ETC___d3983 =
 	     !SEL_ARR_f22f3_data_0_813_BITS_3_TO_0_814_f22f3_ETC___d3823 ||
 	     !SEL_ARR_f22f3_data_0_813_BIT_4_825_f22f3_data__ETC___d3832 ||
@@ -14049,28 +14065,28 @@ module mkFetchStage(CLK,
 	     !SEL_ARR_f22f3_data_0_813_BIT_4_825_f22f3_data__ETC___d3832 ||
 	     !SEL_ARR_f22f3_data_0_813_BIT_5_835_f22f3_data__ETC___d3841 ||
 	     NOT_IF_rg_pending_n_items_845_EQ_0_846_THEN_rg_ETC___d3986 ;
-  assign NOT_SEL_ARR_f32d_data_0_988_BITS_3_TO_0_989_f3_ETC___d6040 =
-	     !SEL_ARR_f32d_data_0_988_BITS_3_TO_0_989_f32d_d_ETC___d5994 ||
-	     SEL_ARR_instdata_data_0_996_BITS_65_TO_64_997__ETC___d6015 &&
-	     SEL_ARR_instdata_data_0_996_BITS_195_TO_194_01_ETC___d6028 &&
+  assign NOT_SEL_ARR_f32d_data_0_000_BITS_3_TO_0_001_f3_ETC___d6052 =
+	     !SEL_ARR_f32d_data_0_000_BITS_3_TO_0_001_f32d_d_ETC___d6006 ||
+	     SEL_ARR_instdata_data_0_008_BITS_65_TO_64_009__ETC___d6027 &&
+	     SEL_ARR_instdata_data_0_008_BITS_195_TO_194_02_ETC___d6040 &&
 	     (!napTrainByDecQ_full_dummy2_1$Q_OUT ||
 	      !napTrainByDecQ_full_dummy2_2$Q_OUT ||
 	      CAN_FIRE_RL_setTrainNAPByDec ||
 	      !napTrainByDecQ_full_rl) ;
-  assign NOT_SEL_ARR_instdata_data_0_996_BITS_195_TO_19_ETC___d6495 =
-	     SEL_ARR_instdata_data_0_996_BITS_195_TO_194_01_ETC___d6019 !=
+  assign NOT_SEL_ARR_instdata_data_0_008_BITS_195_TO_19_ETC___d6507 =
+	     SEL_ARR_instdata_data_0_008_BITS_195_TO_194_02_ETC___d6031 !=
 	     2'd0 &&
-	     SEL_ARR_f32d_data_0_988_BIT_139_021_f32d_data__ETC___d6024 &&
-	     SEL_ARR_f32d_data_0_988_BIT_4_006_f32d_data_1__ETC___d6482 &&
-	     SEL_ARR_NOT_f32d_data_0_988_BIT_73_051_052_NOT_ETC___d6056 &&
-	     !decode___d6487[0] &&
-	     decode___d6487[99:95] == 5'd10 ;
-  assign NOT_SEL_ARR_instdata_data_0_996_BITS_65_TO_64__ETC___d6795 =
-	     SEL_ARR_instdata_data_0_996_BITS_65_TO_64_997__ETC___d6004 !=
+	     SEL_ARR_f32d_data_0_000_BIT_139_033_f32d_data__ETC___d6036 &&
+	     SEL_ARR_f32d_data_0_000_BIT_4_018_f32d_data_1__ETC___d6494 &&
+	     SEL_ARR_NOT_f32d_data_0_000_BIT_73_063_064_NOT_ETC___d6068 &&
+	     !decode___d6499[0] &&
+	     decode___d6499[99:95] == 5'd10 ;
+  assign NOT_SEL_ARR_instdata_data_0_008_BITS_65_TO_64__ETC___d6807 =
+	     SEL_ARR_instdata_data_0_008_BITS_65_TO_64_009__ETC___d6016 !=
 	     2'd0 &&
-	     SEL_ARR_f32d_data_0_988_BIT_4_006_f32d_data_1__ETC___d6010 &&
-	     !decode___d6061[0] &&
-	     IF_IF_decode_061_BITS_99_TO_95_065_EQ_8_075_AN_ETC___d6792 ;
+	     SEL_ARR_f32d_data_0_000_BIT_4_018_f32d_data_1__ETC___d6022 &&
+	     !decode___d6073[0] &&
+	     IF_IF_decode_073_BITS_99_TO_95_077_EQ_8_087_AN_ETC___d6804 ;
   assign NOT_SEL_ARR_nextAddrPred_valid_0_read__297_nex_ETC___d3617 =
 	     (!SEL_ARR_nextAddrPred_valid_0_read__297_nextAdd_ETC___d3555 ||
 	      !IF_pc_reg_dummy2_0_read__283_AND_pc_reg_dummy2_ETC___d3559) &&
@@ -14080,68 +14096,68 @@ module mkFetchStage(CLK,
 	      2'b0) &&
 	     (!SEL_ARR_nextAddrPred_valid_0_read__297_nextAdd_ETC___d3572 ||
 	      !IF_pc_reg_dummy2_0_read__283_AND_pc_reg_dummy2_ETC___d3576) ;
-  assign NOT_decode_061_BITS_25_TO_21_097_EQ_decode_061_ETC___d6133 =
-	     decode___d6061[25:21] != decode___d6061[5:1] ;
-  assign NOT_decode_061_BIT_27_094_104_OR_decode_061_BI_ETC___d6111 =
-	     (!decode___d6061[27] ||
-	      (decode___d6061[26] || decode___d6061[25:21] != 5'd1) &&
-	      (decode___d6061[26] || decode___d6061[25:21] != 5'd5)) &&
-	     decode___d6061[7] &&
-	     !decode___d6061[6] &&
-	     (decode___d6061[5:1] == 5'd1 || decode___d6061[5:1] == 5'd5) ;
-  assign NOT_decode_061_BIT_7_076_087_OR_decode_061_BIT_ETC___d6103 =
-	     (!decode___d6061[7] ||
-	      (decode___d6061[6] || decode___d6061[5:1] != 5'd1) &&
-	      (decode___d6061[6] || decode___d6061[5:1] != 5'd5)) &&
-	     decode___d6061[27] &&
-	     !decode___d6061[26] &&
-	     (decode___d6061[25:21] == 5'd1 ||
-	      decode___d6061[25:21] == 5'd5) ;
-  assign NOT_decode_061_BIT_7_076_087_OR_decode_061_BIT_ETC___d6290 =
-	     (!decode___d6061[7] ||
-	      (decode___d6061[6] || decode___d6061[5:1] != 5'd1) &&
-	      (decode___d6061[6] || decode___d6061[5:1] != 5'd5)) &&
-	     decode___d6061[27] &&
-	     !decode___d6061[26] &&
-	     (decode___d6061[25:21] == 5'd1 ||
-	      decode___d6061[25:21] == 5'd5) ||
-	     (NOT_decode_061_BIT_27_094_104_OR_decode_061_BI_ETC___d6111 ?
-		decodeBrPred___d6283[64] :
-		(decode_061_BIT_7_076_AND_NOT_decode_061_BIT_6__ETC___d6112 ?
-		   IF_NOT_decode_061_BIT_26_095_096_AND_NOT_decod_ETC___d6136 ||
-		   decodeBrPred___d6283[64] :
-		   decodeBrPred___d6283[64])) ;
-  assign NOT_decode_487_BITS_25_TO_21_519_EQ_decode_487_ETC___d6555 =
-	     decode___d6487[25:21] != decode___d6487[5:1] ;
-  assign NOT_decode_487_BIT_27_516_526_OR_decode_487_BI_ETC___d6533 =
-	     (!decode___d6487[27] ||
-	      (decode___d6487[26] || decode___d6487[25:21] != 5'd1) &&
-	      (decode___d6487[26] || decode___d6487[25:21] != 5'd5)) &&
-	     decode___d6487[7] &&
-	     !decode___d6487[6] &&
-	     (decode___d6487[5:1] == 5'd1 || decode___d6487[5:1] == 5'd5) ;
-  assign NOT_decode_487_BIT_7_498_509_OR_decode_487_BIT_ETC___d6525 =
-	     (!decode___d6487[7] ||
-	      (decode___d6487[6] || decode___d6487[5:1] != 5'd1) &&
-	      (decode___d6487[6] || decode___d6487[5:1] != 5'd5)) &&
-	     decode___d6487[27] &&
-	     !decode___d6487[26] &&
-	     (decode___d6487[25:21] == 5'd1 ||
-	      decode___d6487[25:21] == 5'd5) ;
-  assign NOT_decode_487_BIT_7_498_509_OR_decode_487_BIT_ETC___d6712 =
-	     (!decode___d6487[7] ||
-	      (decode___d6487[6] || decode___d6487[5:1] != 5'd1) &&
-	      (decode___d6487[6] || decode___d6487[5:1] != 5'd5)) &&
-	     decode___d6487[27] &&
-	     !decode___d6487[26] &&
-	     (decode___d6487[25:21] == 5'd1 ||
-	      decode___d6487[25:21] == 5'd5) ||
-	     (NOT_decode_487_BIT_27_516_526_OR_decode_487_BI_ETC___d6533 ?
-		decodeBrPred___d6705[64] :
-		(decode_487_BIT_7_498_AND_NOT_decode_487_BIT_6__ETC___d6534 ?
-		   IF_NOT_decode_487_BIT_26_517_518_AND_NOT_decod_ETC___d6558 ||
-		   decodeBrPred___d6705[64] :
-		   decodeBrPred___d6705[64])) ;
+  assign NOT_decode_073_BITS_25_TO_21_109_EQ_decode_073_ETC___d6145 =
+	     decode___d6073[25:21] != decode___d6073[5:1] ;
+  assign NOT_decode_073_BIT_27_106_116_OR_decode_073_BI_ETC___d6123 =
+	     (!decode___d6073[27] ||
+	      (decode___d6073[26] || decode___d6073[25:21] != 5'd1) &&
+	      (decode___d6073[26] || decode___d6073[25:21] != 5'd5)) &&
+	     decode___d6073[7] &&
+	     !decode___d6073[6] &&
+	     (decode___d6073[5:1] == 5'd1 || decode___d6073[5:1] == 5'd5) ;
+  assign NOT_decode_073_BIT_7_088_099_OR_decode_073_BIT_ETC___d6115 =
+	     (!decode___d6073[7] ||
+	      (decode___d6073[6] || decode___d6073[5:1] != 5'd1) &&
+	      (decode___d6073[6] || decode___d6073[5:1] != 5'd5)) &&
+	     decode___d6073[27] &&
+	     !decode___d6073[26] &&
+	     (decode___d6073[25:21] == 5'd1 ||
+	      decode___d6073[25:21] == 5'd5) ;
+  assign NOT_decode_073_BIT_7_088_099_OR_decode_073_BIT_ETC___d6302 =
+	     (!decode___d6073[7] ||
+	      (decode___d6073[6] || decode___d6073[5:1] != 5'd1) &&
+	      (decode___d6073[6] || decode___d6073[5:1] != 5'd5)) &&
+	     decode___d6073[27] &&
+	     !decode___d6073[26] &&
+	     (decode___d6073[25:21] == 5'd1 ||
+	      decode___d6073[25:21] == 5'd5) ||
+	     (NOT_decode_073_BIT_27_106_116_OR_decode_073_BI_ETC___d6123 ?
+		decodeBrPred___d6295[64] :
+		(decode_073_BIT_7_088_AND_NOT_decode_073_BIT_6__ETC___d6124 ?
+		   IF_NOT_decode_073_BIT_26_107_108_AND_NOT_decod_ETC___d6148 ||
+		   decodeBrPred___d6295[64] :
+		   decodeBrPred___d6295[64])) ;
+  assign NOT_decode_499_BITS_25_TO_21_531_EQ_decode_499_ETC___d6567 =
+	     decode___d6499[25:21] != decode___d6499[5:1] ;
+  assign NOT_decode_499_BIT_27_528_538_OR_decode_499_BI_ETC___d6545 =
+	     (!decode___d6499[27] ||
+	      (decode___d6499[26] || decode___d6499[25:21] != 5'd1) &&
+	      (decode___d6499[26] || decode___d6499[25:21] != 5'd5)) &&
+	     decode___d6499[7] &&
+	     !decode___d6499[6] &&
+	     (decode___d6499[5:1] == 5'd1 || decode___d6499[5:1] == 5'd5) ;
+  assign NOT_decode_499_BIT_7_510_521_OR_decode_499_BIT_ETC___d6537 =
+	     (!decode___d6499[7] ||
+	      (decode___d6499[6] || decode___d6499[5:1] != 5'd1) &&
+	      (decode___d6499[6] || decode___d6499[5:1] != 5'd5)) &&
+	     decode___d6499[27] &&
+	     !decode___d6499[26] &&
+	     (decode___d6499[25:21] == 5'd1 ||
+	      decode___d6499[25:21] == 5'd5) ;
+  assign NOT_decode_499_BIT_7_510_521_OR_decode_499_BIT_ETC___d6724 =
+	     (!decode___d6499[7] ||
+	      (decode___d6499[6] || decode___d6499[5:1] != 5'd1) &&
+	      (decode___d6499[6] || decode___d6499[5:1] != 5'd5)) &&
+	     decode___d6499[27] &&
+	     !decode___d6499[26] &&
+	     (decode___d6499[25:21] == 5'd1 ||
+	      decode___d6499[25:21] == 5'd5) ||
+	     (NOT_decode_499_BIT_27_528_538_OR_decode_499_BI_ETC___d6545 ?
+		decodeBrPred___d6717[64] :
+		(decode_499_BIT_7_510_AND_NOT_decode_499_BIT_6__ETC___d6546 ?
+		   IF_NOT_decode_499_BIT_26_529_530_AND_NOT_decod_ETC___d6570 ||
+		   decodeBrPred___d6717[64] :
+		   decodeBrPred___d6717[64])) ;
   assign NOT_f12f2_clearReq_dummy2_1_read__28_29_OR_IF__ETC___d133 =
 	     !f12f2_clearReq_dummy2_1$Q_OUT || !f12f2_clearReq_rl ;
   assign NOT_f12f2_enqReq_dummy2_2_read__34_64_OR_IF_f1_ETC___d168 =
@@ -14235,11 +14251,11 @@ module mkFetchStage(CLK,
 	     !ehr_pending_straddle_dummy2_0$Q_OUT ||
 	     !ehr_pending_straddle_dummy2_1$Q_OUT ||
 	     !ehr_pending_straddle_rl[81] ;
-  assign SEL_ARR_IF_NOT_f22f3_empty_33_812_AND_NOT_SEL__ETC___d5191 =
+  assign SEL_ARR_IF_NOT_f22f3_empty_33_812_AND_NOT_SEL__ETC___d5200 =
 	     { SEL_ARR_IF_NOT_f22f3_empty_33_812_AND_NOT_SEL__ETC___d4283,
-	       CASE_pending_spaces_ext56609_0_IF_NOT_f22f3_em_ETC__q255,
-	       x__h162776,
-	       x__h162822 } ;
+	       CASE_pending_spaces_ext56591_0_IF_NOT_f22f3_em_ETC__q255,
+	       x__h162758,
+	       x__h162804 } ;
   assign SEL_ARR_NOT_f22f3_data_0_813_BIT_75_862_863_NO_ETC___d4110 =
 	     SEL_ARR_NOT_f22f3_data_0_813_BIT_75_862_863_NO_ETC___d3871 &&
 	     (SEL_ARR_f22f3_data_0_813_BIT_6_896_f22f3_data__ETC___d3901 ?
@@ -14250,11 +14266,11 @@ module mkFetchStage(CLK,
 	     (SEL_ARR_f22f3_data_0_813_BIT_6_896_f22f3_data__ETC___d3901 ?
 		!mmio$bootRomResp[65] :
 		!iMem$to_proc_response_get[65]) ;
-  assign SEL_ARR_NOT_f32d_data_0_988_BIT_73_051_052_NOT_ETC___d6764 =
-	     SEL_ARR_NOT_f32d_data_0_988_BIT_73_051_052_NOT_ETC___d6056 &&
-	     !decode___d6061[0] &&
-	     IF_decode_061_BITS_99_TO_95_065_EQ_8_075_AND_d_ETC___d6292 &&
-	     decode_pred_next_pc__h186793 != in_ppc__h183298 ;
+  assign SEL_ARR_NOT_f32d_data_0_000_BIT_73_063_064_NOT_ETC___d6776 =
+	     SEL_ARR_NOT_f32d_data_0_000_BIT_73_063_064_NOT_ETC___d6068 &&
+	     !decode___d6073[0] &&
+	     IF_decode_073_BITS_99_TO_95_077_EQ_8_087_AND_d_ETC___d6304 &&
+	     decode_pred_next_pc__h186753 != in_ppc__h183258 ;
   assign SEL_ARR_f22f3_data_0_813_BITS_3_TO_0_814_f22f3_ETC___d3823 =
 	     SEL_ARR_f22f3_data_0_813_BITS_3_TO_0_814_f22f3_ETC___d3822 ==
 	     f_main_epoch ;
@@ -14271,149 +14287,149 @@ module mkFetchStage(CLK,
   assign SEL_ARR_f22f3_data_0_813_BIT_5_835_f22f3_data__ETC___d3841 =
 	     SEL_ARR_f22f3_data_0_813_BIT_5_835_f22f3_data__ETC___d3840 ==
 	     fetch3_epoch ;
-  assign SEL_ARR_f32d_data_0_988_BITS_3_TO_0_989_f32d_d_ETC___d5994 =
-	     in_main_epoch__h183300 == f_main_epoch ;
-  assign SEL_ARR_f32d_data_0_988_BITS_3_TO_0_989_f32d_d_ETC___d6542 =
-	     SEL_ARR_f32d_data_0_988_BITS_3_TO_0_989_f32d_d_ETC___d5994 &&
-	     SEL_ARR_instdata_data_0_996_BITS_195_TO_194_01_ETC___d6019 !=
+  assign SEL_ARR_f32d_data_0_000_BITS_3_TO_0_001_f32d_d_ETC___d6006 =
+	     in_main_epoch__h183260 == f_main_epoch ;
+  assign SEL_ARR_f32d_data_0_000_BITS_3_TO_0_001_f32d_d_ETC___d6554 =
+	     SEL_ARR_f32d_data_0_000_BITS_3_TO_0_001_f32d_d_ETC___d6006 &&
+	     SEL_ARR_instdata_data_0_008_BITS_195_TO_194_02_ETC___d6031 !=
 	     2'd0 &&
-	     SEL_ARR_f32d_data_0_988_BIT_139_021_f32d_data__ETC___d6024 &&
-	     SEL_ARR_f32d_data_0_988_BIT_4_006_f32d_data_1__ETC___d6482 &&
-	     SEL_ARR_NOT_f32d_data_0_988_BIT_73_051_052_NOT_ETC___d6056 &&
-	     !decode___d6487[0] &&
-	     decode_487_BITS_99_TO_95_491_EQ_8_497_AND_deco_ETC___d6538 ;
-  assign SEL_ARR_f32d_data_0_988_BIT_4_006_f32d_data_1__ETC___d6010 =
-	     SEL_ARR_f32d_data_0_988_BIT_4_006_f32d_data_1__ETC___d6009 ==
+	     SEL_ARR_f32d_data_0_000_BIT_139_033_f32d_data__ETC___d6036 &&
+	     SEL_ARR_f32d_data_0_000_BIT_4_018_f32d_data_1__ETC___d6494 &&
+	     SEL_ARR_NOT_f32d_data_0_000_BIT_73_063_064_NOT_ETC___d6068 &&
+	     !decode___d6499[0] &&
+	     decode_499_BITS_99_TO_95_503_EQ_8_509_AND_deco_ETC___d6550 ;
+  assign SEL_ARR_f32d_data_0_000_BIT_4_018_f32d_data_1__ETC___d6022 =
+	     SEL_ARR_f32d_data_0_000_BIT_4_018_f32d_data_1__ETC___d6021 ==
 	     (decode_epoch_dummy2_0$Q_OUT && decode_epoch_dummy2_1$Q_OUT &&
 	      decode_epoch_rl) ;
-  assign SEL_ARR_f32d_data_0_988_BIT_4_006_f32d_data_1__ETC___d6482 =
-	     SEL_ARR_f32d_data_0_988_BIT_4_006_f32d_data_1__ETC___d6009 ==
-	     IF_SEL_ARR_instdata_data_0_996_BITS_65_TO_64_9_ETC___d6481 ;
-  assign SEL_ARR_f32d_data_0_988_BIT_4_006_f32d_data_1__ETC___d6799 =
-	     SEL_ARR_f32d_data_0_988_BIT_4_006_f32d_data_1__ETC___d6010 &&
-	     SEL_ARR_NOT_f32d_data_0_988_BIT_73_051_052_NOT_ETC___d6056 &&
-	     !decode___d6061[0] &&
-	     IF_IF_decode_061_BITS_99_TO_95_065_EQ_8_075_AN_ETC___d6792 ;
-  assign SEL_ARR_instdata_data_0_996_BITS_195_TO_194_01_ETC___d6028 =
-	     SEL_ARR_instdata_data_0_996_BITS_195_TO_194_01_ETC___d6019 ==
+  assign SEL_ARR_f32d_data_0_000_BIT_4_018_f32d_data_1__ETC___d6494 =
+	     SEL_ARR_f32d_data_0_000_BIT_4_018_f32d_data_1__ETC___d6021 ==
+	     IF_SEL_ARR_instdata_data_0_008_BITS_65_TO_64_0_ETC___d6493 ;
+  assign SEL_ARR_f32d_data_0_000_BIT_4_018_f32d_data_1__ETC___d6811 =
+	     SEL_ARR_f32d_data_0_000_BIT_4_018_f32d_data_1__ETC___d6022 &&
+	     SEL_ARR_NOT_f32d_data_0_000_BIT_73_063_064_NOT_ETC___d6068 &&
+	     !decode___d6073[0] &&
+	     IF_IF_decode_073_BITS_99_TO_95_077_EQ_8_087_AN_ETC___d6804 ;
+  assign SEL_ARR_instdata_data_0_008_BITS_195_TO_194_02_ETC___d6040 =
+	     SEL_ARR_instdata_data_0_008_BITS_195_TO_194_02_ETC___d6031 ==
 	     2'd0 ||
-	     !SEL_ARR_f32d_data_0_988_BIT_139_021_f32d_data__ETC___d6024 ||
+	     !SEL_ARR_f32d_data_0_000_BIT_139_033_f32d_data__ETC___d6036 ||
 	     CASE_x9809_0_out_fifo_internalFifos_0FULL_N_1_ETC__q3 ;
-  assign SEL_ARR_instdata_data_0_996_BITS_65_TO_64_997__ETC___d6015 =
-	     SEL_ARR_instdata_data_0_996_BITS_65_TO_64_997__ETC___d6004 ==
+  assign SEL_ARR_instdata_data_0_008_BITS_65_TO_64_009__ETC___d6027 =
+	     SEL_ARR_instdata_data_0_008_BITS_65_TO_64_009__ETC___d6016 ==
 	     2'd0 ||
-	     !SEL_ARR_f32d_data_0_988_BIT_4_006_f32d_data_1__ETC___d6010 ||
+	     !SEL_ARR_f32d_data_0_000_BIT_4_018_f32d_data_1__ETC___d6022 ||
 	     CASE_x9665_0_out_fifo_internalFifos_0FULL_N_1_ETC__q4 ;
-  assign SEL_ARR_out_fifo_internalFifos_0_first__850_BI_ETC___d6881 =
+  assign SEL_ARR_out_fifo_internalFifos_0_first__862_BI_ETC___d6893 =
 	     { CASE_x8242_0_out_fifo_internalFifos_0D_OUT_BI_ETC__q224,
 	       CASE_x8242_0_out_fifo_internalFifos_0D_OUT_BI_ETC__q225,
 	       CASE_x8242_0_out_fifo_internalFifos_0D_OUT_BI_ETC__q226,
 	       CASE_x8242_0_out_fifo_internalFifos_0D_OUT_BI_ETC__q227 } ;
-  assign SEL_ARR_out_fifo_internalFifos_0_first__850_BI_ETC___d6938 =
+  assign SEL_ARR_out_fifo_internalFifos_0_first__862_BI_ETC___d6950 =
 	     { CASE_x8242_0_out_fifo_internalFifos_0D_OUT_BI_ETC__q11,
 	       CASE_x8242_0_out_fifo_internalFifos_0D_OUT_BI_ETC__q12,
 	       CASE_x8242_0_out_fifo_internalFifos_0D_OUT_BI_ETC__q13 } ;
-  assign SEL_ARR_out_fifo_internalFifos_0_first__850_BI_ETC___d6947 =
-	     { SEL_ARR_out_fifo_internalFifos_0_first__850_BI_ETC___d6938,
+  assign SEL_ARR_out_fifo_internalFifos_0_first__862_BI_ETC___d6959 =
+	     { SEL_ARR_out_fifo_internalFifos_0_first__862_BI_ETC___d6950,
 	       CASE_x8242_0_out_fifo_internalFifos_0D_OUT_BI_ETC__q25,
 	       CASE_x8242_0_out_fifo_internalFifos_0D_OUT_BI_ETC__q26 } ;
-  assign SEL_ARR_out_fifo_internalFifos_0_first__850_BI_ETC___d6956 =
-	     { SEL_ARR_out_fifo_internalFifos_0_first__850_BI_ETC___d6947,
+  assign SEL_ARR_out_fifo_internalFifos_0_first__862_BI_ETC___d6968 =
+	     { SEL_ARR_out_fifo_internalFifos_0_first__862_BI_ETC___d6959,
 	       CASE_x8242_0_out_fifo_internalFifos_0D_OUT_BI_ETC__q29,
 	       CASE_x8242_0_out_fifo_internalFifos_0D_OUT_BI_ETC__q30 } ;
-  assign SEL_ARR_out_fifo_internalFifos_0_first__850_BI_ETC___d6969 =
-	     { SEL_ARR_out_fifo_internalFifos_0_first__850_BI_ETC___d6956,
-	       SEL_ARR_out_fifo_internalFifos_0_first__850_BI_ETC___d6960,
+  assign SEL_ARR_out_fifo_internalFifos_0_first__862_BI_ETC___d6981 =
+	     { SEL_ARR_out_fifo_internalFifos_0_first__862_BI_ETC___d6968,
+	       SEL_ARR_out_fifo_internalFifos_0_first__862_BI_ETC___d6972,
 	       CASE_x8242_0_out_fifo_internalFifos_0D_OUT_BI_ETC__q55,
-	       SEL_ARR_out_fifo_internalFifos_0_first__850_BI_ETC___d6968 } ;
-  assign SEL_ARR_out_fifo_internalFifos_0_first__850_BI_ETC___d6970 =
+	       SEL_ARR_out_fifo_internalFifos_0_first__862_BI_ETC___d6980 } ;
+  assign SEL_ARR_out_fifo_internalFifos_0_first__862_BI_ETC___d6982 =
 	     { CASE_x8242_0_out_fifo_internalFifos_0D_OUT_BI_ETC__q58,
 	       CASE_x8242_0_out_fifo_internalFifos_0D_OUT_BI_ETC__q59,
-	       SEL_ARR_out_fifo_internalFifos_0_first__850_BI_ETC___d6969 } ;
-  assign SEL_ARR_out_fifo_internalFifos_0_first__850_BI_ETC___d6984 =
+	       SEL_ARR_out_fifo_internalFifos_0_first__862_BI_ETC___d6981 } ;
+  assign SEL_ARR_out_fifo_internalFifos_0_first__862_BI_ETC___d6996 =
 	     { CASE_x8242_0_out_fifo_internalFifos_0D_OUT_BI_ETC__q33,
-	       SEL_ARR_out_fifo_internalFifos_0_first__850_BI_ETC___d6960,
+	       SEL_ARR_out_fifo_internalFifos_0_first__862_BI_ETC___d6972,
 	       CASE_x8242_0_out_fifo_internalFifos_0D_OUT_BI_ETC__q34 } ;
-  assign SEL_ARR_out_fifo_internalFifos_0_first__850_BI_ETC___d7041 =
+  assign SEL_ARR_out_fifo_internalFifos_0_first__862_BI_ETC___d7053 =
 	     { CASE_x8242_0_out_fifo_internalFifos_0D_OUT_BI_ETC__q19,
-	       IF_SEL_ARR_IF_out_fifo_internalFifos_0_first___ETC___d7040,
-	       SEL_ARR_out_fifo_internalFifos_0_first__850_BI_ETC___d6968 } ;
-  assign SEL_ARR_out_fifo_internalFifos_0_first__850_BI_ETC___d7291 =
-	     { CASE_x8242_0_out_fifo_internalFifos_0D_OUT_BI_ETC__q222,
-	       IF_SEL_ARR_out_fifo_internalFifos_0_first__850_ETC___d7047,
-	       NOT_SEL_ARR_NOT_out_fifo_internalFifos_0_first_ETC___d7290 } ;
-  assign SEL_ARR_out_fifo_internalFifos_0_first__850_BI_ETC___d7505 =
-	     { CASE_x8242_0_out_fifo_internalFifos_0D_OUT_BI_ETC__q235,
-	       SEL_ARR_out_fifo_internalFifos_0_first__850_BI_ETC___d6881,
-	       x__h201054,
-	       SEL_ARR_out_fifo_internalFifos_0_first__850_BI_ETC___d7291,
-	       x__h207992,
-	       NOT_SEL_ARR_NOT_out_fifo_internalFifos_0_first_ETC___d7370,
-	       NOT_SEL_ARR_NOT_out_fifo_internalFifos_0_first_ETC___d7502 } ;
-  assign SEL_ARR_out_fifo_internalFifos_0_first__850_BI_ETC___d7515 =
+	       IF_SEL_ARR_IF_out_fifo_internalFifos_0_first___ETC___d7052,
+	       SEL_ARR_out_fifo_internalFifos_0_first__862_BI_ETC___d6980 } ;
+  assign SEL_ARR_out_fifo_internalFifos_0_first__862_BI_ETC___d7303 =
+	     { CASE_x8242_0_out_fifo_internalFifos_0D_OUT_BI_ETC__q221,
+	       IF_SEL_ARR_out_fifo_internalFifos_0_first__862_ETC___d7059,
+	       NOT_SEL_ARR_NOT_out_fifo_internalFifos_0_first_ETC___d7302 } ;
+  assign SEL_ARR_out_fifo_internalFifos_0_first__862_BI_ETC___d7517 =
+	     { CASE_x8242_0_out_fifo_internalFifos_0D_OUT_BI_ETC__q234,
+	       SEL_ARR_out_fifo_internalFifos_0_first__862_BI_ETC___d6893,
+	       x__h201014,
+	       SEL_ARR_out_fifo_internalFifos_0_first__862_BI_ETC___d7303,
+	       x__h207952,
+	       NOT_SEL_ARR_NOT_out_fifo_internalFifos_0_first_ETC___d7382,
+	       NOT_SEL_ARR_NOT_out_fifo_internalFifos_0_first_ETC___d7514 } ;
+  assign SEL_ARR_out_fifo_internalFifos_0_first__862_BI_ETC___d7527 =
 	     { CASE_x8412_0_out_fifo_internalFifos_0D_OUT_BI_ETC__q228,
 	       CASE_x8412_0_out_fifo_internalFifos_0D_OUT_BI_ETC__q229,
 	       CASE_x8412_0_out_fifo_internalFifos_0D_OUT_BI_ETC__q230,
 	       CASE_x8412_0_out_fifo_internalFifos_0D_OUT_BI_ETC__q231 } ;
-  assign SEL_ARR_out_fifo_internalFifos_0_first__850_BI_ETC___d7531 =
+  assign SEL_ARR_out_fifo_internalFifos_0_first__862_BI_ETC___d7543 =
 	     { CASE_x8412_0_out_fifo_internalFifos_0D_OUT_BI_ETC__q20,
 	       CASE_x8412_0_out_fifo_internalFifos_0D_OUT_BI_ETC__q21,
 	       CASE_x8412_0_out_fifo_internalFifos_0D_OUT_BI_ETC__q22 } ;
-  assign SEL_ARR_out_fifo_internalFifos_0_first__850_BI_ETC___d7534 =
-	     { SEL_ARR_out_fifo_internalFifos_0_first__850_BI_ETC___d7531,
+  assign SEL_ARR_out_fifo_internalFifos_0_first__862_BI_ETC___d7546 =
+	     { SEL_ARR_out_fifo_internalFifos_0_first__862_BI_ETC___d7543,
 	       CASE_x8412_0_out_fifo_internalFifos_0D_OUT_BI_ETC__q23,
 	       CASE_x8412_0_out_fifo_internalFifos_0D_OUT_BI_ETC__q24 } ;
-  assign SEL_ARR_out_fifo_internalFifos_0_first__850_BI_ETC___d7537 =
-	     { SEL_ARR_out_fifo_internalFifos_0_first__850_BI_ETC___d7534,
+  assign SEL_ARR_out_fifo_internalFifos_0_first__862_BI_ETC___d7549 =
+	     { SEL_ARR_out_fifo_internalFifos_0_first__862_BI_ETC___d7546,
 	       CASE_x8412_0_out_fifo_internalFifos_0D_OUT_BI_ETC__q27,
 	       CASE_x8412_0_out_fifo_internalFifos_0D_OUT_BI_ETC__q28 } ;
-  assign SEL_ARR_out_fifo_internalFifos_0_first__850_BI_ETC___d7541 =
-	     { SEL_ARR_out_fifo_internalFifos_0_first__850_BI_ETC___d7537,
-	       SEL_ARR_out_fifo_internalFifos_0_first__850_BI_ETC___d7538,
+  assign SEL_ARR_out_fifo_internalFifos_0_first__862_BI_ETC___d7553 =
+	     { SEL_ARR_out_fifo_internalFifos_0_first__862_BI_ETC___d7549,
+	       SEL_ARR_out_fifo_internalFifos_0_first__862_BI_ETC___d7550,
 	       CASE_x8412_0_out_fifo_internalFifos_0D_OUT_BI_ETC__q54,
-	       SEL_ARR_out_fifo_internalFifos_0_first__850_BI_ETC___d7540 } ;
-  assign SEL_ARR_out_fifo_internalFifos_0_first__850_BI_ETC___d7542 =
+	       SEL_ARR_out_fifo_internalFifos_0_first__862_BI_ETC___d7552 } ;
+  assign SEL_ARR_out_fifo_internalFifos_0_first__862_BI_ETC___d7554 =
 	     { CASE_x8412_0_out_fifo_internalFifos_0D_OUT_BI_ETC__q56,
 	       CASE_x8412_0_out_fifo_internalFifos_0D_OUT_BI_ETC__q57,
-	       SEL_ARR_out_fifo_internalFifos_0_first__850_BI_ETC___d7541 } ;
-  assign SEL_ARR_out_fifo_internalFifos_0_first__850_BI_ETC___d7547 =
+	       SEL_ARR_out_fifo_internalFifos_0_first__862_BI_ETC___d7553 } ;
+  assign SEL_ARR_out_fifo_internalFifos_0_first__862_BI_ETC___d7559 =
 	     { CASE_x8412_0_out_fifo_internalFifos_0D_OUT_BI_ETC__q31,
-	       SEL_ARR_out_fifo_internalFifos_0_first__850_BI_ETC___d7538,
+	       SEL_ARR_out_fifo_internalFifos_0_first__862_BI_ETC___d7550,
 	       CASE_x8412_0_out_fifo_internalFifos_0D_OUT_BI_ETC__q32 } ;
-  assign SEL_ARR_out_fifo_internalFifos_0_first__850_BI_ETC___d7561 =
+  assign SEL_ARR_out_fifo_internalFifos_0_first__862_BI_ETC___d7573 =
 	     { CASE_x8412_0_out_fifo_internalFifos_0D_OUT_BI_ETC__q40,
-	       IF_SEL_ARR_IF_out_fifo_internalFifos_0_first___ETC___d7560,
-	       SEL_ARR_out_fifo_internalFifos_0_first__850_BI_ETC___d7540 } ;
-  assign SEL_ARR_out_fifo_internalFifos_0_first__850_BI_ETC___d7664 =
+	       IF_SEL_ARR_IF_out_fifo_internalFifos_0_first___ETC___d7572,
+	       SEL_ARR_out_fifo_internalFifos_0_first__862_BI_ETC___d7552 } ;
+  assign SEL_ARR_out_fifo_internalFifos_0_first__862_BI_ETC___d7676 =
 	     { CASE_x8412_0_out_fifo_internalFifos_0D_OUT_BI_ETC__q223,
-	       IF_SEL_ARR_out_fifo_internalFifos_0_first__850_ETC___d7567,
-	       NOT_SEL_ARR_NOT_out_fifo_internalFifos_0_first_ETC___d7663 } ;
-  assign SEL_ARR_out_fifo_internalFifos_0_first__850_BI_ETC___d7727 =
-	     { CASE_x8412_0_out_fifo_internalFifos_0D_OUT_BI_ETC__q234,
-	       SEL_ARR_out_fifo_internalFifos_0_first__850_BI_ETC___d7515,
-	       x__h209578,
-	       SEL_ARR_out_fifo_internalFifos_0_first__850_BI_ETC___d7664,
-	       x__h216240,
-	       NOT_SEL_ARR_NOT_out_fifo_internalFifos_0_first_ETC___d7693,
-	       NOT_SEL_ARR_NOT_out_fifo_internalFifos_0_first_ETC___d7724 } ;
+	       IF_SEL_ARR_out_fifo_internalFifos_0_first__862_ETC___d7579,
+	       NOT_SEL_ARR_NOT_out_fifo_internalFifos_0_first_ETC___d7675 } ;
+  assign SEL_ARR_out_fifo_internalFifos_0_first__862_BI_ETC___d7739 =
+	     { CASE_x8412_0_out_fifo_internalFifos_0D_OUT_BI_ETC__q235,
+	       SEL_ARR_out_fifo_internalFifos_0_first__862_BI_ETC___d7527,
+	       x__h209538,
+	       SEL_ARR_out_fifo_internalFifos_0_first__862_BI_ETC___d7676,
+	       x__h216200,
+	       NOT_SEL_ARR_NOT_out_fifo_internalFifos_0_first_ETC___d7705,
+	       NOT_SEL_ARR_NOT_out_fifo_internalFifos_0_first_ETC___d7736 } ;
   assign SEXT_SEL_ARR_IF_NOT_f22f3_empty_33_812_AND_NOT_ETC___d4390 =
-	     { {9{offset__h139020[11]}}, offset__h139020 } ;
+	     { {9{offset__h139014[11]}}, offset__h139014 } ;
   assign SEXT_SEL_ARR_IF_NOT_f22f3_empty_33_812_AND_NOT_ETC___d4415 =
-	     { {4{offset__h139653[8]}}, offset__h139653 } ;
-  assign SEXT_SEL_ARR_IF_NOT_f22f3_empty_33_812_AND_NOT_ETC___d4676 =
-	     { {9{offset__h147662[11]}}, offset__h147662 } ;
-  assign SEXT_SEL_ARR_IF_NOT_f22f3_empty_33_812_AND_NOT_ETC___d4701 =
-	     { {4{offset__h148295[8]}}, offset__h148295 } ;
-  assign SEXT_SEL_ARR_IF_NOT_f22f3_empty_33_812_AND_NOT_ETC___d4962 =
-	     { {9{offset__h163680[11]}}, offset__h163680 } ;
-  assign SEXT_SEL_ARR_IF_NOT_f22f3_empty_33_812_AND_NOT_ETC___d4987 =
-	     { {4{offset__h164313[8]}}, offset__h164313 } ;
-  assign SEXT_SEL_ARR_IF_NOT_f22f3_empty_33_812_AND_NOT_ETC___d5280 =
+	     { {4{offset__h139647[8]}}, offset__h139647 } ;
+  assign SEXT_SEL_ARR_IF_NOT_f22f3_empty_33_812_AND_NOT_ETC___d4679 =
+	     { {9{offset__h147650[11]}}, offset__h147650 } ;
+  assign SEXT_SEL_ARR_IF_NOT_f22f3_empty_33_812_AND_NOT_ETC___d4704 =
+	     { {4{offset__h148283[8]}}, offset__h148283 } ;
+  assign SEXT_SEL_ARR_IF_NOT_f22f3_empty_33_812_AND_NOT_ETC___d4968 =
+	     { {9{offset__h163662[11]}}, offset__h163662 } ;
+  assign SEXT_SEL_ARR_IF_NOT_f22f3_empty_33_812_AND_NOT_ETC___d4993 =
+	     { {4{offset__h164295[8]}}, offset__h164295 } ;
+  assign SEXT_SEL_ARR_IF_NOT_f22f3_empty_33_812_AND_NOT_ETC___d5289 =
 	     { {9{offset__h130332[11]}}, offset__h130332 } ;
-  assign SEXT_SEL_ARR_IF_NOT_f22f3_empty_33_812_AND_NOT_ETC___d5305 =
+  assign SEXT_SEL_ARR_IF_NOT_f22f3_empty_33_812_AND_NOT_ETC___d5314 =
 	     { {4{offset__h130968[8]}}, offset__h130968 } ;
   assign _0_CONCAT_IF_rg_pending_n_items_845_EQ_0_846_TH_ETC___d4268 =
-	     n_items__h156605 <= 3'd2 ;
+	     n_items__h156587 <= 3'd2 ;
   assign _0_CONCAT_SEL_ARR_f22f3_data_0_813_BITS_206_TO__ETC___d4095 =
 	     { 1'd0, nbSupX2In__h124584 } + 3'd1 ;
   assign _dand1iMem$EN_to_proc_response_get =
@@ -14461,29 +14477,29 @@ module mkFetchStage(CLK,
 	     IF_SEL_ARR_f22f3_data_0_813_BITS_204_TO_141_90_ETC___d4137 ?
 	       j__h128487 :
 	       y_avValue_fst__h128332 ;
-  assign _theResult___fst__h137248 =
+  assign _theResult___fst__h137242 =
 	     IF_IF_SEL_ARR_f22f3_data_0_813_BITS_204_TO_141_ETC___d4149 ?
-	       j__h137265 :
-	       y_avValue_fst__h137123 ;
-  assign _theResult___fst__h145847 =
+	       j__h137259 :
+	       y_avValue_fst__h137117 ;
+  assign _theResult___fst__h145835 =
 	     IF_IF_IF_SEL_ARR_f22f3_data_0_813_BITS_204_TO__ETC___d4160 ?
-	       j__h145864 :
-	       y_avValue_fst__h145722 ;
+	       j__h145852 :
+	       y_avValue_fst__h145710 ;
   assign _theResult___snd_fst__h128787 =
 	     IF_SEL_ARR_f22f3_data_0_813_BITS_204_TO_141_90_ETC___d4137 ?
 	       orig_inst___1__h128486 :
 	       32'd0 ;
-  assign _theResult___snd_fst__h137545 =
+  assign _theResult___snd_fst__h137539 =
 	     IF_IF_SEL_ARR_f22f3_data_0_813_BITS_204_TO_141_ETC___d4149 ?
-	       orig_inst___1__h137264 :
+	       orig_inst___1__h137258 :
 	       32'd0 ;
-  assign _theResult___snd_fst__h146144 =
+  assign _theResult___snd_fst__h146132 =
 	     IF_IF_IF_SEL_ARR_f22f3_data_0_813_BITS_204_TO__ETC___d4160 ?
-	       orig_inst___1__h145863 :
+	       orig_inst___1__h145851 :
 	       32'd0 ;
-  assign _theResult___snd_fst__h154765 =
+  assign _theResult___snd_fst__h154747 =
 	     IF_IF_IF_IF_SEL_ARR_f22f3_data_0_813_BITS_204__ETC___d4171 ?
-	       orig_inst___1__h156655 :
+	       orig_inst___1__h156637 :
 	       32'd0 ;
   assign _theResult___snd_snd_fst__h121720 =
 	     ((IF_NOT_IF_pc_reg_dummy2_0_read__283_AND_pc_reg_ETC___d3564[5:2] !=
@@ -14497,17 +14513,17 @@ module mkFetchStage(CLK,
 	     IF_SEL_ARR_f22f3_data_0_813_BITS_204_TO_141_90_ETC___d4137 ?
 	       next_pc___1__h128488 :
 	       pc_start__h125919 ;
-  assign _theResult___snd_snd_snd_fst__h137549 =
+  assign _theResult___snd_snd_snd_fst__h137543 =
 	     IF_IF_SEL_ARR_f22f3_data_0_813_BITS_204_TO_141_ETC___d4149 ?
-	       next_pc___1__h137266 :
+	       next_pc___1__h137260 :
 	       IF_IF_SEL_ARR_f22f3_data_0_813_BITS_204_TO_141_ETC___d4232 ;
-  assign _theResult___snd_snd_snd_fst__h146148 =
+  assign _theResult___snd_snd_snd_fst__h146136 =
 	     IF_IF_IF_SEL_ARR_f22f3_data_0_813_BITS_204_TO__ETC___d4160 ?
-	       next_pc___1__h145865 :
+	       next_pc___1__h145853 :
 	       IF_IF_IF_SEL_ARR_f22f3_data_0_813_BITS_204_TO__ETC___d4240 ;
-  assign _theResult___snd_snd_snd_fst__h154769 =
+  assign _theResult___snd_snd_snd_fst__h154751 =
 	     IF_IF_IF_IF_SEL_ARR_f22f3_data_0_813_BITS_204__ETC___d4171 ?
-	       next_pc___1__h156657 :
+	       next_pc___1__h156639 :
 	       IF_IF_IF_IF_SEL_ARR_f22f3_data_0_813_BITS_204__ETC___d4248 ;
   assign b__h126002 =
 	     f22f3_empty_33_OR_SEL_ARR_f22f3_data_0_813_BIT_ETC___d3919 &&
@@ -14517,68 +14533,68 @@ module mkFetchStage(CLK,
 	     f22f3_empty_33_OR_SEL_ARR_f22f3_data_0_813_BIT_ETC___d3919 &&
 	     NOT_IF_rg_pending_n_items_845_EQ_0_846_THEN_rg_ETC___d3924 ||
 	     NOT_SEL_ARR_NOT_f22f3_data_0_813_BIT_75_862_86_ETC___d4077 ;
-  assign decode_061_BITS_99_TO_95_065_CONCAT_IF_decode__ETC___d6279 =
-	     { decode___d6061[99:95],
-	       CASE_decode_061_BITS_94_TO_92_0_decode_061_BIT_ETC__q9,
-	       decode___d6061[73],
-	       CASE_decode_061_BITS_72_TO_61_1_decode_061_BIT_ETC__q10,
-	       decode___d6061[60:28] } ;
-  assign decode_061_BITS_99_TO_95_065_EQ_8_075_AND_deco_ETC___d6116 =
-	     decode___d6061[99:95] == 5'd8 && decode___d6061[7] &&
-	     !decode___d6061[6] &&
-	     (decode___d6061[5:1] == 5'd1 || decode___d6061[5:1] == 5'd5) ||
-	     decode___d6061[99:95] == 5'd9 &&
-	     (NOT_decode_061_BIT_7_076_087_OR_decode_061_BIT_ETC___d6103 ||
-	      NOT_decode_061_BIT_27_094_104_OR_decode_061_BI_ETC___d6111 ||
-	      decode_061_BIT_7_076_AND_NOT_decode_061_BIT_6__ETC___d6112) ;
-  assign decode_061_BIT_7_076_AND_NOT_decode_061_BIT_6__ETC___d6112 =
-	     decode___d6061[7] && !decode___d6061[6] &&
-	     (decode___d6061[5:1] == 5'd1 || decode___d6061[5:1] == 5'd5) &&
-	     decode___d6061[27] &&
-	     !decode___d6061[26] &&
-	     (decode___d6061[25:21] == 5'd1 ||
-	      decode___d6061[25:21] == 5'd5) ;
-  assign decode_487_BITS_99_TO_95_491_CONCAT_IF_decode__ETC___d6701 =
-	     { decode___d6487[99:95],
-	       CASE_decode_487_BITS_94_TO_92_0_decode_487_BIT_ETC__q6,
-	       decode___d6487[73],
-	       CASE_decode_487_BITS_72_TO_61_1_decode_487_BIT_ETC__q7,
-	       decode___d6487[60:28] } ;
-  assign decode_487_BITS_99_TO_95_491_EQ_8_497_AND_deco_ETC___d6538 =
-	     decode___d6487[99:95] == 5'd8 && decode___d6487[7] &&
-	     !decode___d6487[6] &&
-	     (decode___d6487[5:1] == 5'd1 || decode___d6487[5:1] == 5'd5) ||
-	     decode___d6487[99:95] == 5'd9 &&
-	     (NOT_decode_487_BIT_7_498_509_OR_decode_487_BIT_ETC___d6525 ||
-	      NOT_decode_487_BIT_27_516_526_OR_decode_487_BI_ETC___d6533 ||
-	      decode_487_BIT_7_498_AND_NOT_decode_487_BIT_6__ETC___d6534) ;
-  assign decode_487_BIT_7_498_AND_NOT_decode_487_BIT_6__ETC___d6534 =
-	     decode___d6487[7] && !decode___d6487[6] &&
-	     (decode___d6487[5:1] == 5'd1 || decode___d6487[5:1] == 5'd5) &&
-	     decode___d6487[27] &&
-	     !decode___d6487[26] &&
-	     (decode___d6487[25:21] == 5'd1 ||
-	      decode___d6487[25:21] == 5'd5) ;
-  assign decode_pred_next_pc__h186793 =
-	     (decode___d6061[99:95] == 5'd8 && decode___d6061[7] &&
-	      !decode___d6061[6] &&
-	      (decode___d6061[5:1] == 5'd1 || decode___d6061[5:1] == 5'd5)) ?
-	       decodeBrPred___d6283[63:0] :
-	       ((decode___d6061[99:95] == 5'd9) ?
-		  IF_NOT_decode_061_BIT_7_076_087_OR_decode_061__ETC___d6298 :
-		  decodeBrPred___d6283[63:0]) ;
-  assign decode_pred_next_pc__h193609 =
-	     (decode___d6487[99:95] == 5'd8 && decode___d6487[7] &&
-	      !decode___d6487[6] &&
-	      (decode___d6487[5:1] == 5'd1 || decode___d6487[5:1] == 5'd5)) ?
-	       decodeBrPred___d6705[63:0] :
-	       ((decode___d6487[99:95] == 5'd9) ?
-		  IF_NOT_decode_487_BIT_7_498_509_OR_decode_487__ETC___d6720 :
-		  decodeBrPred___d6705[63:0]) ;
-  assign def__h120050 = getFetchState_pc__h222980 + y__h122404 ;
-  assign def__h171660 =
+  assign decode_073_BITS_99_TO_95_077_CONCAT_IF_decode__ETC___d6291 =
+	     { decode___d6073[99:95],
+	       CASE_decode_073_BITS_94_TO_92_0_decode_073_BIT_ETC__q9,
+	       decode___d6073[73],
+	       CASE_decode_073_BITS_72_TO_61_1_decode_073_BIT_ETC__q10,
+	       decode___d6073[60:28] } ;
+  assign decode_073_BITS_99_TO_95_077_EQ_8_087_AND_deco_ETC___d6128 =
+	     decode___d6073[99:95] == 5'd8 && decode___d6073[7] &&
+	     !decode___d6073[6] &&
+	     (decode___d6073[5:1] == 5'd1 || decode___d6073[5:1] == 5'd5) ||
+	     decode___d6073[99:95] == 5'd9 &&
+	     (NOT_decode_073_BIT_7_088_099_OR_decode_073_BIT_ETC___d6115 ||
+	      NOT_decode_073_BIT_27_106_116_OR_decode_073_BI_ETC___d6123 ||
+	      decode_073_BIT_7_088_AND_NOT_decode_073_BIT_6__ETC___d6124) ;
+  assign decode_073_BIT_7_088_AND_NOT_decode_073_BIT_6__ETC___d6124 =
+	     decode___d6073[7] && !decode___d6073[6] &&
+	     (decode___d6073[5:1] == 5'd1 || decode___d6073[5:1] == 5'd5) &&
+	     decode___d6073[27] &&
+	     !decode___d6073[26] &&
+	     (decode___d6073[25:21] == 5'd1 ||
+	      decode___d6073[25:21] == 5'd5) ;
+  assign decode_499_BITS_99_TO_95_503_CONCAT_IF_decode__ETC___d6713 =
+	     { decode___d6499[99:95],
+	       CASE_decode_499_BITS_94_TO_92_0_decode_499_BIT_ETC__q6,
+	       decode___d6499[73],
+	       CASE_decode_499_BITS_72_TO_61_1_decode_499_BIT_ETC__q7,
+	       decode___d6499[60:28] } ;
+  assign decode_499_BITS_99_TO_95_503_EQ_8_509_AND_deco_ETC___d6550 =
+	     decode___d6499[99:95] == 5'd8 && decode___d6499[7] &&
+	     !decode___d6499[6] &&
+	     (decode___d6499[5:1] == 5'd1 || decode___d6499[5:1] == 5'd5) ||
+	     decode___d6499[99:95] == 5'd9 &&
+	     (NOT_decode_499_BIT_7_510_521_OR_decode_499_BIT_ETC___d6537 ||
+	      NOT_decode_499_BIT_27_528_538_OR_decode_499_BI_ETC___d6545 ||
+	      decode_499_BIT_7_510_AND_NOT_decode_499_BIT_6__ETC___d6546) ;
+  assign decode_499_BIT_7_510_AND_NOT_decode_499_BIT_6__ETC___d6546 =
+	     decode___d6499[7] && !decode___d6499[6] &&
+	     (decode___d6499[5:1] == 5'd1 || decode___d6499[5:1] == 5'd5) &&
+	     decode___d6499[27] &&
+	     !decode___d6499[26] &&
+	     (decode___d6499[25:21] == 5'd1 ||
+	      decode___d6499[25:21] == 5'd5) ;
+  assign decode_pred_next_pc__h186753 =
+	     (decode___d6073[99:95] == 5'd8 && decode___d6073[7] &&
+	      !decode___d6073[6] &&
+	      (decode___d6073[5:1] == 5'd1 || decode___d6073[5:1] == 5'd5)) ?
+	       decodeBrPred___d6295[63:0] :
+	       ((decode___d6073[99:95] == 5'd9) ?
+		  IF_NOT_decode_073_BIT_7_088_099_OR_decode_073__ETC___d6310 :
+		  decodeBrPred___d6295[63:0]) ;
+  assign decode_pred_next_pc__h193569 =
+	     (decode___d6499[99:95] == 5'd8 && decode___d6499[7] &&
+	      !decode___d6499[6] &&
+	      (decode___d6499[5:1] == 5'd1 || decode___d6499[5:1] == 5'd5)) ?
+	       decodeBrPred___d6717[63:0] :
+	       ((decode___d6499[99:95] == 5'd9) ?
+		  IF_NOT_decode_499_BIT_7_510_521_OR_decode_499__ETC___d6732 :
+		  decodeBrPred___d6717[63:0]) ;
+  assign def__h120050 = getFetchState_pc__h222940 + y__h122404 ;
+  assign def__h171636 =
 	     IF_IF_IF_IF_SEL_ARR_f22f3_data_0_813_BITS_204__ETC___d4166 ?
-	       y_avValue_snd_snd_snd_snd_fst__h154552 :
+	       y_avValue_snd_snd_snd_snd_fst__h154534 :
 	       IF_IF_IF_IF_SEL_ARR_f22f3_data_0_813_BITS_204__ETC___d4248 ;
   assign f12f2_enqReq_dummy2_2_read__34_AND_IF_f12f2_en_ETC___d160 =
 	     f12f2_enqReq_dummy2_2$Q_OUT &&
@@ -14622,7 +14638,7 @@ module mkFetchStage(CLK,
 	     (!f32d_deqReq_dummy2_2$Q_OUT ||
 	      !CAN_FIRE_RL_doDecode && !f32d_deqReq_rl) &&
 	     f32d_full ;
-  assign getFetchState_pc__h222980 =
+  assign getFetchState_pc__h222940 =
 	     (pc_reg_dummy2_0$Q_OUT && pc_reg_dummy2_1$Q_OUT &&
 	      pc_reg_dummy2_2$Q_OUT &&
 	      pc_reg_dummy2_3$Q_OUT) ?
@@ -14637,103 +14653,103 @@ module mkFetchStage(CLK,
   assign imm12__h133046 = { 6'b010000, imm6__h131605 } ;
   assign imm12__h134683 = { 3'd0, offset__h134596 } ;
   assign imm12__h135039 = { 4'd0, offset__h134973 } ;
-  assign imm12__h138305 = { 4'd0, offset__h138213 } ;
-  assign imm12__h138646 = { 5'd0, offset__h138588 } ;
-  assign imm12__h140292 = { {6{imm6__h140290[5]}}, imm6__h140290 } ;
-  assign imm12__h140976 = { {2{nzimm10__h140974[9]}}, nzimm10__h140974 } ;
-  assign imm12__h141194 = { 2'd0, nzimm10__h141192 } ;
-  assign imm12__h141391 = { 6'b0, imm6__h140290 } ;
-  assign imm12__h141731 = { 6'b010000, imm6__h140290 } ;
-  assign imm12__h143368 = { 3'd0, offset__h143281 } ;
-  assign imm12__h143724 = { 4'd0, offset__h143658 } ;
-  assign imm12__h146947 = { 4'd0, offset__h146855 } ;
-  assign imm12__h147288 = { 5'd0, offset__h147230 } ;
-  assign imm12__h148934 = { {6{imm6__h148932[5]}}, imm6__h148932 } ;
-  assign imm12__h149618 = { {2{nzimm10__h149616[9]}}, nzimm10__h149616 } ;
-  assign imm12__h149836 = { 2'd0, nzimm10__h149834 } ;
-  assign imm12__h150033 = { 6'b0, imm6__h148932 } ;
-  assign imm12__h150373 = { 6'b010000, imm6__h148932 } ;
-  assign imm12__h152010 = { 3'd0, offset__h151923 } ;
-  assign imm12__h152366 = { 4'd0, offset__h152300 } ;
-  assign imm12__h162965 = { 4'd0, offset__h162873 } ;
-  assign imm12__h163306 = { 5'd0, offset__h163248 } ;
-  assign imm12__h164952 = { {6{imm6__h164950[5]}}, imm6__h164950 } ;
-  assign imm12__h165636 = { {2{nzimm10__h165634[9]}}, nzimm10__h165634 } ;
-  assign imm12__h165854 = { 2'd0, nzimm10__h165852 } ;
-  assign imm12__h166051 = { 6'b0, imm6__h164950 } ;
-  assign imm12__h166391 = { 6'b010000, imm6__h164950 } ;
-  assign imm12__h168028 = { 3'd0, offset__h167941 } ;
-  assign imm12__h168384 = { 4'd0, offset__h168318 } ;
+  assign imm12__h138299 = { 4'd0, offset__h138207 } ;
+  assign imm12__h138640 = { 5'd0, offset__h138582 } ;
+  assign imm12__h140286 = { {6{imm6__h140284[5]}}, imm6__h140284 } ;
+  assign imm12__h140970 = { {2{nzimm10__h140968[9]}}, nzimm10__h140968 } ;
+  assign imm12__h141188 = { 2'd0, nzimm10__h141186 } ;
+  assign imm12__h141385 = { 6'b0, imm6__h140284 } ;
+  assign imm12__h141725 = { 6'b010000, imm6__h140284 } ;
+  assign imm12__h143362 = { 3'd0, offset__h143275 } ;
+  assign imm12__h143718 = { 4'd0, offset__h143652 } ;
+  assign imm12__h146935 = { 4'd0, offset__h146843 } ;
+  assign imm12__h147276 = { 5'd0, offset__h147218 } ;
+  assign imm12__h148922 = { {6{imm6__h148920[5]}}, imm6__h148920 } ;
+  assign imm12__h149606 = { {2{nzimm10__h149604[9]}}, nzimm10__h149604 } ;
+  assign imm12__h149824 = { 2'd0, nzimm10__h149822 } ;
+  assign imm12__h150021 = { 6'b0, imm6__h148920 } ;
+  assign imm12__h150361 = { 6'b010000, imm6__h148920 } ;
+  assign imm12__h151998 = { 3'd0, offset__h151911 } ;
+  assign imm12__h152354 = { 4'd0, offset__h152288 } ;
+  assign imm12__h162947 = { 4'd0, offset__h162855 } ;
+  assign imm12__h163288 = { 5'd0, offset__h163230 } ;
+  assign imm12__h164934 = { {6{imm6__h164932[5]}}, imm6__h164932 } ;
+  assign imm12__h165618 = { {2{nzimm10__h165616[9]}}, nzimm10__h165616 } ;
+  assign imm12__h165836 = { 2'd0, nzimm10__h165834 } ;
+  assign imm12__h166033 = { 6'b0, imm6__h164932 } ;
+  assign imm12__h166373 = { 6'b010000, imm6__h164932 } ;
+  assign imm12__h168010 = { 3'd0, offset__h167923 } ;
+  assign imm12__h168366 = { 4'd0, offset__h168300 } ;
   assign imm20__h131738 = { {14{imm6__h131605[5]}}, imm6__h131605 } ;
-  assign imm20__h140423 = { {14{imm6__h140290[5]}}, imm6__h140290 } ;
-  assign imm20__h149065 = { {14{imm6__h148932[5]}}, imm6__h148932 } ;
-  assign imm20__h165083 = { {14{imm6__h164950[5]}}, imm6__h164950 } ;
+  assign imm20__h140417 = { {14{imm6__h140284[5]}}, imm6__h140284 } ;
+  assign imm20__h149053 = { {14{imm6__h148920[5]}}, imm6__h148920 } ;
+  assign imm20__h165065 = { {14{imm6__h164932[5]}}, imm6__h164932 } ;
   assign imm6__h131605 =
 	     { SEL_ARR_IF_NOT_f22f3_empty_33_812_AND_NOT_SEL__ETC___d4134[12],
 	       SEL_ARR_IF_NOT_f22f3_empty_33_812_AND_NOT_SEL__ETC___d4134[6:2] } ;
-  assign imm6__h140290 =
+  assign imm6__h140284 =
 	     { SEL_ARR_IF_NOT_f22f3_empty_33_812_AND_NOT_SEL__ETC___d4145[12],
 	       SEL_ARR_IF_NOT_f22f3_empty_33_812_AND_NOT_SEL__ETC___d4145[6:2] } ;
-  assign imm6__h148932 =
+  assign imm6__h148920 =
 	     { SEL_ARR_IF_NOT_f22f3_empty_33_812_AND_NOT_SEL__ETC___d4156[12],
 	       SEL_ARR_IF_NOT_f22f3_empty_33_812_AND_NOT_SEL__ETC___d4156[6:2] } ;
-  assign imm6__h164950 =
+  assign imm6__h164932 =
 	     { SEL_ARR_IF_NOT_f22f3_empty_33_812_AND_NOT_SEL__ETC___d4167[12],
 	       SEL_ARR_IF_NOT_f22f3_empty_33_812_AND_NOT_SEL__ETC___d4167[6:2] } ;
-  assign in_ppc__h183298 =
-	     SEL_ARR_f32d_data_0_988_BIT_139_021_f32d_data__ETC___d6024 ?
-	       SEL_ARR_instdata_data_0_996_BITS_259_TO_196_30_ETC___d6304 :
-	       in_ppc__h190370 ;
-  assign inst__h160435 =
+  assign in_ppc__h183258 =
+	     SEL_ARR_f32d_data_0_000_BIT_139_033_f32d_data__ETC___d6036 ?
+	       SEL_ARR_instdata_data_0_008_BITS_259_TO_196_31_ETC___d6316 :
+	       in_ppc__h190330 ;
+  assign inst__h160417 =
 	     (f22f3_empty_33_OR_SEL_ARR_f22f3_data_0_813_BIT_ETC___d3919 &&
 	      IF_rg_pending_n_items_845_EQ_0_846_THEN_rg_pen_ETC___d3977) ?
-	       n_inst__h138052 :
+	       n_inst__h138046 :
 	       32'd0 ;
-  assign inst__h160439 =
+  assign inst__h160421 =
 	     NOT_f22f3_empty_33_812_AND_NOT_SEL_ARR_f22f3_d_ETC___d3844 ?
 	       32'd0 :
-	       inst__h160435 ;
-  assign inst__h160777 =
+	       inst__h160417 ;
+  assign inst__h160759 =
 	     (f22f3_empty_33_OR_SEL_ARR_f22f3_data_0_813_BIT_ETC___d3919 &&
 	      IF_rg_pending_n_items_845_EQ_0_846_THEN_rg_pen_ETC___d3977) ?
-	       n_inst__h146694 :
+	       n_inst__h146682 :
 	       32'd0 ;
-  assign inst__h160781 =
+  assign inst__h160763 =
 	     NOT_f22f3_empty_33_812_AND_NOT_SEL_ARR_f22f3_d_ETC___d3844 ?
 	       32'd0 :
-	       inst__h160777 ;
-  assign inst__h161123 =
+	       inst__h160759 ;
+  assign inst__h161105 =
 	     (f22f3_empty_33_OR_SEL_ARR_f22f3_data_0_813_BIT_ETC___d3919 &&
 	      IF_rg_pending_n_items_845_EQ_0_846_THEN_rg_pen_ETC___d3977) ?
-	       n_inst__h161119 :
+	       n_inst__h161101 :
 	       32'd0 ;
-  assign inst__h161127 =
+  assign inst__h161109 =
 	     NOT_f22f3_empty_33_812_AND_NOT_SEL_ARR_f22f3_d_ETC___d3844 ?
 	       32'd0 :
-	       inst__h161123 ;
-  assign inst__h170354 =
+	       inst__h161105 ;
+  assign inst__h170330 =
 	     (f22f3_empty_33_OR_SEL_ARR_f22f3_data_0_813_BIT_ETC___d3919 &&
 	      IF_rg_pending_n_items_845_EQ_0_846_THEN_rg_pen_ETC___d3977) ?
 	       n_inst__h129251 :
 	       32'd0 ;
-  assign inst__h170358 =
+  assign inst__h170334 =
 	     NOT_f22f3_empty_33_812_AND_NOT_SEL_ARR_f22f3_d_ETC___d3844 ?
 	       32'd0 :
-	       inst__h170354 ;
-  assign instdata_enqP_dummy2_0_read__580_AND_instdata__ETC___d5588 =
+	       inst__h170330 ;
+  assign instdata_enqP_dummy2_0_read__592_AND_instdata__ETC___d5600 =
 	     (instdata_enqP_dummy2_0$Q_OUT && instdata_enqP_dummy2_1$Q_OUT &&
 	      instdata_enqP_rl) ==
 	     1'd0 &&
 	     (pending_n_items__h124835 != 2'd0 ||
 	      f22f3_empty_33_OR_SEL_ARR_f22f3_data_0_813_BIT_ETC___d3919) &&
-	     n_items__h156605 != 3'd0 ;
-  assign instdata_enqP_dummy2_0_read__580_AND_instdata__ETC___d5625 =
+	     n_items__h156587 != 3'd0 ;
+  assign instdata_enqP_dummy2_0_read__592_AND_instdata__ETC___d5637 =
 	     (instdata_enqP_dummy2_0$Q_OUT && instdata_enqP_dummy2_1$Q_OUT &&
 	      instdata_enqP_rl) ==
 	     1'd1 &&
 	     (pending_n_items__h124835 != 2'd0 ||
 	      f22f3_empty_33_OR_SEL_ARR_f22f3_data_0_813_BIT_ETC___d3919) &&
-	     n_items__h156605 != 3'd0 ;
+	     n_items__h156587 != 3'd0 ;
   assign instr__h129616 =
 	     { imm12__h129617,
 	       8'd18,
@@ -14763,10 +14779,10 @@ module mkFetchStage(CLK,
 	       offset_BITS_4_TO_0___h130324,
 	       7'b0100011 } ;
   assign instr__h130385 =
-	     { SEXT_SEL_ARR_IF_NOT_f22f3_empty_33_812_AND_NOT_ETC___d5280[20],
-	       SEXT_SEL_ARR_IF_NOT_f22f3_empty_33_812_AND_NOT_ETC___d5280[10:1],
-	       SEXT_SEL_ARR_IF_NOT_f22f3_empty_33_812_AND_NOT_ETC___d5280[11],
-	       SEXT_SEL_ARR_IF_NOT_f22f3_empty_33_812_AND_NOT_ETC___d5280[19:12],
+	     { SEXT_SEL_ARR_IF_NOT_f22f3_empty_33_812_AND_NOT_ETC___d5289[20],
+	       SEXT_SEL_ARR_IF_NOT_f22f3_empty_33_812_AND_NOT_ETC___d5289[10:1],
+	       SEXT_SEL_ARR_IF_NOT_f22f3_empty_33_812_AND_NOT_ETC___d5289[11],
+	       SEXT_SEL_ARR_IF_NOT_f22f3_empty_33_812_AND_NOT_ETC___d5289[19:12],
 	       12'd111 } ;
   assign instr__h130841 =
 	     { 12'd0,
@@ -14777,22 +14793,22 @@ module mkFetchStage(CLK,
 	       SEL_ARR_IF_NOT_f22f3_empty_33_812_AND_NOT_SEL__ETC___d4134[11:7],
 	       15'd231 } ;
   assign instr__h131024 =
-	     { SEXT_SEL_ARR_IF_NOT_f22f3_empty_33_812_AND_NOT_ETC___d5305[12],
-	       SEXT_SEL_ARR_IF_NOT_f22f3_empty_33_812_AND_NOT_ETC___d5305[10:5],
+	     { SEXT_SEL_ARR_IF_NOT_f22f3_empty_33_812_AND_NOT_ETC___d5314[12],
+	       SEXT_SEL_ARR_IF_NOT_f22f3_empty_33_812_AND_NOT_ETC___d5314[10:5],
 	       5'd0,
 	       rs1__h129959,
 	       3'b0,
-	       SEXT_SEL_ARR_IF_NOT_f22f3_empty_33_812_AND_NOT_ETC___d5305[4:1],
-	       SEXT_SEL_ARR_IF_NOT_f22f3_empty_33_812_AND_NOT_ETC___d5305[11],
+	       SEXT_SEL_ARR_IF_NOT_f22f3_empty_33_812_AND_NOT_ETC___d5314[4:1],
+	       SEXT_SEL_ARR_IF_NOT_f22f3_empty_33_812_AND_NOT_ETC___d5314[11],
 	       7'b1100011 } ;
   assign instr__h131343 =
-	     { SEXT_SEL_ARR_IF_NOT_f22f3_empty_33_812_AND_NOT_ETC___d5305[12],
-	       SEXT_SEL_ARR_IF_NOT_f22f3_empty_33_812_AND_NOT_ETC___d5305[10:5],
+	     { SEXT_SEL_ARR_IF_NOT_f22f3_empty_33_812_AND_NOT_ETC___d5314[12],
+	       SEXT_SEL_ARR_IF_NOT_f22f3_empty_33_812_AND_NOT_ETC___d5314[10:5],
 	       5'd0,
 	       rs1__h129959,
 	       3'b001,
-	       SEXT_SEL_ARR_IF_NOT_f22f3_empty_33_812_AND_NOT_ETC___d5305[4:1],
-	       SEXT_SEL_ARR_IF_NOT_f22f3_empty_33_812_AND_NOT_ETC___d5305[11],
+	       SEXT_SEL_ARR_IF_NOT_f22f3_empty_33_812_AND_NOT_ETC___d5314[4:1],
+	       SEXT_SEL_ARR_IF_NOT_f22f3_empty_33_812_AND_NOT_ETC___d5314[11],
 	       7'b1100011 } ;
   assign instr__h131684 =
 	     { imm12__h131607,
@@ -14935,12 +14951,17 @@ module mkFetchStage(CLK,
 	       3'b011,
 	       offset_BITS_4_TO_0___h135318,
 	       7'b0100011 } ;
-  assign instr__h136292 =
+  assign instr__h135450 =
+	     { imm12__h129617,
+	       8'd18,
+	       SEL_ARR_IF_NOT_f22f3_empty_33_812_AND_NOT_SEL__ETC___d4134[11:7],
+	       7'b0000111 } ;
+  assign instr__h136265 =
 	     { imm12__h134683,
 	       8'd19,
 	       SEL_ARR_IF_NOT_f22f3_empty_33_812_AND_NOT_SEL__ETC___d4134[11:7],
 	       7'b0000111 } ;
-  assign instr__h136447 =
+  assign instr__h136441 =
 	     { 3'd0,
 	       SEL_ARR_IF_NOT_f22f3_empty_33_812_AND_NOT_SEL__ETC___d4134[9:7],
 	       SEL_ARR_IF_NOT_f22f3_empty_33_812_AND_NOT_SEL__ETC___d4134[12],
@@ -14948,13 +14969,13 @@ module mkFetchStage(CLK,
 	       8'd19,
 	       offset_BITS_4_TO_0___h135318,
 	       7'b0100111 } ;
-  assign instr__h136648 =
+  assign instr__h136642 =
 	     { imm12__h135039,
 	       rs1__h129959,
 	       3'b011,
 	       rd__h129960,
 	       7'b0000111 } ;
-  assign instr__h136801 =
+  assign instr__h136795 =
 	     { 4'd0,
 	       SEL_ARR_IF_NOT_f22f3_empty_33_812_AND_NOT_SEL__ETC___d4134[6:5],
 	       SEL_ARR_IF_NOT_f22f3_empty_33_812_AND_NOT_SEL__ETC___d4134[12],
@@ -14963,752 +14984,767 @@ module mkFetchStage(CLK,
 	       3'b011,
 	       offset_BITS_4_TO_0___h135318,
 	       7'b0100111 } ;
-  assign instr__h138304 =
-	     { imm12__h138305,
+  assign instr__h138298 =
+	     { imm12__h138299,
 	       8'd18,
 	       SEL_ARR_IF_NOT_f22f3_empty_33_812_AND_NOT_SEL__ETC___d4145[11:7],
 	       7'b0000011 } ;
-  assign instr__h138451 =
+  assign instr__h138445 =
 	     { 4'd0,
 	       SEL_ARR_IF_NOT_f22f3_empty_33_812_AND_NOT_SEL__ETC___d4145[8:7],
 	       SEL_ARR_IF_NOT_f22f3_empty_33_812_AND_NOT_SEL__ETC___d4145[12],
 	       SEL_ARR_IF_NOT_f22f3_empty_33_812_AND_NOT_SEL__ETC___d4145[6:2],
 	       8'd18,
-	       offset_BITS_4_TO_0___h138577,
+	       offset_BITS_4_TO_0___h138571,
 	       7'b0100011 } ;
-  assign instr__h138645 =
-	     { imm12__h138646,
-	       rs1__h138647,
+  assign instr__h138639 =
+	     { imm12__h138640,
+	       rs1__h138641,
 	       3'b010,
-	       rd__h138648,
+	       rd__h138642,
 	       7'b0000011 } ;
-  assign instr__h138842 =
+  assign instr__h138836 =
 	     { 5'd0,
 	       SEL_ARR_IF_NOT_f22f3_empty_33_812_AND_NOT_SEL__ETC___d4145[5],
 	       SEL_ARR_IF_NOT_f22f3_empty_33_812_AND_NOT_SEL__ETC___d4145[12],
-	       rd__h138648,
-	       rs1__h138647,
+	       rd__h138642,
+	       rs1__h138641,
 	       3'b010,
-	       offset_BITS_4_TO_0___h139012,
+	       offset_BITS_4_TO_0___h139006,
 	       7'b0100011 } ;
-  assign instr__h139072 =
+  assign instr__h139066 =
 	     { SEXT_SEL_ARR_IF_NOT_f22f3_empty_33_812_AND_NOT_ETC___d4390[20],
 	       SEXT_SEL_ARR_IF_NOT_f22f3_empty_33_812_AND_NOT_ETC___d4390[10:1],
 	       SEXT_SEL_ARR_IF_NOT_f22f3_empty_33_812_AND_NOT_ETC___d4390[11],
 	       SEXT_SEL_ARR_IF_NOT_f22f3_empty_33_812_AND_NOT_ETC___d4390[19:12],
 	       12'd111 } ;
-  assign instr__h139526 =
+  assign instr__h139520 =
 	     { 12'd0,
 	       SEL_ARR_IF_NOT_f22f3_empty_33_812_AND_NOT_SEL__ETC___d4145[11:7],
 	       15'd103 } ;
-  assign instr__h139644 =
+  assign instr__h139638 =
 	     { 12'd0,
 	       SEL_ARR_IF_NOT_f22f3_empty_33_812_AND_NOT_SEL__ETC___d4145[11:7],
 	       15'd231 } ;
-  assign instr__h139709 =
+  assign instr__h139703 =
 	     { SEXT_SEL_ARR_IF_NOT_f22f3_empty_33_812_AND_NOT_ETC___d4415[12],
 	       SEXT_SEL_ARR_IF_NOT_f22f3_empty_33_812_AND_NOT_ETC___d4415[10:5],
 	       5'd0,
-	       rs1__h138647,
+	       rs1__h138641,
 	       3'b0,
 	       SEXT_SEL_ARR_IF_NOT_f22f3_empty_33_812_AND_NOT_ETC___d4415[4:1],
 	       SEXT_SEL_ARR_IF_NOT_f22f3_empty_33_812_AND_NOT_ETC___d4415[11],
 	       7'b1100011 } ;
-  assign instr__h140028 =
+  assign instr__h140022 =
 	     { SEXT_SEL_ARR_IF_NOT_f22f3_empty_33_812_AND_NOT_ETC___d4415[12],
 	       SEXT_SEL_ARR_IF_NOT_f22f3_empty_33_812_AND_NOT_ETC___d4415[10:5],
 	       5'd0,
-	       rs1__h138647,
+	       rs1__h138641,
 	       3'b001,
 	       SEXT_SEL_ARR_IF_NOT_f22f3_empty_33_812_AND_NOT_ETC___d4415[4:1],
 	       SEXT_SEL_ARR_IF_NOT_f22f3_empty_33_812_AND_NOT_ETC___d4415[11],
 	       7'b1100011 } ;
-  assign instr__h140369 =
-	     { imm12__h140292,
+  assign instr__h140363 =
+	     { imm12__h140286,
 	       8'd0,
 	       SEL_ARR_IF_NOT_f22f3_empty_33_812_AND_NOT_SEL__ETC___d4145[11:7],
 	       7'b0010011 } ;
-  assign instr__h140558 =
-	     { imm20__h140423,
+  assign instr__h140552 =
+	     { imm20__h140417,
 	       SEL_ARR_IF_NOT_f22f3_empty_33_812_AND_NOT_SEL__ETC___d4145[11:7],
 	       7'b0110111 } ;
-  assign instr__h140690 =
-	     { imm12__h140292,
+  assign instr__h140684 =
+	     { imm12__h140286,
 	       SEL_ARR_IF_NOT_f22f3_empty_33_812_AND_NOT_SEL__ETC___d4145[11:7],
 	       3'b0,
 	       SEL_ARR_IF_NOT_f22f3_empty_33_812_AND_NOT_SEL__ETC___d4145[11:7],
 	       7'b0010011 } ;
-  assign instr__h140921 =
-	     { imm12__h140292,
+  assign instr__h140915 =
+	     { imm12__h140286,
 	       SEL_ARR_IF_NOT_f22f3_empty_33_812_AND_NOT_SEL__ETC___d4145[11:7],
 	       3'b0,
 	       SEL_ARR_IF_NOT_f22f3_empty_33_812_AND_NOT_SEL__ETC___d4145[11:7],
 	       7'b0011011 } ;
-  assign instr__h141181 =
-	     { imm12__h140976,
+  assign instr__h141175 =
+	     { imm12__h140970,
 	       SEL_ARR_IF_NOT_f22f3_empty_33_812_AND_NOT_SEL__ETC___d4145[11:7],
 	       3'b0,
 	       SEL_ARR_IF_NOT_f22f3_empty_33_812_AND_NOT_SEL__ETC___d4145[11:7],
 	       7'b0010011 } ;
-  assign instr__h141354 = { imm12__h141194, 8'd16, rd__h138648, 7'b0010011 } ;
-  assign instr__h141525 =
-	     { imm12__h141391,
+  assign instr__h141348 = { imm12__h141188, 8'd16, rd__h138642, 7'b0010011 } ;
+  assign instr__h141519 =
+	     { imm12__h141385,
 	       SEL_ARR_IF_NOT_f22f3_empty_33_812_AND_NOT_SEL__ETC___d4145[11:7],
 	       3'b001,
 	       SEL_ARR_IF_NOT_f22f3_empty_33_812_AND_NOT_SEL__ETC___d4145[11:7],
 	       7'b0010011 } ;
-  assign instr__h141715 =
-	     { imm12__h141391,
-	       rs1__h138647,
+  assign instr__h141709 =
+	     { imm12__h141385,
+	       rs1__h138641,
 	       3'b101,
-	       rs1__h138647,
+	       rs1__h138641,
 	       7'b0010011 } ;
-  assign instr__h141905 =
-	     { imm12__h141731,
-	       rs1__h138647,
+  assign instr__h141899 =
+	     { imm12__h141725,
+	       rs1__h138641,
 	       3'b101,
-	       rs1__h138647,
+	       rs1__h138641,
 	       7'b0010011 } ;
-  assign instr__h142023 =
-	     { imm12__h140292,
-	       rs1__h138647,
+  assign instr__h142017 =
+	     { imm12__h140286,
+	       rs1__h138641,
 	       3'b111,
-	       rs1__h138647,
+	       rs1__h138641,
 	       7'b0010011 } ;
-  assign instr__h142204 =
+  assign instr__h142198 =
 	     { 7'b0,
 	       SEL_ARR_IF_NOT_f22f3_empty_33_812_AND_NOT_SEL__ETC___d4145[6:2],
 	       8'd0,
 	       SEL_ARR_IF_NOT_f22f3_empty_33_812_AND_NOT_SEL__ETC___d4145[11:7],
 	       7'b0110011 } ;
-  assign instr__h142325 =
+  assign instr__h142319 =
 	     { 7'b0,
 	       SEL_ARR_IF_NOT_f22f3_empty_33_812_AND_NOT_SEL__ETC___d4145[6:2],
 	       SEL_ARR_IF_NOT_f22f3_empty_33_812_AND_NOT_SEL__ETC___d4145[11:7],
 	       3'b0,
 	       SEL_ARR_IF_NOT_f22f3_empty_33_812_AND_NOT_SEL__ETC___d4145[11:7],
 	       7'b0110011 } ;
-  assign instr__h142421 =
+  assign instr__h142415 =
 	     { 7'b0,
-	       rd__h138648,
-	       rs1__h138647,
+	       rd__h138642,
+	       rs1__h138641,
 	       3'b111,
-	       rs1__h138647,
+	       rs1__h138641,
 	       7'b0110011 } ;
-  assign instr__h142558 =
+  assign instr__h142552 =
 	     { 7'b0,
-	       rd__h138648,
-	       rs1__h138647,
+	       rd__h138642,
+	       rs1__h138641,
 	       3'b110,
-	       rs1__h138647,
+	       rs1__h138641,
 	       7'b0110011 } ;
-  assign instr__h142695 =
+  assign instr__h142689 =
 	     { 7'b0,
-	       rd__h138648,
-	       rs1__h138647,
+	       rd__h138642,
+	       rs1__h138641,
 	       3'b100,
-	       rs1__h138647,
+	       rs1__h138641,
 	       7'b0110011 } ;
-  assign instr__h142832 =
+  assign instr__h142826 =
 	     { 7'b0100000,
-	       rd__h138648,
-	       rs1__h138647,
+	       rd__h138642,
+	       rs1__h138641,
 	       3'b0,
-	       rs1__h138647,
+	       rs1__h138641,
 	       7'b0110011 } ;
-  assign instr__h142971 =
+  assign instr__h142965 =
 	     { 7'b0,
-	       rd__h138648,
-	       rs1__h138647,
+	       rd__h138642,
+	       rs1__h138641,
 	       3'b0,
-	       rs1__h138647,
+	       rs1__h138641,
 	       7'b0111011 } ;
-  assign instr__h143110 =
+  assign instr__h143104 =
 	     { 7'b0100000,
-	       rd__h138648,
-	       rs1__h138647,
+	       rd__h138642,
+	       rs1__h138641,
 	       3'b0,
-	       rs1__h138647,
+	       rs1__h138641,
 	       7'b0111011 } ;
-  assign instr__h143270 =
+  assign instr__h143264 =
 	     { 12'b000000000001,
 	       SEL_ARR_IF_NOT_f22f3_empty_33_812_AND_NOT_SEL__ETC___d4145[11:7],
 	       3'b0,
 	       SEL_ARR_IF_NOT_f22f3_empty_33_812_AND_NOT_SEL__ETC___d4145[11:7],
 	       7'b1110011 } ;
-  assign instr__h143367 =
-	     { imm12__h143368,
+  assign instr__h143361 =
+	     { imm12__h143362,
 	       8'd19,
 	       SEL_ARR_IF_NOT_f22f3_empty_33_812_AND_NOT_SEL__ETC___d4145[11:7],
 	       7'b0000011 } ;
-  assign instr__h143522 =
+  assign instr__h143516 =
 	     { 3'd0,
 	       SEL_ARR_IF_NOT_f22f3_empty_33_812_AND_NOT_SEL__ETC___d4145[9:7],
 	       SEL_ARR_IF_NOT_f22f3_empty_33_812_AND_NOT_SEL__ETC___d4145[12],
 	       SEL_ARR_IF_NOT_f22f3_empty_33_812_AND_NOT_SEL__ETC___d4145[6:2],
 	       8'd19,
-	       offset_BITS_4_TO_0___h144003,
+	       offset_BITS_4_TO_0___h143997,
 	       7'b0100011 } ;
-  assign instr__h143723 =
-	     { imm12__h143724,
-	       rs1__h138647,
+  assign instr__h143717 =
+	     { imm12__h143718,
+	       rs1__h138641,
 	       3'b011,
-	       rd__h138648,
+	       rd__h138642,
 	       7'b0000011 } ;
-  assign instr__h143876 =
+  assign instr__h143870 =
 	     { 4'd0,
 	       SEL_ARR_IF_NOT_f22f3_empty_33_812_AND_NOT_SEL__ETC___d4145[6:5],
 	       SEL_ARR_IF_NOT_f22f3_empty_33_812_AND_NOT_SEL__ETC___d4145[12],
-	       rd__h138648,
-	       rs1__h138647,
+	       rd__h138642,
+	       rs1__h138641,
 	       3'b011,
-	       offset_BITS_4_TO_0___h144003,
+	       offset_BITS_4_TO_0___h143997,
 	       7'b0100011 } ;
-  assign instr__h144921 =
-	     { imm12__h143368,
+  assign instr__h144074 =
+	     { imm12__h138299,
+	       8'd18,
+	       SEL_ARR_IF_NOT_f22f3_empty_33_812_AND_NOT_SEL__ETC___d4145[11:7],
+	       7'b0000111 } ;
+  assign instr__h144888 =
+	     { imm12__h143362,
 	       8'd19,
 	       SEL_ARR_IF_NOT_f22f3_empty_33_812_AND_NOT_SEL__ETC___d4145[11:7],
 	       7'b0000111 } ;
-  assign instr__h145076 =
+  assign instr__h145064 =
 	     { 3'd0,
 	       SEL_ARR_IF_NOT_f22f3_empty_33_812_AND_NOT_SEL__ETC___d4145[9:7],
 	       SEL_ARR_IF_NOT_f22f3_empty_33_812_AND_NOT_SEL__ETC___d4145[12],
 	       SEL_ARR_IF_NOT_f22f3_empty_33_812_AND_NOT_SEL__ETC___d4145[6:2],
 	       8'd19,
-	       offset_BITS_4_TO_0___h144003,
+	       offset_BITS_4_TO_0___h143997,
 	       7'b0100111 } ;
-  assign instr__h145277 =
-	     { imm12__h143724,
-	       rs1__h138647,
+  assign instr__h145265 =
+	     { imm12__h143718,
+	       rs1__h138641,
 	       3'b011,
-	       rd__h138648,
+	       rd__h138642,
 	       7'b0000111 } ;
-  assign instr__h145430 =
+  assign instr__h145418 =
 	     { 4'd0,
 	       SEL_ARR_IF_NOT_f22f3_empty_33_812_AND_NOT_SEL__ETC___d4145[6:5],
 	       SEL_ARR_IF_NOT_f22f3_empty_33_812_AND_NOT_SEL__ETC___d4145[12],
-	       rd__h138648,
-	       rs1__h138647,
+	       rd__h138642,
+	       rs1__h138641,
 	       3'b011,
-	       offset_BITS_4_TO_0___h144003,
+	       offset_BITS_4_TO_0___h143997,
 	       7'b0100111 } ;
-  assign instr__h146946 =
-	     { imm12__h146947,
+  assign instr__h146934 =
+	     { imm12__h146935,
 	       8'd18,
 	       SEL_ARR_IF_NOT_f22f3_empty_33_812_AND_NOT_SEL__ETC___d4156[11:7],
 	       7'b0000011 } ;
-  assign instr__h147093 =
+  assign instr__h147081 =
 	     { 4'd0,
 	       SEL_ARR_IF_NOT_f22f3_empty_33_812_AND_NOT_SEL__ETC___d4156[8:7],
 	       SEL_ARR_IF_NOT_f22f3_empty_33_812_AND_NOT_SEL__ETC___d4156[12],
 	       SEL_ARR_IF_NOT_f22f3_empty_33_812_AND_NOT_SEL__ETC___d4156[6:2],
 	       8'd18,
-	       offset_BITS_4_TO_0___h147219,
+	       offset_BITS_4_TO_0___h147207,
 	       7'b0100011 } ;
-  assign instr__h147287 =
-	     { imm12__h147288,
-	       rs1__h147289,
+  assign instr__h147275 =
+	     { imm12__h147276,
+	       rs1__h147277,
 	       3'b010,
-	       rd__h147290,
+	       rd__h147278,
 	       7'b0000011 } ;
-  assign instr__h147484 =
+  assign instr__h147472 =
 	     { 5'd0,
 	       SEL_ARR_IF_NOT_f22f3_empty_33_812_AND_NOT_SEL__ETC___d4156[5],
 	       SEL_ARR_IF_NOT_f22f3_empty_33_812_AND_NOT_SEL__ETC___d4156[12],
-	       rd__h147290,
-	       rs1__h147289,
+	       rd__h147278,
+	       rs1__h147277,
 	       3'b010,
-	       offset_BITS_4_TO_0___h147654,
+	       offset_BITS_4_TO_0___h147642,
 	       7'b0100011 } ;
-  assign instr__h147714 =
-	     { SEXT_SEL_ARR_IF_NOT_f22f3_empty_33_812_AND_NOT_ETC___d4676[20],
-	       SEXT_SEL_ARR_IF_NOT_f22f3_empty_33_812_AND_NOT_ETC___d4676[10:1],
-	       SEXT_SEL_ARR_IF_NOT_f22f3_empty_33_812_AND_NOT_ETC___d4676[11],
-	       SEXT_SEL_ARR_IF_NOT_f22f3_empty_33_812_AND_NOT_ETC___d4676[19:12],
+  assign instr__h147702 =
+	     { SEXT_SEL_ARR_IF_NOT_f22f3_empty_33_812_AND_NOT_ETC___d4679[20],
+	       SEXT_SEL_ARR_IF_NOT_f22f3_empty_33_812_AND_NOT_ETC___d4679[10:1],
+	       SEXT_SEL_ARR_IF_NOT_f22f3_empty_33_812_AND_NOT_ETC___d4679[11],
+	       SEXT_SEL_ARR_IF_NOT_f22f3_empty_33_812_AND_NOT_ETC___d4679[19:12],
 	       12'd111 } ;
-  assign instr__h148168 =
+  assign instr__h148156 =
 	     { 12'd0,
 	       SEL_ARR_IF_NOT_f22f3_empty_33_812_AND_NOT_SEL__ETC___d4156[11:7],
 	       15'd103 } ;
-  assign instr__h148286 =
+  assign instr__h148274 =
 	     { 12'd0,
 	       SEL_ARR_IF_NOT_f22f3_empty_33_812_AND_NOT_SEL__ETC___d4156[11:7],
 	       15'd231 } ;
-  assign instr__h148351 =
-	     { SEXT_SEL_ARR_IF_NOT_f22f3_empty_33_812_AND_NOT_ETC___d4701[12],
-	       SEXT_SEL_ARR_IF_NOT_f22f3_empty_33_812_AND_NOT_ETC___d4701[10:5],
+  assign instr__h148339 =
+	     { SEXT_SEL_ARR_IF_NOT_f22f3_empty_33_812_AND_NOT_ETC___d4704[12],
+	       SEXT_SEL_ARR_IF_NOT_f22f3_empty_33_812_AND_NOT_ETC___d4704[10:5],
 	       5'd0,
-	       rs1__h147289,
+	       rs1__h147277,
 	       3'b0,
-	       SEXT_SEL_ARR_IF_NOT_f22f3_empty_33_812_AND_NOT_ETC___d4701[4:1],
-	       SEXT_SEL_ARR_IF_NOT_f22f3_empty_33_812_AND_NOT_ETC___d4701[11],
+	       SEXT_SEL_ARR_IF_NOT_f22f3_empty_33_812_AND_NOT_ETC___d4704[4:1],
+	       SEXT_SEL_ARR_IF_NOT_f22f3_empty_33_812_AND_NOT_ETC___d4704[11],
 	       7'b1100011 } ;
-  assign instr__h148670 =
-	     { SEXT_SEL_ARR_IF_NOT_f22f3_empty_33_812_AND_NOT_ETC___d4701[12],
-	       SEXT_SEL_ARR_IF_NOT_f22f3_empty_33_812_AND_NOT_ETC___d4701[10:5],
+  assign instr__h148658 =
+	     { SEXT_SEL_ARR_IF_NOT_f22f3_empty_33_812_AND_NOT_ETC___d4704[12],
+	       SEXT_SEL_ARR_IF_NOT_f22f3_empty_33_812_AND_NOT_ETC___d4704[10:5],
 	       5'd0,
-	       rs1__h147289,
+	       rs1__h147277,
 	       3'b001,
-	       SEXT_SEL_ARR_IF_NOT_f22f3_empty_33_812_AND_NOT_ETC___d4701[4:1],
-	       SEXT_SEL_ARR_IF_NOT_f22f3_empty_33_812_AND_NOT_ETC___d4701[11],
+	       SEXT_SEL_ARR_IF_NOT_f22f3_empty_33_812_AND_NOT_ETC___d4704[4:1],
+	       SEXT_SEL_ARR_IF_NOT_f22f3_empty_33_812_AND_NOT_ETC___d4704[11],
 	       7'b1100011 } ;
-  assign instr__h149011 =
-	     { imm12__h148934,
+  assign instr__h148999 =
+	     { imm12__h148922,
 	       8'd0,
 	       SEL_ARR_IF_NOT_f22f3_empty_33_812_AND_NOT_SEL__ETC___d4156[11:7],
 	       7'b0010011 } ;
-  assign instr__h149200 =
-	     { imm20__h149065,
+  assign instr__h149188 =
+	     { imm20__h149053,
 	       SEL_ARR_IF_NOT_f22f3_empty_33_812_AND_NOT_SEL__ETC___d4156[11:7],
 	       7'b0110111 } ;
-  assign instr__h149332 =
-	     { imm12__h148934,
+  assign instr__h149320 =
+	     { imm12__h148922,
 	       SEL_ARR_IF_NOT_f22f3_empty_33_812_AND_NOT_SEL__ETC___d4156[11:7],
 	       3'b0,
 	       SEL_ARR_IF_NOT_f22f3_empty_33_812_AND_NOT_SEL__ETC___d4156[11:7],
 	       7'b0010011 } ;
-  assign instr__h149563 =
-	     { imm12__h148934,
+  assign instr__h149551 =
+	     { imm12__h148922,
 	       SEL_ARR_IF_NOT_f22f3_empty_33_812_AND_NOT_SEL__ETC___d4156[11:7],
 	       3'b0,
 	       SEL_ARR_IF_NOT_f22f3_empty_33_812_AND_NOT_SEL__ETC___d4156[11:7],
 	       7'b0011011 } ;
-  assign instr__h149823 =
-	     { imm12__h149618,
+  assign instr__h149811 =
+	     { imm12__h149606,
 	       SEL_ARR_IF_NOT_f22f3_empty_33_812_AND_NOT_SEL__ETC___d4156[11:7],
 	       3'b0,
 	       SEL_ARR_IF_NOT_f22f3_empty_33_812_AND_NOT_SEL__ETC___d4156[11:7],
 	       7'b0010011 } ;
-  assign instr__h149996 = { imm12__h149836, 8'd16, rd__h147290, 7'b0010011 } ;
-  assign instr__h150167 =
-	     { imm12__h150033,
+  assign instr__h149984 = { imm12__h149824, 8'd16, rd__h147278, 7'b0010011 } ;
+  assign instr__h150155 =
+	     { imm12__h150021,
 	       SEL_ARR_IF_NOT_f22f3_empty_33_812_AND_NOT_SEL__ETC___d4156[11:7],
 	       3'b001,
 	       SEL_ARR_IF_NOT_f22f3_empty_33_812_AND_NOT_SEL__ETC___d4156[11:7],
 	       7'b0010011 } ;
-  assign instr__h150357 =
-	     { imm12__h150033,
-	       rs1__h147289,
+  assign instr__h150345 =
+	     { imm12__h150021,
+	       rs1__h147277,
 	       3'b101,
-	       rs1__h147289,
+	       rs1__h147277,
 	       7'b0010011 } ;
-  assign instr__h150547 =
-	     { imm12__h150373,
-	       rs1__h147289,
+  assign instr__h150535 =
+	     { imm12__h150361,
+	       rs1__h147277,
 	       3'b101,
-	       rs1__h147289,
+	       rs1__h147277,
 	       7'b0010011 } ;
-  assign instr__h150665 =
-	     { imm12__h148934,
-	       rs1__h147289,
+  assign instr__h150653 =
+	     { imm12__h148922,
+	       rs1__h147277,
 	       3'b111,
-	       rs1__h147289,
+	       rs1__h147277,
 	       7'b0010011 } ;
-  assign instr__h150846 =
+  assign instr__h150834 =
 	     { 7'b0,
 	       SEL_ARR_IF_NOT_f22f3_empty_33_812_AND_NOT_SEL__ETC___d4156[6:2],
 	       8'd0,
 	       SEL_ARR_IF_NOT_f22f3_empty_33_812_AND_NOT_SEL__ETC___d4156[11:7],
 	       7'b0110011 } ;
-  assign instr__h150967 =
+  assign instr__h150955 =
 	     { 7'b0,
 	       SEL_ARR_IF_NOT_f22f3_empty_33_812_AND_NOT_SEL__ETC___d4156[6:2],
 	       SEL_ARR_IF_NOT_f22f3_empty_33_812_AND_NOT_SEL__ETC___d4156[11:7],
 	       3'b0,
 	       SEL_ARR_IF_NOT_f22f3_empty_33_812_AND_NOT_SEL__ETC___d4156[11:7],
 	       7'b0110011 } ;
-  assign instr__h151063 =
+  assign instr__h151051 =
 	     { 7'b0,
-	       rd__h147290,
-	       rs1__h147289,
+	       rd__h147278,
+	       rs1__h147277,
 	       3'b111,
-	       rs1__h147289,
+	       rs1__h147277,
 	       7'b0110011 } ;
-  assign instr__h151200 =
+  assign instr__h151188 =
 	     { 7'b0,
-	       rd__h147290,
-	       rs1__h147289,
+	       rd__h147278,
+	       rs1__h147277,
 	       3'b110,
-	       rs1__h147289,
+	       rs1__h147277,
 	       7'b0110011 } ;
-  assign instr__h151337 =
+  assign instr__h151325 =
 	     { 7'b0,
-	       rd__h147290,
-	       rs1__h147289,
+	       rd__h147278,
+	       rs1__h147277,
 	       3'b100,
-	       rs1__h147289,
+	       rs1__h147277,
 	       7'b0110011 } ;
-  assign instr__h151474 =
+  assign instr__h151462 =
 	     { 7'b0100000,
-	       rd__h147290,
-	       rs1__h147289,
+	       rd__h147278,
+	       rs1__h147277,
 	       3'b0,
-	       rs1__h147289,
+	       rs1__h147277,
 	       7'b0110011 } ;
-  assign instr__h151613 =
+  assign instr__h151601 =
 	     { 7'b0,
-	       rd__h147290,
-	       rs1__h147289,
+	       rd__h147278,
+	       rs1__h147277,
 	       3'b0,
-	       rs1__h147289,
+	       rs1__h147277,
 	       7'b0111011 } ;
-  assign instr__h151752 =
+  assign instr__h151740 =
 	     { 7'b0100000,
-	       rd__h147290,
-	       rs1__h147289,
+	       rd__h147278,
+	       rs1__h147277,
 	       3'b0,
-	       rs1__h147289,
+	       rs1__h147277,
 	       7'b0111011 } ;
-  assign instr__h151912 =
+  assign instr__h151900 =
 	     { 12'b000000000001,
 	       SEL_ARR_IF_NOT_f22f3_empty_33_812_AND_NOT_SEL__ETC___d4156[11:7],
 	       3'b0,
 	       SEL_ARR_IF_NOT_f22f3_empty_33_812_AND_NOT_SEL__ETC___d4156[11:7],
 	       7'b1110011 } ;
-  assign instr__h152009 =
-	     { imm12__h152010,
+  assign instr__h151997 =
+	     { imm12__h151998,
 	       8'd19,
 	       SEL_ARR_IF_NOT_f22f3_empty_33_812_AND_NOT_SEL__ETC___d4156[11:7],
 	       7'b0000011 } ;
-  assign instr__h152164 =
+  assign instr__h152152 =
 	     { 3'd0,
 	       SEL_ARR_IF_NOT_f22f3_empty_33_812_AND_NOT_SEL__ETC___d4156[9:7],
 	       SEL_ARR_IF_NOT_f22f3_empty_33_812_AND_NOT_SEL__ETC___d4156[12],
 	       SEL_ARR_IF_NOT_f22f3_empty_33_812_AND_NOT_SEL__ETC___d4156[6:2],
 	       8'd19,
-	       offset_BITS_4_TO_0___h152645,
+	       offset_BITS_4_TO_0___h152633,
 	       7'b0100011 } ;
-  assign instr__h152365 =
-	     { imm12__h152366,
-	       rs1__h147289,
+  assign instr__h152353 =
+	     { imm12__h152354,
+	       rs1__h147277,
 	       3'b011,
-	       rd__h147290,
+	       rd__h147278,
 	       7'b0000011 } ;
-  assign instr__h152518 =
+  assign instr__h152506 =
 	     { 4'd0,
 	       SEL_ARR_IF_NOT_f22f3_empty_33_812_AND_NOT_SEL__ETC___d4156[6:5],
 	       SEL_ARR_IF_NOT_f22f3_empty_33_812_AND_NOT_SEL__ETC___d4156[12],
-	       rd__h147290,
-	       rs1__h147289,
+	       rd__h147278,
+	       rs1__h147277,
 	       3'b011,
-	       offset_BITS_4_TO_0___h152645,
+	       offset_BITS_4_TO_0___h152633,
 	       7'b0100011 } ;
-  assign instr__h153563 =
-	     { imm12__h152010,
+  assign instr__h152710 =
+	     { imm12__h146935,
+	       8'd18,
+	       SEL_ARR_IF_NOT_f22f3_empty_33_812_AND_NOT_SEL__ETC___d4156[11:7],
+	       7'b0000111 } ;
+  assign instr__h153524 =
+	     { imm12__h151998,
 	       8'd19,
 	       SEL_ARR_IF_NOT_f22f3_empty_33_812_AND_NOT_SEL__ETC___d4156[11:7],
 	       7'b0000111 } ;
-  assign instr__h153718 =
+  assign instr__h153700 =
 	     { 3'd0,
 	       SEL_ARR_IF_NOT_f22f3_empty_33_812_AND_NOT_SEL__ETC___d4156[9:7],
 	       SEL_ARR_IF_NOT_f22f3_empty_33_812_AND_NOT_SEL__ETC___d4156[12],
 	       SEL_ARR_IF_NOT_f22f3_empty_33_812_AND_NOT_SEL__ETC___d4156[6:2],
 	       8'd19,
-	       offset_BITS_4_TO_0___h152645,
+	       offset_BITS_4_TO_0___h152633,
 	       7'b0100111 } ;
-  assign instr__h153919 =
-	     { imm12__h152366,
-	       rs1__h147289,
+  assign instr__h153901 =
+	     { imm12__h152354,
+	       rs1__h147277,
 	       3'b011,
-	       rd__h147290,
+	       rd__h147278,
 	       7'b0000111 } ;
-  assign instr__h154072 =
+  assign instr__h154054 =
 	     { 4'd0,
 	       SEL_ARR_IF_NOT_f22f3_empty_33_812_AND_NOT_SEL__ETC___d4156[6:5],
 	       SEL_ARR_IF_NOT_f22f3_empty_33_812_AND_NOT_SEL__ETC___d4156[12],
-	       rd__h147290,
-	       rs1__h147289,
+	       rd__h147278,
+	       rs1__h147277,
 	       3'b011,
-	       offset_BITS_4_TO_0___h152645,
+	       offset_BITS_4_TO_0___h152633,
 	       7'b0100111 } ;
-  assign instr__h162964 =
-	     { imm12__h162965,
+  assign instr__h162946 =
+	     { imm12__h162947,
 	       8'd18,
 	       SEL_ARR_IF_NOT_f22f3_empty_33_812_AND_NOT_SEL__ETC___d4167[11:7],
 	       7'b0000011 } ;
-  assign instr__h163111 =
+  assign instr__h163093 =
 	     { 4'd0,
 	       SEL_ARR_IF_NOT_f22f3_empty_33_812_AND_NOT_SEL__ETC___d4167[8:7],
 	       SEL_ARR_IF_NOT_f22f3_empty_33_812_AND_NOT_SEL__ETC___d4167[12],
 	       SEL_ARR_IF_NOT_f22f3_empty_33_812_AND_NOT_SEL__ETC___d4167[6:2],
 	       8'd18,
-	       offset_BITS_4_TO_0___h163237,
+	       offset_BITS_4_TO_0___h163219,
 	       7'b0100011 } ;
-  assign instr__h163305 =
-	     { imm12__h163306,
-	       rs1__h163307,
+  assign instr__h163287 =
+	     { imm12__h163288,
+	       rs1__h163289,
 	       3'b010,
-	       rd__h163308,
+	       rd__h163290,
 	       7'b0000011 } ;
-  assign instr__h163502 =
+  assign instr__h163484 =
 	     { 5'd0,
 	       SEL_ARR_IF_NOT_f22f3_empty_33_812_AND_NOT_SEL__ETC___d4167[5],
 	       SEL_ARR_IF_NOT_f22f3_empty_33_812_AND_NOT_SEL__ETC___d4167[12],
-	       rd__h163308,
-	       rs1__h163307,
+	       rd__h163290,
+	       rs1__h163289,
 	       3'b010,
-	       offset_BITS_4_TO_0___h163672,
+	       offset_BITS_4_TO_0___h163654,
 	       7'b0100011 } ;
-  assign instr__h163732 =
-	     { SEXT_SEL_ARR_IF_NOT_f22f3_empty_33_812_AND_NOT_ETC___d4962[20],
-	       SEXT_SEL_ARR_IF_NOT_f22f3_empty_33_812_AND_NOT_ETC___d4962[10:1],
-	       SEXT_SEL_ARR_IF_NOT_f22f3_empty_33_812_AND_NOT_ETC___d4962[11],
-	       SEXT_SEL_ARR_IF_NOT_f22f3_empty_33_812_AND_NOT_ETC___d4962[19:12],
+  assign instr__h163714 =
+	     { SEXT_SEL_ARR_IF_NOT_f22f3_empty_33_812_AND_NOT_ETC___d4968[20],
+	       SEXT_SEL_ARR_IF_NOT_f22f3_empty_33_812_AND_NOT_ETC___d4968[10:1],
+	       SEXT_SEL_ARR_IF_NOT_f22f3_empty_33_812_AND_NOT_ETC___d4968[11],
+	       SEXT_SEL_ARR_IF_NOT_f22f3_empty_33_812_AND_NOT_ETC___d4968[19:12],
 	       12'd111 } ;
-  assign instr__h164186 =
+  assign instr__h164168 =
 	     { 12'd0,
 	       SEL_ARR_IF_NOT_f22f3_empty_33_812_AND_NOT_SEL__ETC___d4167[11:7],
 	       15'd103 } ;
-  assign instr__h164304 =
+  assign instr__h164286 =
 	     { 12'd0,
 	       SEL_ARR_IF_NOT_f22f3_empty_33_812_AND_NOT_SEL__ETC___d4167[11:7],
 	       15'd231 } ;
-  assign instr__h164369 =
-	     { SEXT_SEL_ARR_IF_NOT_f22f3_empty_33_812_AND_NOT_ETC___d4987[12],
-	       SEXT_SEL_ARR_IF_NOT_f22f3_empty_33_812_AND_NOT_ETC___d4987[10:5],
+  assign instr__h164351 =
+	     { SEXT_SEL_ARR_IF_NOT_f22f3_empty_33_812_AND_NOT_ETC___d4993[12],
+	       SEXT_SEL_ARR_IF_NOT_f22f3_empty_33_812_AND_NOT_ETC___d4993[10:5],
 	       5'd0,
-	       rs1__h163307,
+	       rs1__h163289,
 	       3'b0,
-	       SEXT_SEL_ARR_IF_NOT_f22f3_empty_33_812_AND_NOT_ETC___d4987[4:1],
-	       SEXT_SEL_ARR_IF_NOT_f22f3_empty_33_812_AND_NOT_ETC___d4987[11],
+	       SEXT_SEL_ARR_IF_NOT_f22f3_empty_33_812_AND_NOT_ETC___d4993[4:1],
+	       SEXT_SEL_ARR_IF_NOT_f22f3_empty_33_812_AND_NOT_ETC___d4993[11],
 	       7'b1100011 } ;
-  assign instr__h164688 =
-	     { SEXT_SEL_ARR_IF_NOT_f22f3_empty_33_812_AND_NOT_ETC___d4987[12],
-	       SEXT_SEL_ARR_IF_NOT_f22f3_empty_33_812_AND_NOT_ETC___d4987[10:5],
+  assign instr__h164670 =
+	     { SEXT_SEL_ARR_IF_NOT_f22f3_empty_33_812_AND_NOT_ETC___d4993[12],
+	       SEXT_SEL_ARR_IF_NOT_f22f3_empty_33_812_AND_NOT_ETC___d4993[10:5],
 	       5'd0,
-	       rs1__h163307,
+	       rs1__h163289,
 	       3'b001,
-	       SEXT_SEL_ARR_IF_NOT_f22f3_empty_33_812_AND_NOT_ETC___d4987[4:1],
-	       SEXT_SEL_ARR_IF_NOT_f22f3_empty_33_812_AND_NOT_ETC___d4987[11],
+	       SEXT_SEL_ARR_IF_NOT_f22f3_empty_33_812_AND_NOT_ETC___d4993[4:1],
+	       SEXT_SEL_ARR_IF_NOT_f22f3_empty_33_812_AND_NOT_ETC___d4993[11],
 	       7'b1100011 } ;
-  assign instr__h165029 =
-	     { imm12__h164952,
+  assign instr__h165011 =
+	     { imm12__h164934,
 	       8'd0,
 	       SEL_ARR_IF_NOT_f22f3_empty_33_812_AND_NOT_SEL__ETC___d4167[11:7],
 	       7'b0010011 } ;
-  assign instr__h165218 =
-	     { imm20__h165083,
+  assign instr__h165200 =
+	     { imm20__h165065,
 	       SEL_ARR_IF_NOT_f22f3_empty_33_812_AND_NOT_SEL__ETC___d4167[11:7],
 	       7'b0110111 } ;
-  assign instr__h165350 =
-	     { imm12__h164952,
+  assign instr__h165332 =
+	     { imm12__h164934,
 	       SEL_ARR_IF_NOT_f22f3_empty_33_812_AND_NOT_SEL__ETC___d4167[11:7],
 	       3'b0,
 	       SEL_ARR_IF_NOT_f22f3_empty_33_812_AND_NOT_SEL__ETC___d4167[11:7],
 	       7'b0010011 } ;
-  assign instr__h165581 =
-	     { imm12__h164952,
+  assign instr__h165563 =
+	     { imm12__h164934,
 	       SEL_ARR_IF_NOT_f22f3_empty_33_812_AND_NOT_SEL__ETC___d4167[11:7],
 	       3'b0,
 	       SEL_ARR_IF_NOT_f22f3_empty_33_812_AND_NOT_SEL__ETC___d4167[11:7],
 	       7'b0011011 } ;
-  assign instr__h165841 =
-	     { imm12__h165636,
+  assign instr__h165823 =
+	     { imm12__h165618,
 	       SEL_ARR_IF_NOT_f22f3_empty_33_812_AND_NOT_SEL__ETC___d4167[11:7],
 	       3'b0,
 	       SEL_ARR_IF_NOT_f22f3_empty_33_812_AND_NOT_SEL__ETC___d4167[11:7],
 	       7'b0010011 } ;
-  assign instr__h166014 = { imm12__h165854, 8'd16, rd__h163308, 7'b0010011 } ;
-  assign instr__h166185 =
-	     { imm12__h166051,
+  assign instr__h165996 = { imm12__h165836, 8'd16, rd__h163290, 7'b0010011 } ;
+  assign instr__h166167 =
+	     { imm12__h166033,
 	       SEL_ARR_IF_NOT_f22f3_empty_33_812_AND_NOT_SEL__ETC___d4167[11:7],
 	       3'b001,
 	       SEL_ARR_IF_NOT_f22f3_empty_33_812_AND_NOT_SEL__ETC___d4167[11:7],
 	       7'b0010011 } ;
-  assign instr__h166375 =
-	     { imm12__h166051,
-	       rs1__h163307,
+  assign instr__h166357 =
+	     { imm12__h166033,
+	       rs1__h163289,
 	       3'b101,
-	       rs1__h163307,
+	       rs1__h163289,
 	       7'b0010011 } ;
-  assign instr__h166565 =
-	     { imm12__h166391,
-	       rs1__h163307,
+  assign instr__h166547 =
+	     { imm12__h166373,
+	       rs1__h163289,
 	       3'b101,
-	       rs1__h163307,
+	       rs1__h163289,
 	       7'b0010011 } ;
-  assign instr__h166683 =
-	     { imm12__h164952,
-	       rs1__h163307,
+  assign instr__h166665 =
+	     { imm12__h164934,
+	       rs1__h163289,
 	       3'b111,
-	       rs1__h163307,
+	       rs1__h163289,
 	       7'b0010011 } ;
-  assign instr__h166864 =
+  assign instr__h166846 =
 	     { 7'b0,
 	       SEL_ARR_IF_NOT_f22f3_empty_33_812_AND_NOT_SEL__ETC___d4167[6:2],
 	       8'd0,
 	       SEL_ARR_IF_NOT_f22f3_empty_33_812_AND_NOT_SEL__ETC___d4167[11:7],
 	       7'b0110011 } ;
-  assign instr__h166985 =
+  assign instr__h166967 =
 	     { 7'b0,
 	       SEL_ARR_IF_NOT_f22f3_empty_33_812_AND_NOT_SEL__ETC___d4167[6:2],
 	       SEL_ARR_IF_NOT_f22f3_empty_33_812_AND_NOT_SEL__ETC___d4167[11:7],
 	       3'b0,
 	       SEL_ARR_IF_NOT_f22f3_empty_33_812_AND_NOT_SEL__ETC___d4167[11:7],
 	       7'b0110011 } ;
-  assign instr__h167081 =
+  assign instr__h167063 =
 	     { 7'b0,
-	       rd__h163308,
-	       rs1__h163307,
+	       rd__h163290,
+	       rs1__h163289,
 	       3'b111,
-	       rs1__h163307,
+	       rs1__h163289,
 	       7'b0110011 } ;
-  assign instr__h167218 =
+  assign instr__h167200 =
 	     { 7'b0,
-	       rd__h163308,
-	       rs1__h163307,
+	       rd__h163290,
+	       rs1__h163289,
 	       3'b110,
-	       rs1__h163307,
+	       rs1__h163289,
 	       7'b0110011 } ;
-  assign instr__h167355 =
+  assign instr__h167337 =
 	     { 7'b0,
-	       rd__h163308,
-	       rs1__h163307,
+	       rd__h163290,
+	       rs1__h163289,
 	       3'b100,
-	       rs1__h163307,
+	       rs1__h163289,
 	       7'b0110011 } ;
-  assign instr__h167492 =
+  assign instr__h167474 =
 	     { 7'b0100000,
-	       rd__h163308,
-	       rs1__h163307,
+	       rd__h163290,
+	       rs1__h163289,
 	       3'b0,
-	       rs1__h163307,
+	       rs1__h163289,
 	       7'b0110011 } ;
-  assign instr__h167631 =
+  assign instr__h167613 =
 	     { 7'b0,
-	       rd__h163308,
-	       rs1__h163307,
+	       rd__h163290,
+	       rs1__h163289,
 	       3'b0,
-	       rs1__h163307,
+	       rs1__h163289,
 	       7'b0111011 } ;
-  assign instr__h167770 =
+  assign instr__h167752 =
 	     { 7'b0100000,
-	       rd__h163308,
-	       rs1__h163307,
+	       rd__h163290,
+	       rs1__h163289,
 	       3'b0,
-	       rs1__h163307,
+	       rs1__h163289,
 	       7'b0111011 } ;
-  assign instr__h167930 =
+  assign instr__h167912 =
 	     { 12'b000000000001,
 	       SEL_ARR_IF_NOT_f22f3_empty_33_812_AND_NOT_SEL__ETC___d4167[11:7],
 	       3'b0,
 	       SEL_ARR_IF_NOT_f22f3_empty_33_812_AND_NOT_SEL__ETC___d4167[11:7],
 	       7'b1110011 } ;
-  assign instr__h168027 =
-	     { imm12__h168028,
+  assign instr__h168009 =
+	     { imm12__h168010,
 	       8'd19,
 	       SEL_ARR_IF_NOT_f22f3_empty_33_812_AND_NOT_SEL__ETC___d4167[11:7],
 	       7'b0000011 } ;
-  assign instr__h168182 =
+  assign instr__h168164 =
 	     { 3'd0,
 	       SEL_ARR_IF_NOT_f22f3_empty_33_812_AND_NOT_SEL__ETC___d4167[9:7],
 	       SEL_ARR_IF_NOT_f22f3_empty_33_812_AND_NOT_SEL__ETC___d4167[12],
 	       SEL_ARR_IF_NOT_f22f3_empty_33_812_AND_NOT_SEL__ETC___d4167[6:2],
 	       8'd19,
-	       offset_BITS_4_TO_0___h168663,
+	       offset_BITS_4_TO_0___h168645,
 	       7'b0100011 } ;
-  assign instr__h168383 =
-	     { imm12__h168384,
-	       rs1__h163307,
+  assign instr__h168365 =
+	     { imm12__h168366,
+	       rs1__h163289,
 	       3'b011,
-	       rd__h163308,
+	       rd__h163290,
 	       7'b0000011 } ;
-  assign instr__h168536 =
+  assign instr__h168518 =
 	     { 4'd0,
 	       SEL_ARR_IF_NOT_f22f3_empty_33_812_AND_NOT_SEL__ETC___d4167[6:5],
 	       SEL_ARR_IF_NOT_f22f3_empty_33_812_AND_NOT_SEL__ETC___d4167[12],
-	       rd__h163308,
-	       rs1__h163307,
+	       rd__h163290,
+	       rs1__h163289,
 	       3'b011,
-	       offset_BITS_4_TO_0___h168663,
+	       offset_BITS_4_TO_0___h168645,
 	       7'b0100011 } ;
-  assign instr__h169581 =
-	     { imm12__h168028,
+  assign instr__h168722 =
+	     { imm12__h162947,
+	       8'd18,
+	       SEL_ARR_IF_NOT_f22f3_empty_33_812_AND_NOT_SEL__ETC___d4167[11:7],
+	       7'b0000111 } ;
+  assign instr__h169536 =
+	     { imm12__h168010,
 	       8'd19,
 	       SEL_ARR_IF_NOT_f22f3_empty_33_812_AND_NOT_SEL__ETC___d4167[11:7],
 	       7'b0000111 } ;
-  assign instr__h169736 =
+  assign instr__h169712 =
 	     { 3'd0,
 	       SEL_ARR_IF_NOT_f22f3_empty_33_812_AND_NOT_SEL__ETC___d4167[9:7],
 	       SEL_ARR_IF_NOT_f22f3_empty_33_812_AND_NOT_SEL__ETC___d4167[12],
 	       SEL_ARR_IF_NOT_f22f3_empty_33_812_AND_NOT_SEL__ETC___d4167[6:2],
 	       8'd19,
-	       offset_BITS_4_TO_0___h168663,
+	       offset_BITS_4_TO_0___h168645,
 	       7'b0100111 } ;
-  assign instr__h169937 =
-	     { imm12__h168384,
-	       rs1__h163307,
+  assign instr__h169913 =
+	     { imm12__h168366,
+	       rs1__h163289,
 	       3'b011,
-	       rd__h163308,
+	       rd__h163290,
 	       7'b0000111 } ;
-  assign instr__h170090 =
+  assign instr__h170066 =
 	     { 4'd0,
 	       SEL_ARR_IF_NOT_f22f3_empty_33_812_AND_NOT_SEL__ETC___d4167[6:5],
 	       SEL_ARR_IF_NOT_f22f3_empty_33_812_AND_NOT_SEL__ETC___d4167[12],
-	       rd__h163308,
-	       rs1__h163307,
+	       rd__h163290,
+	       rs1__h163289,
 	       3'b011,
-	       offset_BITS_4_TO_0___h168663,
+	       offset_BITS_4_TO_0___h168645,
 	       7'b0100111 } ;
   assign j__h125924 = (pc_start__h125919[1:0] == 2'b0) ? 3'd0 : 3'd1 ;
   assign j__h128487 = j__h125924 + 3'd2 ;
-  assign j__h137265 =
+  assign j__h137259 =
 	     IF_IF_SEL_ARR_f22f3_data_0_813_BITS_204_TO_141_ETC___d4143 +
 	     3'd2 ;
-  assign j__h145864 =
+  assign j__h145852 =
 	     IF_IF_IF_SEL_ARR_f22f3_data_0_813_BITS_204_TO__ETC___d4154 +
 	     3'd2 ;
-  assign last_x16_pc__h186826 =
-	     in_pc__h183297 +
-	     ((SEL_ARR_instdata_data_0_996_BITS_65_TO_64_997__ETC___d6004 ==
+  assign last_x16_pc__h186786 =
+	     in_pc__h183257 +
+	     ((SEL_ARR_instdata_data_0_008_BITS_65_TO_64_009__ETC___d6016 ==
 	       2'd2) ?
 		64'd2 :
 		64'd0) ;
-  assign last_x16_pc__h193642 =
-	     SEL_ARR_instdata_data_0_996_BITS_259_TO_196_30_ETC___d6304 +
-	     ((SEL_ARR_instdata_data_0_996_BITS_195_TO_194_01_ETC___d6019 ==
+  assign last_x16_pc__h193602 =
+	     SEL_ARR_instdata_data_0_008_BITS_259_TO_196_31_ETC___d6316 +
+	     ((SEL_ARR_instdata_data_0_008_BITS_195_TO_194_02_ETC___d6031 ==
 	       2'd2) ?
 		64'd2 :
 		64'd0) ;
-  assign n__read__h182580 =
+  assign n__read__h182540 =
 	     instdata_deqP_dummy2_0$Q_OUT && instdata_deqP_dummy2_1$Q_OUT &&
 	     instdata_deqP_rl ;
   assign n_inst__h129251 =
 	     IF_SEL_ARR_f22f3_data_0_813_BITS_204_TO_141_90_ETC___d4098 ?
 	       y_avValue_snd_snd_fst__h128703 :
 	       32'd0 ;
-  assign n_inst__h138052 =
+  assign n_inst__h138046 =
 	     IF_IF_SEL_ARR_f22f3_data_0_813_BITS_204_TO_141_ETC___d4144 ?
-	       y_avValue_snd_snd_fst__h137481 :
+	       y_avValue_snd_snd_fst__h137475 :
 	       32'd0 ;
-  assign n_inst__h146694 =
+  assign n_inst__h146682 =
 	     IF_IF_IF_SEL_ARR_f22f3_data_0_813_BITS_204_TO__ETC___d4155 ?
-	       y_avValue_snd_snd_fst__h146080 :
+	       y_avValue_snd_snd_fst__h146068 :
 	       32'd0 ;
-  assign n_inst__h161119 =
+  assign n_inst__h161101 =
 	     IF_IF_IF_IF_SEL_ARR_f22f3_data_0_813_BITS_204__ETC___d4166 ?
-	       y_avValue_snd_snd_fst__h154542 :
+	       y_avValue_snd_snd_fst__h154524 :
 	       32'd0 ;
-  assign n_items__h156605 =
+  assign n_items__h156587 =
 	     { 1'd0, pending_n_items__h124835 } +
 	     (NOT_f22f3_empty_33_812_AND_NOT_SEL_ARR_f22f3_d_ETC___d3844 ?
 		3'd0 :
-		y_avValue_snd_snd_fst__h156636) ;
+		y_avValue_snd_snd_fst__h156618) ;
   assign n_orig_inst__h129250 =
 	     IF_SEL_ARR_f22f3_data_0_813_BITS_204_TO_141_90_ETC___d4098 ?
 	       y_avValue_snd_snd_snd_fst__h128708 :
 	       32'd0 ;
-  assign n_orig_inst__h138051 =
+  assign n_orig_inst__h138045 =
 	     IF_IF_SEL_ARR_f22f3_data_0_813_BITS_204_TO_141_ETC___d4144 ?
-	       y_avValue_snd_snd_snd_fst__h137486 :
+	       y_avValue_snd_snd_snd_fst__h137480 :
 	       32'd0 ;
-  assign n_orig_inst__h146693 =
+  assign n_orig_inst__h146681 =
 	     IF_IF_IF_SEL_ARR_f22f3_data_0_813_BITS_204_TO__ETC___d4155 ?
-	       y_avValue_snd_snd_snd_fst__h146085 :
+	       y_avValue_snd_snd_snd_fst__h146073 :
 	       32'd0 ;
-  assign n_orig_inst__h161118 =
+  assign n_orig_inst__h161100 =
 	     IF_IF_IF_IF_SEL_ARR_f22f3_data_0_813_BITS_204__ETC___d4166 ?
-	       y_avValue_snd_snd_snd_fst__h154547 :
+	       y_avValue_snd_snd_snd_fst__h154529 :
 	       32'd0 ;
   assign n_x16s__h125911 = { x__h125990, 1'd0 } ;
   assign n_x16s__h125921 =
@@ -15716,25 +15752,25 @@ module mkFetchStage(CLK,
 	      _0_CONCAT_SEL_ARR_f22f3_data_0_813_BITS_206_TO__ETC___d4095) ?
 	       n_x16s__h125911 :
 	       _0_CONCAT_SEL_ARR_f22f3_data_0_813_BITS_206_TO__ETC___d4095 ;
-  assign nextPc__h198099 = in_pc__h183297 + 64'd2 ;
+  assign nextPc__h198059 = in_pc__h183257 + 64'd2 ;
   assign next_deqP___1__h12102 = f12f2_deqP + 1'd1 ;
   assign next_deqP___1__h24188 =
 	     (f22f3_deqP == 2'd3) ? 2'd0 : f22f3_deqP + 2'd1 ;
   assign next_deqP___1__h33721 = f32d_deqP + 1'd1 ;
-  assign next_deqP__h182560 =
+  assign next_deqP__h182520 =
 	     !instdata_deqP_dummy2_0$Q_OUT || !instdata_deqP_dummy2_1$Q_OUT ||
 	     !instdata_deqP_rl ;
-  assign next_enqP__h176398 =
+  assign next_enqP__h176374 =
 	     !instdata_enqP_dummy2_0$Q_OUT || !instdata_enqP_dummy2_1$Q_OUT ||
 	     !instdata_enqP_rl ;
   assign next_pc___1__h128488 = pc_start__h125919 + 64'd4 ;
-  assign next_pc___1__h137266 =
+  assign next_pc___1__h137260 =
 	     IF_IF_SEL_ARR_f22f3_data_0_813_BITS_204_TO_141_ETC___d4232 +
 	     64'd4 ;
-  assign next_pc___1__h145865 =
+  assign next_pc___1__h145853 =
 	     IF_IF_IF_SEL_ARR_f22f3_data_0_813_BITS_204_TO__ETC___d4240 +
 	     64'd4 ;
-  assign next_pc___1__h156657 =
+  assign next_pc___1__h156639 =
 	     IF_IF_IF_IF_SEL_ARR_f22f3_data_0_813_BITS_204__ETC___d4248 +
 	     64'd4 ;
   assign nzimm10__h132289 =
@@ -15750,40 +15786,40 @@ module mkFetchStage(CLK,
 	       SEL_ARR_IF_NOT_f22f3_empty_33_812_AND_NOT_SEL__ETC___d4134[5],
 	       SEL_ARR_IF_NOT_f22f3_empty_33_812_AND_NOT_SEL__ETC___d4134[6],
 	       2'b0 } ;
-  assign nzimm10__h140974 =
+  assign nzimm10__h140968 =
 	     { SEL_ARR_IF_NOT_f22f3_empty_33_812_AND_NOT_SEL__ETC___d4145[12],
 	       SEL_ARR_IF_NOT_f22f3_empty_33_812_AND_NOT_SEL__ETC___d4145[4:3],
 	       SEL_ARR_IF_NOT_f22f3_empty_33_812_AND_NOT_SEL__ETC___d4145[5],
 	       SEL_ARR_IF_NOT_f22f3_empty_33_812_AND_NOT_SEL__ETC___d4145[2],
 	       SEL_ARR_IF_NOT_f22f3_empty_33_812_AND_NOT_SEL__ETC___d4145[6],
 	       4'b0 } ;
-  assign nzimm10__h141192 =
+  assign nzimm10__h141186 =
 	     { SEL_ARR_IF_NOT_f22f3_empty_33_812_AND_NOT_SEL__ETC___d4145[10:7],
 	       SEL_ARR_IF_NOT_f22f3_empty_33_812_AND_NOT_SEL__ETC___d4145[12:11],
 	       SEL_ARR_IF_NOT_f22f3_empty_33_812_AND_NOT_SEL__ETC___d4145[5],
 	       SEL_ARR_IF_NOT_f22f3_empty_33_812_AND_NOT_SEL__ETC___d4145[6],
 	       2'b0 } ;
-  assign nzimm10__h149616 =
+  assign nzimm10__h149604 =
 	     { SEL_ARR_IF_NOT_f22f3_empty_33_812_AND_NOT_SEL__ETC___d4156[12],
 	       SEL_ARR_IF_NOT_f22f3_empty_33_812_AND_NOT_SEL__ETC___d4156[4:3],
 	       SEL_ARR_IF_NOT_f22f3_empty_33_812_AND_NOT_SEL__ETC___d4156[5],
 	       SEL_ARR_IF_NOT_f22f3_empty_33_812_AND_NOT_SEL__ETC___d4156[2],
 	       SEL_ARR_IF_NOT_f22f3_empty_33_812_AND_NOT_SEL__ETC___d4156[6],
 	       4'b0 } ;
-  assign nzimm10__h149834 =
+  assign nzimm10__h149822 =
 	     { SEL_ARR_IF_NOT_f22f3_empty_33_812_AND_NOT_SEL__ETC___d4156[10:7],
 	       SEL_ARR_IF_NOT_f22f3_empty_33_812_AND_NOT_SEL__ETC___d4156[12:11],
 	       SEL_ARR_IF_NOT_f22f3_empty_33_812_AND_NOT_SEL__ETC___d4156[5],
 	       SEL_ARR_IF_NOT_f22f3_empty_33_812_AND_NOT_SEL__ETC___d4156[6],
 	       2'b0 } ;
-  assign nzimm10__h165634 =
+  assign nzimm10__h165616 =
 	     { SEL_ARR_IF_NOT_f22f3_empty_33_812_AND_NOT_SEL__ETC___d4167[12],
 	       SEL_ARR_IF_NOT_f22f3_empty_33_812_AND_NOT_SEL__ETC___d4167[4:3],
 	       SEL_ARR_IF_NOT_f22f3_empty_33_812_AND_NOT_SEL__ETC___d4167[5],
 	       SEL_ARR_IF_NOT_f22f3_empty_33_812_AND_NOT_SEL__ETC___d4167[2],
 	       SEL_ARR_IF_NOT_f22f3_empty_33_812_AND_NOT_SEL__ETC___d4167[6],
 	       4'b0 } ;
-  assign nzimm10__h165852 =
+  assign nzimm10__h165834 =
 	     { SEL_ARR_IF_NOT_f22f3_empty_33_812_AND_NOT_SEL__ETC___d4167[10:7],
 	       SEL_ARR_IF_NOT_f22f3_empty_33_812_AND_NOT_SEL__ETC___d4167[12:11],
 	       SEL_ARR_IF_NOT_f22f3_empty_33_812_AND_NOT_SEL__ETC___d4167[5],
@@ -15799,34 +15835,34 @@ module mkFetchStage(CLK,
   assign offset_BITS_4_TO_0___h135318 =
 	     { SEL_ARR_IF_NOT_f22f3_empty_33_812_AND_NOT_SEL__ETC___d4134[11:10],
 	       3'b0 } ;
-  assign offset_BITS_4_TO_0___h138577 =
+  assign offset_BITS_4_TO_0___h138571 =
 	     { SEL_ARR_IF_NOT_f22f3_empty_33_812_AND_NOT_SEL__ETC___d4145[11:9],
 	       2'b0 } ;
-  assign offset_BITS_4_TO_0___h139012 =
+  assign offset_BITS_4_TO_0___h139006 =
 	     { SEL_ARR_IF_NOT_f22f3_empty_33_812_AND_NOT_SEL__ETC___d4145[11:10],
 	       SEL_ARR_IF_NOT_f22f3_empty_33_812_AND_NOT_SEL__ETC___d4145[6],
 	       2'b0 } ;
-  assign offset_BITS_4_TO_0___h144003 =
+  assign offset_BITS_4_TO_0___h143997 =
 	     { SEL_ARR_IF_NOT_f22f3_empty_33_812_AND_NOT_SEL__ETC___d4145[11:10],
 	       3'b0 } ;
-  assign offset_BITS_4_TO_0___h147219 =
+  assign offset_BITS_4_TO_0___h147207 =
 	     { SEL_ARR_IF_NOT_f22f3_empty_33_812_AND_NOT_SEL__ETC___d4156[11:9],
 	       2'b0 } ;
-  assign offset_BITS_4_TO_0___h147654 =
+  assign offset_BITS_4_TO_0___h147642 =
 	     { SEL_ARR_IF_NOT_f22f3_empty_33_812_AND_NOT_SEL__ETC___d4156[11:10],
 	       SEL_ARR_IF_NOT_f22f3_empty_33_812_AND_NOT_SEL__ETC___d4156[6],
 	       2'b0 } ;
-  assign offset_BITS_4_TO_0___h152645 =
+  assign offset_BITS_4_TO_0___h152633 =
 	     { SEL_ARR_IF_NOT_f22f3_empty_33_812_AND_NOT_SEL__ETC___d4156[11:10],
 	       3'b0 } ;
-  assign offset_BITS_4_TO_0___h163237 =
+  assign offset_BITS_4_TO_0___h163219 =
 	     { SEL_ARR_IF_NOT_f22f3_empty_33_812_AND_NOT_SEL__ETC___d4167[11:9],
 	       2'b0 } ;
-  assign offset_BITS_4_TO_0___h163672 =
+  assign offset_BITS_4_TO_0___h163654 =
 	     { SEL_ARR_IF_NOT_f22f3_empty_33_812_AND_NOT_SEL__ETC___d4167[11:10],
 	       SEL_ARR_IF_NOT_f22f3_empty_33_812_AND_NOT_SEL__ETC___d4167[6],
 	       2'b0 } ;
-  assign offset_BITS_4_TO_0___h168663 =
+  assign offset_BITS_4_TO_0___h168645 =
 	     { SEL_ARR_IF_NOT_f22f3_empty_33_812_AND_NOT_SEL__ETC___d4167[11:10],
 	       3'b0 } ;
   assign offset__h129460 =
@@ -15865,17 +15901,17 @@ module mkFetchStage(CLK,
 	     { SEL_ARR_IF_NOT_f22f3_empty_33_812_AND_NOT_SEL__ETC___d4134[6:5],
 	       SEL_ARR_IF_NOT_f22f3_empty_33_812_AND_NOT_SEL__ETC___d4134[12:10],
 	       3'b0 } ;
-  assign offset__h138213 =
+  assign offset__h138207 =
 	     { SEL_ARR_IF_NOT_f22f3_empty_33_812_AND_NOT_SEL__ETC___d4145[3:2],
 	       SEL_ARR_IF_NOT_f22f3_empty_33_812_AND_NOT_SEL__ETC___d4145[12],
 	       SEL_ARR_IF_NOT_f22f3_empty_33_812_AND_NOT_SEL__ETC___d4145[6:4],
 	       2'b0 } ;
-  assign offset__h138588 =
+  assign offset__h138582 =
 	     { SEL_ARR_IF_NOT_f22f3_empty_33_812_AND_NOT_SEL__ETC___d4145[5],
 	       SEL_ARR_IF_NOT_f22f3_empty_33_812_AND_NOT_SEL__ETC___d4145[12:10],
 	       SEL_ARR_IF_NOT_f22f3_empty_33_812_AND_NOT_SEL__ETC___d4145[6],
 	       2'b0 } ;
-  assign offset__h139020 =
+  assign offset__h139014 =
 	     { SEL_ARR_IF_NOT_f22f3_empty_33_812_AND_NOT_SEL__ETC___d4145[12],
 	       SEL_ARR_IF_NOT_f22f3_empty_33_812_AND_NOT_SEL__ETC___d4145[8],
 	       SEL_ARR_IF_NOT_f22f3_empty_33_812_AND_NOT_SEL__ETC___d4145[10:9],
@@ -15885,33 +15921,33 @@ module mkFetchStage(CLK,
 	       SEL_ARR_IF_NOT_f22f3_empty_33_812_AND_NOT_SEL__ETC___d4145[11],
 	       SEL_ARR_IF_NOT_f22f3_empty_33_812_AND_NOT_SEL__ETC___d4145[5:3],
 	       1'b0 } ;
-  assign offset__h139653 =
+  assign offset__h139647 =
 	     { SEL_ARR_IF_NOT_f22f3_empty_33_812_AND_NOT_SEL__ETC___d4145[12],
 	       SEL_ARR_IF_NOT_f22f3_empty_33_812_AND_NOT_SEL__ETC___d4145[6:5],
 	       SEL_ARR_IF_NOT_f22f3_empty_33_812_AND_NOT_SEL__ETC___d4145[2],
 	       SEL_ARR_IF_NOT_f22f3_empty_33_812_AND_NOT_SEL__ETC___d4145[11:10],
 	       SEL_ARR_IF_NOT_f22f3_empty_33_812_AND_NOT_SEL__ETC___d4145[4:3],
 	       1'b0 } ;
-  assign offset__h143281 =
+  assign offset__h143275 =
 	     { SEL_ARR_IF_NOT_f22f3_empty_33_812_AND_NOT_SEL__ETC___d4145[4:2],
 	       SEL_ARR_IF_NOT_f22f3_empty_33_812_AND_NOT_SEL__ETC___d4145[12],
 	       SEL_ARR_IF_NOT_f22f3_empty_33_812_AND_NOT_SEL__ETC___d4145[6:5],
 	       3'b0 } ;
-  assign offset__h143658 =
+  assign offset__h143652 =
 	     { SEL_ARR_IF_NOT_f22f3_empty_33_812_AND_NOT_SEL__ETC___d4145[6:5],
 	       SEL_ARR_IF_NOT_f22f3_empty_33_812_AND_NOT_SEL__ETC___d4145[12:10],
 	       3'b0 } ;
-  assign offset__h146855 =
+  assign offset__h146843 =
 	     { SEL_ARR_IF_NOT_f22f3_empty_33_812_AND_NOT_SEL__ETC___d4156[3:2],
 	       SEL_ARR_IF_NOT_f22f3_empty_33_812_AND_NOT_SEL__ETC___d4156[12],
 	       SEL_ARR_IF_NOT_f22f3_empty_33_812_AND_NOT_SEL__ETC___d4156[6:4],
 	       2'b0 } ;
-  assign offset__h147230 =
+  assign offset__h147218 =
 	     { SEL_ARR_IF_NOT_f22f3_empty_33_812_AND_NOT_SEL__ETC___d4156[5],
 	       SEL_ARR_IF_NOT_f22f3_empty_33_812_AND_NOT_SEL__ETC___d4156[12:10],
 	       SEL_ARR_IF_NOT_f22f3_empty_33_812_AND_NOT_SEL__ETC___d4156[6],
 	       2'b0 } ;
-  assign offset__h147662 =
+  assign offset__h147650 =
 	     { SEL_ARR_IF_NOT_f22f3_empty_33_812_AND_NOT_SEL__ETC___d4156[12],
 	       SEL_ARR_IF_NOT_f22f3_empty_33_812_AND_NOT_SEL__ETC___d4156[8],
 	       SEL_ARR_IF_NOT_f22f3_empty_33_812_AND_NOT_SEL__ETC___d4156[10:9],
@@ -15921,33 +15957,33 @@ module mkFetchStage(CLK,
 	       SEL_ARR_IF_NOT_f22f3_empty_33_812_AND_NOT_SEL__ETC___d4156[11],
 	       SEL_ARR_IF_NOT_f22f3_empty_33_812_AND_NOT_SEL__ETC___d4156[5:3],
 	       1'b0 } ;
-  assign offset__h148295 =
+  assign offset__h148283 =
 	     { SEL_ARR_IF_NOT_f22f3_empty_33_812_AND_NOT_SEL__ETC___d4156[12],
 	       SEL_ARR_IF_NOT_f22f3_empty_33_812_AND_NOT_SEL__ETC___d4156[6:5],
 	       SEL_ARR_IF_NOT_f22f3_empty_33_812_AND_NOT_SEL__ETC___d4156[2],
 	       SEL_ARR_IF_NOT_f22f3_empty_33_812_AND_NOT_SEL__ETC___d4156[11:10],
 	       SEL_ARR_IF_NOT_f22f3_empty_33_812_AND_NOT_SEL__ETC___d4156[4:3],
 	       1'b0 } ;
-  assign offset__h151923 =
+  assign offset__h151911 =
 	     { SEL_ARR_IF_NOT_f22f3_empty_33_812_AND_NOT_SEL__ETC___d4156[4:2],
 	       SEL_ARR_IF_NOT_f22f3_empty_33_812_AND_NOT_SEL__ETC___d4156[12],
 	       SEL_ARR_IF_NOT_f22f3_empty_33_812_AND_NOT_SEL__ETC___d4156[6:5],
 	       3'b0 } ;
-  assign offset__h152300 =
+  assign offset__h152288 =
 	     { SEL_ARR_IF_NOT_f22f3_empty_33_812_AND_NOT_SEL__ETC___d4156[6:5],
 	       SEL_ARR_IF_NOT_f22f3_empty_33_812_AND_NOT_SEL__ETC___d4156[12:10],
 	       3'b0 } ;
-  assign offset__h162873 =
+  assign offset__h162855 =
 	     { SEL_ARR_IF_NOT_f22f3_empty_33_812_AND_NOT_SEL__ETC___d4167[3:2],
 	       SEL_ARR_IF_NOT_f22f3_empty_33_812_AND_NOT_SEL__ETC___d4167[12],
 	       SEL_ARR_IF_NOT_f22f3_empty_33_812_AND_NOT_SEL__ETC___d4167[6:4],
 	       2'b0 } ;
-  assign offset__h163248 =
+  assign offset__h163230 =
 	     { SEL_ARR_IF_NOT_f22f3_empty_33_812_AND_NOT_SEL__ETC___d4167[5],
 	       SEL_ARR_IF_NOT_f22f3_empty_33_812_AND_NOT_SEL__ETC___d4167[12:10],
 	       SEL_ARR_IF_NOT_f22f3_empty_33_812_AND_NOT_SEL__ETC___d4167[6],
 	       2'b0 } ;
-  assign offset__h163680 =
+  assign offset__h163662 =
 	     { SEL_ARR_IF_NOT_f22f3_empty_33_812_AND_NOT_SEL__ETC___d4167[12],
 	       SEL_ARR_IF_NOT_f22f3_empty_33_812_AND_NOT_SEL__ETC___d4167[8],
 	       SEL_ARR_IF_NOT_f22f3_empty_33_812_AND_NOT_SEL__ETC___d4167[10:9],
@@ -15957,70 +15993,70 @@ module mkFetchStage(CLK,
 	       SEL_ARR_IF_NOT_f22f3_empty_33_812_AND_NOT_SEL__ETC___d4167[11],
 	       SEL_ARR_IF_NOT_f22f3_empty_33_812_AND_NOT_SEL__ETC___d4167[5:3],
 	       1'b0 } ;
-  assign offset__h164313 =
+  assign offset__h164295 =
 	     { SEL_ARR_IF_NOT_f22f3_empty_33_812_AND_NOT_SEL__ETC___d4167[12],
 	       SEL_ARR_IF_NOT_f22f3_empty_33_812_AND_NOT_SEL__ETC___d4167[6:5],
 	       SEL_ARR_IF_NOT_f22f3_empty_33_812_AND_NOT_SEL__ETC___d4167[2],
 	       SEL_ARR_IF_NOT_f22f3_empty_33_812_AND_NOT_SEL__ETC___d4167[11:10],
 	       SEL_ARR_IF_NOT_f22f3_empty_33_812_AND_NOT_SEL__ETC___d4167[4:3],
 	       1'b0 } ;
-  assign offset__h167941 =
+  assign offset__h167923 =
 	     { SEL_ARR_IF_NOT_f22f3_empty_33_812_AND_NOT_SEL__ETC___d4167[4:2],
 	       SEL_ARR_IF_NOT_f22f3_empty_33_812_AND_NOT_SEL__ETC___d4167[12],
 	       SEL_ARR_IF_NOT_f22f3_empty_33_812_AND_NOT_SEL__ETC___d4167[6:5],
 	       3'b0 } ;
-  assign offset__h168318 =
+  assign offset__h168300 =
 	     { SEL_ARR_IF_NOT_f22f3_empty_33_812_AND_NOT_SEL__ETC___d4167[6:5],
 	       SEL_ARR_IF_NOT_f22f3_empty_33_812_AND_NOT_SEL__ETC___d4167[12:10],
 	       3'b0 } ;
   assign orig_inst___1__h128486 =
 	     { CASE_y_avValue_fst28332_0_IF_NOT_f22f3_empty_3_ETC__q247,
 	       SEL_ARR_IF_NOT_f22f3_empty_33_812_AND_NOT_SEL__ETC___d4134 } ;
-  assign orig_inst___1__h137264 =
-	     { CASE_y_avValue_fst37123_0_IF_NOT_f22f3_empty_3_ETC__q248,
+  assign orig_inst___1__h137258 =
+	     { CASE_y_avValue_fst37117_0_IF_NOT_f22f3_empty_3_ETC__q248,
 	       SEL_ARR_IF_NOT_f22f3_empty_33_812_AND_NOT_SEL__ETC___d4145 } ;
-  assign orig_inst___1__h145863 =
-	     { CASE_y_avValue_fst45722_0_IF_NOT_f22f3_empty_3_ETC__q249,
+  assign orig_inst___1__h145851 =
+	     { CASE_y_avValue_fst45710_0_IF_NOT_f22f3_empty_3_ETC__q249,
 	       SEL_ARR_IF_NOT_f22f3_empty_33_812_AND_NOT_SEL__ETC___d4156 } ;
-  assign orig_inst___1__h156655 =
+  assign orig_inst___1__h156637 =
 	     { CASE_IF_IF_IF_IF_SEL_ARR_f22f3_data_0_813_BITS_ETC__q250,
 	       SEL_ARR_IF_NOT_f22f3_empty_33_812_AND_NOT_SEL__ETC___d4167 } ;
-  assign orig_inst__h160434 =
+  assign orig_inst__h160416 =
 	     (f22f3_empty_33_OR_SEL_ARR_f22f3_data_0_813_BIT_ETC___d3919 &&
 	      IF_rg_pending_n_items_845_EQ_0_846_THEN_rg_pen_ETC___d3977) ?
-	       n_orig_inst__h138051 :
+	       n_orig_inst__h138045 :
 	       32'd0 ;
-  assign orig_inst__h160438 =
+  assign orig_inst__h160420 =
 	     NOT_f22f3_empty_33_812_AND_NOT_SEL_ARR_f22f3_d_ETC___d3844 ?
 	       32'd0 :
-	       orig_inst__h160434 ;
-  assign orig_inst__h160776 =
+	       orig_inst__h160416 ;
+  assign orig_inst__h160758 =
 	     (f22f3_empty_33_OR_SEL_ARR_f22f3_data_0_813_BIT_ETC___d3919 &&
 	      IF_rg_pending_n_items_845_EQ_0_846_THEN_rg_pen_ETC___d3977) ?
-	       n_orig_inst__h146693 :
+	       n_orig_inst__h146681 :
 	       32'd0 ;
-  assign orig_inst__h160780 =
+  assign orig_inst__h160762 =
 	     NOT_f22f3_empty_33_812_AND_NOT_SEL_ARR_f22f3_d_ETC___d3844 ?
 	       32'd0 :
-	       orig_inst__h160776 ;
-  assign orig_inst__h161122 =
+	       orig_inst__h160758 ;
+  assign orig_inst__h161104 =
 	     (f22f3_empty_33_OR_SEL_ARR_f22f3_data_0_813_BIT_ETC___d3919 &&
 	      IF_rg_pending_n_items_845_EQ_0_846_THEN_rg_pen_ETC___d3977) ?
-	       n_orig_inst__h161118 :
+	       n_orig_inst__h161100 :
 	       32'd0 ;
-  assign orig_inst__h161126 =
+  assign orig_inst__h161108 =
 	     NOT_f22f3_empty_33_812_AND_NOT_SEL_ARR_f22f3_d_ETC___d3844 ?
 	       32'd0 :
-	       orig_inst__h161122 ;
-  assign orig_inst__h170353 =
+	       orig_inst__h161104 ;
+  assign orig_inst__h170329 =
 	     (f22f3_empty_33_OR_SEL_ARR_f22f3_data_0_813_BIT_ETC___d3919 &&
 	      IF_rg_pending_n_items_845_EQ_0_846_THEN_rg_pen_ETC___d3977) ?
 	       n_orig_inst__h129250 :
 	       32'd0 ;
-  assign orig_inst__h170357 =
+  assign orig_inst__h170333 =
 	     NOT_f22f3_empty_33_812_AND_NOT_SEL_ARR_f22f3_d_ETC___d3844 ?
 	       32'd0 :
-	       orig_inst__h170353 ;
+	       orig_inst__h170329 ;
   assign out_fifo_enqueueElement_0_dummy2_1_read__148_A_ETC___d2258 =
 	     out_fifo_enqueueElement_0_dummy2_1$Q_OUT &&
 	     IF_out_fifo_enqueueElement_0_lat_0_whas__06_TH_ETC___d911 &&
@@ -16037,59 +16073,59 @@ module mkFetchStage(CLK,
 	     out_fifo_willDequeue_1_dummy2_1$Q_OUT &&
 	     IF_out_fifo_willDequeue_1_lat_0_whas__143_THEN_ETC___d2146 &&
 	     CASE_x8412_0_NOT_out_fifo_internalFifos_0EMPT_ETC__q233 ;
-  assign pc__h160432 =
+  assign pc__h160414 =
 	     (f22f3_empty_33_OR_SEL_ARR_f22f3_data_0_813_BIT_ETC___d3919 &&
 	      IF_rg_pending_n_items_845_EQ_0_846_THEN_rg_pen_ETC___d3977) ?
 	       IF_IF_SEL_ARR_f22f3_data_0_813_BITS_204_TO_141_ETC___d4232 :
 	       pc_start__h125919 ;
-  assign pc__h160436 =
+  assign pc__h160418 =
 	     NOT_f22f3_empty_33_812_AND_NOT_SEL_ARR_f22f3_d_ETC___d3844 ?
 	       pc_start__h125919 :
-	       pc__h160432 ;
-  assign pc__h160774 =
+	       pc__h160414 ;
+  assign pc__h160756 =
 	     (f22f3_empty_33_OR_SEL_ARR_f22f3_data_0_813_BIT_ETC___d3919 &&
 	      IF_rg_pending_n_items_845_EQ_0_846_THEN_rg_pen_ETC___d3977) ?
 	       IF_IF_IF_SEL_ARR_f22f3_data_0_813_BITS_204_TO__ETC___d4240 :
 	       pc_start__h125919 ;
-  assign pc__h160778 =
+  assign pc__h160760 =
 	     NOT_f22f3_empty_33_812_AND_NOT_SEL_ARR_f22f3_d_ETC___d3844 ?
 	       pc_start__h125919 :
-	       pc__h160774 ;
-  assign pc__h161120 =
+	       pc__h160756 ;
+  assign pc__h161102 =
 	     (f22f3_empty_33_OR_SEL_ARR_f22f3_data_0_813_BIT_ETC___d3919 &&
 	      IF_rg_pending_n_items_845_EQ_0_846_THEN_rg_pen_ETC___d3977) ?
 	       IF_IF_IF_IF_SEL_ARR_f22f3_data_0_813_BITS_204__ETC___d4248 :
 	       pc_start__h125919 ;
-  assign pc__h161124 =
+  assign pc__h161106 =
 	     NOT_f22f3_empty_33_812_AND_NOT_SEL_ARR_f22f3_d_ETC___d3844 ?
 	       pc_start__h125919 :
-	       pc__h161120 ;
-  assign pc__h170351 =
+	       pc__h161102 ;
+  assign pc__h170327 =
 	     (f22f3_empty_33_OR_SEL_ARR_f22f3_data_0_813_BIT_ETC___d3919 &&
 	      IF_rg_pending_n_items_845_EQ_0_846_THEN_rg_pen_ETC___d3977) ?
 	       value__h129239 :
 	       pc_start__h125919 ;
-  assign pc__h170355 =
+  assign pc__h170331 =
 	     NOT_f22f3_empty_33_812_AND_NOT_SEL_ARR_f22f3_d_ETC___d3844 ?
 	       pc_start__h125919 :
-	       pc__h170351 ;
+	       pc__h170327 ;
   assign pending_n_items__h124835 =
 	     (rg_pending_n_items == 2'd0) ?
 	       rg_pending_n_items :
 	       y_avValue_snd__h124826 ;
-  assign pending_spaces__h156607 = 2'd3 - pending_n_items__h124835 ;
-  assign pending_spaces_ext__h156609 = { 1'd0, pending_spaces__h156607 } ;
+  assign pending_spaces__h156589 = 2'd3 - pending_n_items__h124835 ;
+  assign pending_spaces_ext__h156591 = { 1'd0, pending_spaces__h156589 } ;
   assign perfReqQ_enqReq_dummy2_2_read__247_AND_IF_perf_ETC___d3259 =
 	     perfReqQ_enqReq_dummy2_2$Q_OUT &&
 	     IF_perfReqQ_enqReq_lat_1_whas__197_THEN_perfRe_ETC___d3206 ||
 	     (!perfReqQ_deqReq_dummy2_2$Q_OUT ||
 	      !EN_perf_resp && !perfReqQ_deqReq_rl) &&
 	     perfReqQ_full ;
-  assign pred_next_pc__h154494 =
-	     IF_IF_IF_IF_IF_SEL_ARR_f22f3_data_0_813_BITS_2_ETC___d5554 ?
-	       def__h171660 :
-	       SEL_ARR_f22f3_data_0_813_BITS_139_TO_76_561_f2_ETC___d5566 ;
-  assign prev_PC__h121324 = getFetchState_pc__h222980 + 64'd2 ;
+  assign pred_next_pc__h154476 =
+	     IF_IF_IF_IF_IF_SEL_ARR_f22f3_data_0_813_BITS_2_ETC___d5566 ?
+	       def__h171636 :
+	       SEL_ARR_f22f3_data_0_813_BITS_139_TO_76_573_f2_ETC___d5578 ;
+  assign prev_PC__h121324 = getFetchState_pc__h222940 + 64'd2 ;
   assign prev_PC__h121727 =
 	     IF_NOT_IF_pc_reg_dummy2_0_read__283_AND_pc_reg_ETC___d3564 +
 	     64'd2 ;
@@ -16099,13 +16135,13 @@ module mkFetchStage(CLK,
   assign rd__h129960 =
 	     { 2'b01,
 	       SEL_ARR_IF_NOT_f22f3_empty_33_812_AND_NOT_SEL__ETC___d4134[4:2] } ;
-  assign rd__h138648 =
+  assign rd__h138642 =
 	     { 2'b01,
 	       SEL_ARR_IF_NOT_f22f3_empty_33_812_AND_NOT_SEL__ETC___d4145[4:2] } ;
-  assign rd__h147290 =
+  assign rd__h147278 =
 	     { 2'b01,
 	       SEL_ARR_IF_NOT_f22f3_empty_33_812_AND_NOT_SEL__ETC___d4156[4:2] } ;
-  assign rd__h163308 =
+  assign rd__h163290 =
 	     { 2'b01,
 	       SEL_ARR_IF_NOT_f22f3_empty_33_812_AND_NOT_SEL__ETC___d4167[4:2] } ;
   assign rg_pending_f32d_847_BITS_3_TO_0_848_EQ_f_main__ETC___d3849 =
@@ -16123,32 +16159,32 @@ module mkFetchStage(CLK,
   assign rs1__h129959 =
 	     { 2'b01,
 	       SEL_ARR_IF_NOT_f22f3_empty_33_812_AND_NOT_SEL__ETC___d4134[9:7] } ;
-  assign rs1__h138647 =
+  assign rs1__h138641 =
 	     { 2'b01,
 	       SEL_ARR_IF_NOT_f22f3_empty_33_812_AND_NOT_SEL__ETC___d4145[9:7] } ;
-  assign rs1__h147289 =
+  assign rs1__h147277 =
 	     { 2'b01,
 	       SEL_ARR_IF_NOT_f22f3_empty_33_812_AND_NOT_SEL__ETC___d4156[9:7] } ;
-  assign rs1__h163307 =
+  assign rs1__h163289 =
 	     { 2'b01,
 	       SEL_ARR_IF_NOT_f22f3_empty_33_812_AND_NOT_SEL__ETC___d4167[9:7] } ;
-  assign train_nextPc__h200521 =
+  assign train_nextPc__h200481 =
 	     napTrainByExe$whas ?
 	       napTrainByExe$wget[63:0] :
 	       napTrainByDecQ_data_0[63:0] ;
   assign tval__h123610 = { x__h123465[63:1], 1'd0 } ;
-  assign upd__h176701 = next_deqP__h182560 ;
-  assign upd__h2244 = x__h155852 + 64'd2 ;
+  assign upd__h176677 = next_deqP__h182520 ;
+  assign upd__h2244 = x__h155834 + 64'd2 ;
   assign upd__h2271 =
-	     (SEL_ARR_instdata_data_0_996_BITS_195_TO_194_01_ETC___d6019 !=
+	     (SEL_ARR_instdata_data_0_008_BITS_195_TO_194_02_ETC___d6031 !=
 	      2'd0 &&
-	      SEL_ARR_f32d_data_0_988_BIT_139_021_f32d_data__ETC___d6024) ?
-	       (SEL_ARR_f32d_data_0_988_BIT_4_006_f32d_data_1__ETC___d6482 ?
-		  IF_SEL_ARR_NOT_f32d_data_0_988_BIT_73_051_052__ETC___d6772 :
-		  decode_pred_next_pc__h186793) :
-	       decode_pred_next_pc__h186793 ;
+	      SEL_ARR_f32d_data_0_000_BIT_139_033_f32d_data__ETC___d6036) ?
+	       (SEL_ARR_f32d_data_0_000_BIT_4_018_f32d_data_1__ETC___d6494 ?
+		  IF_SEL_ARR_NOT_f32d_data_0_000_BIT_73_063_064__ETC___d6784 :
+		  decode_pred_next_pc__h186753) :
+	       decode_pred_next_pc__h186753 ;
   assign upd__h2298 = EN_start ? start_pc : MUX_pc_reg_lat_0$wset_1__VAL_2 ;
-  assign upd__h36635 = next_enqP__h176398 ;
+  assign upd__h36635 = next_enqP__h176374 ;
   assign upd__h42616 = x__h59665 ;
   assign upd__h42643 = x__h59665 + 1'd1 ;
   assign upd__h44172 = x__h68242 ;
@@ -16175,34 +16211,34 @@ module mkFetchStage(CLK,
 	     IF_SEL_ARR_f22f3_data_0_813_BITS_204_TO_141_90_ETC___d4098 ?
 	       y_avValue_snd_fst__h128698 :
 	       pc_start__h125919 ;
-  assign x1_avValue_fst_main_epoch__h156707 =
+  assign x1_avValue_fst_main_epoch__h156689 =
 	     (f22f3_empty_33_OR_SEL_ARR_f22f3_data_0_813_BIT_ETC___d3919 &&
 	      IF_rg_pending_n_items_845_EQ_0_846_THEN_rg_pen_ETC___d3977) ?
-	       y_avValue_fst_main_epoch__h156701 :
+	       y_avValue_fst_main_epoch__h156683 :
 	       rg_pending_f32d[3:0] ;
-  assign x1_avValue_fst_ppc__h187107 =
-	     (IF_decode_061_BITS_99_TO_95_065_EQ_8_075_AND_d_ETC___d6292 &&
-	      decode_pred_next_pc__h186793 != in_ppc__h183298) ?
-	       decode_pred_next_pc__h186793 :
-	       in_ppc__h183298 ;
-  assign x1_avValue_fst_ppc__h193814 =
-	     (IF_decode_487_BITS_99_TO_95_491_EQ_8_497_AND_d_ETC___d6714 &&
-	      decode_pred_next_pc__h193609 != in_ppc__h190370) ?
-	       decode_pred_next_pc__h193609 :
-	       in_ppc__h190370 ;
-  assign x1_avValue_fst_pred_next_pc__h156702 =
+  assign x1_avValue_fst_ppc__h187067 =
+	     (IF_decode_073_BITS_99_TO_95_077_EQ_8_087_AND_d_ETC___d6304 &&
+	      decode_pred_next_pc__h186753 != in_ppc__h183258) ?
+	       decode_pred_next_pc__h186753 :
+	       in_ppc__h183258 ;
+  assign x1_avValue_fst_ppc__h193774 =
+	     (IF_decode_499_BITS_99_TO_95_503_EQ_8_509_AND_d_ETC___d6726 &&
+	      decode_pred_next_pc__h193569 != in_ppc__h190330) ?
+	       decode_pred_next_pc__h193569 :
+	       in_ppc__h190330 ;
+  assign x1_avValue_fst_pred_next_pc__h156684 =
 	     (f22f3_empty_33_OR_SEL_ARR_f22f3_data_0_813_BIT_ETC___d3919 &&
 	      IF_rg_pending_n_items_845_EQ_0_846_THEN_rg_pen_ETC___d3977) ?
-	       pred_next_pc__h154494 :
+	       pred_next_pc__h154476 :
 	       rg_pending_f32d[138:75] ;
-  assign x1_avValue_fst_pred_next_pc__h156708 =
+  assign x1_avValue_fst_pred_next_pc__h156690 =
 	     NOT_f22f3_empty_33_812_AND_NOT_SEL_ARR_f22f3_d_ETC___d3844 ?
 	       rg_pending_f32d[138:75] :
-	       x1_avValue_fst_pred_next_pc__h156702 ;
-  assign x1_avValue_fst_tval__h156705 =
+	       x1_avValue_fst_pred_next_pc__h156684 ;
+  assign x1_avValue_fst_tval__h156687 =
 	     (f22f3_empty_33_OR_SEL_ARR_f22f3_data_0_813_BIT_ETC___d3919 &&
 	      IF_rg_pending_n_items_845_EQ_0_846_THEN_rg_pen_ETC___d3977) ?
-	       y_avValue_fst_tval__h156699 :
+	       y_avValue_fst_tval__h156681 :
 	       rg_pending_f32d[68:5] ;
   assign x22409_PLUS_1__q2 = x__h122409 + 64'd1 ;
   assign x__h11117 =
@@ -16230,30 +16266,30 @@ module mkFetchStage(CLK,
 	       y_avValue_snd_fst__h124434 ;
   assign x__h125990 = x__h126006 + y__h126007 ;
   assign x__h126006 = { 1'd0, b__h126014 } ;
-  assign x__h155852 =
+  assign x__h155834 =
 	     IF_IF_IF_IF_SEL_ARR_f22f3_data_0_813_BITS_204__ETC___d4166 ?
 	       IF_NOT_SEL_ARR_IF_NOT_f22f3_empty_33_812_AND_N_ETC___d4249 :
 	       IF_IF_IF_IF_SEL_ARR_f22f3_data_0_813_BITS_204__ETC___d4242 ;
-  assign x__h174267 = n_items__h156605 - 3'd2 ;
-  assign x__h177155 =
+  assign x__h174243 = n_items__h156587 - 3'd2 ;
+  assign x__h177131 =
 	     !_0_CONCAT_IF_rg_pending_n_items_845_EQ_0_846_TH_ETC___d4268 ||
-	     x__h177163[0] ;
-  assign x__h177163 = n_items__h156605 - 3'd1 ;
-  assign x__h177166 =
+	     x__h177139[0] ;
+  assign x__h177139 = n_items__h156587 - 3'd1 ;
+  assign x__h177142 =
 	     _0_CONCAT_IF_rg_pending_n_items_845_EQ_0_846_TH_ETC___d4268 ?
-	       x1_avValue_fst_pred_next_pc__h156708 :
-	       y_avValue_fst_pred_next_pc__h177167 ;
-  assign x__h187118 =
-	     (SEL_ARR_NOT_f32d_data_0_988_BIT_73_051_052_NOT_ETC___d6056 &&
-	      !decode___d6061[0]) ?
-	       x1_avValue_fst_ppc__h187107 :
-	       in_ppc__h183298 ;
-  assign x__h193825 =
-	     (SEL_ARR_NOT_f32d_data_0_988_BIT_73_051_052_NOT_ETC___d6056 &&
-	      !decode___d6487[0]) ?
-	       x1_avValue_fst_ppc__h193814 :
-	       in_ppc__h190370 ;
-  assign x__h200487 =
+	       x1_avValue_fst_pred_next_pc__h156690 :
+	       y_avValue_fst_pred_next_pc__h177143 ;
+  assign x__h187078 =
+	     (SEL_ARR_NOT_f32d_data_0_000_BIT_73_063_064_NOT_ETC___d6068 &&
+	      !decode___d6073[0]) ?
+	       x1_avValue_fst_ppc__h187067 :
+	       in_ppc__h183258 ;
+  assign x__h193785 =
+	     (SEL_ARR_NOT_f32d_data_0_000_BIT_73_063_064_NOT_ETC___d6068 &&
+	      !decode___d6499[0]) ?
+	       x1_avValue_fst_ppc__h193774 :
+	       in_ppc__h190330 ;
+  assign x__h200447 =
 	     napTrainByExe$whas ?
 	       napTrainByExe$wget[127:64] :
 	       napTrainByDecQ_data_0[127:64] ;
@@ -16265,7 +16301,7 @@ module mkFetchStage(CLK,
 	     WILL_FIRE_RL_doFetch2 ?
 	       f22f3_enqReq_lat_0$wget[204:141] :
 	       f22f3_enqReq_rl[204:141] ;
-  assign x__h222821 =
+  assign x__h222781 =
 	     train_predictors_pc +
 	     (train_predictors_isCompressed ? 64'd0 : 64'd2) ;
   assign x__h32058 =
@@ -16294,8 +16330,8 @@ module mkFetchStage(CLK,
 	       f12f2_enqReq_rl[134:71] ;
   assign y__h122404 = { x22409_PLUS_1__q2[62:0], 1'd0 } ;
   assign y__h122639 =
-	     (getFetchState_pc__h222980[1:0] == 2'b0) ?
-	       getFetchState_pc__h222980[1:0] :
+	     (getFetchState_pc__h222940[1:0] == 2'b0) ?
+	       getFetchState_pc__h222940[1:0] :
 	       2'd1 ;
   assign y__h126007 = { 1'd0, b__h126002 } ;
   assign y_avValue_fst__h128332 = j__h125924 + 3'd1 ;
@@ -16313,49 +16349,49 @@ module mkFetchStage(CLK,
 	     IF_rg_pending_n_items_845_EQ_0_846_THEN_ehr_pe_ETC___d3886 ?
 	       y_avValue_fst__h128332 :
 	       y_avValue_fst__h128371 ;
-  assign y_avValue_fst__h137123 =
+  assign y_avValue_fst__h137117 =
 	     IF_IF_SEL_ARR_f22f3_data_0_813_BITS_204_TO_141_ETC___d4143 +
 	     3'd1 ;
-  assign y_avValue_fst__h137134 =
+  assign y_avValue_fst__h137128 =
 	     (SEL_ARR_IF_NOT_f22f3_empty_33_812_AND_NOT_SEL__ETC___d4145[1:0] ==
 	      2'b11) ?
-	       _theResult___fst__h137248 :
+	       _theResult___fst__h137242 :
 	       IF_IF_SEL_ARR_f22f3_data_0_813_BITS_204_TO_141_ETC___d4143 ;
-  assign y_avValue_fst__h137183 =
+  assign y_avValue_fst__h137177 =
 	     (SEL_ARR_IF_NOT_f22f3_empty_33_812_AND_NOT_SEL__ETC___d4145[1:0] ==
 	      2'b11) ?
-	       y_avValue_fst__h137134 :
-	       y_avValue_fst__h137123 ;
-  assign y_avValue_fst__h145722 =
+	       y_avValue_fst__h137128 :
+	       y_avValue_fst__h137117 ;
+  assign y_avValue_fst__h145710 =
 	     IF_IF_IF_SEL_ARR_f22f3_data_0_813_BITS_204_TO__ETC___d4154 +
 	     3'd1 ;
-  assign y_avValue_fst__h145733 =
+  assign y_avValue_fst__h145721 =
 	     (SEL_ARR_IF_NOT_f22f3_empty_33_812_AND_NOT_SEL__ETC___d4156[1:0] ==
 	      2'b11) ?
-	       _theResult___fst__h145847 :
+	       _theResult___fst__h145835 :
 	       IF_IF_IF_SEL_ARR_f22f3_data_0_813_BITS_204_TO__ETC___d4154 ;
-  assign y_avValue_fst__h145782 =
+  assign y_avValue_fst__h145770 =
 	     (SEL_ARR_IF_NOT_f22f3_empty_33_812_AND_NOT_SEL__ETC___d4156[1:0] ==
 	      2'b11) ?
-	       y_avValue_fst__h145733 :
-	       y_avValue_fst__h145722 ;
-  assign y_avValue_fst_main_epoch__h156701 =
+	       y_avValue_fst__h145721 :
+	       y_avValue_fst__h145710 ;
+  assign y_avValue_fst_main_epoch__h156683 =
 	     (pending_n_items__h124835 == 2'd0) ?
 	       SEL_ARR_f22f3_data_0_813_BITS_3_TO_0_814_f22f3_ETC___d3822 :
 	       rg_pending_f32d[3:0] ;
-  assign y_avValue_fst_tval__h156699 =
+  assign y_avValue_fst_tval__h156681 =
 	     (pending_n_items__h124835 == 2'd0) ?
-	       out___1_tval__h156693 :
+	       out___1_tval__h156675 :
 	       rg_pending_f32d[68:5] ;
   assign y_avValue_snd__h124826 =
 	     (!rg_pending_f32d_847_BITS_3_TO_0_848_EQ_f_main__ETC___d3849 ||
 	      !rg_pending_f32d_847_BIT_4_851_EQ_decode_epoch__ETC___d3852) ?
 	       2'd0 :
 	       rg_pending_n_items ;
-  assign y_avValue_snd__h179943 =
+  assign y_avValue_snd__h179919 =
 	     _0_CONCAT_IF_rg_pending_n_items_845_EQ_0_846_TH_ETC___d4268 ?
 	       2'd0 :
-	       y_avValue_snd_fst__h177156 ;
+	       y_avValue_snd_fst__h177132 ;
   assign y_avValue_snd_fst__h128698 =
 	     IF_rg_pending_n_items_845_EQ_0_846_THEN_ehr_pe_ETC___d3886 ?
 	       ehr_pending_straddle_rl[80:17] :
@@ -16368,57 +16404,57 @@ module mkFetchStage(CLK,
 	      SEL_ARR_IF_NOT_f22f3_empty_33_812_AND_NOT_SEL__ETC___d4134[15:13] ==
 	      3'b010) ?
 	       instr__h129616 :
-	       IF_SEL_ARR_IF_NOT_f22f3_empty_33_812_AND_NOT_S_ETC___d5500 ;
+	       IF_SEL_ARR_IF_NOT_f22f3_empty_33_812_AND_NOT_S_ETC___d5512 ;
   assign y_avValue_snd_fst__h128756 =
 	     (SEL_ARR_IF_NOT_f22f3_empty_33_812_AND_NOT_SEL__ETC___d4134[1:0] ==
 	      2'b11) ?
 	       _theResult___snd_fst__h128787 :
 	       32'd0 ;
-  assign y_avValue_snd_fst__h137512 =
+  assign y_avValue_snd_fst__h137506 =
 	     (SEL_ARR_IF_NOT_f22f3_empty_33_812_AND_NOT_SEL__ETC___d4145[1:0] ==
 	      2'b10 &&
 	      SEL_ARR_IF_NOT_f22f3_empty_33_812_AND_NOT_SEL__ETC___d4145[11:7] !=
 	      5'd0 &&
 	      SEL_ARR_IF_NOT_f22f3_empty_33_812_AND_NOT_SEL__ETC___d4145[15:13] ==
 	      3'b010) ?
-	       instr__h138304 :
-	       IF_SEL_ARR_IF_NOT_f22f3_empty_33_812_AND_NOT_S_ETC___d4610 ;
-  assign y_avValue_snd_fst__h137514 =
+	       instr__h138298 :
+	       IF_SEL_ARR_IF_NOT_f22f3_empty_33_812_AND_NOT_S_ETC___d4613 ;
+  assign y_avValue_snd_fst__h137508 =
 	     (SEL_ARR_IF_NOT_f22f3_empty_33_812_AND_NOT_SEL__ETC___d4145[1:0] ==
 	      2'b11) ?
-	       _theResult___snd_fst__h137545 :
+	       _theResult___snd_fst__h137539 :
 	       32'd0 ;
-  assign y_avValue_snd_fst__h146111 =
+  assign y_avValue_snd_fst__h146099 =
 	     (SEL_ARR_IF_NOT_f22f3_empty_33_812_AND_NOT_SEL__ETC___d4156[1:0] ==
 	      2'b10 &&
 	      SEL_ARR_IF_NOT_f22f3_empty_33_812_AND_NOT_SEL__ETC___d4156[11:7] !=
 	      5'd0 &&
 	      SEL_ARR_IF_NOT_f22f3_empty_33_812_AND_NOT_SEL__ETC___d4156[15:13] ==
 	      3'b010) ?
-	       instr__h146946 :
-	       IF_SEL_ARR_IF_NOT_f22f3_empty_33_812_AND_NOT_S_ETC___d4896 ;
-  assign y_avValue_snd_fst__h146113 =
+	       instr__h146934 :
+	       IF_SEL_ARR_IF_NOT_f22f3_empty_33_812_AND_NOT_S_ETC___d4902 ;
+  assign y_avValue_snd_fst__h146101 =
 	     (SEL_ARR_IF_NOT_f22f3_empty_33_812_AND_NOT_SEL__ETC___d4156[1:0] ==
 	      2'b11) ?
-	       _theResult___snd_fst__h146144 :
+	       _theResult___snd_fst__h146132 :
 	       32'd0 ;
-  assign y_avValue_snd_fst__h154600 =
+  assign y_avValue_snd_fst__h154582 =
 	     (SEL_ARR_IF_NOT_f22f3_empty_33_812_AND_NOT_SEL__ETC___d4167[1:0] ==
 	      2'b10 &&
 	      SEL_ARR_IF_NOT_f22f3_empty_33_812_AND_NOT_SEL__ETC___d4167[11:7] !=
 	      5'd0 &&
 	      SEL_ARR_IF_NOT_f22f3_empty_33_812_AND_NOT_SEL__ETC___d4167[15:13] ==
 	      3'b010) ?
-	       instr__h162964 :
-	       IF_SEL_ARR_IF_NOT_f22f3_empty_33_812_AND_NOT_S_ETC___d5182 ;
-  assign y_avValue_snd_fst__h154602 =
+	       instr__h162946 :
+	       IF_SEL_ARR_IF_NOT_f22f3_empty_33_812_AND_NOT_S_ETC___d5191 ;
+  assign y_avValue_snd_fst__h154584 =
 	     (SEL_ARR_IF_NOT_f22f3_empty_33_812_AND_NOT_SEL__ETC___d4167[1:0] ==
 	      2'b11) ?
-	       _theResult___snd_fst__h154765 :
+	       _theResult___snd_fst__h154747 :
 	       32'd0 ;
-  assign y_avValue_snd_fst__h177156 =
+  assign y_avValue_snd_fst__h177132 =
 	     IF_NOT_f22f3_empty_33_812_AND_NOT_SEL_ARR_f22f_ETC___d4273 ?
-	       x__h174267[1:0] :
+	       x__h174243[1:0] :
 	       2'd0 ;
   assign y_avValue_snd_snd_fst__h128703 =
 	     IF_rg_pending_n_items_845_EQ_0_846_THEN_ehr_pe_ETC___d3886 ?
@@ -16435,36 +16471,36 @@ module mkFetchStage(CLK,
   assign y_avValue_snd_snd_fst__h128760 =
 	     { 16'd0,
 	       SEL_ARR_IF_NOT_f22f3_empty_33_812_AND_NOT_SEL__ETC___d4134 } ;
-  assign y_avValue_snd_snd_fst__h137481 =
+  assign y_avValue_snd_snd_fst__h137475 =
 	     (SEL_ARR_IF_NOT_f22f3_empty_33_812_AND_NOT_SEL__ETC___d4145[1:0] ==
 	      2'b11) ?
-	       y_avValue_snd_fst__h137514 :
-	       y_avValue_snd_fst__h137512 ;
-  assign y_avValue_snd_snd_fst__h137518 =
+	       y_avValue_snd_fst__h137508 :
+	       y_avValue_snd_fst__h137506 ;
+  assign y_avValue_snd_snd_fst__h137512 =
 	     { 16'd0,
 	       SEL_ARR_IF_NOT_f22f3_empty_33_812_AND_NOT_SEL__ETC___d4145 } ;
-  assign y_avValue_snd_snd_fst__h146080 =
+  assign y_avValue_snd_snd_fst__h146068 =
 	     (SEL_ARR_IF_NOT_f22f3_empty_33_812_AND_NOT_SEL__ETC___d4156[1:0] ==
 	      2'b11) ?
-	       y_avValue_snd_fst__h146113 :
-	       y_avValue_snd_fst__h146111 ;
-  assign y_avValue_snd_snd_fst__h146117 =
+	       y_avValue_snd_fst__h146101 :
+	       y_avValue_snd_fst__h146099 ;
+  assign y_avValue_snd_snd_fst__h146105 =
 	     { 16'd0,
 	       SEL_ARR_IF_NOT_f22f3_empty_33_812_AND_NOT_SEL__ETC___d4156 } ;
-  assign y_avValue_snd_snd_fst__h154542 =
+  assign y_avValue_snd_snd_fst__h154524 =
 	     (SEL_ARR_IF_NOT_f22f3_empty_33_812_AND_NOT_SEL__ETC___d4167[1:0] ==
 	      2'b11) ?
-	       y_avValue_snd_fst__h154602 :
-	       y_avValue_snd_fst__h154600 ;
-  assign y_avValue_snd_snd_fst__h154606 =
+	       y_avValue_snd_fst__h154584 :
+	       y_avValue_snd_fst__h154582 ;
+  assign y_avValue_snd_snd_fst__h154588 =
 	     { 16'd0,
 	       SEL_ARR_IF_NOT_f22f3_empty_33_812_AND_NOT_SEL__ETC___d4167 } ;
-  assign y_avValue_snd_snd_fst__h156636 =
+  assign y_avValue_snd_snd_fst__h156618 =
 	     (f22f3_empty_33_OR_SEL_ARR_f22f3_data_0_813_BIT_ETC___d3919 &&
 	      IF_rg_pending_n_items_845_EQ_0_846_THEN_rg_pen_ETC___d3977) ?
-	       y_avValue_snd_snd_fst__h156645 :
+	       y_avValue_snd_snd_fst__h156627 :
 	       3'd0 ;
-  assign y_avValue_snd_snd_fst__h156645 =
+  assign y_avValue_snd_snd_fst__h156627 =
 	     IF_IF_IF_IF_SEL_ARR_f22f3_data_0_813_BITS_204__ETC___d4166 ?
 	       ((SEL_ARR_IF_NOT_f22f3_empty_33_812_AND_NOT_SEL__ETC___d4167[1:0] !=
 		 2'b11 ||
@@ -16487,44 +16523,44 @@ module mkFetchStage(CLK,
 	      2'b11) ?
 	       _theResult___snd_snd_snd_fst__h128791 :
 	       pc_start__h125919 ;
-  assign y_avValue_snd_snd_snd_fst__h137486 =
+  assign y_avValue_snd_snd_snd_fst__h137480 =
 	     (SEL_ARR_IF_NOT_f22f3_empty_33_812_AND_NOT_SEL__ETC___d4145[1:0] ==
 	      2'b11) ?
-	       y_avValue_snd_fst__h137514 :
-	       y_avValue_snd_snd_fst__h137518 ;
-  assign y_avValue_snd_snd_snd_fst__h137524 =
+	       y_avValue_snd_fst__h137508 :
+	       y_avValue_snd_snd_fst__h137512 ;
+  assign y_avValue_snd_snd_snd_fst__h137518 =
 	     IF_IF_SEL_ARR_f22f3_data_0_813_BITS_204_TO_141_ETC___d4232 +
 	     64'd2 ;
-  assign y_avValue_snd_snd_snd_fst__h137526 =
+  assign y_avValue_snd_snd_snd_fst__h137520 =
 	     (SEL_ARR_IF_NOT_f22f3_empty_33_812_AND_NOT_SEL__ETC___d4145[1:0] ==
 	      2'b11) ?
-	       _theResult___snd_snd_snd_fst__h137549 :
+	       _theResult___snd_snd_snd_fst__h137543 :
 	       IF_IF_SEL_ARR_f22f3_data_0_813_BITS_204_TO_141_ETC___d4232 ;
-  assign y_avValue_snd_snd_snd_fst__h146085 =
+  assign y_avValue_snd_snd_snd_fst__h146073 =
 	     (SEL_ARR_IF_NOT_f22f3_empty_33_812_AND_NOT_SEL__ETC___d4156[1:0] ==
 	      2'b11) ?
-	       y_avValue_snd_fst__h146113 :
-	       y_avValue_snd_snd_fst__h146117 ;
-  assign y_avValue_snd_snd_snd_fst__h146123 =
+	       y_avValue_snd_fst__h146101 :
+	       y_avValue_snd_snd_fst__h146105 ;
+  assign y_avValue_snd_snd_snd_fst__h146111 =
 	     IF_IF_IF_SEL_ARR_f22f3_data_0_813_BITS_204_TO__ETC___d4240 +
 	     64'd2 ;
-  assign y_avValue_snd_snd_snd_fst__h146125 =
+  assign y_avValue_snd_snd_snd_fst__h146113 =
 	     (SEL_ARR_IF_NOT_f22f3_empty_33_812_AND_NOT_SEL__ETC___d4156[1:0] ==
 	      2'b11) ?
-	       _theResult___snd_snd_snd_fst__h146148 :
+	       _theResult___snd_snd_snd_fst__h146136 :
 	       IF_IF_IF_SEL_ARR_f22f3_data_0_813_BITS_204_TO__ETC___d4240 ;
-  assign y_avValue_snd_snd_snd_fst__h154547 =
+  assign y_avValue_snd_snd_snd_fst__h154529 =
 	     (SEL_ARR_IF_NOT_f22f3_empty_33_812_AND_NOT_SEL__ETC___d4167[1:0] ==
 	      2'b11) ?
-	       y_avValue_snd_fst__h154602 :
-	       y_avValue_snd_snd_fst__h154606 ;
-  assign y_avValue_snd_snd_snd_fst__h154612 =
+	       y_avValue_snd_fst__h154584 :
+	       y_avValue_snd_snd_fst__h154588 ;
+  assign y_avValue_snd_snd_snd_fst__h154594 =
 	     IF_IF_IF_IF_SEL_ARR_f22f3_data_0_813_BITS_204__ETC___d4248 +
 	     64'd2 ;
-  assign y_avValue_snd_snd_snd_fst__h154614 =
+  assign y_avValue_snd_snd_snd_fst__h154596 =
 	     (SEL_ARR_IF_NOT_f22f3_empty_33_812_AND_NOT_SEL__ETC___d4167[1:0] ==
 	      2'b11) ?
-	       _theResult___snd_snd_snd_fst__h154769 :
+	       _theResult___snd_snd_snd_fst__h154751 :
 	       IF_IF_IF_IF_SEL_ARR_f22f3_data_0_813_BITS_204__ETC___d4248 ;
   assign y_avValue_snd_snd_snd_snd_fst__h128713 =
 	     IF_rg_pending_n_items_845_EQ_0_846_THEN_ehr_pe_ETC___d3886 ?
@@ -16537,21 +16573,21 @@ module mkFetchStage(CLK,
 	      2'b11) ?
 	       y_avValue_snd_snd_snd_fst__h128768 :
 	       y_avValue_snd_snd_snd_fst__h128766 ;
-  assign y_avValue_snd_snd_snd_snd_fst__h137491 =
+  assign y_avValue_snd_snd_snd_snd_fst__h137485 =
 	     (SEL_ARR_IF_NOT_f22f3_empty_33_812_AND_NOT_SEL__ETC___d4145[1:0] ==
 	      2'b11) ?
-	       y_avValue_snd_snd_snd_fst__h137526 :
-	       y_avValue_snd_snd_snd_fst__h137524 ;
-  assign y_avValue_snd_snd_snd_snd_fst__h146090 =
+	       y_avValue_snd_snd_snd_fst__h137520 :
+	       y_avValue_snd_snd_snd_fst__h137518 ;
+  assign y_avValue_snd_snd_snd_snd_fst__h146078 =
 	     (SEL_ARR_IF_NOT_f22f3_empty_33_812_AND_NOT_SEL__ETC___d4156[1:0] ==
 	      2'b11) ?
-	       y_avValue_snd_snd_snd_fst__h146125 :
-	       y_avValue_snd_snd_snd_fst__h146123 ;
-  assign y_avValue_snd_snd_snd_snd_fst__h154552 =
+	       y_avValue_snd_snd_snd_fst__h146113 :
+	       y_avValue_snd_snd_snd_fst__h146111 ;
+  assign y_avValue_snd_snd_snd_snd_fst__h154534 =
 	     (SEL_ARR_IF_NOT_f22f3_empty_33_812_AND_NOT_SEL__ETC___d4167[1:0] ==
 	      2'b11) ?
-	       y_avValue_snd_snd_snd_fst__h154614 :
-	       y_avValue_snd_snd_snd_fst__h154612 ;
+	       y_avValue_snd_snd_snd_fst__h154596 :
+	       y_avValue_snd_snd_snd_fst__h154594 ;
   always@(iTlb$to_proc_response_get)
   begin
     case (iTlb$to_proc_response_get[3:0])
@@ -16600,15 +16636,15 @@ module mkFetchStage(CLK,
   always@(f32d_deqP or f32d_data_0 or f32d_data_1)
   begin
     case (f32d_deqP)
-      1'd0: in_main_epoch__h183300 = f32d_data_0[3:0];
-      1'd1: in_main_epoch__h183300 = f32d_data_1[3:0];
+      1'd0: in_main_epoch__h183260 = f32d_data_0[3:0];
+      1'd1: in_main_epoch__h183260 = f32d_data_1[3:0];
     endcase
   end
   always@(f32d_deqP or f32d_data_0 or f32d_data_1)
   begin
     case (f32d_deqP)
-      1'd0: x__h189884 = f32d_data_0[68:5];
-      1'd1: x__h189884 = f32d_data_1[68:5];
+      1'd0: x__h189844 = f32d_data_0[68:5];
+      1'd1: x__h189844 = f32d_data_1[68:5];
     endcase
   end
   always@(f22f3_deqP or
@@ -16625,70 +16661,70 @@ module mkFetchStage(CLK,
 	  out_fifo_internalFifos_0$D_OUT or out_fifo_internalFifos_1$D_OUT)
   begin
     case (x__h68242)
-      1'd0: x__h200996 = out_fifo_internalFifos_0$D_OUT[323:260];
-      1'd1: x__h200996 = out_fifo_internalFifos_1$D_OUT[323:260];
+      1'd0: x__h200956 = out_fifo_internalFifos_0$D_OUT[323:260];
+      1'd1: x__h200956 = out_fifo_internalFifos_1$D_OUT[323:260];
     endcase
   end
   always@(x__h68242 or
 	  out_fifo_internalFifos_0$D_OUT or out_fifo_internalFifos_1$D_OUT)
   begin
     case (x__h68242)
-      1'd0: x__h201054 = out_fifo_internalFifos_0$D_OUT[231:200];
-      1'd1: x__h201054 = out_fifo_internalFifos_1$D_OUT[231:200];
+      1'd0: x__h201014 = out_fifo_internalFifos_0$D_OUT[231:200];
+      1'd1: x__h201014 = out_fifo_internalFifos_1$D_OUT[231:200];
     endcase
   end
   always@(x__h68242 or
 	  out_fifo_internalFifos_0$D_OUT or out_fifo_internalFifos_1$D_OUT)
   begin
     case (x__h68242)
-      1'd0: x__h207992 = out_fifo_internalFifos_0$D_OUT[127:96];
-      1'd1: x__h207992 = out_fifo_internalFifos_1$D_OUT[127:96];
+      1'd0: x__h207952 = out_fifo_internalFifos_0$D_OUT[127:96];
+      1'd1: x__h207952 = out_fifo_internalFifos_1$D_OUT[127:96];
     endcase
   end
   always@(x__h68242 or
 	  out_fifo_internalFifos_0$D_OUT or out_fifo_internalFifos_1$D_OUT)
   begin
     case (x__h68242)
-      1'd0: x__h209366 = out_fifo_internalFifos_0$D_OUT[63:0];
-      1'd1: x__h209366 = out_fifo_internalFifos_1$D_OUT[63:0];
+      1'd0: x__h209326 = out_fifo_internalFifos_0$D_OUT[63:0];
+      1'd1: x__h209326 = out_fifo_internalFifos_1$D_OUT[63:0];
     endcase
   end
-  always@(n__read__h182580 or instdata_data_0 or instdata_data_1)
+  always@(n__read__h182540 or instdata_data_0 or instdata_data_1)
   begin
-    case (n__read__h182580)
-      1'd0: in_pc__h183297 = instdata_data_0[129:66];
-      1'd1: in_pc__h183297 = instdata_data_1[129:66];
+    case (n__read__h182540)
+      1'd0: in_pc__h183257 = instdata_data_0[129:66];
+      1'd1: in_pc__h183257 = instdata_data_1[129:66];
     endcase
   end
-  always@(n__read__h182580 or instdata_data_0 or instdata_data_1)
+  always@(n__read__h182540 or instdata_data_0 or instdata_data_1)
   begin
-    case (n__read__h182580)
-      1'd0: x__h188874 = instdata_data_0[63:32];
-      1'd1: x__h188874 = instdata_data_1[63:32];
+    case (n__read__h182540)
+      1'd0: x__h188834 = instdata_data_0[63:32];
+      1'd1: x__h188834 = instdata_data_1[63:32];
     endcase
   end
-  always@(n__read__h182580 or instdata_data_0 or instdata_data_1)
+  always@(n__read__h182540 or instdata_data_0 or instdata_data_1)
   begin
-    case (n__read__h182580)
-      1'd0: x__h195579 = instdata_data_0[193:162];
-      1'd1: x__h195579 = instdata_data_1[193:162];
+    case (n__read__h182540)
+      1'd0: x__h195539 = instdata_data_0[193:162];
+      1'd1: x__h195539 = instdata_data_1[193:162];
     endcase
   end
   always@(f32d_deqP or f32d_data_0 or f32d_data_1)
   begin
     case (f32d_deqP)
-      1'd0: in_ppc__h190370 = f32d_data_0[138:75];
-      1'd1: in_ppc__h190370 = f32d_data_1[138:75];
+      1'd0: in_ppc__h190330 = f32d_data_0[138:75];
+      1'd1: in_ppc__h190330 = f32d_data_1[138:75];
     endcase
   end
   always@(f22f3_deqP or
 	  f22f3_data_0 or f22f3_data_1 or f22f3_data_2 or f22f3_data_3)
   begin
     case (f22f3_deqP)
-      2'd0: out___1_tval__h156693 = f22f3_data_0[70:7];
-      2'd1: out___1_tval__h156693 = f22f3_data_1[70:7];
-      2'd2: out___1_tval__h156693 = f22f3_data_2[70:7];
-      2'd3: out___1_tval__h156693 = f22f3_data_3[70:7];
+      2'd0: out___1_tval__h156675 = f22f3_data_0[70:7];
+      2'd1: out___1_tval__h156675 = f22f3_data_1[70:7];
+      2'd2: out___1_tval__h156675 = f22f3_data_2[70:7];
+      2'd3: out___1_tval__h156675 = f22f3_data_3[70:7];
     endcase
   end
   always@(mmio$getFetchTarget or tval__h123610)
@@ -16702,51 +16738,51 @@ module mkFetchStage(CLK,
 	  out_fifo_internalFifos_0$D_OUT or out_fifo_internalFifos_1$D_OUT)
   begin
     case (x__h78412)
-      1'd0: x__h209564 = out_fifo_internalFifos_0$D_OUT[323:260];
-      1'd1: x__h209564 = out_fifo_internalFifos_1$D_OUT[323:260];
+      1'd0: x__h209524 = out_fifo_internalFifos_0$D_OUT[323:260];
+      1'd1: x__h209524 = out_fifo_internalFifos_1$D_OUT[323:260];
     endcase
   end
   always@(x__h78412 or
 	  out_fifo_internalFifos_0$D_OUT or out_fifo_internalFifos_1$D_OUT)
   begin
     case (x__h78412)
-      1'd0: x__h209578 = out_fifo_internalFifos_0$D_OUT[231:200];
-      1'd1: x__h209578 = out_fifo_internalFifos_1$D_OUT[231:200];
+      1'd0: x__h209538 = out_fifo_internalFifos_0$D_OUT[231:200];
+      1'd1: x__h209538 = out_fifo_internalFifos_1$D_OUT[231:200];
     endcase
   end
   always@(x__h78412 or
 	  out_fifo_internalFifos_0$D_OUT or out_fifo_internalFifos_1$D_OUT)
   begin
     case (x__h78412)
-      1'd0: x__h216240 = out_fifo_internalFifos_0$D_OUT[127:96];
-      1'd1: x__h216240 = out_fifo_internalFifos_1$D_OUT[127:96];
+      1'd0: x__h216200 = out_fifo_internalFifos_0$D_OUT[127:96];
+      1'd1: x__h216200 = out_fifo_internalFifos_1$D_OUT[127:96];
     endcase
   end
   always@(x__h78412 or
 	  out_fifo_internalFifos_0$D_OUT or out_fifo_internalFifos_1$D_OUT)
   begin
     case (x__h78412)
-      1'd0: x__h217268 = out_fifo_internalFifos_0$D_OUT[63:0];
-      1'd1: x__h217268 = out_fifo_internalFifos_1$D_OUT[63:0];
+      1'd0: x__h217228 = out_fifo_internalFifos_0$D_OUT[63:0];
+      1'd1: x__h217228 = out_fifo_internalFifos_1$D_OUT[63:0];
     endcase
   end
   always@(x__h68242 or
 	  out_fifo_internalFifos_0$D_OUT or out_fifo_internalFifos_1$D_OUT)
   begin
     case (x__h68242)
-      1'd0: x__h200932 = out_fifo_internalFifos_0$D_OUT[387:324];
-      1'd1: x__h200932 = out_fifo_internalFifos_1$D_OUT[387:324];
+      1'd0: x__h200892 = out_fifo_internalFifos_0$D_OUT[387:324];
+      1'd1: x__h200892 = out_fifo_internalFifos_1$D_OUT[387:324];
     endcase
   end
   always@(x__h78412 or
 	  out_fifo_internalFifos_0$D_OUT or out_fifo_internalFifos_1$D_OUT)
   begin
     case (x__h78412)
-      1'd0: x__h209544 = out_fifo_internalFifos_0$D_OUT[387:324];
-      1'd1: x__h209544 = out_fifo_internalFifos_1$D_OUT[387:324];
+      1'd0: x__h209504 = out_fifo_internalFifos_0$D_OUT[387:324];
+      1'd1: x__h209504 = out_fifo_internalFifos_1$D_OUT[387:324];
     endcase
   end
-  always@(getFetchState_pc__h222980 or
+  always@(getFetchState_pc__h222940 or
 	  nextAddrPred_valid_0 or
 	  nextAddrPred_valid_1 or
 	  nextAddrPred_valid_2 or
@@ -17003,7 +17039,7 @@ module mkFetchStage(CLK,
 	  nextAddrPred_valid_253 or
 	  nextAddrPred_valid_254 or nextAddrPred_valid_255)
   begin
-    case (getFetchState_pc__h222980[8:1])
+    case (getFetchState_pc__h222940[8:1])
       8'd0:
 	  SEL_ARR_nextAddrPred_valid_0_read__297_nextAdd_ETC___d3555 =
 	      nextAddrPred_valid_0;
@@ -20987,16 +21023,16 @@ module mkFetchStage(CLK,
   begin
     case (f22f3_deqP)
       2'd0:
-	  SEL_ARR_f22f3_data_0_813_BITS_139_TO_76_561_f2_ETC___d5566 =
+	  SEL_ARR_f22f3_data_0_813_BITS_139_TO_76_573_f2_ETC___d5578 =
 	      f22f3_data_0[139:76];
       2'd1:
-	  SEL_ARR_f22f3_data_0_813_BITS_139_TO_76_561_f2_ETC___d5566 =
+	  SEL_ARR_f22f3_data_0_813_BITS_139_TO_76_573_f2_ETC___d5578 =
 	      f22f3_data_1[139:76];
       2'd2:
-	  SEL_ARR_f22f3_data_0_813_BITS_139_TO_76_561_f2_ETC___d5566 =
+	  SEL_ARR_f22f3_data_0_813_BITS_139_TO_76_573_f2_ETC___d5578 =
 	      f22f3_data_2[139:76];
       2'd3:
-	  SEL_ARR_f22f3_data_0_813_BITS_139_TO_76_561_f2_ETC___d5566 =
+	  SEL_ARR_f22f3_data_0_813_BITS_139_TO_76_573_f2_ETC___d5578 =
 	      f22f3_data_3[139:76];
     endcase
   end
@@ -21004,15 +21040,15 @@ module mkFetchStage(CLK,
   begin
     case (rg_pending_f32d[72:69])
       4'd0, 4'd1, 4'd2, 4'd3, 4'd4, 4'd5, 4'd6, 4'd7, 4'd8, 4'd9:
-	  IF_rg_pending_f32d_847_BITS_72_TO_69_644_EQ_0__ETC___d5670 =
+	  IF_rg_pending_f32d_847_BITS_72_TO_69_656_EQ_0__ETC___d5682 =
 	      rg_pending_f32d[72:69];
       4'd11:
-	  IF_rg_pending_f32d_847_BITS_72_TO_69_644_EQ_0__ETC___d5670 = 4'd10;
+	  IF_rg_pending_f32d_847_BITS_72_TO_69_656_EQ_0__ETC___d5682 = 4'd10;
       4'd12:
-	  IF_rg_pending_f32d_847_BITS_72_TO_69_644_EQ_0__ETC___d5670 = 4'd11;
+	  IF_rg_pending_f32d_847_BITS_72_TO_69_656_EQ_0__ETC___d5682 = 4'd11;
       4'd13:
-	  IF_rg_pending_f32d_847_BITS_72_TO_69_644_EQ_0__ETC___d5670 = 4'd12;
-      default: IF_rg_pending_f32d_847_BITS_72_TO_69_644_EQ_0__ETC___d5670 =
+	  IF_rg_pending_f32d_847_BITS_72_TO_69_656_EQ_0__ETC___d5682 = 4'd12;
+      default: IF_rg_pending_f32d_847_BITS_72_TO_69_656_EQ_0__ETC___d5682 =
 		   4'd13;
     endcase
   end
@@ -21020,15 +21056,15 @@ module mkFetchStage(CLK,
   begin
     case (f22f3_data_0[74:71])
       4'd0, 4'd1, 4'd2, 4'd3, 4'd4, 4'd5, 4'd6, 4'd7, 4'd8, 4'd9:
-	  IF_f22f3_data_0_813_BITS_74_TO_71_672_EQ_0_673_ETC___d5698 =
+	  IF_f22f3_data_0_813_BITS_74_TO_71_684_EQ_0_685_ETC___d5710 =
 	      f22f3_data_0[74:71];
       4'd11:
-	  IF_f22f3_data_0_813_BITS_74_TO_71_672_EQ_0_673_ETC___d5698 = 4'd10;
+	  IF_f22f3_data_0_813_BITS_74_TO_71_684_EQ_0_685_ETC___d5710 = 4'd10;
       4'd12:
-	  IF_f22f3_data_0_813_BITS_74_TO_71_672_EQ_0_673_ETC___d5698 = 4'd11;
+	  IF_f22f3_data_0_813_BITS_74_TO_71_684_EQ_0_685_ETC___d5710 = 4'd11;
       4'd13:
-	  IF_f22f3_data_0_813_BITS_74_TO_71_672_EQ_0_673_ETC___d5698 = 4'd12;
-      default: IF_f22f3_data_0_813_BITS_74_TO_71_672_EQ_0_673_ETC___d5698 =
+	  IF_f22f3_data_0_813_BITS_74_TO_71_684_EQ_0_685_ETC___d5710 = 4'd12;
+      default: IF_f22f3_data_0_813_BITS_74_TO_71_684_EQ_0_685_ETC___d5710 =
 		   4'd13;
     endcase
   end
@@ -21036,15 +21072,15 @@ module mkFetchStage(CLK,
   begin
     case (f22f3_data_1[74:71])
       4'd0, 4'd1, 4'd2, 4'd3, 4'd4, 4'd5, 4'd6, 4'd7, 4'd8, 4'd9:
-	  IF_f22f3_data_1_815_BITS_74_TO_71_700_EQ_0_701_ETC___d5726 =
+	  IF_f22f3_data_1_815_BITS_74_TO_71_712_EQ_0_713_ETC___d5738 =
 	      f22f3_data_1[74:71];
       4'd11:
-	  IF_f22f3_data_1_815_BITS_74_TO_71_700_EQ_0_701_ETC___d5726 = 4'd10;
+	  IF_f22f3_data_1_815_BITS_74_TO_71_712_EQ_0_713_ETC___d5738 = 4'd10;
       4'd12:
-	  IF_f22f3_data_1_815_BITS_74_TO_71_700_EQ_0_701_ETC___d5726 = 4'd11;
+	  IF_f22f3_data_1_815_BITS_74_TO_71_712_EQ_0_713_ETC___d5738 = 4'd11;
       4'd13:
-	  IF_f22f3_data_1_815_BITS_74_TO_71_700_EQ_0_701_ETC___d5726 = 4'd12;
-      default: IF_f22f3_data_1_815_BITS_74_TO_71_700_EQ_0_701_ETC___d5726 =
+	  IF_f22f3_data_1_815_BITS_74_TO_71_712_EQ_0_713_ETC___d5738 = 4'd12;
+      default: IF_f22f3_data_1_815_BITS_74_TO_71_712_EQ_0_713_ETC___d5738 =
 		   4'd13;
     endcase
   end
@@ -21052,15 +21088,15 @@ module mkFetchStage(CLK,
   begin
     case (f22f3_data_2[74:71])
       4'd0, 4'd1, 4'd2, 4'd3, 4'd4, 4'd5, 4'd6, 4'd7, 4'd8, 4'd9:
-	  IF_f22f3_data_2_817_BITS_74_TO_71_728_EQ_0_729_ETC___d5754 =
+	  IF_f22f3_data_2_817_BITS_74_TO_71_740_EQ_0_741_ETC___d5766 =
 	      f22f3_data_2[74:71];
       4'd11:
-	  IF_f22f3_data_2_817_BITS_74_TO_71_728_EQ_0_729_ETC___d5754 = 4'd10;
+	  IF_f22f3_data_2_817_BITS_74_TO_71_740_EQ_0_741_ETC___d5766 = 4'd10;
       4'd12:
-	  IF_f22f3_data_2_817_BITS_74_TO_71_728_EQ_0_729_ETC___d5754 = 4'd11;
+	  IF_f22f3_data_2_817_BITS_74_TO_71_740_EQ_0_741_ETC___d5766 = 4'd11;
       4'd13:
-	  IF_f22f3_data_2_817_BITS_74_TO_71_728_EQ_0_729_ETC___d5754 = 4'd12;
-      default: IF_f22f3_data_2_817_BITS_74_TO_71_728_EQ_0_729_ETC___d5754 =
+	  IF_f22f3_data_2_817_BITS_74_TO_71_740_EQ_0_741_ETC___d5766 = 4'd12;
+      default: IF_f22f3_data_2_817_BITS_74_TO_71_740_EQ_0_741_ETC___d5766 =
 		   4'd13;
     endcase
   end
@@ -21068,351 +21104,351 @@ module mkFetchStage(CLK,
   begin
     case (f22f3_data_3[74:71])
       4'd0, 4'd1, 4'd2, 4'd3, 4'd4, 4'd5, 4'd6, 4'd7, 4'd8, 4'd9:
-	  IF_f22f3_data_3_819_BITS_74_TO_71_756_EQ_0_757_ETC___d5782 =
+	  IF_f22f3_data_3_819_BITS_74_TO_71_768_EQ_0_769_ETC___d5794 =
 	      f22f3_data_3[74:71];
       4'd11:
-	  IF_f22f3_data_3_819_BITS_74_TO_71_756_EQ_0_757_ETC___d5782 = 4'd10;
+	  IF_f22f3_data_3_819_BITS_74_TO_71_768_EQ_0_769_ETC___d5794 = 4'd10;
       4'd12:
-	  IF_f22f3_data_3_819_BITS_74_TO_71_756_EQ_0_757_ETC___d5782 = 4'd11;
+	  IF_f22f3_data_3_819_BITS_74_TO_71_768_EQ_0_769_ETC___d5794 = 4'd11;
       4'd13:
-	  IF_f22f3_data_3_819_BITS_74_TO_71_756_EQ_0_757_ETC___d5782 = 4'd12;
-      default: IF_f22f3_data_3_819_BITS_74_TO_71_756_EQ_0_757_ETC___d5782 =
+	  IF_f22f3_data_3_819_BITS_74_TO_71_768_EQ_0_769_ETC___d5794 = 4'd12;
+      default: IF_f22f3_data_3_819_BITS_74_TO_71_768_EQ_0_769_ETC___d5794 =
 		   4'd13;
     endcase
   end
   always@(f22f3_deqP or
-	  IF_f22f3_data_0_813_BITS_74_TO_71_672_EQ_0_673_ETC___d5698 or
-	  IF_f22f3_data_1_815_BITS_74_TO_71_700_EQ_0_701_ETC___d5726 or
-	  IF_f22f3_data_2_817_BITS_74_TO_71_728_EQ_0_729_ETC___d5754 or
-	  IF_f22f3_data_3_819_BITS_74_TO_71_756_EQ_0_757_ETC___d5782)
+	  IF_f22f3_data_0_813_BITS_74_TO_71_684_EQ_0_685_ETC___d5710 or
+	  IF_f22f3_data_1_815_BITS_74_TO_71_712_EQ_0_713_ETC___d5738 or
+	  IF_f22f3_data_2_817_BITS_74_TO_71_740_EQ_0_741_ETC___d5766 or
+	  IF_f22f3_data_3_819_BITS_74_TO_71_768_EQ_0_769_ETC___d5794)
   begin
     case (f22f3_deqP)
       2'd0:
-	  SEL_ARR_IF_f22f3_data_0_813_BITS_74_TO_71_672__ETC___d5785 =
-	      IF_f22f3_data_0_813_BITS_74_TO_71_672_EQ_0_673_ETC___d5698 ==
+	  SEL_ARR_IF_f22f3_data_0_813_BITS_74_TO_71_684__ETC___d5797 =
+	      IF_f22f3_data_0_813_BITS_74_TO_71_684_EQ_0_685_ETC___d5710 ==
 	      4'd0;
       2'd1:
-	  SEL_ARR_IF_f22f3_data_0_813_BITS_74_TO_71_672__ETC___d5785 =
-	      IF_f22f3_data_1_815_BITS_74_TO_71_700_EQ_0_701_ETC___d5726 ==
+	  SEL_ARR_IF_f22f3_data_0_813_BITS_74_TO_71_684__ETC___d5797 =
+	      IF_f22f3_data_1_815_BITS_74_TO_71_712_EQ_0_713_ETC___d5738 ==
 	      4'd0;
       2'd2:
-	  SEL_ARR_IF_f22f3_data_0_813_BITS_74_TO_71_672__ETC___d5785 =
-	      IF_f22f3_data_2_817_BITS_74_TO_71_728_EQ_0_729_ETC___d5754 ==
+	  SEL_ARR_IF_f22f3_data_0_813_BITS_74_TO_71_684__ETC___d5797 =
+	      IF_f22f3_data_2_817_BITS_74_TO_71_740_EQ_0_741_ETC___d5766 ==
 	      4'd0;
       2'd3:
-	  SEL_ARR_IF_f22f3_data_0_813_BITS_74_TO_71_672__ETC___d5785 =
-	      IF_f22f3_data_3_819_BITS_74_TO_71_756_EQ_0_757_ETC___d5782 ==
+	  SEL_ARR_IF_f22f3_data_0_813_BITS_74_TO_71_684__ETC___d5797 =
+	      IF_f22f3_data_3_819_BITS_74_TO_71_768_EQ_0_769_ETC___d5794 ==
 	      4'd0;
     endcase
   end
   always@(f22f3_deqP or
-	  IF_f22f3_data_0_813_BITS_74_TO_71_672_EQ_0_673_ETC___d5698 or
-	  IF_f22f3_data_1_815_BITS_74_TO_71_700_EQ_0_701_ETC___d5726 or
-	  IF_f22f3_data_2_817_BITS_74_TO_71_728_EQ_0_729_ETC___d5754 or
-	  IF_f22f3_data_3_819_BITS_74_TO_71_756_EQ_0_757_ETC___d5782)
+	  IF_f22f3_data_0_813_BITS_74_TO_71_684_EQ_0_685_ETC___d5710 or
+	  IF_f22f3_data_1_815_BITS_74_TO_71_712_EQ_0_713_ETC___d5738 or
+	  IF_f22f3_data_2_817_BITS_74_TO_71_740_EQ_0_741_ETC___d5766 or
+	  IF_f22f3_data_3_819_BITS_74_TO_71_768_EQ_0_769_ETC___d5794)
   begin
     case (f22f3_deqP)
       2'd0:
-	  SEL_ARR_IF_f22f3_data_0_813_BITS_74_TO_71_672__ETC___d5795 =
-	      IF_f22f3_data_0_813_BITS_74_TO_71_672_EQ_0_673_ETC___d5698 ==
+	  SEL_ARR_IF_f22f3_data_0_813_BITS_74_TO_71_684__ETC___d5807 =
+	      IF_f22f3_data_0_813_BITS_74_TO_71_684_EQ_0_685_ETC___d5710 ==
 	      4'd1;
       2'd1:
-	  SEL_ARR_IF_f22f3_data_0_813_BITS_74_TO_71_672__ETC___d5795 =
-	      IF_f22f3_data_1_815_BITS_74_TO_71_700_EQ_0_701_ETC___d5726 ==
+	  SEL_ARR_IF_f22f3_data_0_813_BITS_74_TO_71_684__ETC___d5807 =
+	      IF_f22f3_data_1_815_BITS_74_TO_71_712_EQ_0_713_ETC___d5738 ==
 	      4'd1;
       2'd2:
-	  SEL_ARR_IF_f22f3_data_0_813_BITS_74_TO_71_672__ETC___d5795 =
-	      IF_f22f3_data_2_817_BITS_74_TO_71_728_EQ_0_729_ETC___d5754 ==
+	  SEL_ARR_IF_f22f3_data_0_813_BITS_74_TO_71_684__ETC___d5807 =
+	      IF_f22f3_data_2_817_BITS_74_TO_71_740_EQ_0_741_ETC___d5766 ==
 	      4'd1;
       2'd3:
-	  SEL_ARR_IF_f22f3_data_0_813_BITS_74_TO_71_672__ETC___d5795 =
-	      IF_f22f3_data_3_819_BITS_74_TO_71_756_EQ_0_757_ETC___d5782 ==
+	  SEL_ARR_IF_f22f3_data_0_813_BITS_74_TO_71_684__ETC___d5807 =
+	      IF_f22f3_data_3_819_BITS_74_TO_71_768_EQ_0_769_ETC___d5794 ==
 	      4'd1;
     endcase
   end
   always@(f22f3_deqP or
-	  IF_f22f3_data_0_813_BITS_74_TO_71_672_EQ_0_673_ETC___d5698 or
-	  IF_f22f3_data_1_815_BITS_74_TO_71_700_EQ_0_701_ETC___d5726 or
-	  IF_f22f3_data_2_817_BITS_74_TO_71_728_EQ_0_729_ETC___d5754 or
-	  IF_f22f3_data_3_819_BITS_74_TO_71_756_EQ_0_757_ETC___d5782)
+	  IF_f22f3_data_0_813_BITS_74_TO_71_684_EQ_0_685_ETC___d5710 or
+	  IF_f22f3_data_1_815_BITS_74_TO_71_712_EQ_0_713_ETC___d5738 or
+	  IF_f22f3_data_2_817_BITS_74_TO_71_740_EQ_0_741_ETC___d5766 or
+	  IF_f22f3_data_3_819_BITS_74_TO_71_768_EQ_0_769_ETC___d5794)
   begin
     case (f22f3_deqP)
       2'd0:
-	  SEL_ARR_IF_f22f3_data_0_813_BITS_74_TO_71_672__ETC___d5805 =
-	      IF_f22f3_data_0_813_BITS_74_TO_71_672_EQ_0_673_ETC___d5698 ==
+	  SEL_ARR_IF_f22f3_data_0_813_BITS_74_TO_71_684__ETC___d5817 =
+	      IF_f22f3_data_0_813_BITS_74_TO_71_684_EQ_0_685_ETC___d5710 ==
 	      4'd2;
       2'd1:
-	  SEL_ARR_IF_f22f3_data_0_813_BITS_74_TO_71_672__ETC___d5805 =
-	      IF_f22f3_data_1_815_BITS_74_TO_71_700_EQ_0_701_ETC___d5726 ==
+	  SEL_ARR_IF_f22f3_data_0_813_BITS_74_TO_71_684__ETC___d5817 =
+	      IF_f22f3_data_1_815_BITS_74_TO_71_712_EQ_0_713_ETC___d5738 ==
 	      4'd2;
       2'd2:
-	  SEL_ARR_IF_f22f3_data_0_813_BITS_74_TO_71_672__ETC___d5805 =
-	      IF_f22f3_data_2_817_BITS_74_TO_71_728_EQ_0_729_ETC___d5754 ==
+	  SEL_ARR_IF_f22f3_data_0_813_BITS_74_TO_71_684__ETC___d5817 =
+	      IF_f22f3_data_2_817_BITS_74_TO_71_740_EQ_0_741_ETC___d5766 ==
 	      4'd2;
       2'd3:
-	  SEL_ARR_IF_f22f3_data_0_813_BITS_74_TO_71_672__ETC___d5805 =
-	      IF_f22f3_data_3_819_BITS_74_TO_71_756_EQ_0_757_ETC___d5782 ==
+	  SEL_ARR_IF_f22f3_data_0_813_BITS_74_TO_71_684__ETC___d5817 =
+	      IF_f22f3_data_3_819_BITS_74_TO_71_768_EQ_0_769_ETC___d5794 ==
 	      4'd2;
     endcase
   end
   always@(f22f3_deqP or
-	  IF_f22f3_data_0_813_BITS_74_TO_71_672_EQ_0_673_ETC___d5698 or
-	  IF_f22f3_data_1_815_BITS_74_TO_71_700_EQ_0_701_ETC___d5726 or
-	  IF_f22f3_data_2_817_BITS_74_TO_71_728_EQ_0_729_ETC___d5754 or
-	  IF_f22f3_data_3_819_BITS_74_TO_71_756_EQ_0_757_ETC___d5782)
+	  IF_f22f3_data_0_813_BITS_74_TO_71_684_EQ_0_685_ETC___d5710 or
+	  IF_f22f3_data_1_815_BITS_74_TO_71_712_EQ_0_713_ETC___d5738 or
+	  IF_f22f3_data_2_817_BITS_74_TO_71_740_EQ_0_741_ETC___d5766 or
+	  IF_f22f3_data_3_819_BITS_74_TO_71_768_EQ_0_769_ETC___d5794)
   begin
     case (f22f3_deqP)
       2'd0:
-	  SEL_ARR_IF_f22f3_data_0_813_BITS_74_TO_71_672__ETC___d5815 =
-	      IF_f22f3_data_0_813_BITS_74_TO_71_672_EQ_0_673_ETC___d5698 ==
-	      4'd3;
-      2'd1:
-	  SEL_ARR_IF_f22f3_data_0_813_BITS_74_TO_71_672__ETC___d5815 =
-	      IF_f22f3_data_1_815_BITS_74_TO_71_700_EQ_0_701_ETC___d5726 ==
-	      4'd3;
-      2'd2:
-	  SEL_ARR_IF_f22f3_data_0_813_BITS_74_TO_71_672__ETC___d5815 =
-	      IF_f22f3_data_2_817_BITS_74_TO_71_728_EQ_0_729_ETC___d5754 ==
-	      4'd3;
-      2'd3:
-	  SEL_ARR_IF_f22f3_data_0_813_BITS_74_TO_71_672__ETC___d5815 =
-	      IF_f22f3_data_3_819_BITS_74_TO_71_756_EQ_0_757_ETC___d5782 ==
-	      4'd3;
-    endcase
-  end
-  always@(f22f3_deqP or
-	  IF_f22f3_data_0_813_BITS_74_TO_71_672_EQ_0_673_ETC___d5698 or
-	  IF_f22f3_data_1_815_BITS_74_TO_71_700_EQ_0_701_ETC___d5726 or
-	  IF_f22f3_data_2_817_BITS_74_TO_71_728_EQ_0_729_ETC___d5754 or
-	  IF_f22f3_data_3_819_BITS_74_TO_71_756_EQ_0_757_ETC___d5782)
-  begin
-    case (f22f3_deqP)
-      2'd0:
-	  SEL_ARR_IF_f22f3_data_0_813_BITS_74_TO_71_672__ETC___d5825 =
-	      IF_f22f3_data_0_813_BITS_74_TO_71_672_EQ_0_673_ETC___d5698 ==
+	  SEL_ARR_IF_f22f3_data_0_813_BITS_74_TO_71_684__ETC___d5837 =
+	      IF_f22f3_data_0_813_BITS_74_TO_71_684_EQ_0_685_ETC___d5710 ==
 	      4'd4;
       2'd1:
-	  SEL_ARR_IF_f22f3_data_0_813_BITS_74_TO_71_672__ETC___d5825 =
-	      IF_f22f3_data_1_815_BITS_74_TO_71_700_EQ_0_701_ETC___d5726 ==
+	  SEL_ARR_IF_f22f3_data_0_813_BITS_74_TO_71_684__ETC___d5837 =
+	      IF_f22f3_data_1_815_BITS_74_TO_71_712_EQ_0_713_ETC___d5738 ==
 	      4'd4;
       2'd2:
-	  SEL_ARR_IF_f22f3_data_0_813_BITS_74_TO_71_672__ETC___d5825 =
-	      IF_f22f3_data_2_817_BITS_74_TO_71_728_EQ_0_729_ETC___d5754 ==
+	  SEL_ARR_IF_f22f3_data_0_813_BITS_74_TO_71_684__ETC___d5837 =
+	      IF_f22f3_data_2_817_BITS_74_TO_71_740_EQ_0_741_ETC___d5766 ==
 	      4'd4;
       2'd3:
-	  SEL_ARR_IF_f22f3_data_0_813_BITS_74_TO_71_672__ETC___d5825 =
-	      IF_f22f3_data_3_819_BITS_74_TO_71_756_EQ_0_757_ETC___d5782 ==
+	  SEL_ARR_IF_f22f3_data_0_813_BITS_74_TO_71_684__ETC___d5837 =
+	      IF_f22f3_data_3_819_BITS_74_TO_71_768_EQ_0_769_ETC___d5794 ==
 	      4'd4;
     endcase
   end
   always@(f22f3_deqP or
-	  IF_f22f3_data_0_813_BITS_74_TO_71_672_EQ_0_673_ETC___d5698 or
-	  IF_f22f3_data_1_815_BITS_74_TO_71_700_EQ_0_701_ETC___d5726 or
-	  IF_f22f3_data_2_817_BITS_74_TO_71_728_EQ_0_729_ETC___d5754 or
-	  IF_f22f3_data_3_819_BITS_74_TO_71_756_EQ_0_757_ETC___d5782)
+	  IF_f22f3_data_0_813_BITS_74_TO_71_684_EQ_0_685_ETC___d5710 or
+	  IF_f22f3_data_1_815_BITS_74_TO_71_712_EQ_0_713_ETC___d5738 or
+	  IF_f22f3_data_2_817_BITS_74_TO_71_740_EQ_0_741_ETC___d5766 or
+	  IF_f22f3_data_3_819_BITS_74_TO_71_768_EQ_0_769_ETC___d5794)
   begin
     case (f22f3_deqP)
       2'd0:
-	  SEL_ARR_IF_f22f3_data_0_813_BITS_74_TO_71_672__ETC___d5835 =
-	      IF_f22f3_data_0_813_BITS_74_TO_71_672_EQ_0_673_ETC___d5698 ==
+	  SEL_ARR_IF_f22f3_data_0_813_BITS_74_TO_71_684__ETC___d5827 =
+	      IF_f22f3_data_0_813_BITS_74_TO_71_684_EQ_0_685_ETC___d5710 ==
+	      4'd3;
+      2'd1:
+	  SEL_ARR_IF_f22f3_data_0_813_BITS_74_TO_71_684__ETC___d5827 =
+	      IF_f22f3_data_1_815_BITS_74_TO_71_712_EQ_0_713_ETC___d5738 ==
+	      4'd3;
+      2'd2:
+	  SEL_ARR_IF_f22f3_data_0_813_BITS_74_TO_71_684__ETC___d5827 =
+	      IF_f22f3_data_2_817_BITS_74_TO_71_740_EQ_0_741_ETC___d5766 ==
+	      4'd3;
+      2'd3:
+	  SEL_ARR_IF_f22f3_data_0_813_BITS_74_TO_71_684__ETC___d5827 =
+	      IF_f22f3_data_3_819_BITS_74_TO_71_768_EQ_0_769_ETC___d5794 ==
+	      4'd3;
+    endcase
+  end
+  always@(f22f3_deqP or
+	  IF_f22f3_data_0_813_BITS_74_TO_71_684_EQ_0_685_ETC___d5710 or
+	  IF_f22f3_data_1_815_BITS_74_TO_71_712_EQ_0_713_ETC___d5738 or
+	  IF_f22f3_data_2_817_BITS_74_TO_71_740_EQ_0_741_ETC___d5766 or
+	  IF_f22f3_data_3_819_BITS_74_TO_71_768_EQ_0_769_ETC___d5794)
+  begin
+    case (f22f3_deqP)
+      2'd0:
+	  SEL_ARR_IF_f22f3_data_0_813_BITS_74_TO_71_684__ETC___d5847 =
+	      IF_f22f3_data_0_813_BITS_74_TO_71_684_EQ_0_685_ETC___d5710 ==
 	      4'd5;
       2'd1:
-	  SEL_ARR_IF_f22f3_data_0_813_BITS_74_TO_71_672__ETC___d5835 =
-	      IF_f22f3_data_1_815_BITS_74_TO_71_700_EQ_0_701_ETC___d5726 ==
+	  SEL_ARR_IF_f22f3_data_0_813_BITS_74_TO_71_684__ETC___d5847 =
+	      IF_f22f3_data_1_815_BITS_74_TO_71_712_EQ_0_713_ETC___d5738 ==
 	      4'd5;
       2'd2:
-	  SEL_ARR_IF_f22f3_data_0_813_BITS_74_TO_71_672__ETC___d5835 =
-	      IF_f22f3_data_2_817_BITS_74_TO_71_728_EQ_0_729_ETC___d5754 ==
+	  SEL_ARR_IF_f22f3_data_0_813_BITS_74_TO_71_684__ETC___d5847 =
+	      IF_f22f3_data_2_817_BITS_74_TO_71_740_EQ_0_741_ETC___d5766 ==
 	      4'd5;
       2'd3:
-	  SEL_ARR_IF_f22f3_data_0_813_BITS_74_TO_71_672__ETC___d5835 =
-	      IF_f22f3_data_3_819_BITS_74_TO_71_756_EQ_0_757_ETC___d5782 ==
+	  SEL_ARR_IF_f22f3_data_0_813_BITS_74_TO_71_684__ETC___d5847 =
+	      IF_f22f3_data_3_819_BITS_74_TO_71_768_EQ_0_769_ETC___d5794 ==
 	      4'd5;
     endcase
   end
   always@(f22f3_deqP or
-	  IF_f22f3_data_0_813_BITS_74_TO_71_672_EQ_0_673_ETC___d5698 or
-	  IF_f22f3_data_1_815_BITS_74_TO_71_700_EQ_0_701_ETC___d5726 or
-	  IF_f22f3_data_2_817_BITS_74_TO_71_728_EQ_0_729_ETC___d5754 or
-	  IF_f22f3_data_3_819_BITS_74_TO_71_756_EQ_0_757_ETC___d5782)
+	  IF_f22f3_data_0_813_BITS_74_TO_71_684_EQ_0_685_ETC___d5710 or
+	  IF_f22f3_data_1_815_BITS_74_TO_71_712_EQ_0_713_ETC___d5738 or
+	  IF_f22f3_data_2_817_BITS_74_TO_71_740_EQ_0_741_ETC___d5766 or
+	  IF_f22f3_data_3_819_BITS_74_TO_71_768_EQ_0_769_ETC___d5794)
   begin
     case (f22f3_deqP)
       2'd0:
-	  SEL_ARR_IF_f22f3_data_0_813_BITS_74_TO_71_672__ETC___d5845 =
-	      IF_f22f3_data_0_813_BITS_74_TO_71_672_EQ_0_673_ETC___d5698 ==
+	  SEL_ARR_IF_f22f3_data_0_813_BITS_74_TO_71_684__ETC___d5857 =
+	      IF_f22f3_data_0_813_BITS_74_TO_71_684_EQ_0_685_ETC___d5710 ==
 	      4'd6;
       2'd1:
-	  SEL_ARR_IF_f22f3_data_0_813_BITS_74_TO_71_672__ETC___d5845 =
-	      IF_f22f3_data_1_815_BITS_74_TO_71_700_EQ_0_701_ETC___d5726 ==
+	  SEL_ARR_IF_f22f3_data_0_813_BITS_74_TO_71_684__ETC___d5857 =
+	      IF_f22f3_data_1_815_BITS_74_TO_71_712_EQ_0_713_ETC___d5738 ==
 	      4'd6;
       2'd2:
-	  SEL_ARR_IF_f22f3_data_0_813_BITS_74_TO_71_672__ETC___d5845 =
-	      IF_f22f3_data_2_817_BITS_74_TO_71_728_EQ_0_729_ETC___d5754 ==
+	  SEL_ARR_IF_f22f3_data_0_813_BITS_74_TO_71_684__ETC___d5857 =
+	      IF_f22f3_data_2_817_BITS_74_TO_71_740_EQ_0_741_ETC___d5766 ==
 	      4'd6;
       2'd3:
-	  SEL_ARR_IF_f22f3_data_0_813_BITS_74_TO_71_672__ETC___d5845 =
-	      IF_f22f3_data_3_819_BITS_74_TO_71_756_EQ_0_757_ETC___d5782 ==
+	  SEL_ARR_IF_f22f3_data_0_813_BITS_74_TO_71_684__ETC___d5857 =
+	      IF_f22f3_data_3_819_BITS_74_TO_71_768_EQ_0_769_ETC___d5794 ==
 	      4'd6;
     endcase
   end
   always@(f22f3_deqP or
-	  IF_f22f3_data_0_813_BITS_74_TO_71_672_EQ_0_673_ETC___d5698 or
-	  IF_f22f3_data_1_815_BITS_74_TO_71_700_EQ_0_701_ETC___d5726 or
-	  IF_f22f3_data_2_817_BITS_74_TO_71_728_EQ_0_729_ETC___d5754 or
-	  IF_f22f3_data_3_819_BITS_74_TO_71_756_EQ_0_757_ETC___d5782)
+	  IF_f22f3_data_0_813_BITS_74_TO_71_684_EQ_0_685_ETC___d5710 or
+	  IF_f22f3_data_1_815_BITS_74_TO_71_712_EQ_0_713_ETC___d5738 or
+	  IF_f22f3_data_2_817_BITS_74_TO_71_740_EQ_0_741_ETC___d5766 or
+	  IF_f22f3_data_3_819_BITS_74_TO_71_768_EQ_0_769_ETC___d5794)
   begin
     case (f22f3_deqP)
       2'd0:
-	  SEL_ARR_IF_f22f3_data_0_813_BITS_74_TO_71_672__ETC___d5855 =
-	      IF_f22f3_data_0_813_BITS_74_TO_71_672_EQ_0_673_ETC___d5698 ==
+	  SEL_ARR_IF_f22f3_data_0_813_BITS_74_TO_71_684__ETC___d5867 =
+	      IF_f22f3_data_0_813_BITS_74_TO_71_684_EQ_0_685_ETC___d5710 ==
 	      4'd7;
       2'd1:
-	  SEL_ARR_IF_f22f3_data_0_813_BITS_74_TO_71_672__ETC___d5855 =
-	      IF_f22f3_data_1_815_BITS_74_TO_71_700_EQ_0_701_ETC___d5726 ==
+	  SEL_ARR_IF_f22f3_data_0_813_BITS_74_TO_71_684__ETC___d5867 =
+	      IF_f22f3_data_1_815_BITS_74_TO_71_712_EQ_0_713_ETC___d5738 ==
 	      4'd7;
       2'd2:
-	  SEL_ARR_IF_f22f3_data_0_813_BITS_74_TO_71_672__ETC___d5855 =
-	      IF_f22f3_data_2_817_BITS_74_TO_71_728_EQ_0_729_ETC___d5754 ==
+	  SEL_ARR_IF_f22f3_data_0_813_BITS_74_TO_71_684__ETC___d5867 =
+	      IF_f22f3_data_2_817_BITS_74_TO_71_740_EQ_0_741_ETC___d5766 ==
 	      4'd7;
       2'd3:
-	  SEL_ARR_IF_f22f3_data_0_813_BITS_74_TO_71_672__ETC___d5855 =
-	      IF_f22f3_data_3_819_BITS_74_TO_71_756_EQ_0_757_ETC___d5782 ==
+	  SEL_ARR_IF_f22f3_data_0_813_BITS_74_TO_71_684__ETC___d5867 =
+	      IF_f22f3_data_3_819_BITS_74_TO_71_768_EQ_0_769_ETC___d5794 ==
 	      4'd7;
     endcase
   end
   always@(f22f3_deqP or
-	  IF_f22f3_data_0_813_BITS_74_TO_71_672_EQ_0_673_ETC___d5698 or
-	  IF_f22f3_data_1_815_BITS_74_TO_71_700_EQ_0_701_ETC___d5726 or
-	  IF_f22f3_data_2_817_BITS_74_TO_71_728_EQ_0_729_ETC___d5754 or
-	  IF_f22f3_data_3_819_BITS_74_TO_71_756_EQ_0_757_ETC___d5782)
+	  IF_f22f3_data_0_813_BITS_74_TO_71_684_EQ_0_685_ETC___d5710 or
+	  IF_f22f3_data_1_815_BITS_74_TO_71_712_EQ_0_713_ETC___d5738 or
+	  IF_f22f3_data_2_817_BITS_74_TO_71_740_EQ_0_741_ETC___d5766 or
+	  IF_f22f3_data_3_819_BITS_74_TO_71_768_EQ_0_769_ETC___d5794)
   begin
     case (f22f3_deqP)
       2'd0:
-	  SEL_ARR_IF_f22f3_data_0_813_BITS_74_TO_71_672__ETC___d5865 =
-	      IF_f22f3_data_0_813_BITS_74_TO_71_672_EQ_0_673_ETC___d5698 ==
+	  SEL_ARR_IF_f22f3_data_0_813_BITS_74_TO_71_684__ETC___d5877 =
+	      IF_f22f3_data_0_813_BITS_74_TO_71_684_EQ_0_685_ETC___d5710 ==
 	      4'd8;
       2'd1:
-	  SEL_ARR_IF_f22f3_data_0_813_BITS_74_TO_71_672__ETC___d5865 =
-	      IF_f22f3_data_1_815_BITS_74_TO_71_700_EQ_0_701_ETC___d5726 ==
+	  SEL_ARR_IF_f22f3_data_0_813_BITS_74_TO_71_684__ETC___d5877 =
+	      IF_f22f3_data_1_815_BITS_74_TO_71_712_EQ_0_713_ETC___d5738 ==
 	      4'd8;
       2'd2:
-	  SEL_ARR_IF_f22f3_data_0_813_BITS_74_TO_71_672__ETC___d5865 =
-	      IF_f22f3_data_2_817_BITS_74_TO_71_728_EQ_0_729_ETC___d5754 ==
+	  SEL_ARR_IF_f22f3_data_0_813_BITS_74_TO_71_684__ETC___d5877 =
+	      IF_f22f3_data_2_817_BITS_74_TO_71_740_EQ_0_741_ETC___d5766 ==
 	      4'd8;
       2'd3:
-	  SEL_ARR_IF_f22f3_data_0_813_BITS_74_TO_71_672__ETC___d5865 =
-	      IF_f22f3_data_3_819_BITS_74_TO_71_756_EQ_0_757_ETC___d5782 ==
+	  SEL_ARR_IF_f22f3_data_0_813_BITS_74_TO_71_684__ETC___d5877 =
+	      IF_f22f3_data_3_819_BITS_74_TO_71_768_EQ_0_769_ETC___d5794 ==
 	      4'd8;
     endcase
   end
   always@(f22f3_deqP or
-	  IF_f22f3_data_0_813_BITS_74_TO_71_672_EQ_0_673_ETC___d5698 or
-	  IF_f22f3_data_1_815_BITS_74_TO_71_700_EQ_0_701_ETC___d5726 or
-	  IF_f22f3_data_2_817_BITS_74_TO_71_728_EQ_0_729_ETC___d5754 or
-	  IF_f22f3_data_3_819_BITS_74_TO_71_756_EQ_0_757_ETC___d5782)
+	  IF_f22f3_data_0_813_BITS_74_TO_71_684_EQ_0_685_ETC___d5710 or
+	  IF_f22f3_data_1_815_BITS_74_TO_71_712_EQ_0_713_ETC___d5738 or
+	  IF_f22f3_data_2_817_BITS_74_TO_71_740_EQ_0_741_ETC___d5766 or
+	  IF_f22f3_data_3_819_BITS_74_TO_71_768_EQ_0_769_ETC___d5794)
   begin
     case (f22f3_deqP)
       2'd0:
-	  SEL_ARR_IF_f22f3_data_0_813_BITS_74_TO_71_672__ETC___d5875 =
-	      IF_f22f3_data_0_813_BITS_74_TO_71_672_EQ_0_673_ETC___d5698 ==
+	  SEL_ARR_IF_f22f3_data_0_813_BITS_74_TO_71_684__ETC___d5887 =
+	      IF_f22f3_data_0_813_BITS_74_TO_71_684_EQ_0_685_ETC___d5710 ==
 	      4'd9;
       2'd1:
-	  SEL_ARR_IF_f22f3_data_0_813_BITS_74_TO_71_672__ETC___d5875 =
-	      IF_f22f3_data_1_815_BITS_74_TO_71_700_EQ_0_701_ETC___d5726 ==
+	  SEL_ARR_IF_f22f3_data_0_813_BITS_74_TO_71_684__ETC___d5887 =
+	      IF_f22f3_data_1_815_BITS_74_TO_71_712_EQ_0_713_ETC___d5738 ==
 	      4'd9;
       2'd2:
-	  SEL_ARR_IF_f22f3_data_0_813_BITS_74_TO_71_672__ETC___d5875 =
-	      IF_f22f3_data_2_817_BITS_74_TO_71_728_EQ_0_729_ETC___d5754 ==
+	  SEL_ARR_IF_f22f3_data_0_813_BITS_74_TO_71_684__ETC___d5887 =
+	      IF_f22f3_data_2_817_BITS_74_TO_71_740_EQ_0_741_ETC___d5766 ==
 	      4'd9;
       2'd3:
-	  SEL_ARR_IF_f22f3_data_0_813_BITS_74_TO_71_672__ETC___d5875 =
-	      IF_f22f3_data_3_819_BITS_74_TO_71_756_EQ_0_757_ETC___d5782 ==
+	  SEL_ARR_IF_f22f3_data_0_813_BITS_74_TO_71_684__ETC___d5887 =
+	      IF_f22f3_data_3_819_BITS_74_TO_71_768_EQ_0_769_ETC___d5794 ==
 	      4'd9;
     endcase
   end
   always@(f22f3_deqP or
-	  IF_f22f3_data_0_813_BITS_74_TO_71_672_EQ_0_673_ETC___d5698 or
-	  IF_f22f3_data_1_815_BITS_74_TO_71_700_EQ_0_701_ETC___d5726 or
-	  IF_f22f3_data_2_817_BITS_74_TO_71_728_EQ_0_729_ETC___d5754 or
-	  IF_f22f3_data_3_819_BITS_74_TO_71_756_EQ_0_757_ETC___d5782)
+	  IF_f22f3_data_0_813_BITS_74_TO_71_684_EQ_0_685_ETC___d5710 or
+	  IF_f22f3_data_1_815_BITS_74_TO_71_712_EQ_0_713_ETC___d5738 or
+	  IF_f22f3_data_2_817_BITS_74_TO_71_740_EQ_0_741_ETC___d5766 or
+	  IF_f22f3_data_3_819_BITS_74_TO_71_768_EQ_0_769_ETC___d5794)
   begin
     case (f22f3_deqP)
       2'd0:
-	  SEL_ARR_IF_f22f3_data_0_813_BITS_74_TO_71_672__ETC___d5885 =
-	      IF_f22f3_data_0_813_BITS_74_TO_71_672_EQ_0_673_ETC___d5698 ==
+	  SEL_ARR_IF_f22f3_data_0_813_BITS_74_TO_71_684__ETC___d5897 =
+	      IF_f22f3_data_0_813_BITS_74_TO_71_684_EQ_0_685_ETC___d5710 ==
 	      4'd10;
       2'd1:
-	  SEL_ARR_IF_f22f3_data_0_813_BITS_74_TO_71_672__ETC___d5885 =
-	      IF_f22f3_data_1_815_BITS_74_TO_71_700_EQ_0_701_ETC___d5726 ==
+	  SEL_ARR_IF_f22f3_data_0_813_BITS_74_TO_71_684__ETC___d5897 =
+	      IF_f22f3_data_1_815_BITS_74_TO_71_712_EQ_0_713_ETC___d5738 ==
 	      4'd10;
       2'd2:
-	  SEL_ARR_IF_f22f3_data_0_813_BITS_74_TO_71_672__ETC___d5885 =
-	      IF_f22f3_data_2_817_BITS_74_TO_71_728_EQ_0_729_ETC___d5754 ==
+	  SEL_ARR_IF_f22f3_data_0_813_BITS_74_TO_71_684__ETC___d5897 =
+	      IF_f22f3_data_2_817_BITS_74_TO_71_740_EQ_0_741_ETC___d5766 ==
 	      4'd10;
       2'd3:
-	  SEL_ARR_IF_f22f3_data_0_813_BITS_74_TO_71_672__ETC___d5885 =
-	      IF_f22f3_data_3_819_BITS_74_TO_71_756_EQ_0_757_ETC___d5782 ==
+	  SEL_ARR_IF_f22f3_data_0_813_BITS_74_TO_71_684__ETC___d5897 =
+	      IF_f22f3_data_3_819_BITS_74_TO_71_768_EQ_0_769_ETC___d5794 ==
 	      4'd10;
     endcase
   end
   always@(f22f3_deqP or
-	  IF_f22f3_data_0_813_BITS_74_TO_71_672_EQ_0_673_ETC___d5698 or
-	  IF_f22f3_data_1_815_BITS_74_TO_71_700_EQ_0_701_ETC___d5726 or
-	  IF_f22f3_data_2_817_BITS_74_TO_71_728_EQ_0_729_ETC___d5754 or
-	  IF_f22f3_data_3_819_BITS_74_TO_71_756_EQ_0_757_ETC___d5782)
+	  IF_f22f3_data_0_813_BITS_74_TO_71_684_EQ_0_685_ETC___d5710 or
+	  IF_f22f3_data_1_815_BITS_74_TO_71_712_EQ_0_713_ETC___d5738 or
+	  IF_f22f3_data_2_817_BITS_74_TO_71_740_EQ_0_741_ETC___d5766 or
+	  IF_f22f3_data_3_819_BITS_74_TO_71_768_EQ_0_769_ETC___d5794)
   begin
     case (f22f3_deqP)
       2'd0:
-	  SEL_ARR_IF_f22f3_data_0_813_BITS_74_TO_71_672__ETC___d5905 =
-	      IF_f22f3_data_0_813_BITS_74_TO_71_672_EQ_0_673_ETC___d5698 ==
+	  SEL_ARR_IF_f22f3_data_0_813_BITS_74_TO_71_684__ETC___d5917 =
+	      IF_f22f3_data_0_813_BITS_74_TO_71_684_EQ_0_685_ETC___d5710 ==
 	      4'd12;
       2'd1:
-	  SEL_ARR_IF_f22f3_data_0_813_BITS_74_TO_71_672__ETC___d5905 =
-	      IF_f22f3_data_1_815_BITS_74_TO_71_700_EQ_0_701_ETC___d5726 ==
+	  SEL_ARR_IF_f22f3_data_0_813_BITS_74_TO_71_684__ETC___d5917 =
+	      IF_f22f3_data_1_815_BITS_74_TO_71_712_EQ_0_713_ETC___d5738 ==
 	      4'd12;
       2'd2:
-	  SEL_ARR_IF_f22f3_data_0_813_BITS_74_TO_71_672__ETC___d5905 =
-	      IF_f22f3_data_2_817_BITS_74_TO_71_728_EQ_0_729_ETC___d5754 ==
+	  SEL_ARR_IF_f22f3_data_0_813_BITS_74_TO_71_684__ETC___d5917 =
+	      IF_f22f3_data_2_817_BITS_74_TO_71_740_EQ_0_741_ETC___d5766 ==
 	      4'd12;
       2'd3:
-	  SEL_ARR_IF_f22f3_data_0_813_BITS_74_TO_71_672__ETC___d5905 =
-	      IF_f22f3_data_3_819_BITS_74_TO_71_756_EQ_0_757_ETC___d5782 ==
+	  SEL_ARR_IF_f22f3_data_0_813_BITS_74_TO_71_684__ETC___d5917 =
+	      IF_f22f3_data_3_819_BITS_74_TO_71_768_EQ_0_769_ETC___d5794 ==
 	      4'd12;
     endcase
   end
   always@(f22f3_deqP or
-	  IF_f22f3_data_0_813_BITS_74_TO_71_672_EQ_0_673_ETC___d5698 or
-	  IF_f22f3_data_1_815_BITS_74_TO_71_700_EQ_0_701_ETC___d5726 or
-	  IF_f22f3_data_2_817_BITS_74_TO_71_728_EQ_0_729_ETC___d5754 or
-	  IF_f22f3_data_3_819_BITS_74_TO_71_756_EQ_0_757_ETC___d5782)
+	  IF_f22f3_data_0_813_BITS_74_TO_71_684_EQ_0_685_ETC___d5710 or
+	  IF_f22f3_data_1_815_BITS_74_TO_71_712_EQ_0_713_ETC___d5738 or
+	  IF_f22f3_data_2_817_BITS_74_TO_71_740_EQ_0_741_ETC___d5766 or
+	  IF_f22f3_data_3_819_BITS_74_TO_71_768_EQ_0_769_ETC___d5794)
   begin
     case (f22f3_deqP)
       2'd0:
-	  SEL_ARR_IF_f22f3_data_0_813_BITS_74_TO_71_672__ETC___d5895 =
-	      IF_f22f3_data_0_813_BITS_74_TO_71_672_EQ_0_673_ETC___d5698 ==
+	  SEL_ARR_IF_f22f3_data_0_813_BITS_74_TO_71_684__ETC___d5907 =
+	      IF_f22f3_data_0_813_BITS_74_TO_71_684_EQ_0_685_ETC___d5710 ==
 	      4'd11;
       2'd1:
-	  SEL_ARR_IF_f22f3_data_0_813_BITS_74_TO_71_672__ETC___d5895 =
-	      IF_f22f3_data_1_815_BITS_74_TO_71_700_EQ_0_701_ETC___d5726 ==
+	  SEL_ARR_IF_f22f3_data_0_813_BITS_74_TO_71_684__ETC___d5907 =
+	      IF_f22f3_data_1_815_BITS_74_TO_71_712_EQ_0_713_ETC___d5738 ==
 	      4'd11;
       2'd2:
-	  SEL_ARR_IF_f22f3_data_0_813_BITS_74_TO_71_672__ETC___d5895 =
-	      IF_f22f3_data_2_817_BITS_74_TO_71_728_EQ_0_729_ETC___d5754 ==
+	  SEL_ARR_IF_f22f3_data_0_813_BITS_74_TO_71_684__ETC___d5907 =
+	      IF_f22f3_data_2_817_BITS_74_TO_71_740_EQ_0_741_ETC___d5766 ==
 	      4'd11;
       2'd3:
-	  SEL_ARR_IF_f22f3_data_0_813_BITS_74_TO_71_672__ETC___d5895 =
-	      IF_f22f3_data_3_819_BITS_74_TO_71_756_EQ_0_757_ETC___d5782 ==
+	  SEL_ARR_IF_f22f3_data_0_813_BITS_74_TO_71_684__ETC___d5907 =
+	      IF_f22f3_data_3_819_BITS_74_TO_71_768_EQ_0_769_ETC___d5794 ==
 	      4'd11;
     endcase
   end
-  always@(n__read__h182580 or instdata_data_0 or instdata_data_1)
+  always@(n__read__h182540 or instdata_data_0 or instdata_data_1)
   begin
-    case (n__read__h182580)
+    case (n__read__h182540)
       1'd0:
-	  SEL_ARR_instdata_data_0_996_BITS_65_TO_64_997__ETC___d6004 =
+	  SEL_ARR_instdata_data_0_008_BITS_65_TO_64_009__ETC___d6016 =
 	      instdata_data_0[65:64];
       1'd1:
-	  SEL_ARR_instdata_data_0_996_BITS_65_TO_64_997__ETC___d6004 =
+	  SEL_ARR_instdata_data_0_008_BITS_65_TO_64_009__ETC___d6016 =
 	      instdata_data_1[65:64];
     endcase
   end
@@ -21420,21 +21456,21 @@ module mkFetchStage(CLK,
   begin
     case (f32d_deqP)
       1'd0:
-	  SEL_ARR_f32d_data_0_988_BIT_4_006_f32d_data_1__ETC___d6009 =
+	  SEL_ARR_f32d_data_0_000_BIT_4_018_f32d_data_1__ETC___d6021 =
 	      f32d_data_0[4];
       1'd1:
-	  SEL_ARR_f32d_data_0_988_BIT_4_006_f32d_data_1__ETC___d6009 =
+	  SEL_ARR_f32d_data_0_000_BIT_4_018_f32d_data_1__ETC___d6021 =
 	      f32d_data_1[4];
     endcase
   end
-  always@(n__read__h182580 or instdata_data_0 or instdata_data_1)
+  always@(n__read__h182540 or instdata_data_0 or instdata_data_1)
   begin
-    case (n__read__h182580)
+    case (n__read__h182540)
       1'd0:
-	  SEL_ARR_instdata_data_0_996_BITS_195_TO_194_01_ETC___d6019 =
+	  SEL_ARR_instdata_data_0_008_BITS_195_TO_194_02_ETC___d6031 =
 	      instdata_data_0[195:194];
       1'd1:
-	  SEL_ARR_instdata_data_0_996_BITS_195_TO_194_01_ETC___d6019 =
+	  SEL_ARR_instdata_data_0_008_BITS_195_TO_194_02_ETC___d6031 =
 	      instdata_data_1[195:194];
     endcase
   end
@@ -21442,10 +21478,10 @@ module mkFetchStage(CLK,
   begin
     case (f32d_deqP)
       1'd0:
-	  SEL_ARR_f32d_data_0_988_BIT_139_021_f32d_data__ETC___d6024 =
+	  SEL_ARR_f32d_data_0_000_BIT_139_033_f32d_data__ETC___d6036 =
 	      f32d_data_0[139];
       1'd1:
-	  SEL_ARR_f32d_data_0_988_BIT_139_021_f32d_data__ETC___d6024 =
+	  SEL_ARR_f32d_data_0_000_BIT_139_033_f32d_data__ETC___d6036 =
 	      f32d_data_1[139];
     endcase
   end
@@ -21477,21 +21513,21 @@ module mkFetchStage(CLK,
   begin
     case (f32d_deqP)
       1'd0:
-	  SEL_ARR_NOT_f32d_data_0_988_BIT_73_051_052_NOT_ETC___d6056 =
+	  SEL_ARR_NOT_f32d_data_0_000_BIT_73_063_064_NOT_ETC___d6068 =
 	      !f32d_data_0[73];
       1'd1:
-	  SEL_ARR_NOT_f32d_data_0_988_BIT_73_051_052_NOT_ETC___d6056 =
+	  SEL_ARR_NOT_f32d_data_0_000_BIT_73_063_064_NOT_ETC___d6068 =
 	      !f32d_data_1[73];
     endcase
   end
-  always@(n__read__h182580 or instdata_data_0 or instdata_data_1)
+  always@(n__read__h182540 or instdata_data_0 or instdata_data_1)
   begin
-    case (n__read__h182580)
+    case (n__read__h182540)
       1'd0:
-	  SEL_ARR_instdata_data_0_996_BITS_259_TO_196_30_ETC___d6304 =
+	  SEL_ARR_instdata_data_0_008_BITS_259_TO_196_31_ETC___d6316 =
 	      instdata_data_0[259:196];
       1'd1:
-	  SEL_ARR_instdata_data_0_996_BITS_259_TO_196_30_ETC___d6304 =
+	  SEL_ARR_instdata_data_0_008_BITS_259_TO_196_31_ETC___d6316 =
 	      instdata_data_1[259:196];
     endcase
   end
@@ -21499,15 +21535,15 @@ module mkFetchStage(CLK,
   begin
     case (f32d_data_0[72:69])
       4'd0, 4'd1, 4'd2, 4'd3, 4'd4, 4'd5, 4'd6, 4'd7, 4'd8, 4'd9:
-	  IF_f32d_data_0_988_BITS_72_TO_69_338_EQ_0_339__ETC___d6364 =
+	  IF_f32d_data_0_000_BITS_72_TO_69_350_EQ_0_351__ETC___d6376 =
 	      f32d_data_0[72:69];
       4'd11:
-	  IF_f32d_data_0_988_BITS_72_TO_69_338_EQ_0_339__ETC___d6364 = 4'd10;
+	  IF_f32d_data_0_000_BITS_72_TO_69_350_EQ_0_351__ETC___d6376 = 4'd10;
       4'd12:
-	  IF_f32d_data_0_988_BITS_72_TO_69_338_EQ_0_339__ETC___d6364 = 4'd11;
+	  IF_f32d_data_0_000_BITS_72_TO_69_350_EQ_0_351__ETC___d6376 = 4'd11;
       4'd13:
-	  IF_f32d_data_0_988_BITS_72_TO_69_338_EQ_0_339__ETC___d6364 = 4'd12;
-      default: IF_f32d_data_0_988_BITS_72_TO_69_338_EQ_0_339__ETC___d6364 =
+	  IF_f32d_data_0_000_BITS_72_TO_69_350_EQ_0_351__ETC___d6376 = 4'd12;
+      default: IF_f32d_data_0_000_BITS_72_TO_69_350_EQ_0_351__ETC___d6376 =
 		   4'd13;
     endcase
   end
@@ -21515,70 +21551,70 @@ module mkFetchStage(CLK,
   begin
     case (f32d_data_1[72:69])
       4'd0, 4'd1, 4'd2, 4'd3, 4'd4, 4'd5, 4'd6, 4'd7, 4'd8, 4'd9:
-	  IF_f32d_data_1_990_BITS_72_TO_69_366_EQ_0_367__ETC___d6392 =
+	  IF_f32d_data_1_002_BITS_72_TO_69_378_EQ_0_379__ETC___d6404 =
 	      f32d_data_1[72:69];
       4'd11:
-	  IF_f32d_data_1_990_BITS_72_TO_69_366_EQ_0_367__ETC___d6392 = 4'd10;
+	  IF_f32d_data_1_002_BITS_72_TO_69_378_EQ_0_379__ETC___d6404 = 4'd10;
       4'd12:
-	  IF_f32d_data_1_990_BITS_72_TO_69_366_EQ_0_367__ETC___d6392 = 4'd11;
+	  IF_f32d_data_1_002_BITS_72_TO_69_378_EQ_0_379__ETC___d6404 = 4'd11;
       4'd13:
-	  IF_f32d_data_1_990_BITS_72_TO_69_366_EQ_0_367__ETC___d6392 = 4'd12;
-      default: IF_f32d_data_1_990_BITS_72_TO_69_366_EQ_0_367__ETC___d6392 =
+	  IF_f32d_data_1_002_BITS_72_TO_69_378_EQ_0_379__ETC___d6404 = 4'd12;
+      default: IF_f32d_data_1_002_BITS_72_TO_69_378_EQ_0_379__ETC___d6404 =
 		   4'd13;
     endcase
   end
-  always@(n__read__h182580 or instdata_data_0 or instdata_data_1)
+  always@(n__read__h182540 or instdata_data_0 or instdata_data_1)
   begin
-    case (n__read__h182580)
+    case (n__read__h182540)
       1'd0:
-	  SEL_ARR_instdata_data_0_996_BITS_161_TO_130_48_ETC___d6486 =
+	  SEL_ARR_instdata_data_0_008_BITS_161_TO_130_49_ETC___d6498 =
 	      instdata_data_0[161:130];
       1'd1:
-	  SEL_ARR_instdata_data_0_996_BITS_161_TO_130_48_ETC___d6486 =
+	  SEL_ARR_instdata_data_0_008_BITS_161_TO_130_49_ETC___d6498 =
 	      instdata_data_1[161:130];
     endcase
   end
-  always@(n__read__h182580 or instdata_data_0 or instdata_data_1)
+  always@(n__read__h182540 or instdata_data_0 or instdata_data_1)
   begin
-    case (n__read__h182580)
+    case (n__read__h182540)
       1'd0:
-	  SEL_ARR_instdata_data_0_996_BITS_31_TO_0_057_i_ETC___d6060 =
+	  SEL_ARR_instdata_data_0_008_BITS_31_TO_0_069_i_ETC___d6072 =
 	      instdata_data_0[31:0];
       1'd1:
-	  SEL_ARR_instdata_data_0_996_BITS_31_TO_0_057_i_ETC___d6060 =
+	  SEL_ARR_instdata_data_0_008_BITS_31_TO_0_069_i_ETC___d6072 =
 	      instdata_data_1[31:0];
     endcase
   end
-  always@(decode___d6487)
+  always@(decode___d6499)
   begin
-    case (decode___d6487[77:75])
+    case (decode___d6499[77:75])
       3'd0, 3'd1, 3'd2, 3'd3, 3'd4:
-	  CASE_decode_487_BITS_77_TO_75_0_decode_487_BIT_ETC__q5 =
-	      decode___d6487[77:75];
-      default: CASE_decode_487_BITS_77_TO_75_0_decode_487_BIT_ETC__q5 = 3'd7;
+	  CASE_decode_499_BITS_77_TO_75_0_decode_499_BIT_ETC__q5 =
+	      decode___d6499[77:75];
+      default: CASE_decode_499_BITS_77_TO_75_0_decode_499_BIT_ETC__q5 = 3'd7;
     endcase
   end
-  always@(decode___d6487 or
-	  CASE_decode_487_BITS_77_TO_75_0_decode_487_BIT_ETC__q5)
+  always@(decode___d6499 or
+	  CASE_decode_499_BITS_77_TO_75_0_decode_499_BIT_ETC__q5)
   begin
-    case (decode___d6487[94:92])
+    case (decode___d6499[94:92])
       3'd0, 3'd1, 3'd2, 3'd3:
-	  CASE_decode_487_BITS_94_TO_92_0_decode_487_BIT_ETC__q6 =
-	      decode___d6487[94:74];
+	  CASE_decode_499_BITS_94_TO_92_0_decode_499_BIT_ETC__q6 =
+	      decode___d6499[94:74];
       3'd4:
-	  CASE_decode_487_BITS_94_TO_92_0_decode_487_BIT_ETC__q6 =
-	      { decode___d6487[94:92],
+	  CASE_decode_499_BITS_94_TO_92_0_decode_499_BIT_ETC__q6 =
+	      { decode___d6499[94:92],
 		9'h0AA,
-		decode___d6487[82:78],
-		CASE_decode_487_BITS_77_TO_75_0_decode_487_BIT_ETC__q5,
-		decode___d6487[74] };
-      default: CASE_decode_487_BITS_94_TO_92_0_decode_487_BIT_ETC__q6 =
+		decode___d6499[82:78],
+		CASE_decode_499_BITS_77_TO_75_0_decode_499_BIT_ETC__q5,
+		decode___d6499[74] };
+      default: CASE_decode_499_BITS_94_TO_92_0_decode_499_BIT_ETC__q6 =
 		   21'd1485482;
     endcase
   end
-  always@(decode___d6487)
+  always@(decode___d6499)
   begin
-    case (decode___d6487[72:61])
+    case (decode___d6499[72:61])
       12'd1,
       12'd2,
       12'd3,
@@ -21623,42 +21659,42 @@ module mkFetchStage(CLK,
       12'd3858,
       12'd3859,
       12'd3860:
-	  CASE_decode_487_BITS_72_TO_61_1_decode_487_BIT_ETC__q7 =
-	      decode___d6487[72:61];
-      default: CASE_decode_487_BITS_72_TO_61_1_decode_487_BIT_ETC__q7 =
+	  CASE_decode_499_BITS_72_TO_61_1_decode_499_BIT_ETC__q7 =
+	      decode___d6499[72:61];
+      default: CASE_decode_499_BITS_72_TO_61_1_decode_499_BIT_ETC__q7 =
 		   12'd2303;
     endcase
   end
-  always@(decode___d6061)
+  always@(decode___d6073)
   begin
-    case (decode___d6061[77:75])
+    case (decode___d6073[77:75])
       3'd0, 3'd1, 3'd2, 3'd3, 3'd4:
-	  CASE_decode_061_BITS_77_TO_75_0_decode_061_BIT_ETC__q8 =
-	      decode___d6061[77:75];
-      default: CASE_decode_061_BITS_77_TO_75_0_decode_061_BIT_ETC__q8 = 3'd7;
+	  CASE_decode_073_BITS_77_TO_75_0_decode_073_BIT_ETC__q8 =
+	      decode___d6073[77:75];
+      default: CASE_decode_073_BITS_77_TO_75_0_decode_073_BIT_ETC__q8 = 3'd7;
     endcase
   end
-  always@(decode___d6061 or
-	  CASE_decode_061_BITS_77_TO_75_0_decode_061_BIT_ETC__q8)
+  always@(decode___d6073 or
+	  CASE_decode_073_BITS_77_TO_75_0_decode_073_BIT_ETC__q8)
   begin
-    case (decode___d6061[94:92])
+    case (decode___d6073[94:92])
       3'd0, 3'd1, 3'd2, 3'd3:
-	  CASE_decode_061_BITS_94_TO_92_0_decode_061_BIT_ETC__q9 =
-	      decode___d6061[94:74];
+	  CASE_decode_073_BITS_94_TO_92_0_decode_073_BIT_ETC__q9 =
+	      decode___d6073[94:74];
       3'd4:
-	  CASE_decode_061_BITS_94_TO_92_0_decode_061_BIT_ETC__q9 =
-	      { decode___d6061[94:92],
+	  CASE_decode_073_BITS_94_TO_92_0_decode_073_BIT_ETC__q9 =
+	      { decode___d6073[94:92],
 		9'h0AA,
-		decode___d6061[82:78],
-		CASE_decode_061_BITS_77_TO_75_0_decode_061_BIT_ETC__q8,
-		decode___d6061[74] };
-      default: CASE_decode_061_BITS_94_TO_92_0_decode_061_BIT_ETC__q9 =
+		decode___d6073[82:78],
+		CASE_decode_073_BITS_77_TO_75_0_decode_073_BIT_ETC__q8,
+		decode___d6073[74] };
+      default: CASE_decode_073_BITS_94_TO_92_0_decode_073_BIT_ETC__q9 =
 		   21'd1485482;
     endcase
   end
-  always@(decode___d6061)
+  always@(decode___d6073)
   begin
-    case (decode___d6061[72:61])
+    case (decode___d6073[72:61])
       12'd1,
       12'd2,
       12'd3,
@@ -21703,9 +21739,9 @@ module mkFetchStage(CLK,
       12'd3858,
       12'd3859,
       12'd3860:
-	  CASE_decode_061_BITS_72_TO_61_1_decode_061_BIT_ETC__q10 =
-	      decode___d6061[72:61];
-      default: CASE_decode_061_BITS_72_TO_61_1_decode_061_BIT_ETC__q10 =
+	  CASE_decode_073_BITS_72_TO_61_1_decode_073_BIT_ETC__q10 =
+	      decode___d6073[72:61];
+      default: CASE_decode_073_BITS_72_TO_61_1_decode_073_BIT_ETC__q10 =
 		   12'd2303;
     endcase
   end
@@ -21713,10 +21749,10 @@ module mkFetchStage(CLK,
   begin
     case (f32d_deqP)
       1'd0:
-	  SEL_ARR_NOT_f32d_data_0_988_BIT_74_783_784_NOT_ETC___d6788 =
+	  SEL_ARR_NOT_f32d_data_0_000_BIT_74_795_796_NOT_ETC___d6800 =
 	      !f32d_data_0[74];
       1'd1:
-	  SEL_ARR_NOT_f32d_data_0_988_BIT_74_783_784_NOT_ETC___d6788 =
+	  SEL_ARR_NOT_f32d_data_0_000_BIT_74_795_796_NOT_ETC___d6800 =
 	      !f32d_data_1[74];
     endcase
   end
@@ -21724,10 +21760,10 @@ module mkFetchStage(CLK,
   begin
     case (f32d_deqP)
       1'd0:
-	  SEL_ARR_f32d_data_0_988_BIT_74_783_f32d_data_1_ETC___d6790 =
+	  SEL_ARR_f32d_data_0_000_BIT_74_795_f32d_data_1_ETC___d6802 =
 	      f32d_data_0[74];
       1'd1:
-	  SEL_ARR_f32d_data_0_988_BIT_74_783_f32d_data_1_ETC___d6790 =
+	  SEL_ARR_f32d_data_0_000_BIT_74_795_f32d_data_1_ETC___d6802 =
 	      f32d_data_1[74];
     endcase
   end
@@ -21771,9 +21807,9 @@ module mkFetchStage(CLK,
   begin
     case (out_fifo_internalFifos_0$D_OUT[177:175])
       3'd0, 3'd1, 3'd2, 3'd3, 3'd4:
-	  IF_out_fifo_internalFifos_0_first__850_BITS_17_ETC___d7004 =
+	  IF_out_fifo_internalFifos_0_first__862_BITS_17_ETC___d7016 =
 	      out_fifo_internalFifos_0$D_OUT[177:175];
-      default: IF_out_fifo_internalFifos_0_first__850_BITS_17_ETC___d7004 =
+      default: IF_out_fifo_internalFifos_0_first__862_BITS_17_ETC___d7016 =
 		   3'd5;
     endcase
   end
@@ -21781,84 +21817,84 @@ module mkFetchStage(CLK,
   begin
     case (out_fifo_internalFifos_1$D_OUT[177:175])
       3'd0, 3'd1, 3'd2, 3'd3, 3'd4:
-	  IF_out_fifo_internalFifos_1_first__852_BITS_17_ETC___d7016 =
+	  IF_out_fifo_internalFifos_1_first__864_BITS_17_ETC___d7028 =
 	      out_fifo_internalFifos_1$D_OUT[177:175];
-      default: IF_out_fifo_internalFifos_1_first__852_BITS_17_ETC___d7016 =
+      default: IF_out_fifo_internalFifos_1_first__864_BITS_17_ETC___d7028 =
 		   3'd5;
     endcase
   end
   always@(x__h68242 or
-	  IF_out_fifo_internalFifos_0_first__850_BITS_17_ETC___d7004 or
-	  IF_out_fifo_internalFifos_1_first__852_BITS_17_ETC___d7016)
+	  IF_out_fifo_internalFifos_0_first__862_BITS_17_ETC___d7016 or
+	  IF_out_fifo_internalFifos_1_first__864_BITS_17_ETC___d7028)
   begin
     case (x__h68242)
       1'd0:
 	  CASE_x8242_0_IF_out_fifo_internalFifos_0_first_ETC__q14 =
-	      IF_out_fifo_internalFifos_0_first__850_BITS_17_ETC___d7004 ==
+	      IF_out_fifo_internalFifos_0_first__862_BITS_17_ETC___d7016 ==
 	      3'd3;
       1'd1:
 	  CASE_x8242_0_IF_out_fifo_internalFifos_0_first_ETC__q14 =
-	      IF_out_fifo_internalFifos_1_first__852_BITS_17_ETC___d7016 ==
+	      IF_out_fifo_internalFifos_1_first__864_BITS_17_ETC___d7028 ==
 	      3'd3;
     endcase
   end
   always@(x__h68242 or
-	  IF_out_fifo_internalFifos_0_first__850_BITS_17_ETC___d7004 or
-	  IF_out_fifo_internalFifos_1_first__852_BITS_17_ETC___d7016)
+	  IF_out_fifo_internalFifos_0_first__862_BITS_17_ETC___d7016 or
+	  IF_out_fifo_internalFifos_1_first__864_BITS_17_ETC___d7028)
   begin
     case (x__h68242)
       1'd0:
 	  CASE_x8242_0_IF_out_fifo_internalFifos_0_first_ETC__q15 =
-	      IF_out_fifo_internalFifos_0_first__850_BITS_17_ETC___d7004 ==
+	      IF_out_fifo_internalFifos_0_first__862_BITS_17_ETC___d7016 ==
 	      3'd4;
       1'd1:
 	  CASE_x8242_0_IF_out_fifo_internalFifos_0_first_ETC__q15 =
-	      IF_out_fifo_internalFifos_1_first__852_BITS_17_ETC___d7016 ==
+	      IF_out_fifo_internalFifos_1_first__864_BITS_17_ETC___d7028 ==
 	      3'd4;
     endcase
   end
   always@(x__h68242 or
-	  IF_out_fifo_internalFifos_0_first__850_BITS_17_ETC___d7004 or
-	  IF_out_fifo_internalFifos_1_first__852_BITS_17_ETC___d7016)
+	  IF_out_fifo_internalFifos_0_first__862_BITS_17_ETC___d7016 or
+	  IF_out_fifo_internalFifos_1_first__864_BITS_17_ETC___d7028)
   begin
     case (x__h68242)
       1'd0:
 	  CASE_x8242_0_IF_out_fifo_internalFifos_0_first_ETC__q16 =
-	      IF_out_fifo_internalFifos_0_first__850_BITS_17_ETC___d7004 ==
+	      IF_out_fifo_internalFifos_0_first__862_BITS_17_ETC___d7016 ==
 	      3'd2;
       1'd1:
 	  CASE_x8242_0_IF_out_fifo_internalFifos_0_first_ETC__q16 =
-	      IF_out_fifo_internalFifos_1_first__852_BITS_17_ETC___d7016 ==
+	      IF_out_fifo_internalFifos_1_first__864_BITS_17_ETC___d7028 ==
 	      3'd2;
     endcase
   end
   always@(x__h68242 or
-	  IF_out_fifo_internalFifos_0_first__850_BITS_17_ETC___d7004 or
-	  IF_out_fifo_internalFifos_1_first__852_BITS_17_ETC___d7016)
+	  IF_out_fifo_internalFifos_0_first__862_BITS_17_ETC___d7016 or
+	  IF_out_fifo_internalFifos_1_first__864_BITS_17_ETC___d7028)
   begin
     case (x__h68242)
       1'd0:
 	  CASE_x8242_0_IF_out_fifo_internalFifos_0_first_ETC__q17 =
-	      IF_out_fifo_internalFifos_0_first__850_BITS_17_ETC___d7004 ==
+	      IF_out_fifo_internalFifos_0_first__862_BITS_17_ETC___d7016 ==
 	      3'd1;
       1'd1:
 	  CASE_x8242_0_IF_out_fifo_internalFifos_0_first_ETC__q17 =
-	      IF_out_fifo_internalFifos_1_first__852_BITS_17_ETC___d7016 ==
+	      IF_out_fifo_internalFifos_1_first__864_BITS_17_ETC___d7028 ==
 	      3'd1;
     endcase
   end
   always@(x__h68242 or
-	  IF_out_fifo_internalFifos_0_first__850_BITS_17_ETC___d7004 or
-	  IF_out_fifo_internalFifos_1_first__852_BITS_17_ETC___d7016)
+	  IF_out_fifo_internalFifos_0_first__862_BITS_17_ETC___d7016 or
+	  IF_out_fifo_internalFifos_1_first__864_BITS_17_ETC___d7028)
   begin
     case (x__h68242)
       1'd0:
 	  CASE_x8242_0_IF_out_fifo_internalFifos_0_first_ETC__q18 =
-	      IF_out_fifo_internalFifos_0_first__850_BITS_17_ETC___d7004 ==
+	      IF_out_fifo_internalFifos_0_first__862_BITS_17_ETC___d7016 ==
 	      3'd0;
       1'd1:
 	  CASE_x8242_0_IF_out_fifo_internalFifos_0_first_ETC__q18 =
-	      IF_out_fifo_internalFifos_1_first__852_BITS_17_ETC___d7016 ==
+	      IF_out_fifo_internalFifos_1_first__864_BITS_17_ETC___d7028 ==
 	      3'd0;
     endcase
   end
@@ -21867,10 +21903,10 @@ module mkFetchStage(CLK,
   begin
     case (x__h68242)
       1'd0:
-	  SEL_ARR_out_fifo_internalFifos_0_first__850_BI_ETC___d6968 =
+	  SEL_ARR_out_fifo_internalFifos_0_first__862_BI_ETC___d6980 =
 	      out_fifo_internalFifos_0$D_OUT[174];
       1'd1:
-	  SEL_ARR_out_fifo_internalFifos_0_first__850_BI_ETC___d6968 =
+	  SEL_ARR_out_fifo_internalFifos_0_first__862_BI_ETC___d6980 =
 	      out_fifo_internalFifos_1$D_OUT[174];
     endcase
   end
@@ -21890,15 +21926,15 @@ module mkFetchStage(CLK,
   begin
     case (out_fifo_internalFifos_0$D_OUT[67:64])
       4'd0, 4'd1, 4'd2, 4'd3, 4'd4, 4'd5, 4'd6, 4'd7, 4'd8, 4'd9:
-	  IF_out_fifo_internalFifos_0_first__850_BITS_67_ETC___d7404 =
+	  IF_out_fifo_internalFifos_0_first__862_BITS_67_ETC___d7416 =
 	      out_fifo_internalFifos_0$D_OUT[67:64];
       4'd11:
-	  IF_out_fifo_internalFifos_0_first__850_BITS_67_ETC___d7404 = 4'd10;
+	  IF_out_fifo_internalFifos_0_first__862_BITS_67_ETC___d7416 = 4'd10;
       4'd12:
-	  IF_out_fifo_internalFifos_0_first__850_BITS_67_ETC___d7404 = 4'd11;
+	  IF_out_fifo_internalFifos_0_first__862_BITS_67_ETC___d7416 = 4'd11;
       4'd13:
-	  IF_out_fifo_internalFifos_0_first__850_BITS_67_ETC___d7404 = 4'd12;
-      default: IF_out_fifo_internalFifos_0_first__850_BITS_67_ETC___d7404 =
+	  IF_out_fifo_internalFifos_0_first__862_BITS_67_ETC___d7416 = 4'd12;
+      default: IF_out_fifo_internalFifos_0_first__862_BITS_67_ETC___d7416 =
 		   4'd13;
     endcase
   end
@@ -21906,15 +21942,15 @@ module mkFetchStage(CLK,
   begin
     case (out_fifo_internalFifos_1$D_OUT[67:64])
       4'd0, 4'd1, 4'd2, 4'd3, 4'd4, 4'd5, 4'd6, 4'd7, 4'd8, 4'd9:
-	  IF_out_fifo_internalFifos_1_first__852_BITS_67_ETC___d7432 =
+	  IF_out_fifo_internalFifos_1_first__864_BITS_67_ETC___d7444 =
 	      out_fifo_internalFifos_1$D_OUT[67:64];
       4'd11:
-	  IF_out_fifo_internalFifos_1_first__852_BITS_67_ETC___d7432 = 4'd10;
+	  IF_out_fifo_internalFifos_1_first__864_BITS_67_ETC___d7444 = 4'd10;
       4'd12:
-	  IF_out_fifo_internalFifos_1_first__852_BITS_67_ETC___d7432 = 4'd11;
+	  IF_out_fifo_internalFifos_1_first__864_BITS_67_ETC___d7444 = 4'd11;
       4'd13:
-	  IF_out_fifo_internalFifos_1_first__852_BITS_67_ETC___d7432 = 4'd12;
-      default: IF_out_fifo_internalFifos_1_first__852_BITS_67_ETC___d7432 =
+	  IF_out_fifo_internalFifos_1_first__864_BITS_67_ETC___d7444 = 4'd12;
+      default: IF_out_fifo_internalFifos_1_first__864_BITS_67_ETC___d7444 =
 		   4'd13;
     endcase
   end
@@ -22055,10 +22091,10 @@ module mkFetchStage(CLK,
   begin
     case (x__h78412)
       1'd0:
-	  SEL_ARR_out_fifo_internalFifos_0_first__850_BI_ETC___d7538 =
+	  SEL_ARR_out_fifo_internalFifos_0_first__862_BI_ETC___d7550 =
 	      out_fifo_internalFifos_0$D_OUT[176];
       1'd1:
-	  SEL_ARR_out_fifo_internalFifos_0_first__850_BI_ETC___d7538 =
+	  SEL_ARR_out_fifo_internalFifos_0_first__862_BI_ETC___d7550 =
 	      out_fifo_internalFifos_1$D_OUT[176];
     endcase
   end
@@ -22091,10 +22127,10 @@ module mkFetchStage(CLK,
   begin
     case (x__h68242)
       1'd0:
-	  SEL_ARR_out_fifo_internalFifos_0_first__850_BI_ETC___d6960 =
+	  SEL_ARR_out_fifo_internalFifos_0_first__862_BI_ETC___d6972 =
 	      out_fifo_internalFifos_0$D_OUT[176];
       1'd1:
-	  SEL_ARR_out_fifo_internalFifos_0_first__850_BI_ETC___d6960 =
+	  SEL_ARR_out_fifo_internalFifos_0_first__862_BI_ETC___d6972 =
 	      out_fifo_internalFifos_1$D_OUT[176];
     endcase
   end
@@ -22123,77 +22159,77 @@ module mkFetchStage(CLK,
     endcase
   end
   always@(x__h78412 or
-	  IF_out_fifo_internalFifos_0_first__850_BITS_17_ETC___d7004 or
-	  IF_out_fifo_internalFifos_1_first__852_BITS_17_ETC___d7016)
+	  IF_out_fifo_internalFifos_0_first__862_BITS_17_ETC___d7016 or
+	  IF_out_fifo_internalFifos_1_first__864_BITS_17_ETC___d7028)
   begin
     case (x__h78412)
       1'd0:
 	  CASE_x8412_0_IF_out_fifo_internalFifos_0_first_ETC__q35 =
-	      IF_out_fifo_internalFifos_0_first__850_BITS_17_ETC___d7004 ==
+	      IF_out_fifo_internalFifos_0_first__862_BITS_17_ETC___d7016 ==
 	      3'd3;
       1'd1:
 	  CASE_x8412_0_IF_out_fifo_internalFifos_0_first_ETC__q35 =
-	      IF_out_fifo_internalFifos_1_first__852_BITS_17_ETC___d7016 ==
+	      IF_out_fifo_internalFifos_1_first__864_BITS_17_ETC___d7028 ==
 	      3'd3;
     endcase
   end
   always@(x__h78412 or
-	  IF_out_fifo_internalFifos_0_first__850_BITS_17_ETC___d7004 or
-	  IF_out_fifo_internalFifos_1_first__852_BITS_17_ETC___d7016)
+	  IF_out_fifo_internalFifos_0_first__862_BITS_17_ETC___d7016 or
+	  IF_out_fifo_internalFifos_1_first__864_BITS_17_ETC___d7028)
   begin
     case (x__h78412)
       1'd0:
 	  CASE_x8412_0_IF_out_fifo_internalFifos_0_first_ETC__q36 =
-	      IF_out_fifo_internalFifos_0_first__850_BITS_17_ETC___d7004 ==
+	      IF_out_fifo_internalFifos_0_first__862_BITS_17_ETC___d7016 ==
 	      3'd4;
       1'd1:
 	  CASE_x8412_0_IF_out_fifo_internalFifos_0_first_ETC__q36 =
-	      IF_out_fifo_internalFifos_1_first__852_BITS_17_ETC___d7016 ==
+	      IF_out_fifo_internalFifos_1_first__864_BITS_17_ETC___d7028 ==
 	      3'd4;
     endcase
   end
   always@(x__h78412 or
-	  IF_out_fifo_internalFifos_0_first__850_BITS_17_ETC___d7004 or
-	  IF_out_fifo_internalFifos_1_first__852_BITS_17_ETC___d7016)
+	  IF_out_fifo_internalFifos_0_first__862_BITS_17_ETC___d7016 or
+	  IF_out_fifo_internalFifos_1_first__864_BITS_17_ETC___d7028)
   begin
     case (x__h78412)
       1'd0:
 	  CASE_x8412_0_IF_out_fifo_internalFifos_0_first_ETC__q37 =
-	      IF_out_fifo_internalFifos_0_first__850_BITS_17_ETC___d7004 ==
+	      IF_out_fifo_internalFifos_0_first__862_BITS_17_ETC___d7016 ==
 	      3'd2;
       1'd1:
 	  CASE_x8412_0_IF_out_fifo_internalFifos_0_first_ETC__q37 =
-	      IF_out_fifo_internalFifos_1_first__852_BITS_17_ETC___d7016 ==
+	      IF_out_fifo_internalFifos_1_first__864_BITS_17_ETC___d7028 ==
 	      3'd2;
     endcase
   end
   always@(x__h78412 or
-	  IF_out_fifo_internalFifos_0_first__850_BITS_17_ETC___d7004 or
-	  IF_out_fifo_internalFifos_1_first__852_BITS_17_ETC___d7016)
+	  IF_out_fifo_internalFifos_0_first__862_BITS_17_ETC___d7016 or
+	  IF_out_fifo_internalFifos_1_first__864_BITS_17_ETC___d7028)
   begin
     case (x__h78412)
       1'd0:
 	  CASE_x8412_0_IF_out_fifo_internalFifos_0_first_ETC__q38 =
-	      IF_out_fifo_internalFifos_0_first__850_BITS_17_ETC___d7004 ==
+	      IF_out_fifo_internalFifos_0_first__862_BITS_17_ETC___d7016 ==
 	      3'd1;
       1'd1:
 	  CASE_x8412_0_IF_out_fifo_internalFifos_0_first_ETC__q38 =
-	      IF_out_fifo_internalFifos_1_first__852_BITS_17_ETC___d7016 ==
+	      IF_out_fifo_internalFifos_1_first__864_BITS_17_ETC___d7028 ==
 	      3'd1;
     endcase
   end
   always@(x__h78412 or
-	  IF_out_fifo_internalFifos_0_first__850_BITS_17_ETC___d7004 or
-	  IF_out_fifo_internalFifos_1_first__852_BITS_17_ETC___d7016)
+	  IF_out_fifo_internalFifos_0_first__862_BITS_17_ETC___d7016 or
+	  IF_out_fifo_internalFifos_1_first__864_BITS_17_ETC___d7028)
   begin
     case (x__h78412)
       1'd0:
 	  CASE_x8412_0_IF_out_fifo_internalFifos_0_first_ETC__q39 =
-	      IF_out_fifo_internalFifos_0_first__850_BITS_17_ETC___d7004 ==
+	      IF_out_fifo_internalFifos_0_first__862_BITS_17_ETC___d7016 ==
 	      3'd0;
       1'd1:
 	  CASE_x8412_0_IF_out_fifo_internalFifos_0_first_ETC__q39 =
-	      IF_out_fifo_internalFifos_1_first__852_BITS_17_ETC___d7016 ==
+	      IF_out_fifo_internalFifos_1_first__864_BITS_17_ETC___d7028 ==
 	      3'd0;
     endcase
   end
@@ -22202,10 +22238,10 @@ module mkFetchStage(CLK,
   begin
     case (x__h78412)
       1'd0:
-	  SEL_ARR_out_fifo_internalFifos_0_first__850_BI_ETC___d7540 =
+	  SEL_ARR_out_fifo_internalFifos_0_first__862_BI_ETC___d7552 =
 	      out_fifo_internalFifos_0$D_OUT[174];
       1'd1:
-	  SEL_ARR_out_fifo_internalFifos_0_first__850_BI_ETC___d7540 =
+	  SEL_ARR_out_fifo_internalFifos_0_first__862_BI_ETC___d7552 =
 	      out_fifo_internalFifos_1$D_OUT[174];
     endcase
   end
@@ -22221,201 +22257,6 @@ module mkFetchStage(CLK,
 	      out_fifo_internalFifos_1$D_OUT[182:178];
     endcase
   end
-  always@(f32d_deqP or
-	  IF_f32d_data_0_988_BITS_72_TO_69_338_EQ_0_339__ETC___d6364 or
-	  IF_f32d_data_1_990_BITS_72_TO_69_366_EQ_0_367__ETC___d6392)
-  begin
-    case (f32d_deqP)
-      1'd0:
-	  CASE_f32d_deqP_0_IF_f32d_data_0_988_BITS_72_TO_ETC__q41 =
-	      IF_f32d_data_0_988_BITS_72_TO_69_338_EQ_0_339__ETC___d6364 ==
-	      4'd11;
-      1'd1:
-	  CASE_f32d_deqP_0_IF_f32d_data_0_988_BITS_72_TO_ETC__q41 =
-	      IF_f32d_data_1_990_BITS_72_TO_69_366_EQ_0_367__ETC___d6392 ==
-	      4'd11;
-    endcase
-  end
-  always@(f32d_deqP or
-	  IF_f32d_data_0_988_BITS_72_TO_69_338_EQ_0_339__ETC___d6364 or
-	  IF_f32d_data_1_990_BITS_72_TO_69_366_EQ_0_367__ETC___d6392)
-  begin
-    case (f32d_deqP)
-      1'd0:
-	  CASE_f32d_deqP_0_IF_f32d_data_0_988_BITS_72_TO_ETC__q42 =
-	      IF_f32d_data_0_988_BITS_72_TO_69_338_EQ_0_339__ETC___d6364 ==
-	      4'd12;
-      1'd1:
-	  CASE_f32d_deqP_0_IF_f32d_data_0_988_BITS_72_TO_ETC__q42 =
-	      IF_f32d_data_1_990_BITS_72_TO_69_366_EQ_0_367__ETC___d6392 ==
-	      4'd12;
-    endcase
-  end
-  always@(f32d_deqP or
-	  IF_f32d_data_0_988_BITS_72_TO_69_338_EQ_0_339__ETC___d6364 or
-	  IF_f32d_data_1_990_BITS_72_TO_69_366_EQ_0_367__ETC___d6392)
-  begin
-    case (f32d_deqP)
-      1'd0:
-	  CASE_f32d_deqP_0_IF_f32d_data_0_988_BITS_72_TO_ETC__q43 =
-	      IF_f32d_data_0_988_BITS_72_TO_69_338_EQ_0_339__ETC___d6364 ==
-	      4'd10;
-      1'd1:
-	  CASE_f32d_deqP_0_IF_f32d_data_0_988_BITS_72_TO_ETC__q43 =
-	      IF_f32d_data_1_990_BITS_72_TO_69_366_EQ_0_367__ETC___d6392 ==
-	      4'd10;
-    endcase
-  end
-  always@(f32d_deqP or
-	  IF_f32d_data_0_988_BITS_72_TO_69_338_EQ_0_339__ETC___d6364 or
-	  IF_f32d_data_1_990_BITS_72_TO_69_366_EQ_0_367__ETC___d6392)
-  begin
-    case (f32d_deqP)
-      1'd0:
-	  CASE_f32d_deqP_0_IF_f32d_data_0_988_BITS_72_TO_ETC__q44 =
-	      IF_f32d_data_0_988_BITS_72_TO_69_338_EQ_0_339__ETC___d6364 ==
-	      4'd9;
-      1'd1:
-	  CASE_f32d_deqP_0_IF_f32d_data_0_988_BITS_72_TO_ETC__q44 =
-	      IF_f32d_data_1_990_BITS_72_TO_69_366_EQ_0_367__ETC___d6392 ==
-	      4'd9;
-    endcase
-  end
-  always@(f32d_deqP or
-	  IF_f32d_data_0_988_BITS_72_TO_69_338_EQ_0_339__ETC___d6364 or
-	  IF_f32d_data_1_990_BITS_72_TO_69_366_EQ_0_367__ETC___d6392)
-  begin
-    case (f32d_deqP)
-      1'd0:
-	  CASE_f32d_deqP_0_IF_f32d_data_0_988_BITS_72_TO_ETC__q45 =
-	      IF_f32d_data_0_988_BITS_72_TO_69_338_EQ_0_339__ETC___d6364 ==
-	      4'd8;
-      1'd1:
-	  CASE_f32d_deqP_0_IF_f32d_data_0_988_BITS_72_TO_ETC__q45 =
-	      IF_f32d_data_1_990_BITS_72_TO_69_366_EQ_0_367__ETC___d6392 ==
-	      4'd8;
-    endcase
-  end
-  always@(f32d_deqP or
-	  IF_f32d_data_0_988_BITS_72_TO_69_338_EQ_0_339__ETC___d6364 or
-	  IF_f32d_data_1_990_BITS_72_TO_69_366_EQ_0_367__ETC___d6392)
-  begin
-    case (f32d_deqP)
-      1'd0:
-	  CASE_f32d_deqP_0_IF_f32d_data_0_988_BITS_72_TO_ETC__q46 =
-	      IF_f32d_data_0_988_BITS_72_TO_69_338_EQ_0_339__ETC___d6364 ==
-	      4'd7;
-      1'd1:
-	  CASE_f32d_deqP_0_IF_f32d_data_0_988_BITS_72_TO_ETC__q46 =
-	      IF_f32d_data_1_990_BITS_72_TO_69_366_EQ_0_367__ETC___d6392 ==
-	      4'd7;
-    endcase
-  end
-  always@(f32d_deqP or
-	  IF_f32d_data_0_988_BITS_72_TO_69_338_EQ_0_339__ETC___d6364 or
-	  IF_f32d_data_1_990_BITS_72_TO_69_366_EQ_0_367__ETC___d6392)
-  begin
-    case (f32d_deqP)
-      1'd0:
-	  CASE_f32d_deqP_0_IF_f32d_data_0_988_BITS_72_TO_ETC__q47 =
-	      IF_f32d_data_0_988_BITS_72_TO_69_338_EQ_0_339__ETC___d6364 ==
-	      4'd6;
-      1'd1:
-	  CASE_f32d_deqP_0_IF_f32d_data_0_988_BITS_72_TO_ETC__q47 =
-	      IF_f32d_data_1_990_BITS_72_TO_69_366_EQ_0_367__ETC___d6392 ==
-	      4'd6;
-    endcase
-  end
-  always@(f32d_deqP or
-	  IF_f32d_data_0_988_BITS_72_TO_69_338_EQ_0_339__ETC___d6364 or
-	  IF_f32d_data_1_990_BITS_72_TO_69_366_EQ_0_367__ETC___d6392)
-  begin
-    case (f32d_deqP)
-      1'd0:
-	  CASE_f32d_deqP_0_IF_f32d_data_0_988_BITS_72_TO_ETC__q48 =
-	      IF_f32d_data_0_988_BITS_72_TO_69_338_EQ_0_339__ETC___d6364 ==
-	      4'd5;
-      1'd1:
-	  CASE_f32d_deqP_0_IF_f32d_data_0_988_BITS_72_TO_ETC__q48 =
-	      IF_f32d_data_1_990_BITS_72_TO_69_366_EQ_0_367__ETC___d6392 ==
-	      4'd5;
-    endcase
-  end
-  always@(f32d_deqP or
-	  IF_f32d_data_0_988_BITS_72_TO_69_338_EQ_0_339__ETC___d6364 or
-	  IF_f32d_data_1_990_BITS_72_TO_69_366_EQ_0_367__ETC___d6392)
-  begin
-    case (f32d_deqP)
-      1'd0:
-	  CASE_f32d_deqP_0_IF_f32d_data_0_988_BITS_72_TO_ETC__q49 =
-	      IF_f32d_data_0_988_BITS_72_TO_69_338_EQ_0_339__ETC___d6364 ==
-	      4'd4;
-      1'd1:
-	  CASE_f32d_deqP_0_IF_f32d_data_0_988_BITS_72_TO_ETC__q49 =
-	      IF_f32d_data_1_990_BITS_72_TO_69_366_EQ_0_367__ETC___d6392 ==
-	      4'd4;
-    endcase
-  end
-  always@(f32d_deqP or
-	  IF_f32d_data_0_988_BITS_72_TO_69_338_EQ_0_339__ETC___d6364 or
-	  IF_f32d_data_1_990_BITS_72_TO_69_366_EQ_0_367__ETC___d6392)
-  begin
-    case (f32d_deqP)
-      1'd0:
-	  CASE_f32d_deqP_0_IF_f32d_data_0_988_BITS_72_TO_ETC__q50 =
-	      IF_f32d_data_0_988_BITS_72_TO_69_338_EQ_0_339__ETC___d6364 ==
-	      4'd3;
-      1'd1:
-	  CASE_f32d_deqP_0_IF_f32d_data_0_988_BITS_72_TO_ETC__q50 =
-	      IF_f32d_data_1_990_BITS_72_TO_69_366_EQ_0_367__ETC___d6392 ==
-	      4'd3;
-    endcase
-  end
-  always@(f32d_deqP or
-	  IF_f32d_data_0_988_BITS_72_TO_69_338_EQ_0_339__ETC___d6364 or
-	  IF_f32d_data_1_990_BITS_72_TO_69_366_EQ_0_367__ETC___d6392)
-  begin
-    case (f32d_deqP)
-      1'd0:
-	  CASE_f32d_deqP_0_IF_f32d_data_0_988_BITS_72_TO_ETC__q51 =
-	      IF_f32d_data_0_988_BITS_72_TO_69_338_EQ_0_339__ETC___d6364 ==
-	      4'd2;
-      1'd1:
-	  CASE_f32d_deqP_0_IF_f32d_data_0_988_BITS_72_TO_ETC__q51 =
-	      IF_f32d_data_1_990_BITS_72_TO_69_366_EQ_0_367__ETC___d6392 ==
-	      4'd2;
-    endcase
-  end
-  always@(f32d_deqP or
-	  IF_f32d_data_0_988_BITS_72_TO_69_338_EQ_0_339__ETC___d6364 or
-	  IF_f32d_data_1_990_BITS_72_TO_69_366_EQ_0_367__ETC___d6392)
-  begin
-    case (f32d_deqP)
-      1'd0:
-	  CASE_f32d_deqP_0_IF_f32d_data_0_988_BITS_72_TO_ETC__q52 =
-	      IF_f32d_data_0_988_BITS_72_TO_69_338_EQ_0_339__ETC___d6364 ==
-	      4'd1;
-      1'd1:
-	  CASE_f32d_deqP_0_IF_f32d_data_0_988_BITS_72_TO_ETC__q52 =
-	      IF_f32d_data_1_990_BITS_72_TO_69_366_EQ_0_367__ETC___d6392 ==
-	      4'd1;
-    endcase
-  end
-  always@(f32d_deqP or
-	  IF_f32d_data_0_988_BITS_72_TO_69_338_EQ_0_339__ETC___d6364 or
-	  IF_f32d_data_1_990_BITS_72_TO_69_366_EQ_0_367__ETC___d6392)
-  begin
-    case (f32d_deqP)
-      1'd0:
-	  CASE_f32d_deqP_0_IF_f32d_data_0_988_BITS_72_TO_ETC__q53 =
-	      IF_f32d_data_0_988_BITS_72_TO_69_338_EQ_0_339__ETC___d6364 ==
-	      4'd0;
-      1'd1:
-	  CASE_f32d_deqP_0_IF_f32d_data_0_988_BITS_72_TO_ETC__q53 =
-	      IF_f32d_data_1_990_BITS_72_TO_69_366_EQ_0_367__ETC___d6392 ==
-	      4'd0;
-    endcase
-  end
   always@(f12f2_deqP or f12f2_data_0 or f12f2_data_1)
   begin
     case (f12f2_deqP)
@@ -22427,6 +22268,201 @@ module mkFetchStage(CLK,
 	      f12f2_data_1[136:135];
     endcase
   end
+  always@(f32d_deqP or
+	  IF_f32d_data_0_000_BITS_72_TO_69_350_EQ_0_351__ETC___d6376 or
+	  IF_f32d_data_1_002_BITS_72_TO_69_378_EQ_0_379__ETC___d6404)
+  begin
+    case (f32d_deqP)
+      1'd0:
+	  CASE_f32d_deqP_0_IF_f32d_data_0_000_BITS_72_TO_ETC__q41 =
+	      IF_f32d_data_0_000_BITS_72_TO_69_350_EQ_0_351__ETC___d6376 ==
+	      4'd11;
+      1'd1:
+	  CASE_f32d_deqP_0_IF_f32d_data_0_000_BITS_72_TO_ETC__q41 =
+	      IF_f32d_data_1_002_BITS_72_TO_69_378_EQ_0_379__ETC___d6404 ==
+	      4'd11;
+    endcase
+  end
+  always@(f32d_deqP or
+	  IF_f32d_data_0_000_BITS_72_TO_69_350_EQ_0_351__ETC___d6376 or
+	  IF_f32d_data_1_002_BITS_72_TO_69_378_EQ_0_379__ETC___d6404)
+  begin
+    case (f32d_deqP)
+      1'd0:
+	  CASE_f32d_deqP_0_IF_f32d_data_0_000_BITS_72_TO_ETC__q42 =
+	      IF_f32d_data_0_000_BITS_72_TO_69_350_EQ_0_351__ETC___d6376 ==
+	      4'd12;
+      1'd1:
+	  CASE_f32d_deqP_0_IF_f32d_data_0_000_BITS_72_TO_ETC__q42 =
+	      IF_f32d_data_1_002_BITS_72_TO_69_378_EQ_0_379__ETC___d6404 ==
+	      4'd12;
+    endcase
+  end
+  always@(f32d_deqP or
+	  IF_f32d_data_0_000_BITS_72_TO_69_350_EQ_0_351__ETC___d6376 or
+	  IF_f32d_data_1_002_BITS_72_TO_69_378_EQ_0_379__ETC___d6404)
+  begin
+    case (f32d_deqP)
+      1'd0:
+	  CASE_f32d_deqP_0_IF_f32d_data_0_000_BITS_72_TO_ETC__q43 =
+	      IF_f32d_data_0_000_BITS_72_TO_69_350_EQ_0_351__ETC___d6376 ==
+	      4'd10;
+      1'd1:
+	  CASE_f32d_deqP_0_IF_f32d_data_0_000_BITS_72_TO_ETC__q43 =
+	      IF_f32d_data_1_002_BITS_72_TO_69_378_EQ_0_379__ETC___d6404 ==
+	      4'd10;
+    endcase
+  end
+  always@(f32d_deqP or
+	  IF_f32d_data_0_000_BITS_72_TO_69_350_EQ_0_351__ETC___d6376 or
+	  IF_f32d_data_1_002_BITS_72_TO_69_378_EQ_0_379__ETC___d6404)
+  begin
+    case (f32d_deqP)
+      1'd0:
+	  CASE_f32d_deqP_0_IF_f32d_data_0_000_BITS_72_TO_ETC__q44 =
+	      IF_f32d_data_0_000_BITS_72_TO_69_350_EQ_0_351__ETC___d6376 ==
+	      4'd9;
+      1'd1:
+	  CASE_f32d_deqP_0_IF_f32d_data_0_000_BITS_72_TO_ETC__q44 =
+	      IF_f32d_data_1_002_BITS_72_TO_69_378_EQ_0_379__ETC___d6404 ==
+	      4'd9;
+    endcase
+  end
+  always@(f32d_deqP or
+	  IF_f32d_data_0_000_BITS_72_TO_69_350_EQ_0_351__ETC___d6376 or
+	  IF_f32d_data_1_002_BITS_72_TO_69_378_EQ_0_379__ETC___d6404)
+  begin
+    case (f32d_deqP)
+      1'd0:
+	  CASE_f32d_deqP_0_IF_f32d_data_0_000_BITS_72_TO_ETC__q45 =
+	      IF_f32d_data_0_000_BITS_72_TO_69_350_EQ_0_351__ETC___d6376 ==
+	      4'd8;
+      1'd1:
+	  CASE_f32d_deqP_0_IF_f32d_data_0_000_BITS_72_TO_ETC__q45 =
+	      IF_f32d_data_1_002_BITS_72_TO_69_378_EQ_0_379__ETC___d6404 ==
+	      4'd8;
+    endcase
+  end
+  always@(f32d_deqP or
+	  IF_f32d_data_0_000_BITS_72_TO_69_350_EQ_0_351__ETC___d6376 or
+	  IF_f32d_data_1_002_BITS_72_TO_69_378_EQ_0_379__ETC___d6404)
+  begin
+    case (f32d_deqP)
+      1'd0:
+	  CASE_f32d_deqP_0_IF_f32d_data_0_000_BITS_72_TO_ETC__q46 =
+	      IF_f32d_data_0_000_BITS_72_TO_69_350_EQ_0_351__ETC___d6376 ==
+	      4'd7;
+      1'd1:
+	  CASE_f32d_deqP_0_IF_f32d_data_0_000_BITS_72_TO_ETC__q46 =
+	      IF_f32d_data_1_002_BITS_72_TO_69_378_EQ_0_379__ETC___d6404 ==
+	      4'd7;
+    endcase
+  end
+  always@(f32d_deqP or
+	  IF_f32d_data_0_000_BITS_72_TO_69_350_EQ_0_351__ETC___d6376 or
+	  IF_f32d_data_1_002_BITS_72_TO_69_378_EQ_0_379__ETC___d6404)
+  begin
+    case (f32d_deqP)
+      1'd0:
+	  CASE_f32d_deqP_0_IF_f32d_data_0_000_BITS_72_TO_ETC__q47 =
+	      IF_f32d_data_0_000_BITS_72_TO_69_350_EQ_0_351__ETC___d6376 ==
+	      4'd6;
+      1'd1:
+	  CASE_f32d_deqP_0_IF_f32d_data_0_000_BITS_72_TO_ETC__q47 =
+	      IF_f32d_data_1_002_BITS_72_TO_69_378_EQ_0_379__ETC___d6404 ==
+	      4'd6;
+    endcase
+  end
+  always@(f32d_deqP or
+	  IF_f32d_data_0_000_BITS_72_TO_69_350_EQ_0_351__ETC___d6376 or
+	  IF_f32d_data_1_002_BITS_72_TO_69_378_EQ_0_379__ETC___d6404)
+  begin
+    case (f32d_deqP)
+      1'd0:
+	  CASE_f32d_deqP_0_IF_f32d_data_0_000_BITS_72_TO_ETC__q48 =
+	      IF_f32d_data_0_000_BITS_72_TO_69_350_EQ_0_351__ETC___d6376 ==
+	      4'd5;
+      1'd1:
+	  CASE_f32d_deqP_0_IF_f32d_data_0_000_BITS_72_TO_ETC__q48 =
+	      IF_f32d_data_1_002_BITS_72_TO_69_378_EQ_0_379__ETC___d6404 ==
+	      4'd5;
+    endcase
+  end
+  always@(f32d_deqP or
+	  IF_f32d_data_0_000_BITS_72_TO_69_350_EQ_0_351__ETC___d6376 or
+	  IF_f32d_data_1_002_BITS_72_TO_69_378_EQ_0_379__ETC___d6404)
+  begin
+    case (f32d_deqP)
+      1'd0:
+	  CASE_f32d_deqP_0_IF_f32d_data_0_000_BITS_72_TO_ETC__q49 =
+	      IF_f32d_data_0_000_BITS_72_TO_69_350_EQ_0_351__ETC___d6376 ==
+	      4'd4;
+      1'd1:
+	  CASE_f32d_deqP_0_IF_f32d_data_0_000_BITS_72_TO_ETC__q49 =
+	      IF_f32d_data_1_002_BITS_72_TO_69_378_EQ_0_379__ETC___d6404 ==
+	      4'd4;
+    endcase
+  end
+  always@(f32d_deqP or
+	  IF_f32d_data_0_000_BITS_72_TO_69_350_EQ_0_351__ETC___d6376 or
+	  IF_f32d_data_1_002_BITS_72_TO_69_378_EQ_0_379__ETC___d6404)
+  begin
+    case (f32d_deqP)
+      1'd0:
+	  CASE_f32d_deqP_0_IF_f32d_data_0_000_BITS_72_TO_ETC__q50 =
+	      IF_f32d_data_0_000_BITS_72_TO_69_350_EQ_0_351__ETC___d6376 ==
+	      4'd3;
+      1'd1:
+	  CASE_f32d_deqP_0_IF_f32d_data_0_000_BITS_72_TO_ETC__q50 =
+	      IF_f32d_data_1_002_BITS_72_TO_69_378_EQ_0_379__ETC___d6404 ==
+	      4'd3;
+    endcase
+  end
+  always@(f32d_deqP or
+	  IF_f32d_data_0_000_BITS_72_TO_69_350_EQ_0_351__ETC___d6376 or
+	  IF_f32d_data_1_002_BITS_72_TO_69_378_EQ_0_379__ETC___d6404)
+  begin
+    case (f32d_deqP)
+      1'd0:
+	  CASE_f32d_deqP_0_IF_f32d_data_0_000_BITS_72_TO_ETC__q51 =
+	      IF_f32d_data_0_000_BITS_72_TO_69_350_EQ_0_351__ETC___d6376 ==
+	      4'd2;
+      1'd1:
+	  CASE_f32d_deqP_0_IF_f32d_data_0_000_BITS_72_TO_ETC__q51 =
+	      IF_f32d_data_1_002_BITS_72_TO_69_378_EQ_0_379__ETC___d6404 ==
+	      4'd2;
+    endcase
+  end
+  always@(f32d_deqP or
+	  IF_f32d_data_0_000_BITS_72_TO_69_350_EQ_0_351__ETC___d6376 or
+	  IF_f32d_data_1_002_BITS_72_TO_69_378_EQ_0_379__ETC___d6404)
+  begin
+    case (f32d_deqP)
+      1'd0:
+	  CASE_f32d_deqP_0_IF_f32d_data_0_000_BITS_72_TO_ETC__q52 =
+	      IF_f32d_data_0_000_BITS_72_TO_69_350_EQ_0_351__ETC___d6376 ==
+	      4'd1;
+      1'd1:
+	  CASE_f32d_deqP_0_IF_f32d_data_0_000_BITS_72_TO_ETC__q52 =
+	      IF_f32d_data_1_002_BITS_72_TO_69_378_EQ_0_379__ETC___d6404 ==
+	      4'd1;
+    endcase
+  end
+  always@(f32d_deqP or
+	  IF_f32d_data_0_000_BITS_72_TO_69_350_EQ_0_351__ETC___d6376 or
+	  IF_f32d_data_1_002_BITS_72_TO_69_378_EQ_0_379__ETC___d6404)
+  begin
+    case (f32d_deqP)
+      1'd0:
+	  CASE_f32d_deqP_0_IF_f32d_data_0_000_BITS_72_TO_ETC__q53 =
+	      IF_f32d_data_0_000_BITS_72_TO_69_350_EQ_0_351__ETC___d6376 ==
+	      4'd0;
+      1'd1:
+	  CASE_f32d_deqP_0_IF_f32d_data_0_000_BITS_72_TO_ETC__q53 =
+	      IF_f32d_data_1_002_BITS_72_TO_69_378_EQ_0_379__ETC___d6404 ==
+	      4'd0;
+    endcase
+  end
   always@(x__h78412 or
 	  out_fifo_internalFifos_0$D_OUT or out_fifo_internalFifos_1$D_OUT)
   begin
@@ -23676,392 +23712,392 @@ module mkFetchStage(CLK,
     endcase
   end
   always@(x__h68242 or
-	  IF_out_fifo_internalFifos_0_first__850_BITS_67_ETC___d7404 or
-	  IF_out_fifo_internalFifos_1_first__852_BITS_67_ETC___d7432)
+	  IF_out_fifo_internalFifos_0_first__862_BITS_67_ETC___d7416 or
+	  IF_out_fifo_internalFifos_1_first__864_BITS_67_ETC___d7444)
   begin
     case (x__h68242)
       1'd0:
 	  CASE_x8242_0_IF_out_fifo_internalFifos_0_first_ETC__q158 =
-	      IF_out_fifo_internalFifos_0_first__850_BITS_67_ETC___d7404 ==
+	      IF_out_fifo_internalFifos_0_first__862_BITS_67_ETC___d7416 ==
 	      4'd11;
       1'd1:
 	  CASE_x8242_0_IF_out_fifo_internalFifos_0_first_ETC__q158 =
-	      IF_out_fifo_internalFifos_1_first__852_BITS_67_ETC___d7432 ==
+	      IF_out_fifo_internalFifos_1_first__864_BITS_67_ETC___d7444 ==
 	      4'd11;
     endcase
   end
   always@(x__h68242 or
-	  IF_out_fifo_internalFifos_0_first__850_BITS_67_ETC___d7404 or
-	  IF_out_fifo_internalFifos_1_first__852_BITS_67_ETC___d7432)
+	  IF_out_fifo_internalFifos_0_first__862_BITS_67_ETC___d7416 or
+	  IF_out_fifo_internalFifos_1_first__864_BITS_67_ETC___d7444)
   begin
     case (x__h68242)
       1'd0:
 	  CASE_x8242_0_IF_out_fifo_internalFifos_0_first_ETC__q159 =
-	      IF_out_fifo_internalFifos_0_first__850_BITS_67_ETC___d7404 ==
+	      IF_out_fifo_internalFifos_0_first__862_BITS_67_ETC___d7416 ==
 	      4'd12;
       1'd1:
 	  CASE_x8242_0_IF_out_fifo_internalFifos_0_first_ETC__q159 =
-	      IF_out_fifo_internalFifos_1_first__852_BITS_67_ETC___d7432 ==
+	      IF_out_fifo_internalFifos_1_first__864_BITS_67_ETC___d7444 ==
 	      4'd12;
     endcase
   end
   always@(x__h68242 or
-	  IF_out_fifo_internalFifos_0_first__850_BITS_67_ETC___d7404 or
-	  IF_out_fifo_internalFifos_1_first__852_BITS_67_ETC___d7432)
+	  IF_out_fifo_internalFifos_0_first__862_BITS_67_ETC___d7416 or
+	  IF_out_fifo_internalFifos_1_first__864_BITS_67_ETC___d7444)
   begin
     case (x__h68242)
       1'd0:
 	  CASE_x8242_0_IF_out_fifo_internalFifos_0_first_ETC__q160 =
-	      IF_out_fifo_internalFifos_0_first__850_BITS_67_ETC___d7404 ==
+	      IF_out_fifo_internalFifos_0_first__862_BITS_67_ETC___d7416 ==
 	      4'd10;
       1'd1:
 	  CASE_x8242_0_IF_out_fifo_internalFifos_0_first_ETC__q160 =
-	      IF_out_fifo_internalFifos_1_first__852_BITS_67_ETC___d7432 ==
+	      IF_out_fifo_internalFifos_1_first__864_BITS_67_ETC___d7444 ==
 	      4'd10;
     endcase
   end
   always@(x__h68242 or
-	  IF_out_fifo_internalFifos_0_first__850_BITS_67_ETC___d7404 or
-	  IF_out_fifo_internalFifos_1_first__852_BITS_67_ETC___d7432)
+	  IF_out_fifo_internalFifos_0_first__862_BITS_67_ETC___d7416 or
+	  IF_out_fifo_internalFifos_1_first__864_BITS_67_ETC___d7444)
   begin
     case (x__h68242)
       1'd0:
 	  CASE_x8242_0_IF_out_fifo_internalFifos_0_first_ETC__q161 =
-	      IF_out_fifo_internalFifos_0_first__850_BITS_67_ETC___d7404 ==
+	      IF_out_fifo_internalFifos_0_first__862_BITS_67_ETC___d7416 ==
 	      4'd9;
       1'd1:
 	  CASE_x8242_0_IF_out_fifo_internalFifos_0_first_ETC__q161 =
-	      IF_out_fifo_internalFifos_1_first__852_BITS_67_ETC___d7432 ==
+	      IF_out_fifo_internalFifos_1_first__864_BITS_67_ETC___d7444 ==
 	      4'd9;
     endcase
   end
   always@(x__h68242 or
-	  IF_out_fifo_internalFifos_0_first__850_BITS_67_ETC___d7404 or
-	  IF_out_fifo_internalFifos_1_first__852_BITS_67_ETC___d7432)
+	  IF_out_fifo_internalFifos_0_first__862_BITS_67_ETC___d7416 or
+	  IF_out_fifo_internalFifos_1_first__864_BITS_67_ETC___d7444)
   begin
     case (x__h68242)
       1'd0:
 	  CASE_x8242_0_IF_out_fifo_internalFifos_0_first_ETC__q162 =
-	      IF_out_fifo_internalFifos_0_first__850_BITS_67_ETC___d7404 ==
+	      IF_out_fifo_internalFifos_0_first__862_BITS_67_ETC___d7416 ==
 	      4'd8;
       1'd1:
 	  CASE_x8242_0_IF_out_fifo_internalFifos_0_first_ETC__q162 =
-	      IF_out_fifo_internalFifos_1_first__852_BITS_67_ETC___d7432 ==
+	      IF_out_fifo_internalFifos_1_first__864_BITS_67_ETC___d7444 ==
 	      4'd8;
     endcase
   end
   always@(x__h68242 or
-	  IF_out_fifo_internalFifos_0_first__850_BITS_67_ETC___d7404 or
-	  IF_out_fifo_internalFifos_1_first__852_BITS_67_ETC___d7432)
+	  IF_out_fifo_internalFifos_0_first__862_BITS_67_ETC___d7416 or
+	  IF_out_fifo_internalFifos_1_first__864_BITS_67_ETC___d7444)
   begin
     case (x__h68242)
       1'd0:
 	  CASE_x8242_0_IF_out_fifo_internalFifos_0_first_ETC__q163 =
-	      IF_out_fifo_internalFifos_0_first__850_BITS_67_ETC___d7404 ==
+	      IF_out_fifo_internalFifos_0_first__862_BITS_67_ETC___d7416 ==
 	      4'd7;
       1'd1:
 	  CASE_x8242_0_IF_out_fifo_internalFifos_0_first_ETC__q163 =
-	      IF_out_fifo_internalFifos_1_first__852_BITS_67_ETC___d7432 ==
+	      IF_out_fifo_internalFifos_1_first__864_BITS_67_ETC___d7444 ==
 	      4'd7;
     endcase
   end
   always@(x__h68242 or
-	  IF_out_fifo_internalFifos_0_first__850_BITS_67_ETC___d7404 or
-	  IF_out_fifo_internalFifos_1_first__852_BITS_67_ETC___d7432)
+	  IF_out_fifo_internalFifos_0_first__862_BITS_67_ETC___d7416 or
+	  IF_out_fifo_internalFifos_1_first__864_BITS_67_ETC___d7444)
   begin
     case (x__h68242)
       1'd0:
 	  CASE_x8242_0_IF_out_fifo_internalFifos_0_first_ETC__q164 =
-	      IF_out_fifo_internalFifos_0_first__850_BITS_67_ETC___d7404 ==
+	      IF_out_fifo_internalFifos_0_first__862_BITS_67_ETC___d7416 ==
 	      4'd6;
       1'd1:
 	  CASE_x8242_0_IF_out_fifo_internalFifos_0_first_ETC__q164 =
-	      IF_out_fifo_internalFifos_1_first__852_BITS_67_ETC___d7432 ==
+	      IF_out_fifo_internalFifos_1_first__864_BITS_67_ETC___d7444 ==
 	      4'd6;
     endcase
   end
   always@(x__h68242 or
-	  IF_out_fifo_internalFifos_0_first__850_BITS_67_ETC___d7404 or
-	  IF_out_fifo_internalFifos_1_first__852_BITS_67_ETC___d7432)
+	  IF_out_fifo_internalFifos_0_first__862_BITS_67_ETC___d7416 or
+	  IF_out_fifo_internalFifos_1_first__864_BITS_67_ETC___d7444)
   begin
     case (x__h68242)
       1'd0:
 	  CASE_x8242_0_IF_out_fifo_internalFifos_0_first_ETC__q165 =
-	      IF_out_fifo_internalFifos_0_first__850_BITS_67_ETC___d7404 ==
+	      IF_out_fifo_internalFifos_0_first__862_BITS_67_ETC___d7416 ==
 	      4'd5;
       1'd1:
 	  CASE_x8242_0_IF_out_fifo_internalFifos_0_first_ETC__q165 =
-	      IF_out_fifo_internalFifos_1_first__852_BITS_67_ETC___d7432 ==
+	      IF_out_fifo_internalFifos_1_first__864_BITS_67_ETC___d7444 ==
 	      4'd5;
     endcase
   end
   always@(x__h68242 or
-	  IF_out_fifo_internalFifos_0_first__850_BITS_67_ETC___d7404 or
-	  IF_out_fifo_internalFifos_1_first__852_BITS_67_ETC___d7432)
+	  IF_out_fifo_internalFifos_0_first__862_BITS_67_ETC___d7416 or
+	  IF_out_fifo_internalFifos_1_first__864_BITS_67_ETC___d7444)
   begin
     case (x__h68242)
       1'd0:
 	  CASE_x8242_0_IF_out_fifo_internalFifos_0_first_ETC__q166 =
-	      IF_out_fifo_internalFifos_0_first__850_BITS_67_ETC___d7404 ==
+	      IF_out_fifo_internalFifos_0_first__862_BITS_67_ETC___d7416 ==
 	      4'd4;
       1'd1:
 	  CASE_x8242_0_IF_out_fifo_internalFifos_0_first_ETC__q166 =
-	      IF_out_fifo_internalFifos_1_first__852_BITS_67_ETC___d7432 ==
+	      IF_out_fifo_internalFifos_1_first__864_BITS_67_ETC___d7444 ==
 	      4'd4;
     endcase
   end
   always@(x__h68242 or
-	  IF_out_fifo_internalFifos_0_first__850_BITS_67_ETC___d7404 or
-	  IF_out_fifo_internalFifos_1_first__852_BITS_67_ETC___d7432)
+	  IF_out_fifo_internalFifos_0_first__862_BITS_67_ETC___d7416 or
+	  IF_out_fifo_internalFifos_1_first__864_BITS_67_ETC___d7444)
   begin
     case (x__h68242)
       1'd0:
 	  CASE_x8242_0_IF_out_fifo_internalFifos_0_first_ETC__q167 =
-	      IF_out_fifo_internalFifos_0_first__850_BITS_67_ETC___d7404 ==
+	      IF_out_fifo_internalFifos_0_first__862_BITS_67_ETC___d7416 ==
 	      4'd3;
       1'd1:
 	  CASE_x8242_0_IF_out_fifo_internalFifos_0_first_ETC__q167 =
-	      IF_out_fifo_internalFifos_1_first__852_BITS_67_ETC___d7432 ==
+	      IF_out_fifo_internalFifos_1_first__864_BITS_67_ETC___d7444 ==
 	      4'd3;
     endcase
   end
   always@(x__h68242 or
-	  IF_out_fifo_internalFifos_0_first__850_BITS_67_ETC___d7404 or
-	  IF_out_fifo_internalFifos_1_first__852_BITS_67_ETC___d7432)
+	  IF_out_fifo_internalFifos_0_first__862_BITS_67_ETC___d7416 or
+	  IF_out_fifo_internalFifos_1_first__864_BITS_67_ETC___d7444)
   begin
     case (x__h68242)
       1'd0:
 	  CASE_x8242_0_IF_out_fifo_internalFifos_0_first_ETC__q168 =
-	      IF_out_fifo_internalFifos_0_first__850_BITS_67_ETC___d7404 ==
+	      IF_out_fifo_internalFifos_0_first__862_BITS_67_ETC___d7416 ==
 	      4'd2;
       1'd1:
 	  CASE_x8242_0_IF_out_fifo_internalFifos_0_first_ETC__q168 =
-	      IF_out_fifo_internalFifos_1_first__852_BITS_67_ETC___d7432 ==
+	      IF_out_fifo_internalFifos_1_first__864_BITS_67_ETC___d7444 ==
 	      4'd2;
     endcase
   end
   always@(x__h68242 or
-	  IF_out_fifo_internalFifos_0_first__850_BITS_67_ETC___d7404 or
-	  IF_out_fifo_internalFifos_1_first__852_BITS_67_ETC___d7432)
+	  IF_out_fifo_internalFifos_0_first__862_BITS_67_ETC___d7416 or
+	  IF_out_fifo_internalFifos_1_first__864_BITS_67_ETC___d7444)
   begin
     case (x__h68242)
       1'd0:
 	  CASE_x8242_0_IF_out_fifo_internalFifos_0_first_ETC__q169 =
-	      IF_out_fifo_internalFifos_0_first__850_BITS_67_ETC___d7404 ==
+	      IF_out_fifo_internalFifos_0_first__862_BITS_67_ETC___d7416 ==
 	      4'd1;
       1'd1:
 	  CASE_x8242_0_IF_out_fifo_internalFifos_0_first_ETC__q169 =
-	      IF_out_fifo_internalFifos_1_first__852_BITS_67_ETC___d7432 ==
+	      IF_out_fifo_internalFifos_1_first__864_BITS_67_ETC___d7444 ==
 	      4'd1;
     endcase
   end
   always@(x__h68242 or
-	  IF_out_fifo_internalFifos_0_first__850_BITS_67_ETC___d7404 or
-	  IF_out_fifo_internalFifos_1_first__852_BITS_67_ETC___d7432)
+	  IF_out_fifo_internalFifos_0_first__862_BITS_67_ETC___d7416 or
+	  IF_out_fifo_internalFifos_1_first__864_BITS_67_ETC___d7444)
   begin
     case (x__h68242)
       1'd0:
 	  CASE_x8242_0_IF_out_fifo_internalFifos_0_first_ETC__q170 =
-	      IF_out_fifo_internalFifos_0_first__850_BITS_67_ETC___d7404 ==
+	      IF_out_fifo_internalFifos_0_first__862_BITS_67_ETC___d7416 ==
 	      4'd0;
       1'd1:
 	  CASE_x8242_0_IF_out_fifo_internalFifos_0_first_ETC__q170 =
-	      IF_out_fifo_internalFifos_1_first__852_BITS_67_ETC___d7432 ==
+	      IF_out_fifo_internalFifos_1_first__864_BITS_67_ETC___d7444 ==
 	      4'd0;
     endcase
   end
   always@(x__h78412 or
-	  IF_out_fifo_internalFifos_0_first__850_BITS_67_ETC___d7404 or
-	  IF_out_fifo_internalFifos_1_first__852_BITS_67_ETC___d7432)
+	  IF_out_fifo_internalFifos_0_first__862_BITS_67_ETC___d7416 or
+	  IF_out_fifo_internalFifos_1_first__864_BITS_67_ETC___d7444)
   begin
     case (x__h78412)
       1'd0:
 	  CASE_x8412_0_IF_out_fifo_internalFifos_0_first_ETC__q171 =
-	      IF_out_fifo_internalFifos_0_first__850_BITS_67_ETC___d7404 ==
+	      IF_out_fifo_internalFifos_0_first__862_BITS_67_ETC___d7416 ==
 	      4'd11;
       1'd1:
 	  CASE_x8412_0_IF_out_fifo_internalFifos_0_first_ETC__q171 =
-	      IF_out_fifo_internalFifos_1_first__852_BITS_67_ETC___d7432 ==
+	      IF_out_fifo_internalFifos_1_first__864_BITS_67_ETC___d7444 ==
 	      4'd11;
     endcase
   end
   always@(x__h78412 or
-	  IF_out_fifo_internalFifos_0_first__850_BITS_67_ETC___d7404 or
-	  IF_out_fifo_internalFifos_1_first__852_BITS_67_ETC___d7432)
+	  IF_out_fifo_internalFifos_0_first__862_BITS_67_ETC___d7416 or
+	  IF_out_fifo_internalFifos_1_first__864_BITS_67_ETC___d7444)
   begin
     case (x__h78412)
       1'd0:
 	  CASE_x8412_0_IF_out_fifo_internalFifos_0_first_ETC__q172 =
-	      IF_out_fifo_internalFifos_0_first__850_BITS_67_ETC___d7404 ==
+	      IF_out_fifo_internalFifos_0_first__862_BITS_67_ETC___d7416 ==
 	      4'd12;
       1'd1:
 	  CASE_x8412_0_IF_out_fifo_internalFifos_0_first_ETC__q172 =
-	      IF_out_fifo_internalFifos_1_first__852_BITS_67_ETC___d7432 ==
+	      IF_out_fifo_internalFifos_1_first__864_BITS_67_ETC___d7444 ==
 	      4'd12;
     endcase
   end
   always@(x__h78412 or
-	  IF_out_fifo_internalFifos_0_first__850_BITS_67_ETC___d7404 or
-	  IF_out_fifo_internalFifos_1_first__852_BITS_67_ETC___d7432)
+	  IF_out_fifo_internalFifos_0_first__862_BITS_67_ETC___d7416 or
+	  IF_out_fifo_internalFifos_1_first__864_BITS_67_ETC___d7444)
   begin
     case (x__h78412)
       1'd0:
 	  CASE_x8412_0_IF_out_fifo_internalFifos_0_first_ETC__q173 =
-	      IF_out_fifo_internalFifos_0_first__850_BITS_67_ETC___d7404 ==
+	      IF_out_fifo_internalFifos_0_first__862_BITS_67_ETC___d7416 ==
 	      4'd10;
       1'd1:
 	  CASE_x8412_0_IF_out_fifo_internalFifos_0_first_ETC__q173 =
-	      IF_out_fifo_internalFifos_1_first__852_BITS_67_ETC___d7432 ==
+	      IF_out_fifo_internalFifos_1_first__864_BITS_67_ETC___d7444 ==
 	      4'd10;
     endcase
   end
   always@(x__h78412 or
-	  IF_out_fifo_internalFifos_0_first__850_BITS_67_ETC___d7404 or
-	  IF_out_fifo_internalFifos_1_first__852_BITS_67_ETC___d7432)
+	  IF_out_fifo_internalFifos_0_first__862_BITS_67_ETC___d7416 or
+	  IF_out_fifo_internalFifos_1_first__864_BITS_67_ETC___d7444)
   begin
     case (x__h78412)
       1'd0:
 	  CASE_x8412_0_IF_out_fifo_internalFifos_0_first_ETC__q174 =
-	      IF_out_fifo_internalFifos_0_first__850_BITS_67_ETC___d7404 ==
+	      IF_out_fifo_internalFifos_0_first__862_BITS_67_ETC___d7416 ==
 	      4'd9;
       1'd1:
 	  CASE_x8412_0_IF_out_fifo_internalFifos_0_first_ETC__q174 =
-	      IF_out_fifo_internalFifos_1_first__852_BITS_67_ETC___d7432 ==
+	      IF_out_fifo_internalFifos_1_first__864_BITS_67_ETC___d7444 ==
 	      4'd9;
     endcase
   end
   always@(x__h78412 or
-	  IF_out_fifo_internalFifos_0_first__850_BITS_67_ETC___d7404 or
-	  IF_out_fifo_internalFifos_1_first__852_BITS_67_ETC___d7432)
+	  IF_out_fifo_internalFifos_0_first__862_BITS_67_ETC___d7416 or
+	  IF_out_fifo_internalFifos_1_first__864_BITS_67_ETC___d7444)
   begin
     case (x__h78412)
       1'd0:
 	  CASE_x8412_0_IF_out_fifo_internalFifos_0_first_ETC__q175 =
-	      IF_out_fifo_internalFifos_0_first__850_BITS_67_ETC___d7404 ==
+	      IF_out_fifo_internalFifos_0_first__862_BITS_67_ETC___d7416 ==
 	      4'd8;
       1'd1:
 	  CASE_x8412_0_IF_out_fifo_internalFifos_0_first_ETC__q175 =
-	      IF_out_fifo_internalFifos_1_first__852_BITS_67_ETC___d7432 ==
+	      IF_out_fifo_internalFifos_1_first__864_BITS_67_ETC___d7444 ==
 	      4'd8;
     endcase
   end
   always@(x__h78412 or
-	  IF_out_fifo_internalFifos_0_first__850_BITS_67_ETC___d7404 or
-	  IF_out_fifo_internalFifos_1_first__852_BITS_67_ETC___d7432)
+	  IF_out_fifo_internalFifos_0_first__862_BITS_67_ETC___d7416 or
+	  IF_out_fifo_internalFifos_1_first__864_BITS_67_ETC___d7444)
   begin
     case (x__h78412)
       1'd0:
 	  CASE_x8412_0_IF_out_fifo_internalFifos_0_first_ETC__q176 =
-	      IF_out_fifo_internalFifos_0_first__850_BITS_67_ETC___d7404 ==
+	      IF_out_fifo_internalFifos_0_first__862_BITS_67_ETC___d7416 ==
 	      4'd7;
       1'd1:
 	  CASE_x8412_0_IF_out_fifo_internalFifos_0_first_ETC__q176 =
-	      IF_out_fifo_internalFifos_1_first__852_BITS_67_ETC___d7432 ==
+	      IF_out_fifo_internalFifos_1_first__864_BITS_67_ETC___d7444 ==
 	      4'd7;
     endcase
   end
   always@(x__h78412 or
-	  IF_out_fifo_internalFifos_0_first__850_BITS_67_ETC___d7404 or
-	  IF_out_fifo_internalFifos_1_first__852_BITS_67_ETC___d7432)
+	  IF_out_fifo_internalFifos_0_first__862_BITS_67_ETC___d7416 or
+	  IF_out_fifo_internalFifos_1_first__864_BITS_67_ETC___d7444)
   begin
     case (x__h78412)
       1'd0:
 	  CASE_x8412_0_IF_out_fifo_internalFifos_0_first_ETC__q177 =
-	      IF_out_fifo_internalFifos_0_first__850_BITS_67_ETC___d7404 ==
+	      IF_out_fifo_internalFifos_0_first__862_BITS_67_ETC___d7416 ==
 	      4'd6;
       1'd1:
 	  CASE_x8412_0_IF_out_fifo_internalFifos_0_first_ETC__q177 =
-	      IF_out_fifo_internalFifos_1_first__852_BITS_67_ETC___d7432 ==
+	      IF_out_fifo_internalFifos_1_first__864_BITS_67_ETC___d7444 ==
 	      4'd6;
     endcase
   end
   always@(x__h78412 or
-	  IF_out_fifo_internalFifos_0_first__850_BITS_67_ETC___d7404 or
-	  IF_out_fifo_internalFifos_1_first__852_BITS_67_ETC___d7432)
+	  IF_out_fifo_internalFifos_0_first__862_BITS_67_ETC___d7416 or
+	  IF_out_fifo_internalFifos_1_first__864_BITS_67_ETC___d7444)
   begin
     case (x__h78412)
       1'd0:
 	  CASE_x8412_0_IF_out_fifo_internalFifos_0_first_ETC__q178 =
-	      IF_out_fifo_internalFifos_0_first__850_BITS_67_ETC___d7404 ==
+	      IF_out_fifo_internalFifos_0_first__862_BITS_67_ETC___d7416 ==
 	      4'd5;
       1'd1:
 	  CASE_x8412_0_IF_out_fifo_internalFifos_0_first_ETC__q178 =
-	      IF_out_fifo_internalFifos_1_first__852_BITS_67_ETC___d7432 ==
+	      IF_out_fifo_internalFifos_1_first__864_BITS_67_ETC___d7444 ==
 	      4'd5;
     endcase
   end
   always@(x__h78412 or
-	  IF_out_fifo_internalFifos_0_first__850_BITS_67_ETC___d7404 or
-	  IF_out_fifo_internalFifos_1_first__852_BITS_67_ETC___d7432)
+	  IF_out_fifo_internalFifos_0_first__862_BITS_67_ETC___d7416 or
+	  IF_out_fifo_internalFifos_1_first__864_BITS_67_ETC___d7444)
   begin
     case (x__h78412)
       1'd0:
 	  CASE_x8412_0_IF_out_fifo_internalFifos_0_first_ETC__q179 =
-	      IF_out_fifo_internalFifos_0_first__850_BITS_67_ETC___d7404 ==
+	      IF_out_fifo_internalFifos_0_first__862_BITS_67_ETC___d7416 ==
 	      4'd4;
       1'd1:
 	  CASE_x8412_0_IF_out_fifo_internalFifos_0_first_ETC__q179 =
-	      IF_out_fifo_internalFifos_1_first__852_BITS_67_ETC___d7432 ==
+	      IF_out_fifo_internalFifos_1_first__864_BITS_67_ETC___d7444 ==
 	      4'd4;
     endcase
   end
   always@(x__h78412 or
-	  IF_out_fifo_internalFifos_0_first__850_BITS_67_ETC___d7404 or
-	  IF_out_fifo_internalFifos_1_first__852_BITS_67_ETC___d7432)
+	  IF_out_fifo_internalFifos_0_first__862_BITS_67_ETC___d7416 or
+	  IF_out_fifo_internalFifos_1_first__864_BITS_67_ETC___d7444)
   begin
     case (x__h78412)
       1'd0:
 	  CASE_x8412_0_IF_out_fifo_internalFifos_0_first_ETC__q180 =
-	      IF_out_fifo_internalFifos_0_first__850_BITS_67_ETC___d7404 ==
+	      IF_out_fifo_internalFifos_0_first__862_BITS_67_ETC___d7416 ==
 	      4'd3;
       1'd1:
 	  CASE_x8412_0_IF_out_fifo_internalFifos_0_first_ETC__q180 =
-	      IF_out_fifo_internalFifos_1_first__852_BITS_67_ETC___d7432 ==
+	      IF_out_fifo_internalFifos_1_first__864_BITS_67_ETC___d7444 ==
 	      4'd3;
     endcase
   end
   always@(x__h78412 or
-	  IF_out_fifo_internalFifos_0_first__850_BITS_67_ETC___d7404 or
-	  IF_out_fifo_internalFifos_1_first__852_BITS_67_ETC___d7432)
+	  IF_out_fifo_internalFifos_0_first__862_BITS_67_ETC___d7416 or
+	  IF_out_fifo_internalFifos_1_first__864_BITS_67_ETC___d7444)
   begin
     case (x__h78412)
       1'd0:
 	  CASE_x8412_0_IF_out_fifo_internalFifos_0_first_ETC__q181 =
-	      IF_out_fifo_internalFifos_0_first__850_BITS_67_ETC___d7404 ==
+	      IF_out_fifo_internalFifos_0_first__862_BITS_67_ETC___d7416 ==
 	      4'd2;
       1'd1:
 	  CASE_x8412_0_IF_out_fifo_internalFifos_0_first_ETC__q181 =
-	      IF_out_fifo_internalFifos_1_first__852_BITS_67_ETC___d7432 ==
+	      IF_out_fifo_internalFifos_1_first__864_BITS_67_ETC___d7444 ==
 	      4'd2;
     endcase
   end
   always@(x__h78412 or
-	  IF_out_fifo_internalFifos_0_first__850_BITS_67_ETC___d7404 or
-	  IF_out_fifo_internalFifos_1_first__852_BITS_67_ETC___d7432)
+	  IF_out_fifo_internalFifos_0_first__862_BITS_67_ETC___d7416 or
+	  IF_out_fifo_internalFifos_1_first__864_BITS_67_ETC___d7444)
   begin
     case (x__h78412)
       1'd0:
 	  CASE_x8412_0_IF_out_fifo_internalFifos_0_first_ETC__q182 =
-	      IF_out_fifo_internalFifos_0_first__850_BITS_67_ETC___d7404 ==
+	      IF_out_fifo_internalFifos_0_first__862_BITS_67_ETC___d7416 ==
 	      4'd1;
       1'd1:
 	  CASE_x8412_0_IF_out_fifo_internalFifos_0_first_ETC__q182 =
-	      IF_out_fifo_internalFifos_1_first__852_BITS_67_ETC___d7432 ==
+	      IF_out_fifo_internalFifos_1_first__864_BITS_67_ETC___d7444 ==
 	      4'd1;
     endcase
   end
   always@(x__h78412 or
-	  IF_out_fifo_internalFifos_0_first__850_BITS_67_ETC___d7404 or
-	  IF_out_fifo_internalFifos_1_first__852_BITS_67_ETC___d7432)
+	  IF_out_fifo_internalFifos_0_first__862_BITS_67_ETC___d7416 or
+	  IF_out_fifo_internalFifos_1_first__864_BITS_67_ETC___d7444)
   begin
     case (x__h78412)
       1'd0:
 	  CASE_x8412_0_IF_out_fifo_internalFifos_0_first_ETC__q183 =
-	      IF_out_fifo_internalFifos_0_first__850_BITS_67_ETC___d7404 ==
+	      IF_out_fifo_internalFifos_0_first__862_BITS_67_ETC___d7416 ==
 	      4'd0;
       1'd1:
 	  CASE_x8412_0_IF_out_fifo_internalFifos_0_first_ETC__q183 =
-	      IF_out_fifo_internalFifos_1_first__852_BITS_67_ETC___d7432 ==
+	      IF_out_fifo_internalFifos_1_first__864_BITS_67_ETC___d7444 ==
 	      4'd0;
     endcase
   end
@@ -24507,30 +24543,30 @@ module mkFetchStage(CLK,
 	      out_fifo_internalFifos_1$D_OUT[86:82];
     endcase
   end
+  always@(x__h68242 or
+	  out_fifo_internalFifos_0$D_OUT or out_fifo_internalFifos_1$D_OUT)
+  begin
+    case (x__h68242)
+      1'd0:
+	  CASE_x8242_0_out_fifo_internalFifos_0D_OUT_BI_ETC__q221 =
+	      out_fifo_internalFifos_0$D_OUT[199:195];
+      1'd1:
+	  CASE_x8242_0_out_fifo_internalFifos_0D_OUT_BI_ETC__q221 =
+	      out_fifo_internalFifos_1$D_OUT[199:195];
+    endcase
+  end
   always@(x__h78412 or
 	  out_fifo_internalFifos_0$D_OUT or out_fifo_internalFifos_1$D_OUT)
   begin
     case (x__h78412)
       1'd0:
-	  CASE_x8412_0_NOT_out_fifo_internalFifos_0D_OU_ETC__q221 =
+	  CASE_x8412_0_NOT_out_fifo_internalFifos_0D_OU_ETC__q222 =
 	      !out_fifo_internalFifos_0$D_OUT[68];
       1'd1:
-	  CASE_x8412_0_NOT_out_fifo_internalFifos_0D_OU_ETC__q221 =
+	  CASE_x8412_0_NOT_out_fifo_internalFifos_0D_OU_ETC__q222 =
 	      !out_fifo_internalFifos_1$D_OUT[68];
     endcase
   end
-  always@(x__h68242 or
-	  out_fifo_internalFifos_0$D_OUT or out_fifo_internalFifos_1$D_OUT)
-  begin
-    case (x__h68242)
-      1'd0:
-	  CASE_x8242_0_out_fifo_internalFifos_0D_OUT_BI_ETC__q222 =
-	      out_fifo_internalFifos_0$D_OUT[199:195];
-      1'd1:
-	  CASE_x8242_0_out_fifo_internalFifos_0D_OUT_BI_ETC__q222 =
-	      out_fifo_internalFifos_1$D_OUT[199:195];
-    endcase
-  end
   always@(x__h78412 or
 	  out_fifo_internalFifos_0$D_OUT or out_fifo_internalFifos_1$D_OUT)
   begin
@@ -24665,27 +24701,27 @@ module mkFetchStage(CLK,
 	      !out_fifo_internalFifos_1$EMPTY_N;
     endcase
   end
-  always@(x__h78412 or
+  always@(x__h68242 or
 	  out_fifo_internalFifos_0$D_OUT or out_fifo_internalFifos_1$D_OUT)
   begin
-    case (x__h78412)
+    case (x__h68242)
       1'd0:
-	  CASE_x8412_0_out_fifo_internalFifos_0D_OUT_BI_ETC__q234 =
+	  CASE_x8242_0_out_fifo_internalFifos_0D_OUT_BI_ETC__q234 =
 	      out_fifo_internalFifos_0$D_OUT[259:256];
       1'd1:
-	  CASE_x8412_0_out_fifo_internalFifos_0D_OUT_BI_ETC__q234 =
+	  CASE_x8242_0_out_fifo_internalFifos_0D_OUT_BI_ETC__q234 =
 	      out_fifo_internalFifos_1$D_OUT[259:256];
     endcase
   end
-  always@(x__h68242 or
+  always@(x__h78412 or
 	  out_fifo_internalFifos_0$D_OUT or out_fifo_internalFifos_1$D_OUT)
   begin
-    case (x__h68242)
+    case (x__h78412)
       1'd0:
-	  CASE_x8242_0_out_fifo_internalFifos_0D_OUT_BI_ETC__q235 =
+	  CASE_x8412_0_out_fifo_internalFifos_0D_OUT_BI_ETC__q235 =
 	      out_fifo_internalFifos_0$D_OUT[259:256];
       1'd1:
-	  CASE_x8242_0_out_fifo_internalFifos_0D_OUT_BI_ETC__q235 =
+	  CASE_x8412_0_out_fifo_internalFifos_0D_OUT_BI_ETC__q235 =
 	      out_fifo_internalFifos_1$D_OUT[259:256];
     endcase
   end
@@ -24700,87 +24736,87 @@ module mkFetchStage(CLK,
 		   1'd1;
     endcase
   end
-  always@(pending_spaces_ext__h156609 or
+  always@(pending_spaces_ext__h156591 or
 	  NOT_SEL_ARR_f22f3_data_0_813_BITS_3_TO_0_814_f_ETC___d3995)
   begin
-    case (pending_spaces_ext__h156609)
+    case (pending_spaces_ext__h156591)
       3'd0, 3'd1, 3'd2:
-	  CASE_pending_spaces_ext56609_0_NOT_SEL_ARR_f22_ETC__q236 =
+	  CASE_pending_spaces_ext56591_0_NOT_SEL_ARR_f22_ETC__q236 =
 	      NOT_SEL_ARR_f22f3_data_0_813_BITS_3_TO_0_814_f_ETC___d3995;
       3'd3, 3'd4, 3'd5, 3'd6, 3'd7:
-	  CASE_pending_spaces_ext56609_0_NOT_SEL_ARR_f22_ETC__q236 = 1'd1;
+	  CASE_pending_spaces_ext56591_0_NOT_SEL_ARR_f22_ETC__q236 = 1'd1;
     endcase
   end
-  always@(pending_spaces_ext__h156609 or
+  always@(pending_spaces_ext__h156591 or
 	  NOT_SEL_ARR_f22f3_data_0_813_BITS_3_TO_0_814_f_ETC___d4002 or
 	  NOT_SEL_ARR_f22f3_data_0_813_BITS_3_TO_0_814_f_ETC___d3995)
   begin
-    case (pending_spaces_ext__h156609)
+    case (pending_spaces_ext__h156591)
       3'd0:
-	  CASE_pending_spaces_ext56609_0_NOT_SEL_ARR_f22_ETC__q237 =
+	  CASE_pending_spaces_ext56591_0_NOT_SEL_ARR_f22_ETC__q237 =
 	      NOT_SEL_ARR_f22f3_data_0_813_BITS_3_TO_0_814_f_ETC___d4002;
       3'd1, 3'd2, 3'd3:
-	  CASE_pending_spaces_ext56609_0_NOT_SEL_ARR_f22_ETC__q237 =
+	  CASE_pending_spaces_ext56591_0_NOT_SEL_ARR_f22_ETC__q237 =
 	      NOT_SEL_ARR_f22f3_data_0_813_BITS_3_TO_0_814_f_ETC___d3995;
       3'd4, 3'd5, 3'd6, 3'd7:
-	  CASE_pending_spaces_ext56609_0_NOT_SEL_ARR_f22_ETC__q237 = 1'd1;
+	  CASE_pending_spaces_ext56591_0_NOT_SEL_ARR_f22_ETC__q237 = 1'd1;
     endcase
   end
-  always@(pending_spaces_ext__h156609 or
+  always@(pending_spaces_ext__h156591 or
 	  NOT_SEL_ARR_f22f3_data_0_813_BITS_3_TO_0_814_f_ETC___d3989 or
 	  NOT_SEL_ARR_f22f3_data_0_813_BITS_3_TO_0_814_f_ETC___d3995)
   begin
-    case (pending_spaces_ext__h156609)
+    case (pending_spaces_ext__h156591)
       3'd0:
-	  CASE_pending_spaces_ext56609_0_NOT_SEL_ARR_f22_ETC__q238 =
+	  CASE_pending_spaces_ext56591_0_NOT_SEL_ARR_f22_ETC__q238 =
 	      NOT_SEL_ARR_f22f3_data_0_813_BITS_3_TO_0_814_f_ETC___d3989;
       3'd1, 3'd2, 3'd3:
-	  CASE_pending_spaces_ext56609_0_NOT_SEL_ARR_f22_ETC__q238 =
+	  CASE_pending_spaces_ext56591_0_NOT_SEL_ARR_f22_ETC__q238 =
 	      NOT_SEL_ARR_f22f3_data_0_813_BITS_3_TO_0_814_f_ETC___d3995;
       3'd4, 3'd5, 3'd6, 3'd7:
-	  CASE_pending_spaces_ext56609_0_NOT_SEL_ARR_f22_ETC__q238 = 1'd1;
+	  CASE_pending_spaces_ext56591_0_NOT_SEL_ARR_f22_ETC__q238 = 1'd1;
     endcase
   end
-  always@(pending_spaces_ext__h156609 or
+  always@(pending_spaces_ext__h156591 or
 	  NOT_SEL_ARR_f22f3_data_0_813_BITS_3_TO_0_814_f_ETC___d3995)
   begin
-    case (pending_spaces_ext__h156609)
+    case (pending_spaces_ext__h156591)
       3'd0, 3'd1, 3'd2, 3'd3:
-	  CASE_pending_spaces_ext56609_0_NOT_SEL_ARR_f22_ETC__q239 =
+	  CASE_pending_spaces_ext56591_0_NOT_SEL_ARR_f22_ETC__q239 =
 	      NOT_SEL_ARR_f22f3_data_0_813_BITS_3_TO_0_814_f_ETC___d3995;
       3'd4, 3'd5, 3'd6, 3'd7:
-	  CASE_pending_spaces_ext56609_0_NOT_SEL_ARR_f22_ETC__q239 = 1'd1;
+	  CASE_pending_spaces_ext56591_0_NOT_SEL_ARR_f22_ETC__q239 = 1'd1;
     endcase
   end
-  always@(pending_spaces_ext__h156609 or
+  always@(pending_spaces_ext__h156591 or
 	  NOT_SEL_ARR_f22f3_data_0_813_BITS_3_TO_0_814_f_ETC___d3989 or
 	  NOT_SEL_ARR_f22f3_data_0_813_BITS_3_TO_0_814_f_ETC___d3995)
   begin
-    case (pending_spaces_ext__h156609)
+    case (pending_spaces_ext__h156591)
       3'd0, 3'd5, 3'd6, 3'd7:
-	  CASE_pending_spaces_ext56609_0_1_1_NOT_SEL_ARR_ETC__q240 = 1'd1;
+	  CASE_pending_spaces_ext56591_0_1_1_NOT_SEL_ARR_ETC__q240 = 1'd1;
       3'd1:
-	  CASE_pending_spaces_ext56609_0_1_1_NOT_SEL_ARR_ETC__q240 =
+	  CASE_pending_spaces_ext56591_0_1_1_NOT_SEL_ARR_ETC__q240 =
 	      NOT_SEL_ARR_f22f3_data_0_813_BITS_3_TO_0_814_f_ETC___d3989;
       3'd2, 3'd3, 3'd4:
-	  CASE_pending_spaces_ext56609_0_1_1_NOT_SEL_ARR_ETC__q240 =
+	  CASE_pending_spaces_ext56591_0_1_1_NOT_SEL_ARR_ETC__q240 =
 	      NOT_SEL_ARR_f22f3_data_0_813_BITS_3_TO_0_814_f_ETC___d3995;
     endcase
   end
-  always@(pending_spaces_ext__h156609 or
+  always@(pending_spaces_ext__h156591 or
 	  NOT_SEL_ARR_f22f3_data_0_813_BITS_3_TO_0_814_f_ETC___d3995)
   begin
-    case (pending_spaces_ext__h156609)
+    case (pending_spaces_ext__h156591)
       3'd0, 3'd5, 3'd6, 3'd7:
-	  CASE_pending_spaces_ext56609_0_1_1_NOT_SEL_ARR_ETC__q241 = 1'd1;
+	  CASE_pending_spaces_ext56591_0_1_1_NOT_SEL_ARR_ETC__q241 = 1'd1;
       3'd1, 3'd2, 3'd3, 3'd4:
-	  CASE_pending_spaces_ext56609_0_1_1_NOT_SEL_ARR_ETC__q241 =
+	  CASE_pending_spaces_ext56591_0_1_1_NOT_SEL_ARR_ETC__q241 =
 	      NOT_SEL_ARR_f22f3_data_0_813_BITS_3_TO_0_814_f_ETC___d3995;
     endcase
   end
-  always@(pending_spaces__h156607 or f22f3_empty)
+  always@(pending_spaces__h156589 or f22f3_empty)
   begin
-    case (pending_spaces__h156607)
+    case (pending_spaces__h156589)
       2'd0, 2'd1, 2'd2:
 	  CASE_3_MINUS_IF_rg_pending_n_items_845_EQ_0_84_ETC___d4026 = 1'd1;
       2'd3:
@@ -24788,9 +24824,9 @@ module mkFetchStage(CLK,
 	      !f22f3_empty;
     endcase
   end
-  always@(pending_spaces__h156607 or f22f3_empty)
+  always@(pending_spaces__h156589 or f22f3_empty)
   begin
-    case (pending_spaces__h156607)
+    case (pending_spaces__h156589)
       2'd0, 2'd1:
 	  CASE_3_MINUS_IF_rg_pending_n_items_845_EQ_0_84_ETC___d4041 = 1'd1;
       2'd2, 2'd3:
@@ -24798,14 +24834,14 @@ module mkFetchStage(CLK,
 	      !f22f3_empty;
     endcase
   end
-  always@(pending_spaces_ext__h156609 or
+  always@(pending_spaces_ext__h156591 or
 	  CASE_3_MINUS_IF_rg_pending_n_items_845_EQ_0_84_ETC___d4041 or
 	  CASE_3_MINUS_IF_rg_pending_n_items_845_EQ_0_84_ETC___d4026 or
 	  f22f3_empty or
 	  NOT_SEL_ARR_f22f3_data_0_813_BITS_3_TO_0_814_f_ETC___d4002 or
 	  NOT_SEL_ARR_f22f3_data_0_813_BITS_3_TO_0_814_f_ETC___d3995)
   begin
-    case (pending_spaces_ext__h156609)
+    case (pending_spaces_ext__h156591)
       3'd0:
 	  CASE_0_CONCAT_3_MINUS_IF_rg_pending_n_items_84_ETC___d4042 =
 	      CASE_3_MINUS_IF_rg_pending_n_items_845_EQ_0_84_ETC___d4041;
@@ -24825,13 +24861,13 @@ module mkFetchStage(CLK,
 	      !f22f3_empty;
     endcase
   end
-  always@(pending_spaces_ext__h156609 or
+  always@(pending_spaces_ext__h156591 or
 	  CASE_3_MINUS_IF_rg_pending_n_items_845_EQ_0_84_ETC___d4026 or
 	  f22f3_empty or
 	  NOT_SEL_ARR_f22f3_data_0_813_BITS_3_TO_0_814_f_ETC___d4002 or
 	  NOT_SEL_ARR_f22f3_data_0_813_BITS_3_TO_0_814_f_ETC___d3995)
   begin
-    case (pending_spaces_ext__h156609)
+    case (pending_spaces_ext__h156591)
       3'd0:
 	  CASE_0_CONCAT_3_MINUS_IF_rg_pending_n_items_84_ETC___d4029 =
 	      CASE_3_MINUS_IF_rg_pending_n_items_845_EQ_0_84_ETC___d4026;
@@ -24848,27 +24884,27 @@ module mkFetchStage(CLK,
 	      !f22f3_empty;
     endcase
   end
-  always@(pending_spaces__h156607 or f22f3_empty)
+  always@(pending_spaces__h156589 or f22f3_empty)
   begin
-    case (pending_spaces__h156607)
-      2'd0: CASE_pending_spaces56607_0_1_1_NOT_f22f3_empty_ETC__q242 = 1'd1;
+    case (pending_spaces__h156589)
+      2'd0: CASE_pending_spaces56589_0_1_1_NOT_f22f3_empty_ETC__q242 = 1'd1;
       2'd1, 2'd2, 2'd3:
-	  CASE_pending_spaces56607_0_1_1_NOT_f22f3_empty_ETC__q242 =
+	  CASE_pending_spaces56589_0_1_1_NOT_f22f3_empty_ETC__q242 =
 	      !f22f3_empty;
     endcase
   end
-  always@(pending_spaces_ext__h156609 or
-	  CASE_pending_spaces56607_0_1_1_NOT_f22f3_empty_ETC__q242 or
+  always@(pending_spaces_ext__h156591 or
+	  CASE_pending_spaces56589_0_1_1_NOT_f22f3_empty_ETC__q242 or
 	  CASE_3_MINUS_IF_rg_pending_n_items_845_EQ_0_84_ETC___d4041 or
 	  CASE_3_MINUS_IF_rg_pending_n_items_845_EQ_0_84_ETC___d4026 or
 	  f22f3_empty or
 	  NOT_SEL_ARR_f22f3_data_0_813_BITS_3_TO_0_814_f_ETC___d4002 or
 	  NOT_SEL_ARR_f22f3_data_0_813_BITS_3_TO_0_814_f_ETC___d3995)
   begin
-    case (pending_spaces_ext__h156609)
+    case (pending_spaces_ext__h156591)
       3'd0:
 	  CASE_0_CONCAT_3_MINUS_IF_rg_pending_n_items_84_ETC___d4044 =
-	      CASE_pending_spaces56607_0_1_1_NOT_f22f3_empty_ETC__q242;
+	      CASE_pending_spaces56589_0_1_1_NOT_f22f3_empty_ETC__q242;
       3'd1:
 	  CASE_0_CONCAT_3_MINUS_IF_rg_pending_n_items_84_ETC___d4044 =
 	      CASE_3_MINUS_IF_rg_pending_n_items_845_EQ_0_84_ETC___d4041;
@@ -24888,59 +24924,59 @@ module mkFetchStage(CLK,
 	      !f22f3_empty;
     endcase
   end
-  always@(pending_spaces_ext__h156609 or
+  always@(pending_spaces_ext__h156591 or
 	  NOT_f22f3_empty_33_812_AND_NOT_SEL_ARR_f22f3_d_ETC___d4036)
   begin
-    case (pending_spaces_ext__h156609)
+    case (pending_spaces_ext__h156591)
       3'd0, 3'd1, 3'd6, 3'd7:
-	  CASE_pending_spaces_ext56609_0_1_1_1_2_NOT_f22_ETC__q243 = 1'd1;
+	  CASE_pending_spaces_ext56591_0_1_1_1_2_NOT_f22_ETC__q243 = 1'd1;
       3'd2, 3'd3, 3'd4, 3'd5:
-	  CASE_pending_spaces_ext56609_0_1_1_1_2_NOT_f22_ETC__q243 =
+	  CASE_pending_spaces_ext56591_0_1_1_1_2_NOT_f22_ETC__q243 =
 	      NOT_f22f3_empty_33_812_AND_NOT_SEL_ARR_f22f3_d_ETC___d4036;
     endcase
   end
-  always@(pending_spaces_ext__h156609 or
+  always@(pending_spaces_ext__h156591 or
 	  NOT_f22f3_empty_33_812_AND_NOT_SEL_ARR_f22f3_d_ETC___d3844 or
 	  NOT_IF_rg_pending_n_items_845_EQ_0_846_THEN_rg_ETC___d4032 or
 	  NOT_f22f3_empty_33_812_AND_NOT_SEL_ARR_f22f3_d_ETC___d4036)
   begin
-    case (pending_spaces_ext__h156609)
+    case (pending_spaces_ext__h156591)
       3'd0, 3'd1, 3'd6, 3'd7:
-	  CASE_pending_spaces_ext56609_0_1_1_1_2_NOT_f22_ETC__q244 = 1'd1;
+	  CASE_pending_spaces_ext56591_0_1_1_1_2_NOT_f22_ETC__q244 = 1'd1;
       3'd2:
-	  CASE_pending_spaces_ext56609_0_1_1_1_2_NOT_f22_ETC__q244 =
+	  CASE_pending_spaces_ext56591_0_1_1_1_2_NOT_f22_ETC__q244 =
 	      NOT_f22f3_empty_33_812_AND_NOT_SEL_ARR_f22f3_d_ETC___d3844 ||
 	      NOT_IF_rg_pending_n_items_845_EQ_0_846_THEN_rg_ETC___d4032;
       3'd3, 3'd4, 3'd5:
-	  CASE_pending_spaces_ext56609_0_1_1_1_2_NOT_f22_ETC__q244 =
+	  CASE_pending_spaces_ext56591_0_1_1_1_2_NOT_f22_ETC__q244 =
 	      NOT_f22f3_empty_33_812_AND_NOT_SEL_ARR_f22f3_d_ETC___d4036;
     endcase
   end
-  always@(pending_spaces_ext__h156609 or
+  always@(pending_spaces_ext__h156591 or
 	  NOT_f22f3_empty_33_812_AND_NOT_SEL_ARR_f22f3_d_ETC___d3844 or
 	  NOT_IF_rg_pending_n_items_845_EQ_0_846_THEN_rg_ETC___d4032 or
 	  NOT_f22f3_empty_33_812_AND_NOT_SEL_ARR_f22f3_d_ETC___d4036)
   begin
-    case (pending_spaces_ext__h156609)
+    case (pending_spaces_ext__h156591)
       3'd0, 3'd1, 3'd2, 3'd7:
-	  CASE_pending_spaces_ext56609_0_1_1_1_2_1_3_NOT_ETC__q245 = 1'd1;
+	  CASE_pending_spaces_ext56591_0_1_1_1_2_1_3_NOT_ETC__q245 = 1'd1;
       3'd3:
-	  CASE_pending_spaces_ext56609_0_1_1_1_2_1_3_NOT_ETC__q245 =
+	  CASE_pending_spaces_ext56591_0_1_1_1_2_1_3_NOT_ETC__q245 =
 	      NOT_f22f3_empty_33_812_AND_NOT_SEL_ARR_f22f3_d_ETC___d3844 ||
 	      NOT_IF_rg_pending_n_items_845_EQ_0_846_THEN_rg_ETC___d4032;
       3'd4, 3'd5, 3'd6:
-	  CASE_pending_spaces_ext56609_0_1_1_1_2_1_3_NOT_ETC__q245 =
+	  CASE_pending_spaces_ext56591_0_1_1_1_2_1_3_NOT_ETC__q245 =
 	      NOT_f22f3_empty_33_812_AND_NOT_SEL_ARR_f22f3_d_ETC___d4036;
     endcase
   end
-  always@(pending_spaces_ext__h156609 or
+  always@(pending_spaces_ext__h156591 or
 	  NOT_f22f3_empty_33_812_AND_NOT_SEL_ARR_f22f3_d_ETC___d4036)
   begin
-    case (pending_spaces_ext__h156609)
+    case (pending_spaces_ext__h156591)
       3'd0, 3'd1, 3'd2, 3'd7:
-	  CASE_pending_spaces_ext56609_0_1_1_1_2_1_3_NOT_ETC__q246 = 1'd1;
+	  CASE_pending_spaces_ext56591_0_1_1_1_2_1_3_NOT_ETC__q246 = 1'd1;
       3'd3, 3'd4, 3'd5, 3'd6:
-	  CASE_pending_spaces_ext56609_0_1_1_1_2_1_3_NOT_ETC__q246 =
+	  CASE_pending_spaces_ext56591_0_1_1_1_2_1_3_NOT_ETC__q246 =
 	      NOT_f22f3_empty_33_812_AND_NOT_SEL_ARR_f22f3_d_ETC___d4036;
     endcase
   end
@@ -25007,24 +25043,24 @@ module mkFetchStage(CLK,
 		   16'b1010101010101010 /* unspecified value */ ;
     endcase
   end
-  always@(y_avValue_fst__h137123 or
+  always@(y_avValue_fst__h137117 or
 	  IF_NOT_f22f3_empty_33_812_AND_NOT_SEL_ARR_f22f_ETC___d4117 or
 	  IF_NOT_f22f3_empty_33_812_AND_NOT_SEL_ARR_f22f_ETC___d4130)
   begin
-    case (y_avValue_fst__h137123)
+    case (y_avValue_fst__h137117)
       3'd0:
-	  CASE_y_avValue_fst37123_0_IF_NOT_f22f3_empty_3_ETC__q248 =
+	  CASE_y_avValue_fst37117_0_IF_NOT_f22f3_empty_3_ETC__q248 =
 	      IF_NOT_f22f3_empty_33_812_AND_NOT_SEL_ARR_f22f_ETC___d4117[15:0];
       3'd1:
-	  CASE_y_avValue_fst37123_0_IF_NOT_f22f3_empty_3_ETC__q248 =
+	  CASE_y_avValue_fst37117_0_IF_NOT_f22f3_empty_3_ETC__q248 =
 	      IF_NOT_f22f3_empty_33_812_AND_NOT_SEL_ARR_f22f_ETC___d4117[31:16];
       3'd2:
-	  CASE_y_avValue_fst37123_0_IF_NOT_f22f3_empty_3_ETC__q248 =
+	  CASE_y_avValue_fst37117_0_IF_NOT_f22f3_empty_3_ETC__q248 =
 	      IF_NOT_f22f3_empty_33_812_AND_NOT_SEL_ARR_f22f_ETC___d4130[15:0];
       3'd3:
-	  CASE_y_avValue_fst37123_0_IF_NOT_f22f3_empty_3_ETC__q248 =
+	  CASE_y_avValue_fst37117_0_IF_NOT_f22f3_empty_3_ETC__q248 =
 	      IF_NOT_f22f3_empty_33_812_AND_NOT_SEL_ARR_f22f_ETC___d4130[31:16];
-      default: CASE_y_avValue_fst37123_0_IF_NOT_f22f3_empty_3_ETC__q248 =
+      default: CASE_y_avValue_fst37117_0_IF_NOT_f22f3_empty_3_ETC__q248 =
 		   16'b1010101010101010 /* unspecified value */ ;
     endcase
   end
@@ -25049,24 +25085,24 @@ module mkFetchStage(CLK,
 		   16'b1010101010101010 /* unspecified value */ ;
     endcase
   end
-  always@(y_avValue_fst__h145722 or
+  always@(y_avValue_fst__h145710 or
 	  IF_NOT_f22f3_empty_33_812_AND_NOT_SEL_ARR_f22f_ETC___d4117 or
 	  IF_NOT_f22f3_empty_33_812_AND_NOT_SEL_ARR_f22f_ETC___d4130)
   begin
-    case (y_avValue_fst__h145722)
+    case (y_avValue_fst__h145710)
       3'd0:
-	  CASE_y_avValue_fst45722_0_IF_NOT_f22f3_empty_3_ETC__q249 =
+	  CASE_y_avValue_fst45710_0_IF_NOT_f22f3_empty_3_ETC__q249 =
 	      IF_NOT_f22f3_empty_33_812_AND_NOT_SEL_ARR_f22f_ETC___d4117[15:0];
       3'd1:
-	  CASE_y_avValue_fst45722_0_IF_NOT_f22f3_empty_3_ETC__q249 =
+	  CASE_y_avValue_fst45710_0_IF_NOT_f22f3_empty_3_ETC__q249 =
 	      IF_NOT_f22f3_empty_33_812_AND_NOT_SEL_ARR_f22f_ETC___d4117[31:16];
       3'd2:
-	  CASE_y_avValue_fst45722_0_IF_NOT_f22f3_empty_3_ETC__q249 =
+	  CASE_y_avValue_fst45710_0_IF_NOT_f22f3_empty_3_ETC__q249 =
 	      IF_NOT_f22f3_empty_33_812_AND_NOT_SEL_ARR_f22f_ETC___d4130[15:0];
       3'd3:
-	  CASE_y_avValue_fst45722_0_IF_NOT_f22f3_empty_3_ETC__q249 =
+	  CASE_y_avValue_fst45710_0_IF_NOT_f22f3_empty_3_ETC__q249 =
 	      IF_NOT_f22f3_empty_33_812_AND_NOT_SEL_ARR_f22f_ETC___d4130[31:16];
-      default: CASE_y_avValue_fst45722_0_IF_NOT_f22f3_empty_3_ETC__q249 =
+      default: CASE_y_avValue_fst45710_0_IF_NOT_f22f3_empty_3_ETC__q249 =
 		   16'b1010101010101010 /* unspecified value */ ;
     endcase
   end
@@ -25112,577 +25148,577 @@ module mkFetchStage(CLK,
 		   16'b1010101010101010 /* unspecified value */ ;
     endcase
   end
-  always@(pending_spaces_ext__h156609 or
-	  orig_inst__h160438 or orig_inst__h160780 or orig_inst__h161126)
+  always@(pending_spaces_ext__h156591 or
+	  orig_inst__h160420 or orig_inst__h160762 or orig_inst__h161108)
   begin
-    case (pending_spaces_ext__h156609)
-      3'd0: x__h162776 = orig_inst__h160438;
-      3'd1: x__h162776 = orig_inst__h160780;
-      3'd2: x__h162776 = orig_inst__h161126;
-      3'd3, 3'd4, 3'd5, 3'd6, 3'd7: x__h162776 = 32'd0;
+    case (pending_spaces_ext__h156591)
+      3'd0: x__h162758 = orig_inst__h160420;
+      3'd1: x__h162758 = orig_inst__h160762;
+      3'd2: x__h162758 = orig_inst__h161108;
+      3'd3, 3'd4, 3'd5, 3'd6, 3'd7: x__h162758 = 32'd0;
     endcase
   end
-  always@(pending_spaces_ext__h156609 or
-	  orig_inst__h170357 or
-	  orig_inst__h160438 or orig_inst__h160780 or orig_inst__h161126)
+  always@(pending_spaces_ext__h156591 or
+	  orig_inst__h170333 or
+	  orig_inst__h160420 or orig_inst__h160762 or orig_inst__h161108)
   begin
-    case (pending_spaces_ext__h156609)
-      3'd0: x__h170480 = orig_inst__h170357;
-      3'd1: x__h170480 = orig_inst__h160438;
-      3'd2: x__h170480 = orig_inst__h160780;
-      3'd3: x__h170480 = orig_inst__h161126;
-      3'd4, 3'd5, 3'd6, 3'd7: x__h170480 = 32'd0;
+    case (pending_spaces_ext__h156591)
+      3'd0: x__h170456 = orig_inst__h170333;
+      3'd1: x__h170456 = orig_inst__h160420;
+      3'd2: x__h170456 = orig_inst__h160762;
+      3'd3: x__h170456 = orig_inst__h161108;
+      3'd4, 3'd5, 3'd6, 3'd7: x__h170456 = 32'd0;
     endcase
   end
-  always@(pending_spaces_ext__h156609 or
-	  inst__h160439 or inst__h160781 or inst__h161127)
+  always@(pending_spaces_ext__h156591 or
+	  inst__h160421 or inst__h160763 or inst__h161109)
   begin
-    case (pending_spaces_ext__h156609)
-      3'd0: x__h162822 = inst__h160439;
-      3'd1: x__h162822 = inst__h160781;
-      3'd2: x__h162822 = inst__h161127;
-      3'd3, 3'd4, 3'd5, 3'd6, 3'd7: x__h162822 = 32'd0;
+    case (pending_spaces_ext__h156591)
+      3'd0: x__h162804 = inst__h160421;
+      3'd1: x__h162804 = inst__h160763;
+      3'd2: x__h162804 = inst__h161109;
+      3'd3, 3'd4, 3'd5, 3'd6, 3'd7: x__h162804 = 32'd0;
     endcase
   end
-  always@(pending_spaces_ext__h156609 or
-	  inst__h170358 or inst__h160439 or inst__h160781 or inst__h161127)
+  always@(pending_spaces_ext__h156591 or
+	  inst__h170334 or inst__h160421 or inst__h160763 or inst__h161109)
   begin
-    case (pending_spaces_ext__h156609)
-      3'd0: x__h170485 = inst__h170358;
-      3'd1: x__h170485 = inst__h160439;
-      3'd2: x__h170485 = inst__h160781;
-      3'd3: x__h170485 = inst__h161127;
-      3'd4, 3'd5, 3'd6, 3'd7: x__h170485 = 32'd0;
+    case (pending_spaces_ext__h156591)
+      3'd0: x__h170461 = inst__h170334;
+      3'd1: x__h170461 = inst__h160421;
+      3'd2: x__h170461 = inst__h160763;
+      3'd3: x__h170461 = inst__h161109;
+      3'd4, 3'd5, 3'd6, 3'd7: x__h170461 = 32'd0;
     endcase
   end
-  always@(pending_spaces_ext__h156609 or
-	  pc__h170355 or
-	  pc__h160436 or pc__h160778 or pc__h161124 or pc_start__h125919)
+  always@(pending_spaces_ext__h156591 or
+	  pc__h170331 or
+	  pc__h160418 or pc__h160760 or pc__h161106 or pc_start__h125919)
   begin
-    case (pending_spaces_ext__h156609)
+    case (pending_spaces_ext__h156591)
       3'd0:
-	  SEL_ARR_IF_NOT_f22f3_empty_33_812_AND_NOT_SEL__ETC___d5197 =
-	      pc__h170355;
+	  SEL_ARR_IF_NOT_f22f3_empty_33_812_AND_NOT_SEL__ETC___d5206 =
+	      pc__h170331;
       3'd1:
-	  SEL_ARR_IF_NOT_f22f3_empty_33_812_AND_NOT_SEL__ETC___d5197 =
-	      pc__h160436;
+	  SEL_ARR_IF_NOT_f22f3_empty_33_812_AND_NOT_SEL__ETC___d5206 =
+	      pc__h160418;
       3'd2:
-	  SEL_ARR_IF_NOT_f22f3_empty_33_812_AND_NOT_SEL__ETC___d5197 =
-	      pc__h160778;
+	  SEL_ARR_IF_NOT_f22f3_empty_33_812_AND_NOT_SEL__ETC___d5206 =
+	      pc__h160760;
       3'd3:
-	  SEL_ARR_IF_NOT_f22f3_empty_33_812_AND_NOT_SEL__ETC___d5197 =
-	      pc__h161124;
+	  SEL_ARR_IF_NOT_f22f3_empty_33_812_AND_NOT_SEL__ETC___d5206 =
+	      pc__h161106;
       3'd4, 3'd5, 3'd6, 3'd7:
-	  SEL_ARR_IF_NOT_f22f3_empty_33_812_AND_NOT_SEL__ETC___d5197 =
+	  SEL_ARR_IF_NOT_f22f3_empty_33_812_AND_NOT_SEL__ETC___d5206 =
 	      pc_start__h125919;
     endcase
   end
-  always@(pending_spaces_ext__h156609 or
-	  pc__h160436 or pc__h160778 or pc__h161124 or pc_start__h125919)
+  always@(pending_spaces_ext__h156591 or
+	  pc__h160418 or pc__h160760 or pc__h161106 or pc_start__h125919)
   begin
-    case (pending_spaces_ext__h156609)
+    case (pending_spaces_ext__h156591)
       3'd0:
 	  SEL_ARR_IF_NOT_f22f3_empty_33_812_AND_NOT_SEL__ETC___d4283 =
-	      pc__h160436;
+	      pc__h160418;
       3'd1:
 	  SEL_ARR_IF_NOT_f22f3_empty_33_812_AND_NOT_SEL__ETC___d4283 =
-	      pc__h160778;
+	      pc__h160760;
       3'd2:
 	  SEL_ARR_IF_NOT_f22f3_empty_33_812_AND_NOT_SEL__ETC___d4283 =
-	      pc__h161124;
+	      pc__h161106;
       3'd3, 3'd4, 3'd5, 3'd6, 3'd7:
 	  SEL_ARR_IF_NOT_f22f3_empty_33_812_AND_NOT_SEL__ETC___d4283 =
 	      pc_start__h125919;
     endcase
   end
-  always@(pending_spaces__h156607 or rg_pending_decode)
+  always@(pending_spaces__h156589 or rg_pending_decode or pc_start__h125919)
   begin
-    case (pending_spaces__h156607)
+    case (pending_spaces__h156589)
       2'd0:
-	  SEL_ARR_rg_pending_decode_511_BITS_325_TO_324__ETC___d5523 =
-	      rg_pending_decode[325:324];
-      2'd1:
-	  SEL_ARR_rg_pending_decode_511_BITS_325_TO_324__ETC___d5523 =
-	      rg_pending_decode[195:194];
-      2'd2:
-	  SEL_ARR_rg_pending_decode_511_BITS_325_TO_324__ETC___d5523 =
-	      rg_pending_decode[65:64];
-      2'd3: SEL_ARR_rg_pending_decode_511_BITS_325_TO_324__ETC___d5523 = 2'd0;
-    endcase
-  end
-  always@(pending_spaces__h156607 or rg_pending_decode or pc_start__h125919)
-  begin
-    case (pending_spaces__h156607)
-      2'd0:
-	  SEL_ARR_rg_pending_decode_511_BITS_389_TO_326__ETC___d5516 =
+	  SEL_ARR_rg_pending_decode_523_BITS_389_TO_326__ETC___d5528 =
 	      rg_pending_decode[389:326];
       2'd1:
-	  SEL_ARR_rg_pending_decode_511_BITS_389_TO_326__ETC___d5516 =
+	  SEL_ARR_rg_pending_decode_523_BITS_389_TO_326__ETC___d5528 =
 	      rg_pending_decode[259:196];
       2'd2:
-	  SEL_ARR_rg_pending_decode_511_BITS_389_TO_326__ETC___d5516 =
+	  SEL_ARR_rg_pending_decode_523_BITS_389_TO_326__ETC___d5528 =
 	      rg_pending_decode[129:66];
       2'd3:
-	  SEL_ARR_rg_pending_decode_511_BITS_389_TO_326__ETC___d5516 =
+	  SEL_ARR_rg_pending_decode_523_BITS_389_TO_326__ETC___d5528 =
 	      pc_start__h125919;
     endcase
   end
-  always@(pending_spaces_ext__h156609 or
-	  SEL_ARR_rg_pending_decode_511_BITS_389_TO_326__ETC___d5516 or
-	  pc__h170355 or
-	  pc__h160436 or pc__h160778 or pc__h161124 or pc_start__h125919)
+  always@(pending_spaces_ext__h156591 or
+	  SEL_ARR_rg_pending_decode_523_BITS_389_TO_326__ETC___d5528 or
+	  pc__h170331 or
+	  pc__h160418 or pc__h160760 or pc__h161106 or pc_start__h125919)
   begin
-    case (pending_spaces_ext__h156609)
+    case (pending_spaces_ext__h156591)
       3'd0:
-	  y_avValue_fst_pred_next_pc__h177167 =
-	      SEL_ARR_rg_pending_decode_511_BITS_389_TO_326__ETC___d5516;
-      3'd1: y_avValue_fst_pred_next_pc__h177167 = pc__h170355;
-      3'd2: y_avValue_fst_pred_next_pc__h177167 = pc__h160436;
-      3'd3: y_avValue_fst_pred_next_pc__h177167 = pc__h160778;
-      3'd4: y_avValue_fst_pred_next_pc__h177167 = pc__h161124;
+	  y_avValue_fst_pred_next_pc__h177143 =
+	      SEL_ARR_rg_pending_decode_523_BITS_389_TO_326__ETC___d5528;
+      3'd1: y_avValue_fst_pred_next_pc__h177143 = pc__h170331;
+      3'd2: y_avValue_fst_pred_next_pc__h177143 = pc__h160418;
+      3'd3: y_avValue_fst_pred_next_pc__h177143 = pc__h160760;
+      3'd4: y_avValue_fst_pred_next_pc__h177143 = pc__h161106;
       3'd5, 3'd6, 3'd7:
-	  y_avValue_fst_pred_next_pc__h177167 = pc_start__h125919;
+	  y_avValue_fst_pred_next_pc__h177143 = pc_start__h125919;
     endcase
   end
-  always@(pending_spaces__h156607 or rg_pending_decode)
+  always@(pending_spaces__h156589 or rg_pending_decode)
   begin
-    case (pending_spaces__h156607)
+    case (pending_spaces__h156589)
       2'd0:
-	  SEL_ARR_rg_pending_decode_511_BITS_323_TO_292__ETC___d5530 =
+	  SEL_ARR_rg_pending_decode_523_BITS_325_TO_324__ETC___d5535 =
+	      rg_pending_decode[325:324];
+      2'd1:
+	  SEL_ARR_rg_pending_decode_523_BITS_325_TO_324__ETC___d5535 =
+	      rg_pending_decode[195:194];
+      2'd2:
+	  SEL_ARR_rg_pending_decode_523_BITS_325_TO_324__ETC___d5535 =
+	      rg_pending_decode[65:64];
+      2'd3: SEL_ARR_rg_pending_decode_523_BITS_325_TO_324__ETC___d5535 = 2'd0;
+    endcase
+  end
+  always@(pending_spaces__h156589 or rg_pending_decode)
+  begin
+    case (pending_spaces__h156589)
+      2'd0:
+	  SEL_ARR_rg_pending_decode_523_BITS_323_TO_292__ETC___d5542 =
 	      rg_pending_decode[323:292];
       2'd1:
-	  SEL_ARR_rg_pending_decode_511_BITS_323_TO_292__ETC___d5530 =
+	  SEL_ARR_rg_pending_decode_523_BITS_323_TO_292__ETC___d5542 =
 	      rg_pending_decode[193:162];
       2'd2:
-	  SEL_ARR_rg_pending_decode_511_BITS_323_TO_292__ETC___d5530 =
+	  SEL_ARR_rg_pending_decode_523_BITS_323_TO_292__ETC___d5542 =
 	      rg_pending_decode[63:32];
       2'd3:
-	  SEL_ARR_rg_pending_decode_511_BITS_323_TO_292__ETC___d5530 = 32'd0;
+	  SEL_ARR_rg_pending_decode_523_BITS_323_TO_292__ETC___d5542 = 32'd0;
     endcase
   end
-  always@(pending_spaces_ext__h156609 or
-	  SEL_ARR_rg_pending_decode_511_BITS_323_TO_292__ETC___d5530 or
-	  orig_inst__h170357 or
-	  orig_inst__h160438 or orig_inst__h160780 or orig_inst__h161126)
+  always@(pending_spaces_ext__h156591 or
+	  SEL_ARR_rg_pending_decode_523_BITS_323_TO_292__ETC___d5542 or
+	  orig_inst__h170333 or
+	  orig_inst__h160420 or orig_inst__h160762 or orig_inst__h161108)
   begin
-    case (pending_spaces_ext__h156609)
+    case (pending_spaces_ext__h156591)
       3'd0:
-	  x__h171608 =
-	      SEL_ARR_rg_pending_decode_511_BITS_323_TO_292__ETC___d5530;
-      3'd1: x__h171608 = orig_inst__h170357;
-      3'd2: x__h171608 = orig_inst__h160438;
-      3'd3: x__h171608 = orig_inst__h160780;
-      3'd4: x__h171608 = orig_inst__h161126;
-      3'd5, 3'd6, 3'd7: x__h171608 = 32'd0;
+	  x__h171584 =
+	      SEL_ARR_rg_pending_decode_523_BITS_323_TO_292__ETC___d5542;
+      3'd1: x__h171584 = orig_inst__h170333;
+      3'd2: x__h171584 = orig_inst__h160420;
+      3'd3: x__h171584 = orig_inst__h160762;
+      3'd4: x__h171584 = orig_inst__h161108;
+      3'd5, 3'd6, 3'd7: x__h171584 = 32'd0;
     endcase
   end
-  always@(pending_spaces__h156607 or rg_pending_decode)
+  always@(pending_spaces__h156589 or rg_pending_decode)
   begin
-    case (pending_spaces__h156607)
+    case (pending_spaces__h156589)
       2'd0:
-	  SEL_ARR_rg_pending_decode_511_BITS_291_TO_260__ETC___d5537 =
+	  SEL_ARR_rg_pending_decode_523_BITS_291_TO_260__ETC___d5549 =
 	      rg_pending_decode[291:260];
       2'd1:
-	  SEL_ARR_rg_pending_decode_511_BITS_291_TO_260__ETC___d5537 =
+	  SEL_ARR_rg_pending_decode_523_BITS_291_TO_260__ETC___d5549 =
 	      rg_pending_decode[161:130];
       2'd2:
-	  SEL_ARR_rg_pending_decode_511_BITS_291_TO_260__ETC___d5537 =
+	  SEL_ARR_rg_pending_decode_523_BITS_291_TO_260__ETC___d5549 =
 	      rg_pending_decode[31:0];
       2'd3:
-	  SEL_ARR_rg_pending_decode_511_BITS_291_TO_260__ETC___d5537 = 32'd0;
+	  SEL_ARR_rg_pending_decode_523_BITS_291_TO_260__ETC___d5549 = 32'd0;
     endcase
   end
-  always@(pending_spaces_ext__h156609 or
-	  SEL_ARR_rg_pending_decode_511_BITS_291_TO_260__ETC___d5537 or
-	  inst__h170358 or inst__h160439 or inst__h160781 or inst__h161127)
+  always@(pending_spaces_ext__h156591 or
+	  SEL_ARR_rg_pending_decode_523_BITS_291_TO_260__ETC___d5549 or
+	  inst__h170334 or inst__h160421 or inst__h160763 or inst__h161109)
   begin
-    case (pending_spaces_ext__h156609)
+    case (pending_spaces_ext__h156591)
       3'd0:
-	  x__h171620 =
-	      SEL_ARR_rg_pending_decode_511_BITS_291_TO_260__ETC___d5537;
-      3'd1: x__h171620 = inst__h170358;
-      3'd2: x__h171620 = inst__h160439;
-      3'd3: x__h171620 = inst__h160781;
-      3'd4: x__h171620 = inst__h161127;
-      3'd5, 3'd6, 3'd7: x__h171620 = 32'd0;
+	  x__h171596 =
+	      SEL_ARR_rg_pending_decode_523_BITS_291_TO_260__ETC___d5549;
+      3'd1: x__h171596 = inst__h170334;
+      3'd2: x__h171596 = inst__h160421;
+      3'd3: x__h171596 = inst__h160763;
+      3'd4: x__h171596 = inst__h161109;
+      3'd5, 3'd6, 3'd7: x__h171596 = 32'd0;
     endcase
   end
-  always@(pending_spaces__h156607 or rg_pending_decode or pc_start__h125919)
+  always@(pending_spaces__h156589 or rg_pending_decode or pc_start__h125919)
   begin
-    case (pending_spaces__h156607)
+    case (pending_spaces__h156589)
       2'd0:
-	  SEL_ARR_rg_pending_decode_511_BITS_259_TO_196__ETC___d5590 =
+	  SEL_ARR_rg_pending_decode_523_BITS_259_TO_196__ETC___d5602 =
 	      rg_pending_decode[259:196];
       2'd1:
-	  SEL_ARR_rg_pending_decode_511_BITS_259_TO_196__ETC___d5590 =
+	  SEL_ARR_rg_pending_decode_523_BITS_259_TO_196__ETC___d5602 =
 	      rg_pending_decode[129:66];
       2'd2, 2'd3:
-	  SEL_ARR_rg_pending_decode_511_BITS_259_TO_196__ETC___d5590 =
+	  SEL_ARR_rg_pending_decode_523_BITS_259_TO_196__ETC___d5602 =
 	      pc_start__h125919;
     endcase
   end
-  always@(pending_spaces__h156607 or rg_pending_decode)
+  always@(pending_spaces__h156589 or rg_pending_decode)
   begin
-    case (pending_spaces__h156607)
+    case (pending_spaces__h156589)
       2'd0:
-	  SEL_ARR_rg_pending_decode_511_BITS_193_TO_162__ETC___d5598 =
+	  SEL_ARR_rg_pending_decode_523_BITS_193_TO_162__ETC___d5610 =
 	      rg_pending_decode[193:162];
       2'd1:
-	  SEL_ARR_rg_pending_decode_511_BITS_193_TO_162__ETC___d5598 =
+	  SEL_ARR_rg_pending_decode_523_BITS_193_TO_162__ETC___d5610 =
 	      rg_pending_decode[63:32];
       2'd2, 2'd3:
-	  SEL_ARR_rg_pending_decode_511_BITS_193_TO_162__ETC___d5598 = 32'd0;
+	  SEL_ARR_rg_pending_decode_523_BITS_193_TO_162__ETC___d5610 = 32'd0;
     endcase
   end
-  always@(pending_spaces_ext__h156609 or
-	  SEL_ARR_rg_pending_decode_511_BITS_193_TO_162__ETC___d5598 or
-	  SEL_ARR_rg_pending_decode_511_BITS_323_TO_292__ETC___d5530 or
-	  orig_inst__h170357 or
-	  orig_inst__h160438 or orig_inst__h160780 or orig_inst__h161126)
+  always@(pending_spaces_ext__h156591 or
+	  SEL_ARR_rg_pending_decode_523_BITS_193_TO_162__ETC___d5610 or
+	  SEL_ARR_rg_pending_decode_523_BITS_323_TO_292__ETC___d5542 or
+	  orig_inst__h170333 or
+	  orig_inst__h160420 or orig_inst__h160762 or orig_inst__h161108)
   begin
-    case (pending_spaces_ext__h156609)
+    case (pending_spaces_ext__h156591)
       3'd0:
-	  x__h175762 =
-	      SEL_ARR_rg_pending_decode_511_BITS_193_TO_162__ETC___d5598;
+	  x__h175738 =
+	      SEL_ARR_rg_pending_decode_523_BITS_193_TO_162__ETC___d5610;
       3'd1:
-	  x__h175762 =
-	      SEL_ARR_rg_pending_decode_511_BITS_323_TO_292__ETC___d5530;
-      3'd2: x__h175762 = orig_inst__h170357;
-      3'd3: x__h175762 = orig_inst__h160438;
-      3'd4: x__h175762 = orig_inst__h160780;
-      3'd5: x__h175762 = orig_inst__h161126;
-      3'd6, 3'd7: x__h175762 = 32'd0;
+	  x__h175738 =
+	      SEL_ARR_rg_pending_decode_523_BITS_323_TO_292__ETC___d5542;
+      3'd2: x__h175738 = orig_inst__h170333;
+      3'd3: x__h175738 = orig_inst__h160420;
+      3'd4: x__h175738 = orig_inst__h160762;
+      3'd5: x__h175738 = orig_inst__h161108;
+      3'd6, 3'd7: x__h175738 = 32'd0;
     endcase
   end
-  always@(pending_spaces__h156607 or rg_pending_decode)
+  always@(pending_spaces__h156589 or rg_pending_decode)
   begin
-    case (pending_spaces__h156607)
+    case (pending_spaces__h156589)
       2'd0:
-	  CASE_pending_spaces56607_0_rg_pending_decode_B_ETC__q251 =
+	  CASE_pending_spaces56589_0_rg_pending_decode_B_ETC__q251 =
 	      rg_pending_decode[63:32];
       2'd1, 2'd2, 2'd3:
-	  CASE_pending_spaces56607_0_rg_pending_decode_B_ETC__q251 = 32'd0;
+	  CASE_pending_spaces56589_0_rg_pending_decode_B_ETC__q251 = 32'd0;
     endcase
   end
-  always@(pending_spaces_ext__h156609 or
-	  CASE_pending_spaces56607_0_rg_pending_decode_B_ETC__q251 or
-	  SEL_ARR_rg_pending_decode_511_BITS_193_TO_162__ETC___d5598 or
-	  SEL_ARR_rg_pending_decode_511_BITS_323_TO_292__ETC___d5530 or
-	  orig_inst__h170357 or
-	  orig_inst__h160438 or orig_inst__h160780 or orig_inst__h161126)
+  always@(pending_spaces_ext__h156591 or
+	  CASE_pending_spaces56589_0_rg_pending_decode_B_ETC__q251 or
+	  SEL_ARR_rg_pending_decode_523_BITS_193_TO_162__ETC___d5610 or
+	  SEL_ARR_rg_pending_decode_523_BITS_323_TO_292__ETC___d5542 or
+	  orig_inst__h170333 or
+	  orig_inst__h160420 or orig_inst__h160762 or orig_inst__h161108)
   begin
-    case (pending_spaces_ext__h156609)
+    case (pending_spaces_ext__h156591)
       3'd0:
-	  x__h175839 =
-	      CASE_pending_spaces56607_0_rg_pending_decode_B_ETC__q251;
+	  x__h175815 =
+	      CASE_pending_spaces56589_0_rg_pending_decode_B_ETC__q251;
       3'd1:
-	  x__h175839 =
-	      SEL_ARR_rg_pending_decode_511_BITS_193_TO_162__ETC___d5598;
+	  x__h175815 =
+	      SEL_ARR_rg_pending_decode_523_BITS_193_TO_162__ETC___d5610;
       3'd2:
-	  x__h175839 =
-	      SEL_ARR_rg_pending_decode_511_BITS_323_TO_292__ETC___d5530;
-      3'd3: x__h175839 = orig_inst__h170357;
-      3'd4: x__h175839 = orig_inst__h160438;
-      3'd5: x__h175839 = orig_inst__h160780;
-      3'd6: x__h175839 = orig_inst__h161126;
-      3'd7: x__h175839 = 32'd0;
+	  x__h175815 =
+	      SEL_ARR_rg_pending_decode_523_BITS_323_TO_292__ETC___d5542;
+      3'd3: x__h175815 = orig_inst__h170333;
+      3'd4: x__h175815 = orig_inst__h160420;
+      3'd5: x__h175815 = orig_inst__h160762;
+      3'd6: x__h175815 = orig_inst__h161108;
+      3'd7: x__h175815 = 32'd0;
     endcase
   end
-  always@(pending_spaces__h156607 or rg_pending_decode)
+  always@(pending_spaces__h156589 or rg_pending_decode)
   begin
-    case (pending_spaces__h156607)
+    case (pending_spaces__h156589)
       2'd0:
-	  SEL_ARR_rg_pending_decode_511_BITS_195_TO_194__ETC___d5594 =
+	  SEL_ARR_rg_pending_decode_523_BITS_195_TO_194__ETC___d5606 =
 	      rg_pending_decode[195:194];
       2'd1:
-	  SEL_ARR_rg_pending_decode_511_BITS_195_TO_194__ETC___d5594 =
+	  SEL_ARR_rg_pending_decode_523_BITS_195_TO_194__ETC___d5606 =
 	      rg_pending_decode[65:64];
       2'd2, 2'd3:
-	  SEL_ARR_rg_pending_decode_511_BITS_195_TO_194__ETC___d5594 = 2'd0;
+	  SEL_ARR_rg_pending_decode_523_BITS_195_TO_194__ETC___d5606 = 2'd0;
     endcase
   end
-  always@(pending_spaces__h156607 or rg_pending_decode)
+  always@(pending_spaces__h156589 or rg_pending_decode)
   begin
-    case (pending_spaces__h156607)
+    case (pending_spaces__h156589)
       2'd0:
-	  SEL_ARR_rg_pending_decode_511_BITS_161_TO_130__ETC___d5602 =
+	  SEL_ARR_rg_pending_decode_523_BITS_161_TO_130__ETC___d5614 =
 	      rg_pending_decode[161:130];
       2'd1:
-	  SEL_ARR_rg_pending_decode_511_BITS_161_TO_130__ETC___d5602 =
+	  SEL_ARR_rg_pending_decode_523_BITS_161_TO_130__ETC___d5614 =
 	      rg_pending_decode[31:0];
       2'd2, 2'd3:
-	  SEL_ARR_rg_pending_decode_511_BITS_161_TO_130__ETC___d5602 = 32'd0;
+	  SEL_ARR_rg_pending_decode_523_BITS_161_TO_130__ETC___d5614 = 32'd0;
     endcase
   end
-  always@(pending_spaces_ext__h156609 or
-	  SEL_ARR_rg_pending_decode_511_BITS_161_TO_130__ETC___d5602 or
-	  SEL_ARR_rg_pending_decode_511_BITS_291_TO_260__ETC___d5537 or
-	  inst__h170358 or inst__h160439 or inst__h160781 or inst__h161127)
+  always@(pending_spaces_ext__h156591 or
+	  SEL_ARR_rg_pending_decode_523_BITS_161_TO_130__ETC___d5614 or
+	  SEL_ARR_rg_pending_decode_523_BITS_291_TO_260__ETC___d5549 or
+	  inst__h170334 or inst__h160421 or inst__h160763 or inst__h161109)
   begin
-    case (pending_spaces_ext__h156609)
+    case (pending_spaces_ext__h156591)
       3'd0:
-	  x__h175770 =
-	      SEL_ARR_rg_pending_decode_511_BITS_161_TO_130__ETC___d5602;
+	  x__h175746 =
+	      SEL_ARR_rg_pending_decode_523_BITS_161_TO_130__ETC___d5614;
       3'd1:
-	  x__h175770 =
-	      SEL_ARR_rg_pending_decode_511_BITS_291_TO_260__ETC___d5537;
-      3'd2: x__h175770 = inst__h170358;
-      3'd3: x__h175770 = inst__h160439;
-      3'd4: x__h175770 = inst__h160781;
-      3'd5: x__h175770 = inst__h161127;
-      3'd6, 3'd7: x__h175770 = 32'd0;
+	  x__h175746 =
+	      SEL_ARR_rg_pending_decode_523_BITS_291_TO_260__ETC___d5549;
+      3'd2: x__h175746 = inst__h170334;
+      3'd3: x__h175746 = inst__h160421;
+      3'd4: x__h175746 = inst__h160763;
+      3'd5: x__h175746 = inst__h161109;
+      3'd6, 3'd7: x__h175746 = 32'd0;
     endcase
   end
-  always@(pending_spaces__h156607 or rg_pending_decode)
+  always@(pending_spaces__h156589 or rg_pending_decode)
   begin
-    case (pending_spaces__h156607)
+    case (pending_spaces__h156589)
       2'd0:
-	  CASE_pending_spaces56607_0_rg_pending_decode_B_ETC__q252 =
+	  CASE_pending_spaces56589_0_rg_pending_decode_B_ETC__q252 =
 	      rg_pending_decode[31:0];
       2'd1, 2'd2, 2'd3:
-	  CASE_pending_spaces56607_0_rg_pending_decode_B_ETC__q252 = 32'd0;
+	  CASE_pending_spaces56589_0_rg_pending_decode_B_ETC__q252 = 32'd0;
     endcase
   end
-  always@(pending_spaces_ext__h156609 or
-	  CASE_pending_spaces56607_0_rg_pending_decode_B_ETC__q252 or
-	  SEL_ARR_rg_pending_decode_511_BITS_161_TO_130__ETC___d5602 or
-	  SEL_ARR_rg_pending_decode_511_BITS_291_TO_260__ETC___d5537 or
-	  inst__h170358 or inst__h160439 or inst__h160781 or inst__h161127)
+  always@(pending_spaces_ext__h156591 or
+	  CASE_pending_spaces56589_0_rg_pending_decode_B_ETC__q252 or
+	  SEL_ARR_rg_pending_decode_523_BITS_161_TO_130__ETC___d5614 or
+	  SEL_ARR_rg_pending_decode_523_BITS_291_TO_260__ETC___d5549 or
+	  inst__h170334 or inst__h160421 or inst__h160763 or inst__h161109)
   begin
-    case (pending_spaces_ext__h156609)
+    case (pending_spaces_ext__h156591)
       3'd0:
-	  x__h175850 =
-	      CASE_pending_spaces56607_0_rg_pending_decode_B_ETC__q252;
+	  x__h175826 =
+	      CASE_pending_spaces56589_0_rg_pending_decode_B_ETC__q252;
       3'd1:
-	  x__h175850 =
-	      SEL_ARR_rg_pending_decode_511_BITS_161_TO_130__ETC___d5602;
+	  x__h175826 =
+	      SEL_ARR_rg_pending_decode_523_BITS_161_TO_130__ETC___d5614;
       3'd2:
-	  x__h175850 =
-	      SEL_ARR_rg_pending_decode_511_BITS_291_TO_260__ETC___d5537;
-      3'd3: x__h175850 = inst__h170358;
-      3'd4: x__h175850 = inst__h160439;
-      3'd5: x__h175850 = inst__h160781;
-      3'd6: x__h175850 = inst__h161127;
-      3'd7: x__h175850 = 32'd0;
+	  x__h175826 =
+	      SEL_ARR_rg_pending_decode_523_BITS_291_TO_260__ETC___d5549;
+      3'd3: x__h175826 = inst__h170334;
+      3'd4: x__h175826 = inst__h160421;
+      3'd5: x__h175826 = inst__h160763;
+      3'd6: x__h175826 = inst__h161109;
+      3'd7: x__h175826 = 32'd0;
     endcase
   end
-  always@(pending_spaces_ext__h156609 or
-	  SEL_ARR_rg_pending_decode_511_BITS_195_TO_194__ETC___d5594 or
-	  SEL_ARR_rg_pending_decode_511_BITS_325_TO_324__ETC___d5523 or
-	  IF_NOT_f22f3_empty_33_812_AND_NOT_SEL_ARR_f22f_ETC___d5203 or
+  always@(pending_spaces_ext__h156591 or
+	  SEL_ARR_rg_pending_decode_523_BITS_195_TO_194__ETC___d5606 or
+	  SEL_ARR_rg_pending_decode_523_BITS_325_TO_324__ETC___d5535 or
+	  IF_NOT_f22f3_empty_33_812_AND_NOT_SEL_ARR_f22f_ETC___d5212 or
 	  IF_NOT_f22f3_empty_33_812_AND_NOT_SEL_ARR_f22f_ETC___d4288 or
 	  IF_NOT_f22f3_empty_33_812_AND_NOT_SEL_ARR_f22f_ETC___d4293 or
 	  IF_NOT_f22f3_empty_33_812_AND_NOT_SEL_ARR_f22f_ETC___d4298)
   begin
-    case (pending_spaces_ext__h156609)
+    case (pending_spaces_ext__h156591)
       3'd0:
-	  SEL_ARR_SEL_ARR_rg_pending_decode_511_BITS_195_ETC___d5596 =
-	      SEL_ARR_rg_pending_decode_511_BITS_195_TO_194__ETC___d5594;
+	  SEL_ARR_SEL_ARR_rg_pending_decode_523_BITS_195_ETC___d5608 =
+	      SEL_ARR_rg_pending_decode_523_BITS_195_TO_194__ETC___d5606;
       3'd1:
-	  SEL_ARR_SEL_ARR_rg_pending_decode_511_BITS_195_ETC___d5596 =
-	      SEL_ARR_rg_pending_decode_511_BITS_325_TO_324__ETC___d5523;
+	  SEL_ARR_SEL_ARR_rg_pending_decode_523_BITS_195_ETC___d5608 =
+	      SEL_ARR_rg_pending_decode_523_BITS_325_TO_324__ETC___d5535;
       3'd2:
-	  SEL_ARR_SEL_ARR_rg_pending_decode_511_BITS_195_ETC___d5596 =
-	      IF_NOT_f22f3_empty_33_812_AND_NOT_SEL_ARR_f22f_ETC___d5203;
+	  SEL_ARR_SEL_ARR_rg_pending_decode_523_BITS_195_ETC___d5608 =
+	      IF_NOT_f22f3_empty_33_812_AND_NOT_SEL_ARR_f22f_ETC___d5212;
       3'd3:
-	  SEL_ARR_SEL_ARR_rg_pending_decode_511_BITS_195_ETC___d5596 =
+	  SEL_ARR_SEL_ARR_rg_pending_decode_523_BITS_195_ETC___d5608 =
 	      IF_NOT_f22f3_empty_33_812_AND_NOT_SEL_ARR_f22f_ETC___d4288;
       3'd4:
-	  SEL_ARR_SEL_ARR_rg_pending_decode_511_BITS_195_ETC___d5596 =
+	  SEL_ARR_SEL_ARR_rg_pending_decode_523_BITS_195_ETC___d5608 =
 	      IF_NOT_f22f3_empty_33_812_AND_NOT_SEL_ARR_f22f_ETC___d4293;
       3'd5:
-	  SEL_ARR_SEL_ARR_rg_pending_decode_511_BITS_195_ETC___d5596 =
+	  SEL_ARR_SEL_ARR_rg_pending_decode_523_BITS_195_ETC___d5608 =
 	      IF_NOT_f22f3_empty_33_812_AND_NOT_SEL_ARR_f22f_ETC___d4298;
       3'd6, 3'd7:
-	  SEL_ARR_SEL_ARR_rg_pending_decode_511_BITS_195_ETC___d5596 = 2'd0;
+	  SEL_ARR_SEL_ARR_rg_pending_decode_523_BITS_195_ETC___d5608 = 2'd0;
     endcase
   end
-  always@(pending_spaces_ext__h156609 or
-	  SEL_ARR_rg_pending_decode_511_BITS_325_TO_324__ETC___d5523 or
-	  IF_NOT_f22f3_empty_33_812_AND_NOT_SEL_ARR_f22f_ETC___d5203 or
+  always@(pending_spaces_ext__h156591 or
+	  SEL_ARR_rg_pending_decode_523_BITS_325_TO_324__ETC___d5535 or
+	  IF_NOT_f22f3_empty_33_812_AND_NOT_SEL_ARR_f22f_ETC___d5212 or
 	  IF_NOT_f22f3_empty_33_812_AND_NOT_SEL_ARR_f22f_ETC___d4288 or
 	  IF_NOT_f22f3_empty_33_812_AND_NOT_SEL_ARR_f22f_ETC___d4293 or
 	  IF_NOT_f22f3_empty_33_812_AND_NOT_SEL_ARR_f22f_ETC___d4298)
   begin
-    case (pending_spaces_ext__h156609)
+    case (pending_spaces_ext__h156591)
       3'd0:
-	  SEL_ARR_SEL_ARR_rg_pending_decode_511_BITS_325_ETC___d5525 =
-	      SEL_ARR_rg_pending_decode_511_BITS_325_TO_324__ETC___d5523;
+	  SEL_ARR_SEL_ARR_rg_pending_decode_523_BITS_325_ETC___d5537 =
+	      SEL_ARR_rg_pending_decode_523_BITS_325_TO_324__ETC___d5535;
       3'd1:
-	  SEL_ARR_SEL_ARR_rg_pending_decode_511_BITS_325_ETC___d5525 =
-	      IF_NOT_f22f3_empty_33_812_AND_NOT_SEL_ARR_f22f_ETC___d5203;
+	  SEL_ARR_SEL_ARR_rg_pending_decode_523_BITS_325_ETC___d5537 =
+	      IF_NOT_f22f3_empty_33_812_AND_NOT_SEL_ARR_f22f_ETC___d5212;
       3'd2:
-	  SEL_ARR_SEL_ARR_rg_pending_decode_511_BITS_325_ETC___d5525 =
+	  SEL_ARR_SEL_ARR_rg_pending_decode_523_BITS_325_ETC___d5537 =
 	      IF_NOT_f22f3_empty_33_812_AND_NOT_SEL_ARR_f22f_ETC___d4288;
       3'd3:
-	  SEL_ARR_SEL_ARR_rg_pending_decode_511_BITS_325_ETC___d5525 =
+	  SEL_ARR_SEL_ARR_rg_pending_decode_523_BITS_325_ETC___d5537 =
 	      IF_NOT_f22f3_empty_33_812_AND_NOT_SEL_ARR_f22f_ETC___d4293;
       3'd4:
-	  SEL_ARR_SEL_ARR_rg_pending_decode_511_BITS_325_ETC___d5525 =
+	  SEL_ARR_SEL_ARR_rg_pending_decode_523_BITS_325_ETC___d5537 =
 	      IF_NOT_f22f3_empty_33_812_AND_NOT_SEL_ARR_f22f_ETC___d4298;
       3'd5, 3'd6, 3'd7:
-	  SEL_ARR_SEL_ARR_rg_pending_decode_511_BITS_325_ETC___d5525 = 2'd0;
+	  SEL_ARR_SEL_ARR_rg_pending_decode_523_BITS_325_ETC___d5537 = 2'd0;
     endcase
   end
-  always@(pending_spaces__h156607 or rg_pending_decode)
+  always@(pending_spaces__h156589 or rg_pending_decode)
   begin
-    case (pending_spaces__h156607)
+    case (pending_spaces__h156589)
       2'd0:
-	  CASE_pending_spaces56607_0_rg_pending_decode_B_ETC__q253 =
+	  CASE_pending_spaces56589_0_rg_pending_decode_B_ETC__q253 =
 	      rg_pending_decode[65:64];
       2'd1, 2'd2, 2'd3:
-	  CASE_pending_spaces56607_0_rg_pending_decode_B_ETC__q253 = 2'd0;
+	  CASE_pending_spaces56589_0_rg_pending_decode_B_ETC__q253 = 2'd0;
     endcase
   end
-  always@(pending_spaces_ext__h156609 or
-	  CASE_pending_spaces56607_0_rg_pending_decode_B_ETC__q253 or
-	  SEL_ARR_rg_pending_decode_511_BITS_195_TO_194__ETC___d5594 or
-	  SEL_ARR_rg_pending_decode_511_BITS_325_TO_324__ETC___d5523 or
-	  IF_NOT_f22f3_empty_33_812_AND_NOT_SEL_ARR_f22f_ETC___d5203 or
+  always@(pending_spaces_ext__h156591 or
+	  CASE_pending_spaces56589_0_rg_pending_decode_B_ETC__q253 or
+	  SEL_ARR_rg_pending_decode_523_BITS_195_TO_194__ETC___d5606 or
+	  SEL_ARR_rg_pending_decode_523_BITS_325_TO_324__ETC___d5535 or
+	  IF_NOT_f22f3_empty_33_812_AND_NOT_SEL_ARR_f22f_ETC___d5212 or
 	  IF_NOT_f22f3_empty_33_812_AND_NOT_SEL_ARR_f22f_ETC___d4288 or
 	  IF_NOT_f22f3_empty_33_812_AND_NOT_SEL_ARR_f22f_ETC___d4293 or
 	  IF_NOT_f22f3_empty_33_812_AND_NOT_SEL_ARR_f22f_ETC___d4298)
   begin
-    case (pending_spaces_ext__h156609)
+    case (pending_spaces_ext__h156591)
       3'd0:
-	  SEL_ARR_SEL_ARR_rg_pending_decode_511_BITS_65__ETC___d5613 =
-	      CASE_pending_spaces56607_0_rg_pending_decode_B_ETC__q253;
+	  SEL_ARR_SEL_ARR_rg_pending_decode_523_BITS_65__ETC___d5625 =
+	      CASE_pending_spaces56589_0_rg_pending_decode_B_ETC__q253;
       3'd1:
-	  SEL_ARR_SEL_ARR_rg_pending_decode_511_BITS_65__ETC___d5613 =
-	      SEL_ARR_rg_pending_decode_511_BITS_195_TO_194__ETC___d5594;
+	  SEL_ARR_SEL_ARR_rg_pending_decode_523_BITS_65__ETC___d5625 =
+	      SEL_ARR_rg_pending_decode_523_BITS_195_TO_194__ETC___d5606;
       3'd2:
-	  SEL_ARR_SEL_ARR_rg_pending_decode_511_BITS_65__ETC___d5613 =
-	      SEL_ARR_rg_pending_decode_511_BITS_325_TO_324__ETC___d5523;
+	  SEL_ARR_SEL_ARR_rg_pending_decode_523_BITS_65__ETC___d5625 =
+	      SEL_ARR_rg_pending_decode_523_BITS_325_TO_324__ETC___d5535;
       3'd3:
-	  SEL_ARR_SEL_ARR_rg_pending_decode_511_BITS_65__ETC___d5613 =
-	      IF_NOT_f22f3_empty_33_812_AND_NOT_SEL_ARR_f22f_ETC___d5203;
+	  SEL_ARR_SEL_ARR_rg_pending_decode_523_BITS_65__ETC___d5625 =
+	      IF_NOT_f22f3_empty_33_812_AND_NOT_SEL_ARR_f22f_ETC___d5212;
       3'd4:
-	  SEL_ARR_SEL_ARR_rg_pending_decode_511_BITS_65__ETC___d5613 =
+	  SEL_ARR_SEL_ARR_rg_pending_decode_523_BITS_65__ETC___d5625 =
 	      IF_NOT_f22f3_empty_33_812_AND_NOT_SEL_ARR_f22f_ETC___d4288;
       3'd5:
-	  SEL_ARR_SEL_ARR_rg_pending_decode_511_BITS_65__ETC___d5613 =
+	  SEL_ARR_SEL_ARR_rg_pending_decode_523_BITS_65__ETC___d5625 =
 	      IF_NOT_f22f3_empty_33_812_AND_NOT_SEL_ARR_f22f_ETC___d4293;
       3'd6:
-	  SEL_ARR_SEL_ARR_rg_pending_decode_511_BITS_65__ETC___d5613 =
+	  SEL_ARR_SEL_ARR_rg_pending_decode_523_BITS_65__ETC___d5625 =
 	      IF_NOT_f22f3_empty_33_812_AND_NOT_SEL_ARR_f22f_ETC___d4298;
-      3'd7: SEL_ARR_SEL_ARR_rg_pending_decode_511_BITS_65__ETC___d5613 = 2'd0;
+      3'd7: SEL_ARR_SEL_ARR_rg_pending_decode_523_BITS_65__ETC___d5625 = 2'd0;
     endcase
   end
-  always@(pending_spaces_ext__h156609 or
-	  SEL_ARR_rg_pending_decode_511_BITS_259_TO_196__ETC___d5590 or
-	  SEL_ARR_rg_pending_decode_511_BITS_389_TO_326__ETC___d5516 or
-	  pc__h170355 or
-	  pc__h160436 or pc__h160778 or pc__h161124 or pc_start__h125919)
+  always@(pending_spaces_ext__h156591 or
+	  SEL_ARR_rg_pending_decode_523_BITS_259_TO_196__ETC___d5602 or
+	  SEL_ARR_rg_pending_decode_523_BITS_389_TO_326__ETC___d5528 or
+	  pc__h170331 or
+	  pc__h160418 or pc__h160760 or pc__h161106 or pc_start__h125919)
   begin
-    case (pending_spaces_ext__h156609)
+    case (pending_spaces_ext__h156591)
       3'd0:
-	  SEL_ARR_SEL_ARR_rg_pending_decode_511_BITS_259_ETC___d5592 =
-	      SEL_ARR_rg_pending_decode_511_BITS_259_TO_196__ETC___d5590;
+	  SEL_ARR_SEL_ARR_rg_pending_decode_523_BITS_259_ETC___d5604 =
+	      SEL_ARR_rg_pending_decode_523_BITS_259_TO_196__ETC___d5602;
       3'd1:
-	  SEL_ARR_SEL_ARR_rg_pending_decode_511_BITS_259_ETC___d5592 =
-	      SEL_ARR_rg_pending_decode_511_BITS_389_TO_326__ETC___d5516;
+	  SEL_ARR_SEL_ARR_rg_pending_decode_523_BITS_259_ETC___d5604 =
+	      SEL_ARR_rg_pending_decode_523_BITS_389_TO_326__ETC___d5528;
       3'd2:
-	  SEL_ARR_SEL_ARR_rg_pending_decode_511_BITS_259_ETC___d5592 =
-	      pc__h170355;
+	  SEL_ARR_SEL_ARR_rg_pending_decode_523_BITS_259_ETC___d5604 =
+	      pc__h170331;
       3'd3:
-	  SEL_ARR_SEL_ARR_rg_pending_decode_511_BITS_259_ETC___d5592 =
-	      pc__h160436;
+	  SEL_ARR_SEL_ARR_rg_pending_decode_523_BITS_259_ETC___d5604 =
+	      pc__h160418;
       3'd4:
-	  SEL_ARR_SEL_ARR_rg_pending_decode_511_BITS_259_ETC___d5592 =
-	      pc__h160778;
+	  SEL_ARR_SEL_ARR_rg_pending_decode_523_BITS_259_ETC___d5604 =
+	      pc__h160760;
       3'd5:
-	  SEL_ARR_SEL_ARR_rg_pending_decode_511_BITS_259_ETC___d5592 =
-	      pc__h161124;
+	  SEL_ARR_SEL_ARR_rg_pending_decode_523_BITS_259_ETC___d5604 =
+	      pc__h161106;
       3'd6, 3'd7:
-	  SEL_ARR_SEL_ARR_rg_pending_decode_511_BITS_259_ETC___d5592 =
+	  SEL_ARR_SEL_ARR_rg_pending_decode_523_BITS_259_ETC___d5604 =
 	      pc_start__h125919;
     endcase
   end
-  always@(pending_spaces__h156607 or rg_pending_decode or pc_start__h125919)
+  always@(pending_spaces__h156589 or rg_pending_decode or pc_start__h125919)
   begin
-    case (pending_spaces__h156607)
+    case (pending_spaces__h156589)
       2'd0:
-	  CASE_pending_spaces56607_0_rg_pending_decode_B_ETC__q254 =
+	  CASE_pending_spaces56589_0_rg_pending_decode_B_ETC__q254 =
 	      rg_pending_decode[129:66];
       2'd1, 2'd2, 2'd3:
-	  CASE_pending_spaces56607_0_rg_pending_decode_B_ETC__q254 =
+	  CASE_pending_spaces56589_0_rg_pending_decode_B_ETC__q254 =
 	      pc_start__h125919;
     endcase
   end
-  always@(pending_spaces_ext__h156609 or
-	  CASE_pending_spaces56607_0_rg_pending_decode_B_ETC__q254 or
-	  SEL_ARR_rg_pending_decode_511_BITS_259_TO_196__ETC___d5590 or
-	  SEL_ARR_rg_pending_decode_511_BITS_389_TO_326__ETC___d5516 or
-	  pc__h170355 or
-	  pc__h160436 or pc__h160778 or pc__h161124 or pc_start__h125919)
+  always@(pending_spaces_ext__h156591 or
+	  CASE_pending_spaces56589_0_rg_pending_decode_B_ETC__q254 or
+	  SEL_ARR_rg_pending_decode_523_BITS_259_TO_196__ETC___d5602 or
+	  SEL_ARR_rg_pending_decode_523_BITS_389_TO_326__ETC___d5528 or
+	  pc__h170331 or
+	  pc__h160418 or pc__h160760 or pc__h161106 or pc_start__h125919)
   begin
-    case (pending_spaces_ext__h156609)
+    case (pending_spaces_ext__h156591)
       3'd0:
-	  SEL_ARR_SEL_ARR_rg_pending_decode_511_BITS_129_ETC___d5609 =
-	      CASE_pending_spaces56607_0_rg_pending_decode_B_ETC__q254;
+	  SEL_ARR_SEL_ARR_rg_pending_decode_523_BITS_129_ETC___d5621 =
+	      CASE_pending_spaces56589_0_rg_pending_decode_B_ETC__q254;
       3'd1:
-	  SEL_ARR_SEL_ARR_rg_pending_decode_511_BITS_129_ETC___d5609 =
-	      SEL_ARR_rg_pending_decode_511_BITS_259_TO_196__ETC___d5590;
+	  SEL_ARR_SEL_ARR_rg_pending_decode_523_BITS_129_ETC___d5621 =
+	      SEL_ARR_rg_pending_decode_523_BITS_259_TO_196__ETC___d5602;
       3'd2:
-	  SEL_ARR_SEL_ARR_rg_pending_decode_511_BITS_129_ETC___d5609 =
-	      SEL_ARR_rg_pending_decode_511_BITS_389_TO_326__ETC___d5516;
+	  SEL_ARR_SEL_ARR_rg_pending_decode_523_BITS_129_ETC___d5621 =
+	      SEL_ARR_rg_pending_decode_523_BITS_389_TO_326__ETC___d5528;
       3'd3:
-	  SEL_ARR_SEL_ARR_rg_pending_decode_511_BITS_129_ETC___d5609 =
-	      pc__h170355;
+	  SEL_ARR_SEL_ARR_rg_pending_decode_523_BITS_129_ETC___d5621 =
+	      pc__h170331;
       3'd4:
-	  SEL_ARR_SEL_ARR_rg_pending_decode_511_BITS_129_ETC___d5609 =
-	      pc__h160436;
+	  SEL_ARR_SEL_ARR_rg_pending_decode_523_BITS_129_ETC___d5621 =
+	      pc__h160418;
       3'd5:
-	  SEL_ARR_SEL_ARR_rg_pending_decode_511_BITS_129_ETC___d5609 =
-	      pc__h160778;
+	  SEL_ARR_SEL_ARR_rg_pending_decode_523_BITS_129_ETC___d5621 =
+	      pc__h160760;
       3'd6:
-	  SEL_ARR_SEL_ARR_rg_pending_decode_511_BITS_129_ETC___d5609 =
-	      pc__h161124;
+	  SEL_ARR_SEL_ARR_rg_pending_decode_523_BITS_129_ETC___d5621 =
+	      pc__h161106;
       3'd7:
-	  SEL_ARR_SEL_ARR_rg_pending_decode_511_BITS_129_ETC___d5609 =
+	  SEL_ARR_SEL_ARR_rg_pending_decode_523_BITS_129_ETC___d5621 =
 	      pc_start__h125919;
     endcase
   end
-  always@(pending_spaces_ext__h156609 or
-	  IF_NOT_f22f3_empty_33_812_AND_NOT_SEL_ARR_f22f_ETC___d5203 or
+  always@(pending_spaces_ext__h156591 or
+	  IF_NOT_f22f3_empty_33_812_AND_NOT_SEL_ARR_f22f_ETC___d5212 or
 	  IF_NOT_f22f3_empty_33_812_AND_NOT_SEL_ARR_f22f_ETC___d4288 or
 	  IF_NOT_f22f3_empty_33_812_AND_NOT_SEL_ARR_f22f_ETC___d4293 or
 	  IF_NOT_f22f3_empty_33_812_AND_NOT_SEL_ARR_f22f_ETC___d4298)
   begin
-    case (pending_spaces_ext__h156609)
+    case (pending_spaces_ext__h156591)
       3'd0:
-	  SEL_ARR_IF_NOT_f22f3_empty_33_812_AND_NOT_SEL__ETC___d5205 =
-	      IF_NOT_f22f3_empty_33_812_AND_NOT_SEL_ARR_f22f_ETC___d5203;
+	  SEL_ARR_IF_NOT_f22f3_empty_33_812_AND_NOT_SEL__ETC___d5214 =
+	      IF_NOT_f22f3_empty_33_812_AND_NOT_SEL_ARR_f22f_ETC___d5212;
       3'd1:
-	  SEL_ARR_IF_NOT_f22f3_empty_33_812_AND_NOT_SEL__ETC___d5205 =
+	  SEL_ARR_IF_NOT_f22f3_empty_33_812_AND_NOT_SEL__ETC___d5214 =
 	      IF_NOT_f22f3_empty_33_812_AND_NOT_SEL_ARR_f22f_ETC___d4288;
       3'd2:
-	  SEL_ARR_IF_NOT_f22f3_empty_33_812_AND_NOT_SEL__ETC___d5205 =
+	  SEL_ARR_IF_NOT_f22f3_empty_33_812_AND_NOT_SEL__ETC___d5214 =
 	      IF_NOT_f22f3_empty_33_812_AND_NOT_SEL_ARR_f22f_ETC___d4293;
       3'd3:
-	  SEL_ARR_IF_NOT_f22f3_empty_33_812_AND_NOT_SEL__ETC___d5205 =
+	  SEL_ARR_IF_NOT_f22f3_empty_33_812_AND_NOT_SEL__ETC___d5214 =
 	      IF_NOT_f22f3_empty_33_812_AND_NOT_SEL_ARR_f22f_ETC___d4298;
       3'd4, 3'd5, 3'd6, 3'd7:
-	  SEL_ARR_IF_NOT_f22f3_empty_33_812_AND_NOT_SEL__ETC___d5205 = 2'd0;
+	  SEL_ARR_IF_NOT_f22f3_empty_33_812_AND_NOT_SEL__ETC___d5214 = 2'd0;
     endcase
   end
-  always@(pending_spaces_ext__h156609 or
+  always@(pending_spaces_ext__h156591 or
 	  IF_NOT_f22f3_empty_33_812_AND_NOT_SEL_ARR_f22f_ETC___d4288 or
 	  IF_NOT_f22f3_empty_33_812_AND_NOT_SEL_ARR_f22f_ETC___d4293 or
 	  IF_NOT_f22f3_empty_33_812_AND_NOT_SEL_ARR_f22f_ETC___d4298)
   begin
-    case (pending_spaces_ext__h156609)
+    case (pending_spaces_ext__h156591)
       3'd0:
-	  CASE_pending_spaces_ext56609_0_IF_NOT_f22f3_em_ETC__q255 =
+	  CASE_pending_spaces_ext56591_0_IF_NOT_f22f3_em_ETC__q255 =
 	      IF_NOT_f22f3_empty_33_812_AND_NOT_SEL_ARR_f22f_ETC___d4288;
       3'd1:
-	  CASE_pending_spaces_ext56609_0_IF_NOT_f22f3_em_ETC__q255 =
+	  CASE_pending_spaces_ext56591_0_IF_NOT_f22f3_em_ETC__q255 =
 	      IF_NOT_f22f3_empty_33_812_AND_NOT_SEL_ARR_f22f_ETC___d4293;
       3'd2:
-	  CASE_pending_spaces_ext56609_0_IF_NOT_f22f3_em_ETC__q255 =
+	  CASE_pending_spaces_ext56591_0_IF_NOT_f22f3_em_ETC__q255 =
 	      IF_NOT_f22f3_empty_33_812_AND_NOT_SEL_ARR_f22f_ETC___d4298;
       3'd3, 3'd4, 3'd5, 3'd6, 3'd7:
-	  CASE_pending_spaces_ext56609_0_IF_NOT_f22f3_em_ETC__q255 = 2'd0;
+	  CASE_pending_spaces_ext56591_0_IF_NOT_f22f3_em_ETC__q255 = 2'd0;
     endcase
   end
   always@(f12f2_deqP or f12f2_data_0 or f12f2_data_1)
@@ -27388,15 +27424,15 @@ module mkFetchStage(CLK,
     #0;
     if (RST_N != `BSV_RESET_VALUE)
       if (WILL_FIRE_RL_doDecode &&
-	  SEL_ARR_f32d_data_0_988_BITS_3_TO_0_989_f32d_d_ETC___d5994 &&
-	  SEL_ARR_instdata_data_0_996_BITS_65_TO_64_997__ETC___d6004 == 2'd0)
+	  SEL_ARR_f32d_data_0_000_BITS_3_TO_0_001_f32d_d_ETC___d6006 &&
+	  SEL_ARR_instdata_data_0_008_BITS_65_TO_64_009__ETC___d6016 == 2'd0)
 	$fdisplay(32'h80000002, "\n%m: ASSERT FAIL!!");
     if (RST_N != `BSV_RESET_VALUE)
       if (WILL_FIRE_RL_doDecode &&
-	  SEL_ARR_f32d_data_0_988_BITS_3_TO_0_989_f32d_d_ETC___d5994 &&
-	  SEL_ARR_instdata_data_0_996_BITS_195_TO_194_01_ETC___d6019 ==
+	  SEL_ARR_f32d_data_0_000_BITS_3_TO_0_001_f32d_d_ETC___d6006 &&
+	  SEL_ARR_instdata_data_0_008_BITS_195_TO_194_02_ETC___d6031 ==
 	  2'd0 &&
-	  SEL_ARR_f32d_data_0_988_BIT_139_021_f32d_data__ETC___d6024)
+	  SEL_ARR_f32d_data_0_000_BIT_139_033_f32d_data__ETC___d6036)
 	$fdisplay(32'h80000002, "\n%m: ASSERT FAIL!!");
     if (RST_N != `BSV_RESET_VALUE)
       if (WILL_FIRE_RL_doFetch3 &&
