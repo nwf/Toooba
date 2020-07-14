@@ -14,7 +14,7 @@
 //
 //     This work was supported by NCSC programme grant 4212611/RFA 15971 ("SafeBet").
 //-
-// 
+//
 // Permission is hereby granted, free of charge, to any person
 // obtaining a copy of this software and associated documentation
 // files (the "Software"), to deal in the Software without
@@ -22,10 +22,10 @@
 // modify, merge, publish, distribute, sublicense, and/or sell copies
 // of the Software, and to permit persons to whom the Software is
 // furnished to do so, subject to the following conditions:
-// 
+//
 // The above copyright notice and this permission notice shall be
 // included in all copies or substantial portions of the Software.
-// 
+//
 // THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND,
 // EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF
 // MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND
@@ -76,9 +76,9 @@ DataAlignedAddr mainMemBoundAddr   = (mainMemBaseAddr +
 DataAlignedAddr msipBoundAddr      = msipBaseAddr +
                                      fromInteger(valueof(TDiv#(CoreNum, 2)));
 DataAlignedAddr mtimecmpBoundAddr  = mtimecmpBaseAddr +
-                                     fromInteger(valueof(CoreNum));
+                                     'h1000;//fromInteger(valueof(CoreNum));
 
 // offset within each MMIO reg/device (aligned to Data)
 typedef Bit#(TLog#(TDiv#(CoreNum, 2))) MSIPDataAlignedOffset;
-typedef CoreId MTimCmpDataAlignedOffset;
+typedef Bit#(9) MTimCmpDataAlignedOffset;
 typedef Bit#(1) MemLoaderAlignedOffset;

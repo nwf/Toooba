@@ -48,6 +48,8 @@ import GetPut::*;
 import ClientServer::*;
 import Connectable::*;
 import FIFOF     :: *;
+import SourceSink :: *;
+import ConfigReg :: *;
 // import BRAMCore::*;
 
 // ----------------
@@ -135,6 +137,8 @@ interface MMIOPlatform;
    method Action start(Addr toHost, Addr fromHost);
    method ActionValue#(Data) to_host;
    method Action from_host(Data x);
+   method Sink#(void) readCount;
+   method Sink#(void) writeCount;
 endinterface
 
 typedef enum {
@@ -174,6 +178,9 @@ module mkMMIOPlatform #(Vector#(CoreNum, MMIOCoreToPlatform) cores,
    Fifo#(1, Data) fromHostQ <- mkCFFifo;
    Reg#(DataAlignedAddr) toHostAddr <- mkReg(0);
    Reg#(DataAlignedAddr) fromHostAddr <- mkReg(0);
+
+   //counters hack
+   Vector#(2, Reg#(Data)) counters <- replicateM(mkConfigReg(0));
 
    // state machine
    Reg#(MMIOPlatformState) state <- mkReg(Init);
@@ -532,7 +539,7 @@ module mkMMIOPlatform #(Vector#(CoreNum, MMIOCoreToPlatform) cores,
             $display("[Platform - process mtimecmp] cannot do inst fetch");
          end
       end
-      else if(offset > fromInteger(valueof(CoreNum) - 1)) begin
+      /*else if(offset > fromInteger(valueof(CoreNum) - 1)) begin
          // access invalid core's mtimecmp, fault
          cores[reqCore].pRs.enq(DataAccess (MMIODataPRs {
             valid: False, data: ?
@@ -541,14 +548,14 @@ module mkMMIOPlatform #(Vector#(CoreNum, MMIOCoreToPlatform) cores,
          if(verbosity > 0) begin
             $display("[Platform - process mtimecmp] access fault");
          end
-      end
-      else begin
+      end*/
+      else if (offset <= fromInteger(valueof(CoreNum))) begin
          let oldMTimeCmp = mtimecmp[offset];
          if(reqFunc == Ld) begin
             cores[reqCore].pRs.enq(DataAccess (MMIODataPRs {
                valid: True,
                data: toMemTaggedDataSelect(oldMTimeCmp, addr)
-                }));
+            }));
             state <= SelectReq;
             if(verbosity > 0) begin
                $display("[Platform - process mtimecmp] read done, data %x",
@@ -567,10 +574,10 @@ module mkMMIOPlatform #(Vector#(CoreNum, MMIOCoreToPlatform) cores,
                // need to post new timer interrupt
                mtip[offset] <= True;
                cores[offset].pRq.enq(MMIOPRq {
-                  target: MTIP,
-                  func: St,
-                  data: 1
-                  });
+                target: MTIP,
+                func: St,
+                data: 1
+                });
                state <= WaitResp;
             end
             else if(newData > mtime && mtip[offset]) begin
@@ -580,7 +587,7 @@ module mkMMIOPlatform #(Vector#(CoreNum, MMIOCoreToPlatform) cores,
                   target: MTIP,
                   func: St,
                   data: 0
-                  });
+               });
                state <= WaitResp;
             end
             else begin
@@ -589,16 +596,43 @@ module mkMMIOPlatform #(Vector#(CoreNum, MMIOCoreToPlatform) cores,
                   valid: True,
                   // store doesn't need resp data, just fill in AMO resp
                   data: respData
-                  }));
+               }));
                state <= SelectReq;
                if(verbosity > 0) begin
-                  $display("[Platform - process mtimecmp] ",
-                           "no change to mtip ", fshow(readVReg(mtip)),
-                           ", mtime %x", mtime,
-                           ", old mtimecmp ", fshow(readVReg(mtimecmp)),
-                           ", new mtimecmp[%d] %x", offset, newData);
+                $display("[Platform - process mtimecmp] ",
+                         "no change to mtip ", fshow(readVReg(mtip)),
+                         ", mtime %x", mtime,
+                         ", old mtimecmp ", fshow(readVReg(mtimecmp)),
+                         ", new mtimecmp[%d] %x", offset, newData);
                end
             end
+         end
+      end else begin // Counters Hack.
+         let counter = counters[offset]; // Surely this will repeat the same two counters?
+         if(reqFunc == Ld) begin
+            cores[reqCore].pRs.enq(DataAccess (MMIODataPRs {
+               valid: True,
+               data: toMemTaggedDataSelect(counter, addr)
+            }));
+            state <= SelectReq;
+            if(verbosity > 0) begin
+               $display("[Platform - process counters] read done, data %x",
+                        counter);
+            end
+         end
+         else begin
+            // do updates for store or AMO
+            let newData = getWriteData(counter);
+            // get and record amo resp
+            let respData = toMemTaggedDataSelect(getAmoResp(counter), addr);
+            // nothing happens to counters, just finish this req
+            cores[reqCore].pRs.enq(DataAccess (MMIODataPRs {
+               valid: True,
+               // store doesn't need resp data, just fill in AMO resp
+               data: respData
+            }));
+            state <= SelectReq;
+            if(verbosity > 0) $display("[Platform - counters write?] ");
          end
       end
    endrule
@@ -1027,4 +1061,14 @@ module mkMMIOPlatform #(Vector#(CoreNum, MMIOCoreToPlatform) cores,
     method Action from_host(Data x);
         fromHostQ.enq(x);
     endmethod
+
+   // Count hack
+   interface readCount = interface Sink;
+      method canPut = True;
+      method put(x) = writeReg(counters[0], counters[0]+1);
+   endinterface;
+   interface writeCount = interface Sink;
+      method canPut = True;
+      method put(x) = writeReg(counters[1], counters[1]+1);
+   endinterface;
 endmodule

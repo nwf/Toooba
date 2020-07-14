@@ -52,6 +52,8 @@ import SoC_Map      :: *;
 
 interface LLC_AXI4_Adapter_IFC;
    method Action reset;
+   method Source#(void) readCount;
+   method Source#(void) writeCount;
 
    // Fabric master interface for memory
    interface AXI4_Master_Synth #(Wd_MId, Wd_Addr, Wd_Data,
@@ -72,6 +74,10 @@ module mkLLC_AXi4_Adapter #(MemFifoClient #(idT, childT) llc)
    // Verbosity: 0: quiet; 1: LLC transactions; 2: loop detail
    Integer verbosity = 0;
    Reg #(Bit #(4)) cfg_verbosity <- mkConfigReg (fromInteger (verbosity));
+
+   // For counting transactions
+   FIFOF#(void) readCountF <- mkUGFIFOF;
+   FIFOF#(void) writeCountF <- mkUGFIFOF;
 
    // ================================================================
    // Fabric request/response
@@ -131,6 +137,8 @@ module mkLLC_AXi4_Adapter #(MemFifoClient #(idT, childT) llc)
       fa_fabric_send_read_req (line_addr);
       f_pending_reads.enq (ld);
       llc.toM.deq;
+      // Counting
+      readCountF.enq(?);
    endrule
 
    rule rl_handle_read_rsps;
@@ -210,6 +218,8 @@ module mkLLC_AXi4_Adapter #(MemFifoClient #(idT, childT) llc)
       if (rg_wr_req_beat == 7) begin
          llc.toM.deq;
          rg_wr_req_beat <= 0;
+         // Counting
+         writeCountF.enq(?);
       end else // increment flit counter
          rg_wr_req_beat <= rg_wr_req_beat + 1;
 
@@ -257,6 +267,10 @@ module mkLLC_AXi4_Adapter #(MemFifoClient #(idT, childT) llc)
 
    // Fabric interface for memory
    interface mem_master = master_xactor.masterSynth;
+
+   // Counting interfaces
+   interface readCount = toSource(readCountF);
+   interface writeCount = toSource(writeCountF);
 endmodule
 
 // ================================================================
