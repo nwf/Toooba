@@ -246,6 +246,10 @@ module mkProc (Proc_IFC);
       end
    endrule
 
+   // Counter connections
+   mkConnection(llc_axi4_adapter.readCount, mmioPlatform.readCount);
+   mkConnection(llc_axi4_adapter.writeCount, mmioPlatform.writeCount);
+
    // ================================================================
    // ================================================================
    // ================================================================
