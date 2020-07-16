@@ -1,6 +1,6 @@
 
 // Copyright (c) 2017 Massachusetts Institute of Technology
-// 
+//
 // Permission is hereby granted, free of charge, to any person
 // obtaining a copy of this software and associated documentation
 // files (the "Software"), to deal in the Software without
@@ -8,10 +8,10 @@
 // modify, merge, publish, distribute, sublicense, and/or sell copies
 // of the Software, and to permit persons to whom the Software is
 // furnished to do so, subject to the following conditions:
-// 
+//
 // The above copyright notice and this permission notice shall be
 // included in all copies or substantial portions of the Software.
-// 
+//
 // THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND,
 // EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF
 // MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND
@@ -30,6 +30,8 @@ import HasSpecBits::*;
 import Ehr::*;
 import GetPut::*;
 import Assert::*;
+import FIFOF::*;
+import ConfigReg::*;
 
 typedef struct{
     a data;
@@ -80,29 +82,28 @@ module mkReservationStation#(Bool lazySched, Bool lazyEnq, Bool countValid)(
 
    Bool verbose = False;
 
-    Integer valid_wrongSpec_port = 0;
-    Integer valid_dispatch_port = 0; // write valid
-    Integer valid_enq_port = 1; // write valid
+    Integer valid_wrongSpec_port = 1;
+    Integer valid_dispatch_port = 1; // write valid
+    Integer valid_enq_port = 2; // write valid
 
-    Integer sb_wrongSpec_port = 0;
-    Integer sb_dispatch_port = 0;
-    Integer sb_enq_port = 0; // write spec_bits
-    Integer sb_correctSpec_port = 1; // write spec_bits
+    Integer sb_wrongSpec_port = 1;
+    Integer sb_dispatch_port = 1;
+    Integer sb_enq_port = 1; // write spec_bits
+    Integer sb_correctSpec_port = 2; // write spec_bits
 
     function Integer ready_set_port(Integer i) = i; // write regs_ready by each setRegReady ifc
     Integer ready_enq_port = valueof(setRegReadyNum); // write regs_ready
 
-    Vector#(size, Ehr#(2,Bool))                      valid      <- replicateM(mkEhr(False));
-    Vector#(size, Reg#(a))                           data       <- replicateM(mkRegU);
-    Vector#(size, Reg#(PhyRegs))                     regs       <- replicateM(mkRegU);
-    Vector#(size, Reg#(InstTag))                     tag        <- replicateM(mkRegU);
-    Vector#(size, Reg#(Maybe#(SpecTag)))             spec_tag   <- replicateM(mkRegU);
-    Vector#(size, Ehr#(2, SpecBits))                 spec_bits  <- replicateM(mkEhr(?));
-    Vector#(size, Ehr#(regsReadyPortNum, RegsReady)) regs_ready <- replicateM(mkEhr(?));
+    Ehr#(3,Vector#(size, Bool))                      valid      <- mkEhr(replicate(False));
+    Vector#(size, Reg#(a))                           data       <- replicateM(mkConfigRegU);
+    Vector#(size, Reg#(PhyRegs))                     regs       <- replicateM(mkConfigRegU);
+    Vector#(size, Reg#(InstTag))                     tag        <- replicateM(mkConfigRegU);
+    Vector#(size, Reg#(Maybe#(SpecTag)))             spec_tag   <- replicateM(mkConfigRegU);
+    Ehr#(3, Vector#(size, SpecBits))                 spec_bits  <- mkEhr(?);
+    Ehr#(regsReadyPortNum, Vector#(size, RegsReady)) regs_ready <- mkEhr(?);
 
-    // wrong spec conflict with enq and dispatch
-    RWire#(void) wrongSpec_enq_conflict <- mkRWire;
-    RWire#(void) wrongSpec_dispatch_conflict <- mkRWire;
+    FIFOF#(SpecBits)                     correctSpecF <- mkUGFIFOF;
+    FIFOF#(IncorrectSpeculation)       incorrectSpecF <- mkUGFIFOF;
 
     // approximate count of valid entries
     Reg#(countT) validEntryCount <- mkConfigReg(0);
@@ -110,9 +111,34 @@ module mkReservationStation#(Bool lazySched, Bool lazyEnq, Bool countValid)(
     if(countValid) begin
         (* fire_when_enabled, no_implicit_conditions *)
         rule countValidEntries;
-            validEntryCount <= pack(countElem(True, readVEhr(0, valid)));
+            validEntryCount <= pack(countElem(True, valid[1]));
         endrule
     end
+
+    (* fire_when_enabled, no_implicit_conditions *)
+    rule canon_speculation;
+        Vector#(size, SpecBits) newSpecBits = spec_bits[0];
+        Vector#(size, Bool) newValid = valid[0];
+        // Fold in CorrectSpec update:
+        if (correctSpecF.notEmpty) begin
+            SpecBits mask = correctSpecF.first();
+            correctSpecF.deq();
+            // clear spec bits for all entries
+            for (Integer i=0; i<valueOf(size); i=i+1)
+                newSpecBits[i] = newSpecBits[i] & mask;
+        end
+        // Fold in IncorrectSpec update:
+        if (incorrectSpecF.notEmpty) begin
+            IncorrectSpeculation incSpec = incorrectSpecF.first();
+            incorrectSpecF.deq();
+            // clear entries
+            for (Integer i=0; i<valueOf(size); i=i+1)
+                if(incSpec.kill_all || newSpecBits[i][incSpec.specTag] == 1'b1)
+                    newValid[i] = False;
+        end
+        spec_bits[0] <= newSpecBits;
+        valid[0] <= newValid;
+    endrule
 
     // enq time in ROB, used as pivot to get virtual inst time (dispatch happens before ROB enq)
     Wire#(InstTime) robEnqTime <- mkDWire(0);
@@ -144,13 +170,13 @@ module mkReservationStation#(Bool lazySched, Bool lazyEnq, Bool countValid)(
     // search for row to dispatch, we do it lazily
     // i.e. look at the EHR port 0 of ready bits, so there is no bypassing
     staticAssert(lazySched, "Only support lazy schedule now");
-    
+
     Vector#(size, Wire#(Bool)) ready_wire <- replicateM(mkBypassWire);
     (* fire_when_enabled, no_implicit_conditions *)
     rule setReadyWire;
         function Action setReady(Integer i);
         action
-            ready_wire[i] <= allRegsReady(regs_ready[i][0]);
+            ready_wire[i] <= allRegsReady(regs_ready[0][i]);
         endaction
         endfunction
         Vector#(size, Integer) idxVec = genVector;
@@ -160,8 +186,8 @@ module mkReservationStation#(Bool lazySched, Bool lazyEnq, Bool countValid)(
     function Bool get_ready(Wire#(Bool) r);
         return r;
     endfunction
-    Vector#(size, Bool) can_schedule = zipWith( \&& , readVEhr(valid_dispatch_port, valid), map(get_ready, ready_wire) );
-    
+    Vector#(size, Bool) can_schedule = zipWith( \&& , valid[valid_dispatch_port], map(get_ready, ready_wire) );
+
     // oldest index to dispatch
     let can_schedule_index = findOldest(can_schedule);
 
@@ -171,26 +197,23 @@ module mkReservationStation#(Bool lazySched, Bool lazyEnq, Bool countValid)(
         setRegReadyIfc[k] = (interface Put;
             method Action put(Maybe#(PhyRIndx) x);
                 Integer ehrPort = ready_set_port(k);
-                function Action setReady(Integer i);
-                action
+                Vector#(size, RegsReady) new_regs_ready = regs_ready[ehrPort];
+                for(Integer i=0; i<valueOf(size); i=i+1) begin
                     // function to set ready for element i
                     // This compares Maybe types.
                     // If both are invalid, regs_ready.srcX must be True.
-                    RegsReady new_regs_ready = regs_ready[i][ehrPort];
+
                     if (x == regs[i].src1) begin
-                        new_regs_ready.src1 = True;
+                        new_regs_ready[i].src1 = True;
                     end
                     if (x == regs[i].src2) begin
-                        new_regs_ready.src2 = True;
+                        new_regs_ready[i].src2 = True;
                     end
                     if (x == regs[i].src3) begin
-                        new_regs_ready.src3 = True;
+                        new_regs_ready[i].src3 = True;
                     end
-                    regs_ready[i][ehrPort] <= new_regs_ready;
-                endaction
-                endfunction
-                Vector#(size, Integer) idxVec = genVector;
-                joinActions(map(setReady, idxVec));
+                end
+                regs_ready[ehrPort] <= new_regs_ready;
             endmethod
         endinterface);
     end
@@ -203,12 +226,12 @@ module mkReservationStation#(Bool lazySched, Bool lazyEnq, Bool countValid)(
         Wire#(Maybe#(UInt#(TLog#(size)))) enqP_wire <- mkBypassWire;
         (* fire_when_enabled, no_implicit_conditions *)
         rule setWireForEnq;
-            enqP_wire <= findIndex(entryInvalid, readVEhr(0, valid));
+            enqP_wire <= findIndex(entryInvalid, valid[1]);
         endrule
         enqP = enqP_wire;
     end
     else begin
-        enqP = findIndex(entryInvalid, readVEhr(valid_enq_port, valid));
+        enqP = findIndex(entryInvalid, valid[valid_enq_port]);
     end
 
     //rule debugRes(!isValid(enqP));
@@ -218,15 +241,13 @@ module mkReservationStation#(Bool lazySched, Bool lazyEnq, Bool countValid)(
     method Action enq(ToReservationStation#(a) x) if (enqP matches tagged Valid .idx);
        if (verbose)
         $display("  [mkReservationStationRow::_write] ", fshow(x));
-        valid[idx][valid_enq_port] <= True;
+        valid[valid_enq_port][idx] <= True;
         data[idx] <= x.data;
         regs[idx] <= x.regs;
         tag[idx] <= x.tag;
         spec_tag[idx] <= x.spec_tag;
-        spec_bits[idx][sb_enq_port] <= x.spec_bits;
-        regs_ready[idx][ready_enq_port] <= x.regs_ready;
-        // conflict with wrong spec
-        wrongSpec_enq_conflict.wset(?);
+        spec_bits[sb_enq_port][idx] <= x.spec_bits;
+        regs_ready[ready_enq_port][idx] <= x.regs_ready;
     endmethod
     method Bool canEnq = isValid(enqP);
 
@@ -239,7 +260,7 @@ module mkReservationStation#(Bool lazySched, Bool lazyEnq, Bool countValid)(
             data: data[i],
             regs: regs[i],
             tag: tag[i],
-            spec_bits: spec_bits[i][sb_dispatch_port],
+            spec_bits: spec_bits[sb_dispatch_port][i],
             spec_tag: spec_tag[i],
             regs_ready: RegsReady { // must be all true
                 src1: True,
@@ -251,9 +272,7 @@ module mkReservationStation#(Bool lazySched, Bool lazyEnq, Bool countValid)(
     endmethod
 
     method Action doDispatch if (can_schedule_index matches tagged Valid .i);
-        valid[i][valid_dispatch_port] <= False;
-        // conflict with wrong spec
-        wrongSpec_dispatch_conflict.wset(?);
+        valid[valid_dispatch_port][i] <= False;
     endmethod
 
     method countT approximateCount;
@@ -263,33 +282,12 @@ module mkReservationStation#(Bool lazySched, Bool lazyEnq, Bool countValid)(
     interface setRegReady = setRegReadyIfc;
 
     method Bool isFull_ehrPort0;
-        return readVEhr(0, valid) == replicate(True);
+        return valid[1] == replicate(True);
     endmethod
 
     interface SpeculationUpdate specUpdate;
-        method Action incorrectSpeculation(Bool kill_all, SpecTag x);
-            function Action wrongSpec(Integer i);
-            action
-                if(kill_all || spec_bits[i][sb_wrongSpec_port][x] == 1) begin
-                    valid[i][valid_wrongSpec_port] <= False;
-                end
-            endaction
-            endfunction
-            Vector#(size, Integer) idxVec = genVector;
-            joinActions(map(wrongSpec, idxVec));
-            // conflict with enq, dispatch
-            wrongSpec_enq_conflict.wset(?);
-            wrongSpec_dispatch_conflict.wset(?);
-        endmethod
-
-        method Action correctSpeculation(SpecBits mask);
-            function Action correctSpec(Integer i);
-            action
-                spec_bits[i][sb_correctSpec_port] <= spec_bits[i][sb_correctSpec_port] & mask;
-            endaction
-            endfunction
-            Vector#(size, Integer) idxVec = genVector;
-            joinActions(map(correctSpec, idxVec));
-        endmethod
+        method correctSpeculation = correctSpecF.enq;
+        method incorrectSpeculation(kill_all, specTag) =
+            incorrectSpecF.enq(IncorrectSpeculation{kill_all: kill_all, specTag: specTag});
     endinterface
 endmodule

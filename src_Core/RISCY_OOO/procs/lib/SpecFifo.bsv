@@ -202,11 +202,6 @@ module mkSpecFifo#(
     endinterface
 endmodule
 
-typedef struct {
-    Bool kill_all;
-    SpecTag specTag;
-} IncorrectSpeculation deriving(Bits, Eq, FShow);
-
 module mkSpecFifoCF#(
     Bool lazyEnq // whether we calculate enq guard lazily
 )(
@@ -342,8 +337,9 @@ module mkSpecFifo_SB_deq_enq_SB_deq_wrong_C_enq#(Bool lazyEnq)(
         wrongSpec_conflict_deq: False,
         wrongSpec_conflict_canon: False
     };
-    let m <- mkSpecFifo(sched, lazyEnq);
-    // let m <- mkSpecFifoCF(lazyEnq);
+
+    //let m <- mkSpecFifo(sched, lazyEnq);
+    let m <- mkSpecFifoCF(lazyEnq);
     return m;
 endmodule
 
@@ -369,7 +365,8 @@ module mkSpecFifo_SB_deq_enq_C_deq_enq#(Bool lazyEnq)(
         wrongSpec_conflict_deq: True,
         wrongSpec_conflict_canon: True // acutally canon never fire
     };
-    let m <- mkSpecFifo(sched, lazyEnq);
-    // let m <- mkSpecFifoCF(lazyEnq);
+
+    //let m <- mkSpecFifo(sched, lazyEnq);
+    let m <- mkSpecFifoCF(lazyEnq);
     return m;
 endmodule

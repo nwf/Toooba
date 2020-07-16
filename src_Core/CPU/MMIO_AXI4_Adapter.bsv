@@ -282,6 +282,9 @@ module mkMMIO_AXI4_Adapter (MMIO_AXI4_Adapter_IFC);
    // ----------------
    // Discard write-responses from the fabric
 
+   // Get rid of warnings during build.  These rules may all enq to f_rsps_to_core, and should
+   // be mutually exclusive.
+   (* descending_urgency="rl_handle_write_req, rl_discard_write_rsp, rl_handle_read_rsps, rl_handle_read_req"*)
    rule rl_discard_write_rsp;
       let wr_resp <- get(master_shim.slave.b);
 

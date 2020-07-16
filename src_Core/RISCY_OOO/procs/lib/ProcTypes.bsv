@@ -64,6 +64,10 @@ typedef Bit#(TLog#(NumEpochs)) Epoch;
 typedef `NUM_SPEC_TAGS NumSpecTags;
 typedef Bit#(TLog#(NumSpecTags)) SpecTag;
 typedef Bit#(NumSpecTags) SpecBits;
+typedef struct {
+    Bool kill_all;
+    SpecTag specTag;
+} IncorrectSpeculation deriving(Bits, Eq, FShow);
 
 typedef `ROB_SIZE NumInstTags;
 typedef TDiv#(NumInstTags, SupSize) SingleScalarSize;
