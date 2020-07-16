@@ -176,6 +176,10 @@ module mkCoreW #(Reset dm_power_on_reset)
                 tmp2 <- fromAXI4_Master_Synth(proc.master0, reset_by hart0_reset);
    mkConnection(tmp2, tagController.slave, reset_by hart0_reset);
 
+   // Memory counting connection
+   mkConnection(tagController.readCount, proc.readCount);
+   mkConnection(tagController.writeCount, proc.writeCount);
+
    // PLIC (Platform-Level Interrupt Controller)
    PLIC_IFC_16_2_7  plic <- mkPLIC_16_2_7;
 

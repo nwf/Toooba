@@ -22,6 +22,7 @@ package Proc_IFC;
 
 import Vector       :: *;
 import GetPut       :: *;
+import SourceSink   :: *;
 import ClientServer :: *;
 
 // ================================================================
@@ -144,6 +145,9 @@ interface Proc_IFC;
     method Bit #(32) hart0_debug_rename;
 `endif
 
+   // Counting memory transactions.
+   interface Sink#(void) readCount;
+   interface Sink#(void) writeCount;
 endinterface
 
 // ================================================================

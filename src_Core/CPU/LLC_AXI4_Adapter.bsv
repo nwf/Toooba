@@ -52,8 +52,8 @@ import SoC_Map      :: *;
 
 interface LLC_AXI4_Adapter_IFC;
    method Action reset;
-   method Source#(void) readCount;
-   method Source#(void) writeCount;
+   interface Source#(void) readCount;
+   interface Source#(void) writeCount;
 
    // Fabric master interface for memory
    interface AXI4_Master_Synth #(Wd_MId, Wd_Addr, Wd_Data,

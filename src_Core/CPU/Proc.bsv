@@ -246,9 +246,9 @@ module mkProc (Proc_IFC);
       end
    endrule
 
-   // Counter connections
-   mkConnection(llc_axi4_adapter.readCount, mmioPlatform.readCount);
-   mkConnection(llc_axi4_adapter.writeCount, mmioPlatform.writeCount);
+   // Counter connections// Comment these in to count LLC requests (rather than TagController reqs)
+   //mkConnection(llc_axi4_adapter.readCount, mmioPlatform.readCount);
+   //mkConnection(llc_axi4_adapter.writeCount, mmioPlatform.writeCount);
 
    // ================================================================
    // ================================================================
@@ -343,6 +343,10 @@ module mkProc (Proc_IFC);
     method Tuple3 #(Bit #(32), Addr, Addr) hart0_debug_fetch = core [0].debugFetch;
     method Bit #(32) hart0_debug_rename = core [0].debugRename;
 `endif
+
+   // Memory transaction counting
+   interface Sink readCount = mmioPlatform.readCount;
+   interface Sink writeCount = mmioPlatform.writeCount;
 
 endmodule: mkProc
 

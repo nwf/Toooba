@@ -137,8 +137,8 @@ interface MMIOPlatform;
    method Action start(Addr toHost, Addr fromHost);
    method ActionValue#(Data) to_host;
    method Action from_host(Data x);
-   method Sink#(void) readCount;
-   method Sink#(void) writeCount;
+   interface Sink#(void) readCount;
+   interface Sink#(void) writeCount;
 endinterface
 
 typedef enum {
@@ -167,7 +167,7 @@ module mkMMIOPlatform #(Vector#(CoreNum, MMIOCoreToPlatform) cores,
 
    provisos (Bits #(Data, 64)); // this module assumes Data is 64-bit wide
 
-   Integer verbosity = 1;
+   Integer verbosity = 0;
 
    // mtimecmp
    Vector#(CoreNum, Reg#(Data)) mtimecmp <- replicateM(mkReg(0));
@@ -1065,10 +1065,16 @@ module mkMMIOPlatform #(Vector#(CoreNum, MMIOCoreToPlatform) cores,
    // Count hack
    interface readCount = interface Sink;
       method canPut = True;
-      method put(x) = writeReg(counters[0], counters[0]+1);
+      method Action put(x);
+         writeReg(counters[0], counters[0]+1);
+         $display("readCount = %d", (counters[0]+1));
+      endmethod
    endinterface;
    interface writeCount = interface Sink;
       method canPut = True;
-      method put(x) = writeReg(counters[1], counters[1]+1);
+      method Action put(x);
+         writeReg(counters[1], counters[1]+1);
+         $display("writeCount = %d", (counters[1]+1));
+      endmethod
    endinterface;
 endmodule
