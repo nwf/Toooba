@@ -43,6 +43,8 @@ import Vector::*;
 import GetPut::*;
 import Assert::*;
 import Ehr::*;
+import ConfigReg::*;
+import FIFOF::*;
 import HasSpecBits::*;
 import SpecFifo::*;
 import StoreBuffer::*;
@@ -625,188 +627,187 @@ module mkSplitLSQ(SplitLSQ);
 
     // LQ
     // entry valid bits
-    Vector#(LdQSize, Ehr#(2, Bool))                 ld_valid           <- replicateM(mkEhr(False));
+    Ehr#(2, Vector#(LdQSize, Bool))                 ld_valid           <- mkEhr(replicate(False));
     // entry contents
-    Vector#(LdQSize, Reg#(InstTag))                 ld_instTag         <- replicateM(mkRegU);
-    Vector#(LdQSize, Reg#(LdQMemFunc))              ld_memFunc         <- replicateM(mkRegU);
-    Vector#(LdQSize, Reg#(Bool))                    ld_unsigned        <- replicateM(mkRegU);
-    Vector#(LdQSize, Reg#(MemDataByteEn))           ld_byteEn          <- replicateM(mkRegU);
-    Vector#(LdQSize, Reg#(Bool))                    ld_acq             <- replicateM(mkRegU);
-    Vector#(LdQSize, Reg#(Bool))                    ld_rel             <- replicateM(mkRegU);
-    Vector#(LdQSize, Reg#(Maybe#(PhyDst)))          ld_dst             <- replicateM(mkRegU);
-    Vector#(LdQSize, Ehr#(2, Addr))                 ld_paddr           <- replicateM(mkEhr(?));
-    Vector#(LdQSize, Ehr#(2, Bool))                 ld_isMMIO          <- replicateM(mkEhr(?));
-    Vector#(LdQSize, Ehr#(2, MemDataByteEn))        ld_shiftedBE       <- replicateM(mkEhr(?));
-    Vector#(LdQSize, Ehr#(2, Maybe#(Trap)))         ld_fault           <- replicateM(mkEhr(?));
-    Vector#(LdQSize, Ehr#(2, Bool))                 ld_computed        <- replicateM(mkEhr(?));
-    Vector#(LdQSize, Ehr#(3, Bool))                 ld_inIssueQ        <- replicateM(mkEhr(?));
-    Vector#(LdQSize, Ehr#(2, Bool))                 ld_executing       <- replicateM(mkEhr(?));
-    Vector#(LdQSize, Ehr#(2, Bool))                 ld_done            <- replicateM(mkEhr(?));
-    Vector#(LdQSize, Ehr#(3, Maybe#(LdKilledBy)))   ld_killed          <- replicateM(mkEhr(?));
-    Vector#(LdQSize, Ehr#(2, Maybe#(StQTag)))       ld_olderSt         <- replicateM(mkEhr(?));
-    Vector#(LdQSize, Ehr#(2, Bool))                 ld_olderStVerified <- replicateM(mkEhr(?));
-    Vector#(LdQSize, Ehr#(3, Maybe#(StQTag)))       ld_readFrom        <- replicateM(mkEhr(?));
-    Vector#(LdQSize, Ehr#(3, Maybe#(LdQTag)))       ld_depLdQDeq       <- replicateM(mkEhr(?));
-    Vector#(LdQSize, Ehr#(3, Maybe#(StQTag)))       ld_depStQDeq       <- replicateM(mkEhr(?));
+    Vector#(LdQSize, Reg#(InstTag))                 ld_instTag         <- replicateM(mkConfigRegU);
+    Vector#(LdQSize, Reg#(LdQMemFunc))              ld_memFunc         <- replicateM(mkConfigRegU);
+    Vector#(LdQSize, Reg#(Bool))                    ld_unsigned        <- replicateM(mkConfigRegU);
+    Vector#(LdQSize, Reg#(MemDataByteEn))           ld_byteEn          <- replicateM(mkConfigRegU);
+    Vector#(LdQSize, Reg#(Bool))                    ld_acq             <- replicateM(mkConfigRegU);
+    Vector#(LdQSize, Reg#(Bool))                    ld_rel             <- replicateM(mkConfigRegU);
+    Vector#(LdQSize, Reg#(Maybe#(PhyDst)))          ld_dst             <- replicateM(mkConfigRegU);
+    Ehr#(2, Vector#(LdQSize, Addr))                 ld_paddr           <- mkEhr(?);
+    Ehr#(2, Vector#(LdQSize, Bool))                 ld_isMMIO          <- mkEhr(?);
+    Ehr#(2, Vector#(LdQSize, MemDataByteEn))        ld_shiftedBE       <- mkEhr(?);
+    Ehr#(2, Vector#(LdQSize, Maybe#(Trap)))         ld_fault           <- mkEhr(?);
+    Ehr#(2, Vector#(LdQSize, Bool))                 ld_computed        <- mkEhr(?);
+    Ehr#(3, Vector#(LdQSize, Bool))                 ld_inIssueQ        <- mkEhr(?);
+    Ehr#(2, Vector#(LdQSize, Bool))                 ld_executing       <- mkEhr(?);
+    Ehr#(2, Vector#(LdQSize, Bool))                 ld_done            <- mkEhr(?);
+    Ehr#(3, Vector#(LdQSize, Maybe#(LdKilledBy)))   ld_killed          <- mkEhr(?);
+    Ehr#(2, Vector#(LdQSize, Maybe#(StQTag)))       ld_olderSt         <- mkEhr(?);
+    Ehr#(2, Vector#(LdQSize, Bool))                 ld_olderStVerified <- mkEhr(?);
+    Ehr#(3, Vector#(LdQSize, Maybe#(StQTag)))       ld_readFrom        <- mkEhr(?);
+    Ehr#(3, Vector#(LdQSize, Maybe#(LdQTag)))       ld_depLdQDeq       <- mkEhr(?);
+    Ehr#(3, Vector#(LdQSize, Maybe#(StQTag)))       ld_depStQDeq       <- mkEhr(?);
 `ifndef TSO_MM
-    Vector#(LdQSize, Ehr#(3, Maybe#(LdQTag)))       ld_depLdEx         <- replicateM(mkEhr(?));
-    Vector#(LdQSize, Ehr#(3, Maybe#(SBIndex)))      ld_depSBDeq        <- replicateM(mkEhr(?));
+    Ehr#(3, Vector#(LdQSize, Maybe#(LdQTag)))       ld_depLdEx         <- mkEhr(?);
+    Ehr#(3, Vector#(LdQSize, Maybe#(SBIndex)))      ld_depSBDeq        <- mkEhr(?);
 `endif
-    Vector#(LdQSize, Ehr#(3, SpecBits))             ld_specBits        <- replicateM(mkEhr(?));
-    Vector#(LdQSize, Ehr#(TAdd#(1, SupSize), Bool)) ld_atCommit        <- replicateM(mkEhr(?));
+    Ehr#(3, Vector#(LdQSize, SpecBits))             ld_specBits        <- mkEhr(?);
+    Ehr#(TAdd#(1, SupSize),Vector#(LdQSize,  Bool)) ld_atCommit        <- mkEhr(?);
     // wrong-path load filter (must init to all False)
-    Vector#(LdQSize, Ehr#(1, Bool))                 ld_waitWPResp      <- replicateM(mkEhr(False));
+    Ehr#(1, Vector#(LdQSize, Bool))                 ld_waitWPResp      <- mkEhr(replicate(False));
     // enq/deq ptr
-    Reg#(LdQTag)    ld_enqP <- mkReg(0);
+    Reg#(LdQTag)    ld_enqP <- mkConfigReg(0);
     Ehr#(2, LdQTag) ld_deqP <- mkEhr(0);
 
     // Ports of each EHR used in each method or rule ("write" means the write
     // port is used, "assert" means the port is only used for assert in
     // simulation)
-    let ld_valid_findIss   = getVEhrPort(ld_valid, 0);
-    let ld_valid_wrongSpec = getVEhrPort(ld_valid, 0); // write
-    let ld_valid_deqLd     = getVEhrPort(ld_valid, 0); // write
-    let ld_valid_verify    = getVEhrPort(ld_valid, 0); // only for TSO, C with deqLd
-    let ld_valid_evict     = getVEhrPort(ld_valid, 1);
-    let ld_valid_updAddr   = getVEhrPort(ld_valid, 1);
-    let ld_valid_issue     = getVEhrPort(ld_valid, 1);
-    let ld_valid_enqIss    = getVEhrPort(ld_valid, 1); // assert
-    let ld_valid_deqSt     = getVEhrPort(ld_valid, 1);
-    let ld_valid_setCom    = getVEhrPort(ld_valid, 1); // assert
-    let ld_valid_resp      = getVEhrPort(ld_valid, 1); // assert
-    let ld_valid_enq       = getVEhrPort(ld_valid, 1); // write
+    Reg#(Vector#(LdQSize, Bool)) ld_valid_findIss   = ld_valid[0];
+    Reg#(Vector#(LdQSize, Bool)) ld_valid_wrongSpec = ld_valid[0]; // write
+    Reg#(Vector#(LdQSize, Bool)) ld_valid_deqLd     = ld_valid[0]; // write
+    Reg#(Vector#(LdQSize, Bool)) ld_valid_verify    = ld_valid[0]; // only for TSO, C with deqLd
+    Reg#(Vector#(LdQSize, Bool)) ld_valid_evict     = ld_valid[1];
+    Reg#(Vector#(LdQSize, Bool)) ld_valid_updAddr   = ld_valid[1];
+    Reg#(Vector#(LdQSize, Bool)) ld_valid_issue     = ld_valid[1];
+    Reg#(Vector#(LdQSize, Bool)) ld_valid_enqIss    = ld_valid[1]; // assert
+    Reg#(Vector#(LdQSize, Bool)) ld_valid_deqSt     = ld_valid[1];
+    Reg#(Vector#(LdQSize, Bool)) ld_valid_setCom    = ld_valid[1]; // assert
+    Reg#(Vector#(LdQSize, Bool)) ld_valid_resp      = ld_valid[1]; // assert
+    Reg#(Vector#(LdQSize, Bool)) ld_valid_enq       = ld_valid[1]; // write
 
-    let ld_paddr_findIss = getVEhrPort(ld_paddr, 0);
-    let ld_paddr_deqLd   = getVEhrPort(ld_paddr, 0);
-    let ld_paddr_evict   = getVEhrPort(ld_paddr, 0);
-    let ld_paddr_updAddr = getVEhrPort(ld_paddr, 0); // write
-    let ld_paddr_issue   = getVEhrPort(ld_paddr, 1);
-    let ld_paddr_enqIss  = getVEhrPort(ld_paddr, 1); // assert
-    let ld_paddr_resp    = getVEhrPort(ld_paddr, 1);
+    Reg#(Vector#(LdQSize, Addr)) ld_paddr_findIss = ld_paddr[0];
+    Reg#(Vector#(LdQSize, Addr)) ld_paddr_deqLd   = ld_paddr[0];
+    Reg#(Vector#(LdQSize, Addr)) ld_paddr_evict   = ld_paddr[0];
+    Reg#(Vector#(LdQSize, Addr)) ld_paddr_updAddr = ld_paddr[0]; // write
+    Reg#(Vector#(LdQSize, Addr)) ld_paddr_issue   = ld_paddr[1];
+    Reg#(Vector#(LdQSize, Addr)) ld_paddr_enqIss  = ld_paddr[1]; // assert
+    Reg#(Vector#(LdQSize, Addr)) ld_paddr_resp    = ld_paddr[1];
 
-    let ld_isMMIO_findIss = getVEhrPort(ld_isMMIO, 0);
-    let ld_isMMIO_evict   = getVEhrPort(ld_isMMIO, 0); // assert
-    let ld_isMMIO_deqLd   = getVEhrPort(ld_isMMIO, 0);
-    let ld_isMMIO_updAddr = getVEhrPort(ld_isMMIO, 0); // write
-    let ld_isMMIO_issue   = getVEhrPort(ld_isMMIO, 1); // assert
-    let ld_isMMIO_enqIss  = getVEhrPort(ld_isMMIO, 1); // assert
+    Reg#(Vector#(LdQSize, Bool)) ld_isMMIO_findIss = ld_isMMIO[0];
+    Reg#(Vector#(LdQSize, Bool)) ld_isMMIO_evict   = ld_isMMIO[0]; // assert
+    Reg#(Vector#(LdQSize, Bool)) ld_isMMIO_deqLd   = ld_isMMIO[0];
+    Reg#(Vector#(LdQSize, Bool)) ld_isMMIO_updAddr = ld_isMMIO[0]; // write
+    Reg#(Vector#(LdQSize, Bool)) ld_isMMIO_issue   = ld_isMMIO[1]; // assert
+    Reg#(Vector#(LdQSize, Bool)) ld_isMMIO_enqIss  = ld_isMMIO[1]; // assert
 
-    let ld_shiftedBE_findIss = getVEhrPort(ld_shiftedBE, 0);
-    let ld_shiftedBE_deqLd   = getVEhrPort(ld_shiftedBE, 0);
-    let ld_shiftedBE_updAddr = getVEhrPort(ld_shiftedBE, 0); // write
-    let ld_shiftedBE_issue   = getVEhrPort(ld_shiftedBE, 1);
-    let ld_shiftedBE_enqIss  = getVEhrPort(ld_shiftedBE, 1); // assert
+    Reg#(Vector#(LdQSize, MemDataByteEn)) ld_shiftedBE_findIss = ld_shiftedBE[0];
+    Reg#(Vector#(LdQSize, MemDataByteEn)) ld_shiftedBE_deqLd   = ld_shiftedBE[0];
+    Reg#(Vector#(LdQSize, MemDataByteEn)) ld_shiftedBE_updAddr = ld_shiftedBE[0]; // write
+    Reg#(Vector#(LdQSize, MemDataByteEn)) ld_shiftedBE_issue   = ld_shiftedBE[1];
+    Reg#(Vector#(LdQSize, MemDataByteEn)) ld_shiftedBE_enqIss  = ld_shiftedBE[1]; // assert
 
-    let ld_fault_deqLd   = getVEhrPort(ld_fault, 0);
-    let ld_fault_updAddr = getVEhrPort(ld_fault, 0); // write
-    let ld_fault_issue   = getVEhrPort(ld_fault, 1); // assert
-    let ld_fault_enqIss  = getVEhrPort(ld_fault, 1); // assert
-    let ld_fault_enq     = getVEhrPort(ld_fault, 1); // write
+    Reg#(Vector#(LdQSize, Maybe#(Trap))) ld_fault_deqLd   = ld_fault[0];
+    Reg#(Vector#(LdQSize, Maybe#(Trap))) ld_fault_updAddr = ld_fault[0]; // write
+    Reg#(Vector#(LdQSize, Maybe#(Trap))) ld_fault_issue   = ld_fault[1]; // assert
+    Reg#(Vector#(LdQSize, Maybe#(Trap))) ld_fault_enqIss  = ld_fault[1]; // assert
+    Reg#(Vector#(LdQSize, Maybe#(Trap))) ld_fault_enq     = ld_fault[1]; // write
 
-    let ld_computed_findIss = getVEhrPort(ld_computed, 0);
-    let ld_computed_deqLd   = getVEhrPort(ld_computed, 0);
-    let ld_computed_evict   = getVEhrPort(ld_computed, 0); // assert
-    let ld_computed_updAddr = getVEhrPort(ld_computed, 0); // write
-    let ld_computed_issue   = getVEhrPort(ld_computed, 1);
-    let ld_computed_enqIss  = getVEhrPort(ld_computed, 1); // assert
-    let ld_computed_resp    = getVEhrPort(ld_computed, 1); // assert
-    let ld_computed_enq     = getVEhrPort(ld_computed, 1); // write
+    Reg#(Vector#(LdQSize, Bool)) ld_computed_findIss = ld_computed[0];
+    Reg#(Vector#(LdQSize, Bool)) ld_computed_deqLd   = ld_computed[0];
+    Reg#(Vector#(LdQSize, Bool)) ld_computed_evict   = ld_computed[0]; // assert
+    Reg#(Vector#(LdQSize, Bool)) ld_computed_updAddr = ld_computed[0]; // write
+    Reg#(Vector#(LdQSize, Bool)) ld_computed_issue   = ld_computed[1];
+    Reg#(Vector#(LdQSize, Bool)) ld_computed_enqIss  = ld_computed[1]; // assert
+    Reg#(Vector#(LdQSize, Bool)) ld_computed_resp    = ld_computed[1]; // assert
+    Reg#(Vector#(LdQSize, Bool)) ld_computed_enq     = ld_computed[1]; // write
 
-    let ld_inIssueQ_findIss = getVEhrPort(ld_inIssueQ, 0);
-    let ld_inIssueQ_updAddr = getVEhrPort(ld_inIssueQ, 0); // assert
-    let ld_inIssueQ_issue   = getVEhrPort(ld_inIssueQ, 0); // write
-    let ld_inIssueQ_enqIss  = getVEhrPort(ld_inIssueQ, 1); // write
-    let ld_inIssueQ_enq     = getVEhrPort(ld_inIssueQ, 2); // write
+    Reg#(Vector#(LdQSize, Bool)) ld_inIssueQ_findIss = ld_inIssueQ[0];
+    Reg#(Vector#(LdQSize, Bool)) ld_inIssueQ_updAddr = ld_inIssueQ[0]; // assert
+    Reg#(Vector#(LdQSize, Bool)) ld_inIssueQ_issue   = ld_inIssueQ[0]; // write
+    Reg#(Vector#(LdQSize, Bool)) ld_inIssueQ_enqIss  = ld_inIssueQ[1]; // write
+    Reg#(Vector#(LdQSize, Bool)) ld_inIssueQ_enq     = ld_inIssueQ[2]; // write
 
-    let ld_executing_findIss   = getVEhrPort(ld_executing, 0);
-    let ld_executing_wrongSpec = getVEhrPort(ld_executing, 0);
-    let ld_executing_deqLd     = getVEhrPort(ld_executing, 0);
-    let ld_executing_evict     = getVEhrPort(ld_executing, 0);
-    let ld_executing_updAddr   = getVEhrPort(ld_executing, 0);
-    let ld_executing_issue     = getVEhrPort(ld_executing, 0); // write
-    let ld_executing_enqIss    = getVEhrPort(ld_executing, 1); // assert
-    let ld_executing_resp      = getVEhrPort(ld_executing, 1); // assert
-    let ld_executing_enq       = getVEhrPort(ld_executing, 1); // write
+    Reg#(Vector#(LdQSize, Bool)) ld_executing_findIss   = ld_executing[0];
+    Reg#(Vector#(LdQSize, Bool)) ld_executing_wrongSpec = ld_executing[0];
+    Reg#(Vector#(LdQSize, Bool)) ld_executing_deqLd     = ld_executing[0];
+    Reg#(Vector#(LdQSize, Bool)) ld_executing_evict     = ld_executing[0];
+    Reg#(Vector#(LdQSize, Bool)) ld_executing_updAddr   = ld_executing[0];
+    Reg#(Vector#(LdQSize, Bool)) ld_executing_issue     = ld_executing[0]; // write
+    Reg#(Vector#(LdQSize, Bool)) ld_executing_enqIss    = ld_executing[1]; // assert
+    Reg#(Vector#(LdQSize, Bool)) ld_executing_resp      = ld_executing[1]; // assert
+    Reg#(Vector#(LdQSize, Bool)) ld_executing_enq       = ld_executing[1]; // write
 
-    let ld_done_wrongSpec = getVEhrPort(ld_done, 0);
-    let ld_done_deqLd     = getVEhrPort(ld_done, 0);
-    let ld_done_updAddr   = getVEhrPort(ld_done, 0); // assert
-    let ld_done_issue     = getVEhrPort(ld_done, 0); // assert
-    let ld_done_enqIss    = getVEhrPort(ld_done, 0); // assert
-    let ld_done_resp      = getVEhrPort(ld_done, 0); // write
-    let ld_done_enq       = getVEhrPort(ld_done, 1); // write
+    Reg#(Vector#(LdQSize, Bool)) ld_done_wrongSpec = ld_done[0];
+    Reg#(Vector#(LdQSize, Bool)) ld_done_deqLd     = ld_done[0];
+    Reg#(Vector#(LdQSize, Bool)) ld_done_updAddr   = ld_done[0]; // assert
+    Reg#(Vector#(LdQSize, Bool)) ld_done_issue     = ld_done[0]; // assert
+    Reg#(Vector#(LdQSize, Bool)) ld_done_enqIss    = ld_done[0]; // assert
+    Reg#(Vector#(LdQSize, Bool)) ld_done_resp      = ld_done[0]; // write
+    Reg#(Vector#(LdQSize, Bool)) ld_done_enq       = ld_done[1]; // write
 
-    let ld_killed_deqLd   = getVEhrPort(ld_killed, 0);
-    let ld_killed_evict   = getVEhrPort(ld_killed, 0); // write
-    let ld_killed_updAddr = getVEhrPort(ld_killed, 1); // write
-    let ld_killed_issue   = getVEhrPort(ld_killed, 2); // assert
-    let ld_killed_enqIss  = getVEhrPort(ld_killed, 2); // assert
-    let ld_killed_enq     = getVEhrPort(ld_killed, 2); // write
+    Reg#(Vector#(LdQSize, Maybe#(LdKilledBy))) ld_killed_deqLd   = ld_killed[0];
+    Reg#(Vector#(LdQSize, Maybe#(LdKilledBy))) ld_killed_evict   = ld_killed[0]; // write
+    Reg#(Vector#(LdQSize, Maybe#(LdKilledBy))) ld_killed_updAddr = ld_killed[1]; // write
+    Reg#(Vector#(LdQSize, Maybe#(LdKilledBy))) ld_killed_issue   = ld_killed[2]; // assert
+    Reg#(Vector#(LdQSize, Maybe#(LdKilledBy))) ld_killed_enqIss  = ld_killed[2]; // assert
+    Reg#(Vector#(LdQSize, Maybe#(LdKilledBy))) ld_killed_enq     = ld_killed[2]; // write
 
-    let ld_olderSt_deqLd  = getVEhrPort(ld_olderSt, 0);
-    let ld_olderSt_verify = getVEhrPort(ld_olderSt, 0);
-    let ld_olderSt_deqSt  = getVEhrPort(ld_olderSt, 0); // write
-    let ld_olderSt_enq    = getVEhrPort(ld_olderSt, 1); // write
+    Reg#(Vector#(LdQSize, Maybe#(StQTag))) ld_olderSt_deqLd  = ld_olderSt[0];
+    Reg#(Vector#(LdQSize, Maybe#(StQTag))) ld_olderSt_verify = ld_olderSt[0];
+    Reg#(Vector#(LdQSize, Maybe#(StQTag))) ld_olderSt_deqSt  = ld_olderSt[0]; // write
+    Reg#(Vector#(LdQSize, Maybe#(StQTag))) ld_olderSt_enq    = ld_olderSt[1]; // write
 
-    let ld_olderStVerified_deqLd  = getVEhrPort(ld_olderStVerified, 0);
-    let ld_olderStVerified_verify = getVEhrPort(ld_olderStVerified, 0); // write
-    let ld_olderStVerified_enq    = getVEhrPort(ld_olderStVerified, 1); // write
+    Reg#(Vector#(LdQSize, Bool)) ld_olderStVerified_deqLd  = ld_olderStVerified[0];
+    Reg#(Vector#(LdQSize, Bool)) ld_olderStVerified_verify = ld_olderStVerified[0]; // write
+    Reg#(Vector#(LdQSize, Bool)) ld_olderStVerified_enq    = ld_olderStVerified[1]; // write
 
-    let ld_readFrom_evict = getVEhrPort(ld_readFrom, 0);
-    let ld_readFrom_issue = getVEhrPort(ld_readFrom, 0); // write
-    let ld_readFrom_deqSt = getVEhrPort(ld_readFrom, 1); // write
-    let ld_readFrom_enq   = getVEhrPort(ld_readFrom, 2); // write
+    Reg#(Vector#(LdQSize, Maybe#(StQTag))) ld_readFrom_evict = ld_readFrom[0];
+    Reg#(Vector#(LdQSize, Maybe#(StQTag))) ld_readFrom_issue = ld_readFrom[0]; // write
+    Reg#(Vector#(LdQSize, Maybe#(StQTag))) ld_readFrom_deqSt = ld_readFrom[1]; // write
+    Reg#(Vector#(LdQSize, Maybe#(StQTag))) ld_readFrom_enq   = ld_readFrom[2]; // write
 
-    let ld_depLdQDeq_findIss = getVEhrPort(ld_depLdQDeq, 0);
-    let ld_depLdQDeq_deqLd   = getVEhrPort(ld_depLdQDeq, 0); // write
-    let ld_depLdQDeq_issue   = getVEhrPort(ld_depLdQDeq, 1); // write
-    let ld_depLdQDeq_enqIss  = getVEhrPort(ld_depLdQDeq, 2); // assert
-    let ld_depLdQDeq_enq     = getVEhrPort(ld_depLdQDeq, 2); // write
+    Reg#(Vector#(LdQSize, Maybe#(LdQTag))) ld_depLdQDeq_findIss = ld_depLdQDeq[0];
+    Reg#(Vector#(LdQSize, Maybe#(LdQTag))) ld_depLdQDeq_deqLd   = ld_depLdQDeq[0]; // write
+    Reg#(Vector#(LdQSize, Maybe#(LdQTag))) ld_depLdQDeq_issue   = ld_depLdQDeq[1]; // write
+    Reg#(Vector#(LdQSize, Maybe#(LdQTag))) ld_depLdQDeq_enqIss  = ld_depLdQDeq[2]; // assert
+    Reg#(Vector#(LdQSize, Maybe#(LdQTag))) ld_depLdQDeq_enq     = ld_depLdQDeq[2]; // write
 
-    let ld_depStQDeq_findIss = getVEhrPort(ld_depStQDeq, 0);
-    let ld_depStQDeq_issue   = getVEhrPort(ld_depStQDeq, 0); // write
-    let ld_depStQDeq_enqIss  = getVEhrPort(ld_depStQDeq, 1); // assert
-    let ld_depStQDeq_deqSt   = getVEhrPort(ld_depStQDeq, 1); // write
-    let ld_depStQDeq_enq     = getVEhrPort(ld_depStQDeq, 2); // write
+    Reg#(Vector#(LdQSize, Maybe#(StQTag))) ld_depStQDeq_findIss = ld_depStQDeq[0];
+    Reg#(Vector#(LdQSize, Maybe#(StQTag))) ld_depStQDeq_issue   = ld_depStQDeq[0]; // write
+    Reg#(Vector#(LdQSize, Maybe#(StQTag))) ld_depStQDeq_enqIss  = ld_depStQDeq[1]; // assert
+    Reg#(Vector#(LdQSize, Maybe#(StQTag))) ld_depStQDeq_deqSt   = ld_depStQDeq[1]; // write
+    Reg#(Vector#(LdQSize, Maybe#(StQTag))) ld_depStQDeq_enq     = ld_depStQDeq[2]; // write
 
 `ifndef TSO_MM
-    let ld_depLdEx_findIss = getVEhrPort(ld_depLdEx, 0);
-    let ld_depLdEx_issue   = getVEhrPort(ld_depLdEx, 0); // write
-    let ld_depLdEx_enqIss  = getVEhrPort(ld_depLdEx, 1); // assert
-    let ld_depLdEx_enq     = getVEhrPort(ld_depLdEx, 1); // write
+    Reg#(Vector#(LdQSize, Maybe#(LdQTag))) ld_depLdEx_findIss = ld_depLdEx[0];
+    Reg#(Vector#(LdQSize, Maybe#(LdQTag))) ld_depLdEx_issue   = ld_depLdEx[0]; // write
+    Reg#(Vector#(LdQSize, Maybe#(LdQTag))) ld_depLdEx_enqIss  = ld_depLdEx[1]; // assert
+    Reg#(Vector#(LdQSize, Maybe#(LdQTag))) ld_depLdEx_enq     = ld_depLdEx[1]; // write
 
-    let ld_depSBDeq_findIss = getVEhrPort(ld_depSBDeq, 0);
-    let ld_depSBDeq_issue   = getVEhrPort(ld_depSBDeq, 0); // write
-    let ld_depSBDeq_enqIss  = getVEhrPort(ld_depSBDeq, 1); // assert
-    let ld_depSBDeq_wakeSB  = getVEhrPort(ld_depSBDeq, 1); // write
-    let ld_depSBDeq_enq     = getVEhrPort(ld_depSBDeq, 2); // write
+    Reg#(Vector#(LdQSize, Maybe#(SBIndex))) ld_depSBDeq_findIss = ld_depSBDeq[0];
+    Reg#(Vector#(LdQSize, Maybe#(SBIndex))) ld_depSBDeq_issue   = ld_depSBDeq[0]; // write
+    Reg#(Vector#(LdQSize, Maybe#(SBIndex))) ld_depSBDeq_enqIss  = ld_depSBDeq[1]; // assert
+    Reg#(Vector#(LdQSize, Maybe#(SBIndex))) ld_depSBDeq_wakeSB  = ld_depSBDeq[1]; // write
+    Reg#(Vector#(LdQSize, Maybe#(SBIndex))) ld_depSBDeq_enq     = ld_depSBDeq[2]; // write
 `endif
 
-    let ld_specBits_wrongSpec   = getVEhrPort(ld_specBits, 0); // write
-    let ld_specBits_deqLd       = getVEhrPort(ld_specBits, 0); // C with wrongSpec
-    let ld_specBits_evict       = getVEhrPort(ld_specBits, 0); // C with wrongSpec
-    let ld_specBits_updAddr     = getVEhrPort(ld_specBits, 0); // C with wrongSpec
-    let ld_specBits_enqIss      = getVEhrPort(ld_specBits, 0); // C with wrongSpec
-    let ld_specBits_enq         = getVEhrPort(ld_specBits, 0); // write, C with wrongSpec
-    let ld_specBits_correctSpec = getVEhrPort(ld_specBits, 1); // write
+    Reg#(Vector#(LdQSize, SpecBits)) ld_specBits_spec        = ld_specBits[0]; // write
+    Reg#(Vector#(LdQSize, SpecBits)) ld_specBits_deqLd       = ld_specBits[0]; // C with wrongSpec
+    Reg#(Vector#(LdQSize, SpecBits)) ld_specBits_evict       = ld_specBits[0]; // C with wrongSpec
+    Reg#(Vector#(LdQSize, SpecBits)) ld_specBits_updAddr     = ld_specBits[0]; // C with wrongSpec
+    Reg#(Vector#(LdQSize, SpecBits)) ld_specBits_enqIss      = ld_specBits[0]; // C with wrongSpec
+    Reg#(Vector#(LdQSize, SpecBits)) ld_specBits_enq         = ld_specBits[0]; // write, C with wrongSpec
 
-    let ld_atCommit_wrongSpec = getVEhrPort(ld_atCommit, 0);
-    let ld_atCommit_deqLd     = getVEhrPort(ld_atCommit, 0);
-    Vector#(SupSize, Vector#(LdQSize, Reg#(Bool))) ld_atCommit_setCom;
+    Reg#(Vector#(LdQSize, Bool)) ld_atCommit_wrongSpec = ld_atCommit[0];
+    Reg#(Vector#(LdQSize, Bool)) ld_atCommit_deqLd     = ld_atCommit[0];
+    Vector#(SupSize, Reg#(Vector#(LdQSize, Bool))) ld_atCommit_setCom;
     for(Integer i = 0; i < valueof(SupSize); i = i+1) begin
-        ld_atCommit_setCom[i] = getVEhrPort(ld_atCommit, i); // write
+        ld_atCommit_setCom[i] = ld_atCommit[i]; // write
     end
-    let ld_atCommit_enq = getVEhrPort(ld_atCommit, valueof(SupSize)); // write
+    Reg#(Vector#(LdQSize, Bool)) ld_atCommit_enq = ld_atCommit[valueof(SupSize)]; // write
 
-    let ld_waitWPResp_hit       = getVEhrPort(ld_waitWPResp, 0);
-    let ld_waitWPResp_findIss   = getVEhrPort(ld_waitWPResp, 0);
-    let ld_waitWPResp_deqLd     = getVEhrPort(ld_waitWPResp, 0);
-    let ld_waitWPResp_updAddr   = getVEhrPort(ld_waitWPResp, 0);
-    let ld_waitWPResp_noWP      = getVEhrPort(ld_waitWPResp, 0);
-    let ld_waitWPResp_issue     = getVEhrPort(ld_waitWPResp, 0); // assert
-    let ld_waitWPResp_enqIss    = getVEhrPort(ld_waitWPResp, 0); // assert
-    let ld_waitWPResp_resp      = getVEhrPort(ld_waitWPResp, 0); // write
-    let ld_waitWPResp_wrongSpec = getVEhrPort(ld_waitWPResp, 0); // write
+    Reg#(Vector#(LdQSize, Bool)) ld_waitWPResp_hit       = ld_waitWPResp[0];
+    Reg#(Vector#(LdQSize, Bool)) ld_waitWPResp_findIss   = ld_waitWPResp[0];
+    Reg#(Vector#(LdQSize, Bool)) ld_waitWPResp_deqLd     = ld_waitWPResp[0];
+    Reg#(Vector#(LdQSize, Bool)) ld_waitWPResp_updAddr   = ld_waitWPResp[0];
+    Reg#(Vector#(LdQSize, Bool)) ld_waitWPResp_noWP      = ld_waitWPResp[0];
+    Reg#(Vector#(LdQSize, Bool)) ld_waitWPResp_issue     = ld_waitWPResp[0]; // assert
+    Reg#(Vector#(LdQSize, Bool)) ld_waitWPResp_enqIss    = ld_waitWPResp[0]; // assert
+    Reg#(Vector#(LdQSize, Bool)) ld_waitWPResp_resp      = ld_waitWPResp[0]; // write
+    Reg#(Vector#(LdQSize, Bool)) ld_waitWPResp_spec      = ld_waitWPResp[0]; // write
 
     Reg#(LdQTag) ld_deqP_deqLd  = ld_deqP[0]; // write
     Reg#(LdQTag) ld_deqP_verify = ld_deqP[0]; // in TSO, C with deqLd
@@ -814,85 +815,84 @@ module mkSplitLSQ(SplitLSQ);
 
     // SQ
     // entry valid bits
-    Vector#(StQSize, Ehr#(2, Bool))                 st_valid     <- replicateM(mkEhr(False));
+    Ehr#(2, Vector#(StQSize, Bool))                 st_valid     <- mkEhr(replicate(False));
     // entry contents
-    Vector#(StQSize, Reg#(InstTag))                 st_instTag   <- replicateM(mkRegU);
-    Vector#(StQSize, Reg#(StQMemFunc))              st_memFunc   <- replicateM(mkRegU);
-    Vector#(StQSize, Reg#(AmoFunc))                 st_amoFunc   <- replicateM(mkRegU);
-    Vector#(StQSize, Reg#(MemDataByteEn))           st_byteEn    <- replicateM(mkRegU);
-    Vector#(StQSize, Reg#(Bool))                    st_acq       <- replicateM(mkRegU);
-    Vector#(StQSize, Reg#(Bool))                    st_rel       <- replicateM(mkRegU);
-    Vector#(StQSize, Reg#(Maybe#(PhyDst)))          st_dst       <- replicateM(mkRegU);
-    Vector#(StQSize, Ehr#(2, Addr))                 st_paddr     <- replicateM(mkEhr(?));
-    Vector#(StQSize, Ehr#(2, Bool))                 st_isMMIO    <- replicateM(mkEhr(?));
-    Vector#(StQSize, Ehr#(2, MemDataByteEn))        st_shiftedBE <- replicateM(mkEhr(?));
-    Vector#(StQSize, Ehr#(1, MemTaggedData))        st_stData    <- replicateM(mkEhr(?));
-    Vector#(StQSize, Ehr#(2, Maybe#(Trap)))         st_fault     <- replicateM(mkEhr(?));
-    Vector#(StQSize, Ehr#(2, Bool))                 st_computed  <- replicateM(mkEhr(?));
-    Vector#(StQSize, Ehr#(2, Bool))                 st_verified  <- replicateM(mkEhr(?));
-    Vector#(StQSize, Ehr#(2, SpecBits))             st_specBits  <- replicateM(mkEhr(?));
-    Vector#(StQSize, Ehr#(TAdd#(1, SupSize), Bool)) st_atCommit  <- replicateM(mkEhr(?));
+    Vector#(StQSize, Reg#(InstTag))                 st_instTag   <- replicateM(mkConfigRegU);
+    Vector#(StQSize, Reg#(StQMemFunc))              st_memFunc   <- replicateM(mkConfigRegU);
+    Vector#(StQSize, Reg#(AmoFunc))                 st_amoFunc   <- replicateM(mkConfigRegU);
+    Vector#(StQSize, Reg#(MemDataByteEn))           st_byteEn    <- replicateM(mkConfigRegU);
+    Vector#(StQSize, Reg#(Bool))                    st_acq       <- replicateM(mkConfigRegU);
+    Vector#(StQSize, Reg#(Bool))                    st_rel       <- replicateM(mkConfigRegU);
+    Vector#(StQSize, Reg#(Maybe#(PhyDst)))          st_dst       <- replicateM(mkConfigRegU);
+    Ehr#(2, Vector#(StQSize, Addr))                 st_paddr     <- mkEhr(?);
+    Ehr#(2, Vector#(StQSize, Bool))                 st_isMMIO    <- mkEhr(?);
+    Ehr#(2, Vector#(StQSize, MemDataByteEn))        st_shiftedBE <- mkEhr(?);
+    Ehr#(1, Vector#(StQSize, MemTaggedData))        st_stData    <- mkEhr(?);
+    Ehr#(2, Vector#(StQSize, Maybe#(Trap)))         st_fault     <- mkEhr(?);
+    Ehr#(2, Vector#(StQSize, Bool))                 st_computed  <- mkEhr(?);
+    Ehr#(2, Vector#(StQSize, Bool))                 st_verified  <- mkEhr(?);
+    Ehr#(2, Vector#(StQSize, SpecBits))             st_specBits  <- mkEhr(?);
+    Ehr#(TAdd#(1, SupSize), Vector#(StQSize, Bool)) st_atCommit  <- mkEhr(?);
     // enq/deq ptr
-    Reg#(StQTag) st_enqP <- mkReg(0);
-    Reg#(StQTag) st_deqP <- mkReg(0);
+    Reg#(StQTag) st_enqP <- mkConfigReg(0);
+    Reg#(StQTag) st_deqP <- mkConfigReg(0);
     Ehr#(2, StQTag) st_verifyP <- mkEhr(0);
 
-    let st_valid_empty     = getVEhrPort(st_valid, 0);
-    let st_valid_wrongSpec = getVEhrPort(st_valid, 0); // write
-    let st_valid_verify    = getVEhrPort(st_valid, 0);
-    let st_valid_updAddr   = getVEhrPort(st_valid, 0); // assert
-    let st_valid_issue     = getVEhrPort(st_valid, 0);
-    let st_valid_deqSt     = getVEhrPort(st_valid, 0); // write
-    let st_valid_setCom    = getVEhrPort(st_valid, 1); // assert
-    let st_valid_updData   = getVEhrPort(st_valid, 1); // assert
-    let st_valid_enq       = getVEhrPort(st_valid, 1); // write
+    Reg#(Vector#(StQSize, Bool)) st_valid_empty     = st_valid[0];
+    Reg#(Vector#(StQSize, Bool)) st_valid_spec      = st_valid[0]; // write
+    Reg#(Vector#(StQSize, Bool)) st_valid_verify    = st_valid[0];
+    Reg#(Vector#(StQSize, Bool)) st_valid_updAddr   = st_valid[0]; // assert
+    Reg#(Vector#(StQSize, Bool)) st_valid_issue     = st_valid[0];
+    Reg#(Vector#(StQSize, Bool)) st_valid_deqSt     = st_valid[0]; // write
+    Reg#(Vector#(StQSize, Bool)) st_valid_setCom    = st_valid[1]; // assert
+    Reg#(Vector#(StQSize, Bool)) st_valid_updData   = st_valid[1]; // assert
+    Reg#(Vector#(StQSize, Bool)) st_valid_enq       = st_valid[1]; // write
 
-    let st_paddr_updAddr = getVEhrPort(st_paddr, 0); // write
-    let st_paddr_issue   = getVEhrPort(st_paddr, 1);
-    let st_paddr_deqSt   = getVEhrPort(st_paddr, 1);
+    Reg#(Vector#(StQSize, Addr)) st_paddr_updAddr = st_paddr[0]; // write
+    Reg#(Vector#(StQSize, Addr)) st_paddr_issue   = st_paddr[1];
+    Reg#(Vector#(StQSize, Addr)) st_paddr_deqSt   = st_paddr[1];
 
-    let st_isMMIO_verify  = getVEhrPort(st_isMMIO, 0);
-    let st_isMMIO_updAddr = getVEhrPort(st_isMMIO, 0); // write
-    let st_isMMIO_deqSt   = getVEhrPort(st_isMMIO, 1);
+    Reg#(Vector#(StQSize, Bool)) st_isMMIO_verify  = st_isMMIO[0];
+    Reg#(Vector#(StQSize, Bool)) st_isMMIO_updAddr = st_isMMIO[0]; // write
+    Reg#(Vector#(StQSize, Bool)) st_isMMIO_deqSt   = st_isMMIO[1];
 
-    let st_shiftedBE_updAddr = getVEhrPort(st_shiftedBE, 0); // write
-    let st_shiftedBE_issue   = getVEhrPort(st_shiftedBE, 1);
-    let st_shiftedBE_deqSt   = getVEhrPort(st_shiftedBE, 1);
+    Reg#(Vector#(StQSize, MemDataByteEn)) st_shiftedBE_updAddr = st_shiftedBE[0]; // write
+    Reg#(Vector#(StQSize, MemDataByteEn)) st_shiftedBE_issue   = st_shiftedBE[1];
+    Reg#(Vector#(StQSize, MemDataByteEn)) st_shiftedBE_deqSt   = st_shiftedBE[1];
 
-    let st_stData_issue   = getVEhrPort(st_stData, 0);
-    let st_stData_deqSt   = getVEhrPort(st_stData, 0);
-    let st_stData_updData = getVEhrPort(st_stData, 0); // write
+    Reg#(Vector#(StQSize, MemTaggedData)) st_stData_issue   = st_stData[0];
+    Reg#(Vector#(StQSize, MemTaggedData)) st_stData_deqSt   = st_stData[0];
+    Reg#(Vector#(StQSize, MemTaggedData)) st_stData_updData = st_stData[0]; // write
 
-    let st_fault_updAddr = getVEhrPort(st_fault, 0); // write
-    let st_fault_deqSt   = getVEhrPort(st_fault, 1);
-    let st_fault_enq     = getVEhrPort(st_fault, 1); // write
+    Reg#(Vector#(StQSize, Maybe#(Trap))) st_fault_updAddr = st_fault[0]; // write
+    Reg#(Vector#(StQSize, Maybe#(Trap))) st_fault_deqSt   = st_fault[1];
+    Reg#(Vector#(StQSize, Maybe#(Trap))) st_fault_enq     = st_fault[1]; // write
 
-    let st_computed_verify  = getVEhrPort(st_computed, 0);
-    let st_computed_updAddr = getVEhrPort(st_computed, 0); // write
-    let st_computed_issue   = getVEhrPort(st_computed, 1);
-    let st_computed_deqSt   = getVEhrPort(st_computed, 1);
-    let st_computed_updData = getVEhrPort(st_computed, 1); // assert
-    let st_computed_enq     = getVEhrPort(st_computed, 1); // write
+    Reg#(Vector#(StQSize, Bool)) st_computed_verify  = st_computed[0];
+    Reg#(Vector#(StQSize, Bool)) st_computed_updAddr = st_computed[0]; // write
+    Reg#(Vector#(StQSize, Bool)) st_computed_issue   = st_computed[1];
+    Reg#(Vector#(StQSize, Bool)) st_computed_deqSt   = st_computed[1];
+    Reg#(Vector#(StQSize, Bool)) st_computed_updData = st_computed[1]; // assert
+    Reg#(Vector#(StQSize, Bool)) st_computed_enq     = st_computed[1]; // write
 
-    let st_verified_wrongSpec = getVEhrPort(st_verified, 0);
-    let st_verified_verify    = getVEhrPort(st_verified, 0); // write
-    let st_verified_updAddr   = getVEhrPort(st_verified, 1); // assert
-    let st_verified_deqSt     = getVEhrPort(st_verified, 1);
-    let st_verified_enq       = getVEhrPort(st_verified, 1); // write
+    Reg#(Vector#(StQSize, Bool)) st_verified_wrongSpec = st_verified[0];
+    Reg#(Vector#(StQSize, Bool)) st_verified_verify    = st_verified[0]; // write
+    Reg#(Vector#(StQSize, Bool)) st_verified_updAddr   = st_verified[1]; // assert
+    Reg#(Vector#(StQSize, Bool)) st_verified_deqSt     = st_verified[1];
+    Reg#(Vector#(StQSize, Bool)) st_verified_enq       = st_verified[1]; // write
 
-    let st_specBits_wrongSpec   = getVEhrPort(st_specBits, 0); // write
-    let st_specBits_updAddr     = getVEhrPort(st_specBits, 0); // C with wrongSpec
-    let st_specBits_deqSt       = getVEhrPort(st_specBits, 0); // C with wrongSpec
-    let st_specBits_enq         = getVEhrPort(st_specBits, 0); // write, C with wrongSpec
-    let st_specBits_correctSpec = getVEhrPort(st_specBits, 1); // write
+    Reg#(Vector#(StQSize, SpecBits)) st_specBits_spec        = st_specBits[0]; // write
+    Reg#(Vector#(StQSize, SpecBits)) st_specBits_updAddr     = st_specBits[0]; // C with wrongSpec
+    Reg#(Vector#(StQSize, SpecBits)) st_specBits_deqSt       = st_specBits[0]; // C with wrongSpec
+    Reg#(Vector#(StQSize, SpecBits)) st_specBits_enq         = st_specBits[0]; // write, C with wrongSpec
 
-    let st_atCommit_wrongSpec = getVEhrPort(st_atCommit, 0);
-    let st_atCommit_deqSt     = getVEhrPort(st_atCommit, 0);
-    Vector#(SupSize, Vector#(StQSize, Reg#(Bool))) st_atCommit_setCom;
+    Reg#(Vector#(StQSize, Bool)) st_atCommit_wrongSpec = st_atCommit[0];
+    Reg#(Vector#(StQSize, Bool)) st_atCommit_deqSt     = st_atCommit[0];
+    Vector#(SupSize, Reg#(Vector#(StQSize, Bool))) st_atCommit_setCom;
     for(Integer i = 0; i < valueof(SupSize); i = i+1) begin
-        st_atCommit_setCom[i] = getVEhrPort(st_atCommit, i); // write
+        st_atCommit_setCom[i] = st_atCommit[i]; // write
     end
-    let st_atCommit_enq = getVEhrPort(st_atCommit, valueof(SupSize));
+    Reg#(Vector#(StQSize, Bool)) st_atCommit_enq = st_atCommit[valueof(SupSize)];
 
     Reg#(StQTag) st_verifyP_wrongSpec = st_verifyP[0]; // write
     Reg#(StQTag) st_verifyP_verify    = st_verifyP[0]; // write, C with wrongSpec
@@ -928,6 +928,9 @@ module mkSplitLSQ(SplitLSQ);
     RWire#(void) wrongSpec_wakeBySB_conflict <- mkRWire;
     // make wrongSpec more urgent than firstSt (resolve bsc error)
     Wire#(Bool) wrongSpec_urgent_firstSt <- mkDWire(True);
+
+    FIFOF#(SpecBits) correctSpecF <- mkUGFIFOF;
+    FIFOF#(IncorrectSpeculation) incorrectSpecF <- mkUGFIFOF;
 
     function LdQTag getNextLdPtr(LdQTag t);
         return t == fromInteger(valueOf(LdQSize) - 1) ? 0 : t + 1;
@@ -1034,7 +1037,7 @@ module mkSplitLSQ(SplitLSQ);
     // virtual tags for olderSt port 0. NOTE: it should NOT be used after
     // method deqSt which modifies olderSt
     function Maybe#(StQVirTag) getOlderStVirTag(LdQTag i);
-        if(ld_olderSt[i][0] matches tagged Valid .stTag) begin
+        if(ld_olderSt[0][i] matches tagged Valid .stTag) begin
             return Valid (getStVirTag(stTag));
         end
         else begin
@@ -1048,7 +1051,7 @@ module mkSplitLSQ(SplitLSQ);
     // virtual tags for readFrom port 0. NOTE: it should NOT be used after
     // method issueLd which modifies readFrom.
     function Maybe#(StQVirTag) getReadFromVirTag(LdQTag i);
-        if(ld_readFrom[i][0] matches tagged Valid .stTag) begin
+        if(ld_readFrom[0][i] matches tagged Valid .stTag) begin
             return Valid (getStVirTag(stTag));
         end
         else begin
@@ -1058,6 +1061,140 @@ module mkSplitLSQ(SplitLSQ);
     Vector#(LdQSize, Maybe#(StQVirTag)) readFromVirTags = map(
         getReadFromVirTag, genWith(fromInteger)
     );
+
+    (* fire_when_enabled, no_implicit_conditions *)
+    rule canon_speculation;
+        Vector#(LdQSize, SpecBits) new_ld_specBits = ld_specBits_spec;
+        Vector#(StQSize, SpecBits) new_st_specBits = st_specBits_spec;
+        Vector#(LdQSize, Bool) new_ld_waitWPResp = ld_waitWPResp_spec;
+        Vector#(StQSize, Bool) new_st_valid = st_valid_spec;
+        // Fold in CorrectSpec update:
+        if (correctSpecF.notEmpty) begin
+            SpecBits mask = correctSpecF.first();
+            correctSpecF.deq();
+            if(verbose && mask != maxBound) begin
+                $display("[LSQ - correctSpec] ", fshow(mask));
+            end
+            // clear spec bits for LQ entries
+            for (Integer i = 0; i<valueOf(LdQSize); i=i+1)
+                new_ld_specBits[i] = ld_specBits_spec[i] & mask;
+
+            // clear spec bits for SQ entries
+            for (Integer i = 0; i<valueOf(StQSize); i=i+1)
+                new_st_specBits[i] = st_specBits_spec[i] & mask;
+
+            // clear spec bits for issueQ
+            issueLdQ.specUpdate.correctSpeculation(mask);
+        end
+
+        // Fold in IncorrectSpec update:
+        if (incorrectSpecF.notEmpty) begin
+            IncorrectSpeculation incSpec = incorrectSpecF.first();
+            incorrectSpecF.deq();
+            Bool killAll = incSpec.killAll;
+            SpecTag specTag = incSpec.specTag;
+            // idx vec
+
+            // clear wrong path LQ entries & set wrong path load filter. NOTE
+            // that olderSt and olderStVerified fields are not affected by the
+            // kill. NOTE that if atCommit is true, then killAll should not
+            // kill this entry
+            Vector#(LdQSize, LdQTag) ldIdxVec = genWith(fromInteger);
+            function Bool isLdNeedKill(LdQTag i);
+                return (killAll ? !ld_atCommit_wrongSpec[i] :
+                        ld_specBits_spec[i][specTag] == 1);
+            endfunction
+            Vector#(LdQSize, Bool) ldNeedKill = map(isLdNeedKill, ldIdxVec);
+            for (Integer i = 0; i<valueOf(LdQSize); i=i+1) begin
+                if(ldNeedKill[i]) begin
+                    ld_valid_wrongSpec[i] <= False;
+                    // set wrong path load resp filter
+                    if (ld_valid_wrongSpec[i] &&
+                        ld_executing_wrongSpec[i] &&
+                        !ld_waitWPResp_spec[i]) begin
+                        new_ld_waitWPResp[i] = True;
+                        doAssert(ld_memFunc[i] == Ld,
+                                 "only load resp can be wrong path");
+                    end
+                    doAssert(!ld_atCommit_wrongSpec[i], "cannot be at commit");
+                end
+            end
+
+            // clear wrong path SQ entries. NOTE that inst at commit should not
+            // be killed in case of kill all
+            Vector#(StQSize, StQTag) stIdxVec = genWith(fromInteger);
+            function Bool isStNeedKill(StQTag i);
+                return (killAll ? !st_atCommit_wrongSpec[i] :
+                                  st_specBits_spec[i][specTag] == 1);
+            endfunction
+            Vector#(StQSize, Bool) stNeedKill = map(isStNeedKill, stIdxVec);
+            for (Integer i = 0; i<valueOf(StQSize); i=i+1)
+                if(stNeedKill[i]) begin
+                    new_st_valid[i] = False;
+                    doAssert(!st_atCommit_wrongSpec[i], "cannot be at commit");
+                end
+
+            // kill entries in issueQ
+            issueLdQ.specUpdate.incorrectSpeculation(killAll, specTag);
+
+            // change enqP: make valid entries always consecutive: new enqP is
+            // the oldest **VALID** entry that gets killed. If such entry does
+            // not exists, then enqP remains the same.
+            // LdQ enqP
+            function Bool isValidLdKilled(LdQTag i);
+                return ld_valid_wrongSpec[i] && ldNeedKill[i];
+            endfunction
+            Vector#(LdQSize, Bool) killedValidLds = map(isValidLdKilled,
+                                                        ldIdxVec);
+            LdQTag new_ld_enqP = ld_enqP;
+            if(findOldestLd(killedValidLds) matches tagged Valid .t) begin
+                new_ld_enqP = t;
+            end
+            ld_enqP <= new_ld_enqP;
+
+            // StQ enqP
+            function Bool isValidStKilled(StQTag i);
+                return st_valid_spec[i] && stNeedKill[i];
+            endfunction
+            Vector#(StQSize, Bool) killedValidSts = map(isValidStKilled,
+                                                        stIdxVec);
+            StQTag new_st_enqP = st_enqP;
+            if(findOldestSt(killedValidSts) matches tagged Valid .t) begin
+                new_st_enqP = t;
+            end
+            st_enqP <= new_st_enqP;
+
+            // change SQ verifyP: new verifyP is the oldest entry that is
+            // neither killed nor verified. If such entry does not exists, then
+            // verifyP should be the same as new enqP.
+            function Bool unkilledUnverified(StQTag i);
+                return st_valid_spec[i] && !stNeedKill[i] &&
+                       !st_verified_wrongSpec[i];
+            endfunction
+            Vector#(StQSize, Bool) unverifiedSts = map(unkilledUnverified,
+                                                       stIdxVec);
+            StQTag new_st_verifyP;
+            if(findOldestSt(unverifiedSts) matches tagged Valid .t) begin
+                new_st_verifyP = t;
+            end
+            else begin
+                new_st_verifyP = new_st_enqP;
+            end
+            st_verifyP_wrongSpec <= new_st_verifyP;
+
+            if(verbose) begin
+                $display("[LSQ - wrongSpec] ", fshow(killAll),
+                         "; ", fshow(specTag),
+                         "; ", fshow(new_ld_enqP),
+                         "; ", fshow(new_st_enqP),
+                         "; ", fshow(new_st_verifyP));
+            end
+        end
+        ld_specBits_spec <= new_ld_specBits;
+        st_specBits_spec <= new_st_specBits;
+        ld_waitWPResp_spec <= new_ld_waitWPResp;
+        st_valid_spec <= new_st_valid;
+    endrule
 
     // find load ready for issuing when LSQ is not empty:
     // (1) entry valid of load
@@ -1231,7 +1368,7 @@ module mkSplitLSQ(SplitLSQ);
     // and enqP, outsiders are invalid entries
     (* fire_when_enabled, no_implicit_conditions *)
     rule checkLdQValid;
-        if(all(\== (False),  readVEhr(0, ld_valid))) begin
+        if(all(\== (False),  ld_valid[0])) begin
             doAssert(ld_enqP == ld_deqP[0], "empty queue have enqP = deqP");
         end
         else begin
@@ -1245,7 +1382,7 @@ module mkSplitLSQ(SplitLSQ);
                 end
             endfunction
             for(Integer i = 0; i < valueof(LdQSize); i = i+1) begin
-                doAssert(in_range(fromInteger(i)) == ld_valid[i][0],
+                doAssert(in_range(fromInteger(i)) == ld_valid[0][i],
                         "valid entries must be within [deqP, enqP)");
             end
         end
@@ -1253,7 +1390,7 @@ module mkSplitLSQ(SplitLSQ);
 
     (* fire_when_enabled, no_implicit_conditions *)
     rule checkStQValid;
-        if(all(\== (False), readVEhr(0, st_valid))) begin
+        if(all(\== (False), st_valid[0])) begin
             doAssert(st_deqP == st_enqP, "empty queue have enqP = deqP");
         end
         else begin
@@ -1267,7 +1404,7 @@ module mkSplitLSQ(SplitLSQ);
                 end
             endfunction
             for(Integer i = 0; i < valueof(StQSize); i = i+1) begin
-                doAssert(in_range(fromInteger(i)) == st_valid[i][0],
+                doAssert(in_range(fromInteger(i)) == st_valid[0][i],
                          "valid entries must be within [deqP, enqP)");
             end
         end
@@ -1275,9 +1412,7 @@ module mkSplitLSQ(SplitLSQ);
 
     (* fire_when_enabled, no_implicit_conditions *)
     rule checkStQVerified;
-        let valid_verified = zipWith(\&& ,
-                                     readVEhr(0, st_valid),
-                                     readVEhr(0, st_verified));
+        let valid_verified = zipWith(\&& , st_valid[0], st_verified[0]);
         if(all(\== (False), valid_verified)) begin
             // nothing is valid and verified
             doAssert(st_verifyP[0] == st_deqP,
@@ -1295,8 +1430,8 @@ module mkSplitLSQ(SplitLSQ);
                 end
             endfunction
             for(Integer i = 0; i < valueof(StQSize); i = i+1) begin
-                if(st_valid[i][0]) begin
-                    doAssert(in_range(fromInteger(i)) == st_verified[i][0],
+                if(st_valid[0][i]) begin
+                    doAssert(in_range(fromInteger(i)) == st_verified[0][i],
                              "verified entries must be within [deqP, verifyP)");
                 end
             end
@@ -1306,10 +1441,10 @@ module mkSplitLSQ(SplitLSQ);
     (* fire_when_enabled, no_implicit_conditions *)
     rule checkLdQVerified;
         for(Integer i = 0; i < valueof(LdQSize); i = i+1) begin
-            if (ld_valid[i][0] &&&
-                ld_olderSt[i][0] matches tagged Valid .stTag) begin
-                doAssert(st_valid[stTag][0], "older SQ entry must be valid");
-                doAssert(ld_olderStVerified[i][0] == st_verified[stTag][0],
+            if (ld_valid[0][i] &&&
+                ld_olderSt[0][i] matches tagged Valid .stTag) begin
+                doAssert(st_valid[0][stTag], "older SQ entry must be valid");
+                doAssert(ld_olderStVerified[0][i] == st_verified[0][stTag],
                          "LdQ olderStVerified does not match StQ verified");
             end
         end
@@ -1321,8 +1456,8 @@ module mkSplitLSQ(SplitLSQ);
     Wire#(Bool) st_can_enq_wire <- mkBypassWire;
     (* fire_when_enabled, no_implicit_conditions *)
     rule setForEnq;
-        ld_can_enq_wire <= !ld_valid[ld_enqP][0];
-        st_can_enq_wire <= !st_valid[st_enqP][0];
+        ld_can_enq_wire <= !ld_valid[0][ld_enqP];
+        st_can_enq_wire <= !st_valid[0][st_enqP];
     endrule
 
     // deqLd guard (see comments at the method declaration)
@@ -2236,165 +2371,20 @@ module mkSplitLSQ(SplitLSQ);
     interface setAtCommit = setAtCommitIfc;
 
     interface SpeculationUpdate specUpdate;
-        method Action correctSpeculation(SpecBits mask);
-            if(verbose && mask != maxBound) begin
-                $display("[LSQ - correctSpec] ", fshow(mask));
-            end
-            // clear spec bits for LQ entries
-            function Action correctSpecLd(LdQTag i);
-            action
-                SpecBits sb = ld_specBits_correctSpec[i];
-                ld_specBits_correctSpec[i] <= sb & mask;
-            endaction
-            endfunction
-            Vector#(LdQSize, LdQTag) ldIdxVec = genWith(fromInteger);
-            joinActions(map(correctSpecLd, ldIdxVec));
-
-            // clear spec bits for LQ entries
-            function Action correctSpecSt(StQTag i);
-            action
-                SpecBits sb = st_specBits_correctSpec[i];
-                st_specBits_correctSpec[i] <= sb & mask;
-            endaction
-            endfunction
-            Vector#(StQSize, StQTag) stIdxVec = genWith(fromInteger);
-            joinActions(map(correctSpecSt, stIdxVec));
-
-            // clear spec bits for issueQ
-            issueLdQ.specUpdate.correctSpeculation(mask);
-        endmethod
-
-        method Action incorrectSpeculation(Bool killAll, SpecTag specTag);
-            // idx vec
-
-            // clear wrong path LQ entries & set wrong path load filter. NOTE
-            // that olderSt and olderStVerified fields are not affected by the
-            // kill. NOTE that if atCommit is true, then killAll should not
-            // kill this entry
-            Vector#(LdQSize, LdQTag) ldIdxVec = genWith(fromInteger);
-            function Bool isLdNeedKill(LdQTag i);
-                return (killAll ? !ld_atCommit_wrongSpec[i] :
-                        ld_specBits_wrongSpec[i][specTag] == 1);
-            endfunction
-            Vector#(LdQSize, Bool) ldNeedKill = map(isLdNeedKill, ldIdxVec);
-            function Action killLdQ(LdQTag i);
-            action
-                if(ldNeedKill[i]) begin
-                    ld_valid_wrongSpec[i] <= False;
-                    // set wrong path load resp filter
-                    if (ld_valid_wrongSpec[i] &&
-                        ld_executing_wrongSpec[i] &&
-                        !ld_done_wrongSpec[i]) begin
-                        ld_waitWPResp_wrongSpec[i] <= True;
-                        doAssert(ld_memFunc[i] == Ld,
-                                 "only load resp can be wrong path");
-                    end
-                    doAssert(!ld_atCommit_wrongSpec[i], "cannot be at commit");
-                end
-            endaction
-            endfunction
-            joinActions(map(killLdQ, ldIdxVec));
-
-            // clear wrong path SQ entries. NOTE that inst at commit should not
-            // be killed in case of kill all
-            Vector#(StQSize, StQTag) stIdxVec = genWith(fromInteger);
-            function Bool isStNeedKill(StQTag i);
-                return (killAll ? !st_atCommit_wrongSpec[i] :
-                                  st_specBits_wrongSpec[i][specTag] == 1);
-            endfunction
-            Vector#(StQSize, Bool) stNeedKill = map(isStNeedKill, stIdxVec);
-            function Action killStQ(StQTag i);
-            action
-                if(stNeedKill[i]) begin
-                    st_valid_wrongSpec[i] <= False;
-                    doAssert(!st_atCommit_wrongSpec[i], "cannot be at commit");
-                end
-            endaction
-            endfunction
-            joinActions(map(killStQ, stIdxVec));
-
-            // kill entries in issueQ
-            issueLdQ.specUpdate.incorrectSpeculation(killAll, specTag);
-
-            // change enqP: make valid entries always consecutive: new enqP is
-            // the oldest **VALID** entry that gets killed. If such entry does
-            // not exists, then enqP remains the same.
-            // LdQ enqP
-            function Bool isValidLdKilled(LdQTag i);
-                return ld_valid_wrongSpec[i] && ldNeedKill[i];
-            endfunction
-            Vector#(LdQSize, Bool) killedValidLds = map(isValidLdKilled,
-                                                        ldIdxVec);
-            LdQTag new_ld_enqP = ld_enqP;
-            if(findOldestLd(killedValidLds) matches tagged Valid .t) begin
-                new_ld_enqP = t;
-            end
-            ld_enqP <= new_ld_enqP;
-
-            // StQ enqP
-            function Bool isValidStKilled(StQTag i);
-                return st_valid_wrongSpec[i] && stNeedKill[i];
-            endfunction
-            Vector#(StQSize, Bool) killedValidSts = map(isValidStKilled,
-                                                        stIdxVec);
-            StQTag new_st_enqP = st_enqP;
-            if(findOldestSt(killedValidSts) matches tagged Valid .t) begin
-                new_st_enqP = t;
-            end
-            st_enqP <= new_st_enqP;
-
-            // change SQ verifyP: new verifyP is the oldest entry that is
-            // neither killed nor verified. If such entry does not exists, then
-            // verifyP should be the same as new enqP.
-            function Bool unkilledUnverified(StQTag i);
-                return st_valid_wrongSpec[i] && !stNeedKill[i] &&
-                       !st_verified_wrongSpec[i];
-            endfunction
-            Vector#(StQSize, Bool) unverifiedSts = map(unkilledUnverified,
-                                                       stIdxVec);
-            StQTag new_st_verifyP;
-            if(findOldestSt(unverifiedSts) matches tagged Valid .t) begin
-                new_st_verifyP = t;
-            end
-            else begin
-                new_st_verifyP = new_st_enqP;
-            end
-            st_verifyP_wrongSpec <= new_st_verifyP;
-
-            if(verbose) begin
-                $display("[LSQ - wrongSpec] ", fshow(killAll),
-                         "; ", fshow(specTag),
-                         "; ", fshow(new_ld_enqP),
-                         "; ", fshow(new_st_enqP),
-                         "; ", fshow(new_st_verifyP));
-            end
-
-            // make conflict with others
-            wrongSpec_hit_conflict.wset(?);
-            wrongSpec_enqIss_conflict.wset(?);
-            wrongSpec_enq_conflict.wset(?);
-            wrongSpec_update_conflict.wset(?);
-            wrongSpec_issue_conflict.wset(?);
-            wrongSpec_respLd_conflict.wset(?);
-            wrongSpec_deqLd_conflict.wset(?);
-            wrongSpec_deqSt_conflict.wset(?);
-            wrongSpec_verify_conflict.wset(?);
-            wrongSpec_cacheEvict_conflict.wset(?);
-            wrongSpec_wakeBySB_conflict.wset(?);
-            // more urgent than firstSt
-            wrongSpec_urgent_firstSt <= True;
-        endmethod
+        method correctSpeculation = correctSpecF.enq;
+        method incorrectSpeculation(killAll, specTag) =
+            incorrectSpecF.enq(IncorrectSpeculation{killAll: killAll, specTag: specTag});
     endinterface
 
     method Bool stqFull_ehrPort0;
-        return st_enqP == st_deqP && st_valid[st_enqP][0];
+        return st_enqP == st_deqP && st_valid[0][st_enqP];
     endmethod
 
     method Bool ldqFull_ehrPort0;
-        return ld_enqP == ld_deqP[0] && ld_valid[ld_enqP][0];
+        return ld_enqP == ld_deqP[0] && ld_valid[0][ld_enqP];
     endmethod
 
     method Bool noWrongPathLoads;
-        return all( \== (False) , readVReg(ld_waitWPResp_noWP) );
+        return all( \== (False) , ld_waitWPResp_noWP );
     endmethod
 endmodule
