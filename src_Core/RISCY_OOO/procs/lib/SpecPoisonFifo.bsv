@@ -103,7 +103,7 @@ module mkSpecPoisonFifo#(Bool lazyEnq)(
             incorrectSpecF.deq();
             // clear entries
             for(Integer i = 0 ; i < valueOf(size) ; i = i+1)
-                if(incSpec.kill_all || newSpecBits[i][incSpec.specTag] == 1)
+                if(incSpec.killAll || newSpecBits[i][incSpec.specTag] == 1)
                     newPoisened[i] = True;
         end
         specBits[0] <= newSpecBits;
@@ -137,7 +137,7 @@ module mkSpecPoisonFifo#(Bool lazyEnq)(
 
     interface SpeculationUpdate specUpdate;
         method correctSpeculation = correctSpecF.enq;
-        method incorrectSpeculation(kill_all, specTag) =
-            incorrectSpecF.enq(IncorrectSpeculation{kill_all: kill_all, specTag: specTag});
+        method incorrectSpeculation(killAll, specTag) =
+            incorrectSpecF.enq(IncorrectSpeculation{killAll: killAll, specTag: specTag});
     endinterface
 endmodule

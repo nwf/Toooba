@@ -133,7 +133,7 @@ module mkReservationStation#(Bool lazySched, Bool lazyEnq, Bool countValid)(
             incorrectSpecF.deq();
             // clear entries
             for (Integer i=0; i<valueOf(size); i=i+1)
-                if(incSpec.kill_all || newSpecBits[i][incSpec.specTag] == 1'b1)
+                if(incSpec.killAll || newSpecBits[i][incSpec.specTag] == 1'b1)
                     newValid[i] = False;
         end
         spec_bits[0] <= newSpecBits;
@@ -287,7 +287,7 @@ module mkReservationStation#(Bool lazySched, Bool lazyEnq, Bool countValid)(
 
     interface SpeculationUpdate specUpdate;
         method correctSpeculation = correctSpecF.enq;
-        method incorrectSpeculation(kill_all, specTag) =
-            incorrectSpecF.enq(IncorrectSpeculation{kill_all: kill_all, specTag: specTag});
+        method incorrectSpeculation(killAll, specTag) =
+            incorrectSpecF.enq(IncorrectSpeculation{killAll: killAll, specTag: specTag});
     endinterface
 endmodule

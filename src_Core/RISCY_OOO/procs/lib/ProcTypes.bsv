@@ -65,7 +65,7 @@ typedef `NUM_SPEC_TAGS NumSpecTags;
 typedef Bit#(TLog#(NumSpecTags)) SpecTag;
 typedef Bit#(NumSpecTags) SpecBits;
 typedef struct {
-    Bool kill_all;
+    Bool killAll;
     SpecTag specTag;
 } IncorrectSpeculation deriving(Bits, Eq, FShow);
 

@@ -182,12 +182,12 @@ module mkSpecFifo#(
             joinActions(map(correctSpec, idxVec));
         endmethod
 
-        method Action incorrectSpeculation(Bool kill_all, SpecTag specTag);
+        method Action incorrectSpeculation(Bool killAll, SpecTag specTag);
             // clear entries
             function Action incorrectSpec(Integer i);
             action
                 SpecBits sb = specBits[i][sched.sbWrongSpecPort];
-                if(kill_all || sb[specTag] == 1) begin
+                if(killAll || sb[specTag] == 1) begin
                     valid[i][sched.validWrongSpecPort] <= False; // ordered after deq
                 end
             endaction
@@ -253,7 +253,7 @@ module mkSpecFifoCF#(
             incorrectSpecF.deq();
             // clear entries
             for (Integer i=0; i<valueOf(size); i=i+1)
-                if(incSpec.kill_all || newSpecBits[i][incSpec.specTag] == 1'b1)
+                if(incSpec.killAll || newSpecBits[i][incSpec.specTag] == 1'b1)
                     newValid[i] = False;
         end
         specBits[0] <= newSpecBits;
@@ -310,8 +310,8 @@ module mkSpecFifoCF#(
 
     interface SpeculationUpdate specUpdate;
         method correctSpeculation = correctSpecF.enq;
-        method incorrectSpeculation(kill_all, specTag) =
-            incorrectSpecF.enq(IncorrectSpeculation{kill_all: kill_all, specTag: specTag});
+        method incorrectSpeculation(killAll, specTag) =
+            incorrectSpecF.enq(IncorrectSpeculation{killAll: killAll, specTag: specTag});
     endinterface
 endmodule
 
