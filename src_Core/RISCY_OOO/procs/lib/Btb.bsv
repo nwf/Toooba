@@ -63,7 +63,10 @@ typedef Bit#(TLog#(BtbEntries)) BtbIndex;
 `ifndef OPTIMIZE_BTB
 typedef Bit#(TSub#(TSub#(AddrSz, TLog#(BtbEntries)), PcLsbsIgnore)) BtbTag;
 `else
-typedef Bit#(8) BtbTag;
+typedef 8 TagSizeInternal;
+typedef TSub#(TSub#(AddrSz, TLog#(BtbEntries)), PcLsbsIgnore) TagSizeExternal;
+typedef Bit#(TagSizeInternal) BtbTagInternal;
+typedef Bit#(TagSizeExternal) BtbTagExternal;
 `endif
 
 typedef struct {
@@ -77,7 +80,11 @@ module mkBtb(NextAddrPred);
     // Read and Write ordering doesn't matter since this is a predictor
     // mkRegFileWCF is the RegFile version of mkConfigReg
     RegFile#(BtbIndex, CapMem) next_addrs <- mkRegFileWCF(0,fromInteger(valueOf(BtbEntries)-1));
+    `ifndef OPTIMIZE_BTB
     RegFile#(BtbIndex, BtbTag) tags <- mkRegFileWCF(0,fromInteger(valueOf(BtbEntries)-1));
+    `else
+    RegFile#(BtbIndex, BtbTagInternal) tags <- mkRegFileWCF(0,fromInteger(valueOf(BtbEntries)-1));
+    `endif
     Vector#(BtbEntries, Reg#(Bool)) valid <- replicateM(mkConfigReg(False));
 
     RWire#(BtbUpdate) updateEn <- mkRWire;
@@ -89,7 +96,22 @@ module mkBtb(NextAddrPred);
 `endif
 
     function BtbIndex getIndex(CapMem pc) = truncate(getAddr(pc) >> valueof(PcLsbsIgnore));
-    function BtbTag getTag(CapMem pc) = truncateLSB(getAddr(pc));
+    function BtbTagExternal getExternalTag(CapMem pc) = truncateLSB(getAddr(pc));
+    function BtbTagInternal getTag(CapMem pc);
+        let extTag = getExternalTag(pc);
+        Bit#(TagSizeInternal) tag = extTag[7:0] ^ extTag[15:8] ^ extTag[23:16] ^ extTag[31:24]
+                                    ^ extTag[39:32] ^ extTag[47:40] ^ extend(extTag[54:48]);
+        /*for(Integer i = 8; i < valueOf(TagSizeExternal); i = i + 8) begin
+            if ((valueOf(TagSizeExternal) - i) < valueOf(TagSizeInternal)) begin
+                Bit#(TagSizeInternal) val = extend(extTag[valueOf(TagSizeExternal):i]);
+                tag = tag ^ val;
+            end else begin
+                Bit#(TagSizeInternal) val = extTag[i+7:i];
+                tag = tag ^ val;
+            end
+        end*/
+        return tag;
+    endfunction
 
     // no flush, accept update
     (* fire_when_enabled, no_implicit_conditions *)
@@ -120,7 +142,11 @@ module mkBtb(NextAddrPred);
 
     method Maybe#(CapMem) predPc(CapMem pc);
         BtbIndex index = getIndex(pc);
+        `ifndef OPTIMIZE_BTB
         BtbTag tag = getTag(pc);
+        `else
+        BtbTagInternal tag = getTag(pc);
+        `endif
         if(valid[index] && tag == tags.sub(index))
             return tagged Valid next_addrs.sub(index);
         else
