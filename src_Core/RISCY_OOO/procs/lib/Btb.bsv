@@ -43,6 +43,8 @@ import Vector::*;
 import CHERICC_Fat::*;
 import CHERICap::*;
 
+`define OPTIMIZE_BTB
+
 export NextAddrPred(..);
 export mkBtb;
 
@@ -71,7 +73,9 @@ module mkBtb(NextAddrPred);
     // Read and Write ordering doesn't matter since this is a predictor
     // mkRegFileWCF is the RegFile version of mkConfigReg
     RegFile#(BtbIndex, CapMem) next_addrs <- mkRegFileWCF(0,fromInteger(valueOf(BtbEntries)-1));
+    `ifndef OPTIMIZE_BTB
     RegFile#(BtbIndex, BtbTag) tags <- mkRegFileWCF(0,fromInteger(valueOf(BtbEntries)-1));
+    `endif
     Vector#(BtbEntries, Reg#(Bool)) valid <- replicateM(mkConfigReg(False));
 
     RWire#(BtbUpdate) updateEn <- mkRWire;
@@ -93,12 +97,20 @@ module mkBtb(NextAddrPred);
         let taken = upd.taken;
 
         let index = getIndex(pc);
+        `ifndef OPTIMIZE_BTB
         let tag = getTag(pc);
+        `endif
         if(taken) begin
             valid[index] <= True;
+            `ifndef OPTIMIZE_BTB
             tags.upd(index, tag);
+            `endif
             next_addrs.upd(index, nextPc);
+        `ifndef OPTIMIZE_BTB
         end else if( tags.sub(index) == tag ) begin
+        `else
+        end else begin
+        `endif
             // current instruction has target in btb, so clear it
             valid[index] <= False;
         end
@@ -114,8 +126,12 @@ module mkBtb(NextAddrPred);
 
     method Maybe#(CapMem) predPc(CapMem pc);
         BtbIndex index = getIndex(pc);
+        `ifndef OPTIMIZE_BTB
         BtbTag tag = getTag(pc);
         if(valid[index] && tag == tags.sub(index))
+        `else
+        if(valid[index])
+        `endif
             return tagged Valid next_addrs.sub(index);
         else
             return tagged Invalid;
