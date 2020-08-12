@@ -110,7 +110,7 @@ module mkBtb(NextAddrPred);
         Bit#(TagSizeInternal) tag = extTag[7:0];
         for(Integer i = 8; i < valueOf(TagSizeExternal); i = i + 8) begin
             if ((valueOf(TagSizeExternal) - i) >= valueOf(TagSizeInternal)) begin
-                tag = tag ^ extTag[i+valueOf(TagSizeInternal):i];
+                tag = tag ^ extTag[i+valueOf(TagSizeInternal)-1:i];
             end
         end
         tag = tag ^ extend(extTag[54:48]);
