@@ -95,21 +95,26 @@ module mkBtb(NextAddrPred);
     Bool flushDone = True;
 `endif
 
+    /*function Bit#(TagSizeInternal) getTagBits(Integer i, BtbTagExternal extTag);
+        return ((valueOf(TagSizeExternal) - i) < valueOf(TagSizeInternal)) ? extend(extTag[valueOf(TagSizeExternal):i]) : extTag[i+valueOf(TagSizeInternal):i];
+    endfunction*/
     function BtbIndex getIndex(CapMem pc) = truncate(getAddr(pc) >> valueof(PcLsbsIgnore));
     function BtbTagExternal getExternalTag(CapMem pc) = truncateLSB(getAddr(pc));
     function BtbTagInternal getTag(CapMem pc);
         let extTag = getExternalTag(pc);
-        Bit#(TagSizeInternal) tag = extTag[7:0] ^ extTag[15:8] ^ extTag[23:16] ^ extTag[31:24]
-                                    ^ extTag[39:32] ^ extTag[47:40] ^ extend(extTag[54:48]);
+        /*Bit#(TagSizeInternal) tag = extTag[7:0] ^ extTag[15:8] ^ extTag[23:16] ^ extTag[31:24]
+                                    ^ extTag[39:32] ^ extTag[47:40] ^ extend(extTag[54:48]);*/
         /*for(Integer i = 8; i < valueOf(TagSizeExternal); i = i + 8) begin
-            if ((valueOf(TagSizeExternal) - i) < valueOf(TagSizeInternal)) begin
-                Bit#(TagSizeInternal) val = extend(extTag[valueOf(TagSizeExternal):i]);
-                tag = tag ^ val;
-            end else begin
-                Bit#(TagSizeInternal) val = extTag[i+7:i];
-                tag = tag ^ val;
-            end
+            tag = tag ^ getTagBits(i, extTag);
         end*/
+        Bit#(TagSizeInternal) tag = extTag[7:0];
+        for(Integer i = 8; i < valueOf(TagSizeExternal); i = i + 8) begin
+            if ((valueOf(TagSizeExternal) - i) >= valueOf(TagSizeInternal)) begin
+                tag = tag ^ extTag[i+valueOf(TagSizeInternal):i];
+            end
+        end
+        tag = tag ^ extend(extTag[54:48]);
+
         return tag;
     endfunction
 
