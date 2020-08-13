@@ -95,28 +95,18 @@ module mkBtb(NextAddrPred);
     Bool flushDone = True;
 `endif
 
-    /*function Bit#(TagSizeInternal) getTagBits(Integer i, BtbTagExternal extTag);
-        return ((valueOf(TagSizeExternal) - i) < valueOf(TagSizeInternal)) ? extend(extTag[valueOf(TagSizeExternal):i]) : extTag[i+valueOf(TagSizeInternal):i];
-    endfunction*/
-    function BtbIndex getIndex(CapMem pc) = truncate(getAddr(pc) >> valueof(PcLsbsIgnore));
-    function BtbTagExternal getExternalTag(CapMem pc) = truncateLSB(getAddr(pc));
-    function BtbTagInternal getTag(CapMem pc);
-        let extTag = getExternalTag(pc);
-        /*Bit#(TagSizeInternal) tag = extTag[7:0] ^ extTag[15:8] ^ extTag[23:16] ^ extTag[31:24]
-                                    ^ extTag[39:32] ^ extTag[47:40] ^ extend(extTag[54:48]);*/
-        /*for(Integer i = 8; i < valueOf(TagSizeExternal); i = i + 8) begin
-            tag = tag ^ getTagBits(i, extTag);
-        end*/
-        Bit#(TagSizeInternal) tag = extTag[7:0];
-        for(Integer i = 8; i < valueOf(TagSizeExternal); i = i + 8) begin
-            if ((valueOf(TagSizeExternal) - i) >= valueOf(TagSizeInternal)) begin
-                tag = tag ^ extTag[i+valueOf(TagSizeInternal)-1:i];
-            end
-        end
-        tag = tag ^ extend(extTag[54:48]);
 
+    function BtbIndex getIndex(CapMem pc) = truncate(getAddr(pc) >> valueof(PcLsbsIgnore));
+    `ifndef OPTIMIZE_BTB
+    function BtbTag getTag(CapMem pc) = truncateLSB(getAddr(pc));
+    `else
+    function BtbTagInternal getTag(CapMem pc);
+        Bit#(CapW) pc_bits = truncate(pc);
+        Vector#(TDiv#(CapW, TagSizeInternal), BtbTagInternal) tag_chunks = unpack(pc_bits);
+        BtbTagInternal tag = fold(\^ , tag_chunks);
         return tag;
     endfunction
+    `endif
 
     // no flush, accept update
     (* fire_when_enabled, no_implicit_conditions *)
