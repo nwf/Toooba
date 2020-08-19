@@ -159,6 +159,7 @@ function InstrFromFetch3 fetch3_2_instC(Fetch3ToDecode in, Instruction inst, Bit
 function InstrFromFetch3 fetch3s_2_inst(Fetch3ToDecode inHi, Fetch3ToDecode inLo);
    Instruction inst = {inHi.inst_frag, inLo.inst_frag};
    InstrFromFetch3 ret = fetch3_2_instC(inHi, inst, inst);
+   if (isValid(inLo.cause)) ret.cause = inLo.cause;
    ret.inst_kind = Inst_32b;
    ret.pc = inLo.pc; // The PC comes from the 1st fragment.
    ret.mispred_first_half = isValid(inLo.ppc); // If we predicted a jump on the first half of the 32-bit instruction, we have erred.
