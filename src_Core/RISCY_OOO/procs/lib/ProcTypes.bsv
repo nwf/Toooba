@@ -564,8 +564,8 @@ function PredState setPcUnsafe(PredState ps, Addr pc);
     ps.pc = setAddrUnsafe(ps.pc, pc);
     return ps;
 endfunction
-function PredState addPc(PredState ps, Bit#(12) inc);
-    ps.pc = addAddr(ps.pc, inc);
+function PredState addPc(PredState ps, Bit#(8) inc);
+    ps.pc = addAddrUnsafe(ps.pc, inc);
     return ps;
 endfunction
 
@@ -1045,5 +1045,3 @@ function Fmt showInst(Instruction inst);
 
   return ret;
 endfunction
-
-function x addAddr(x cap, Bit#(12) inc) provisos (Add#(f, 12, c), CHERICap::CHERICap#(x, a, b, c, d, e)) = setAddrUnsafe(cap, getAddr(cap) + signExtend(inc));

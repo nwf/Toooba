@@ -346,7 +346,7 @@ endfunction
 
 (* noinline *)
 function CapPipe brAddrCalc(CapPipe pc, CapPipe val, IType iType, Data imm, Bool taken, Bit #(32) orig_inst, Bool cap);
-    CapPipe pcPlusN = addAddr(pc, ((orig_inst [1:0] == 2'b11) ? 4 : 2));
+    CapPipe pcPlusN = addAddrUnsafe(pc, ((orig_inst [1:0] == 2'b11) ? 4 : 2));
     if (!cap) val = setOffset(pc, getAddr(val)).value;
     CapPipe branchTarget = incOffset(pc, imm).value;
     CapPipe jumpTarget = incOffset(val, imm).value;
@@ -395,7 +395,7 @@ function ExecResult basicExec(DecodedInst dInst, CapPipe rVal1, CapPipe rVal2, C
     Tuple2#(CapPipe,Bool) cap_alu_result_with_exact = capALU(rVal1, aluVal2, dInst.capFunc);
     CapPipe cap_alu_result = tpl_1(cap_alu_result_with_exact);
     Bool cap_exact = tpl_2(cap_alu_result_with_exact);
-    CapPipe link_pcc = addAddr(pcc, ((orig_inst [1:0] == 2'b11) ? 4 : 2));
+    CapPipe link_pcc = addAddrUnsafe(pcc, ((orig_inst [1:0] == 2'b11) ? 4 : 2));
 
     // Default branch function is not taken
     BrFunc br_f = dInst.execFunc matches tagged Br .br_f ? br_f : NT;
@@ -559,7 +559,7 @@ function Maybe#(Trap) checkForException(
     end
 
     // Check that the end of the instruction is in bounds of PCC.
-    CapPipe pcc_end = cast(addAddr(pcc, (fourByteInst?4:2)));
+    CapPipe pcc_end = cast(addAddrUnsafe(pcc, (fourByteInst?4:2)));
     CapPipe pcc_start = cast(pcc);
     Maybe#(CSR_XCapCause) capException = Invalid;
     if (!isValidCap(pcc_start)) capException = Valid(CSR_XCapCause{cheri_exc_reg: {1'b1,pack(scrAddrPCC)}, cheri_exc_code: cheriExcTagViolation});

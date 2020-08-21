@@ -319,13 +319,13 @@ module mkAluExePipeline#(AluExeInput inIfc)(AluExePipeline);
         if(isValid(x.dInst.csr)) begin
             doAssert(x.dInst.iType == Csr, "Only Csr inst needs to update csrData in ROB");
             doAssert(!exec_result.controlFlow.mispredict, "Csr inst cannot mispredict");
-            doAssert(cast(exec_result.controlFlow.nextPc) == x.pps.pc && x.pps.pc == addAddr(x.ps.pc, 4), "Csr inst ppc = pc+4");
+            doAssert(cast(exec_result.controlFlow.nextPc) == x.pps.pc && x.pps.pc == addAddrUnsafe(x.ps.pc, 4), "Csr inst ppc = pc+4");
         end
         // when inst needs to store scrData in ROB, it must have iType = Scr, cannot mispredict
         if(isValid(x.dInst.scr)) begin
             // doAssert(x.dInst.iType == Scr, "Only Scr inst needs to update scrData in ROB"); // Removed because normal instructions can read SCRs
             doAssert(!exec_result.controlFlow.mispredict, "Scr inst cannot mispredict");
-            doAssert(cast(exec_result.controlFlow.nextPc) == x.pps.pc && x.pps.pc == addAddr(x.ps.pc, 4), "Scr inst ppc = pc+4");
+            doAssert(cast(exec_result.controlFlow.nextPc) == x.pps.pc && x.pps.pc == addAddrUnsafe(x.ps.pc, 4), "Scr inst ppc = pc+4");
         end
 
         // send bypass
