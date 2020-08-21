@@ -564,8 +564,8 @@ function PredState setPcUnsafe(PredState ps, Addr pc);
     ps.pc = setAddrUnsafe(ps.pc, pc);
     return ps;
 endfunction
-function PredState addPc(PredState ps, Bit#(8) inc);
-    ps.pc = addAddrUnsafe(ps.pc, inc);
+function PredState addPc(PredState ps, Bit#(4) inc);
+    ps.pc = addAddrUnsafe(ps.pc, signExtend(inc));
     return ps;
 endfunction
 
