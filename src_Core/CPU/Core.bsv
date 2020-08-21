@@ -380,21 +380,21 @@ module mkCore#(CoreId coreId)(Core);
                 method rf_rd2 = cast(rf.read[aluRdPort(i)].rd2);
                 method csrf_rd = csrf.rd;
                 method scaprf_rd = csrf.scrRd;
-                method rob_getPC = rob.getOrigPC[i].get;
-                method rob_getPredPC = rob.getOrigPredPC[i].get;
+                method rob_getPS = rob.getOrigPS[i].get;
+                method rob_getPredPS = rob.getOrigPredPS[i].get;
                 method rob_getOrig_Inst = rob.getOrig_Inst[i].get;
                 method rob_setExecuted = rob.setExecuted_doFinishAlu[i].set;
                 method fetch_train_predictors = toPut(trainBPQ[i]).put;
                 method setRegReadyAggr = writeAggr(aluWrAggrPort(i));
                 interface sendBypass = sendBypassIfc;
                 method writeRegFile = writeCons(aluWrConsPort(i));
-                method Action redirect(CapMem new_pc, SpecTag spec_tag, InstTag inst_tag);
+                method Action redirect(PredState new_ps, SpecTag spec_tag, InstTag inst_tag);
                     if (verbose) begin
-                        $display("[ALU redirect - %d] ", i, fshow(new_pc),
+                        $display("[ALU redirect - %d] ", i, fshow(new_ps),
                                  "; ", fshow(spec_tag), "; ", fshow(inst_tag));
                     end
                     epochManager.incrementEpoch;
-                    fetchStage.redirect(new_pc
+                    fetchStage.redirect(new_ps
 `ifdef RVFI_DII
                     , inst_tag.dii_next_pid
 `endif
@@ -409,7 +409,7 @@ module mkCore#(CoreId coreId)(Core);
             rule doFetchTrainBP;
                 let train <- toGet(trainBPQ[i]).get;
                 fetchStage.train_predictors(
-                    train.pc, train.nextPc, train.iType, train.taken,
+                    train.ps, train.nextPs, train.iType, train.taken,
                     train.dpTrain, train.mispred, train.isCompressed
                 );
             endrule
@@ -441,7 +441,6 @@ module mkCore#(CoreId coreId)(Core);
             method rf_rd2 = cast(rf.read[memRdPort].rd2);
             method csrf_rd = csrf.rd;
             method scaprf_rd = csrf.scrRd;
-            method rob_getPC = rob.getOrigPC[valueof(AluExeNum)].get; // last getPC port
             method rob_setExecuted_doFinishMem = rob.setExecuted_doFinishMem;
 `ifdef INCLUDE_TANDEM_VERIF
             method rob_setExecuted_doFinishMem_RegData = rob.setExecuted_doFinishMem_RegData;
@@ -639,7 +638,7 @@ module mkCore#(CoreId coreId)(Core);
         method setReconcileI = reconcile_i._write(True);
         method setReconcileD = reconcile_d._write(True);
         method killAll = coreFix.killAll;
-        method redirectPc = fetchStage.redirect;
+        method redirectPs = fetchStage.redirect;
         method setFetchWaitRedirect = fetchStage.setWaitRedirect;
 `ifdef INCLUDE_GDB_CONTROL
         method setFetchWaitFlush    = fetchStage.setWaitFlush;
@@ -1360,7 +1359,7 @@ module mkCore#(CoreId coreId)(Core);
 `ifdef INCLUDE_GDB_CONTROL
             if (!running) renameStage.debug_halt_req;
 `endif
-            fetchStage.start(setAddrUnsafe(almightyCap, startpc)
+            fetchStage.start(PredState{pc: setAddrUnsafe(almightyCap, startpc)}
 `ifdef RVFI_DII
                 , 0
 `endif

@@ -179,7 +179,6 @@ interface MemExeInput;
     // Special Capability Register file.
     method CapReg scaprf_rd(SCR csr);
     // ROB
-    method CapMem rob_getPC(InstTag t);
     method Action rob_setExecuted_doFinishMem(InstTag t,
                                               Addr vaddr,
 `ifdef INCLUDE_TANDEM_VERIF

@@ -114,7 +114,7 @@ interface CommitInput;
     method Action setReconcileD; // recocile D$
     // redirect
     method Action killAll;
-    method Action redirectPc(CapMem trap_pc
+    method Action redirectPs(PredState trap_ps
 `ifdef RVFI_DII
         , Dii_Parcel_Id dii_pid
 `endif
@@ -170,7 +170,7 @@ endinterface
 // we apply actions the end of commit rule
 // use struct to record actions to be done
 typedef struct {
-    CapMem pc;
+    PredState ps;
     Addr addr;
     Trap trap;
     Bit #(32) orig_inst;
@@ -205,7 +205,7 @@ function Maybe#(RVFI_DII_Execution#(DataSz,DataSz)) genRVFI(ToReorderBuffer rot,
                 rd = regNum;
             end
         end
-        case (rot.ppc_vaddr_csrData) matches
+        case (rot.pps_vaddr_csrData) matches
             tagged VAddr .vaddr: begin
                 addr = vaddr;
                 case (rot.lsqTag) matches
@@ -216,14 +216,14 @@ function Maybe#(RVFI_DII_Execution#(DataSz,DataSz)) genRVFI(ToReorderBuffer rot,
                     end
                 endcase
             end
-            tagged PPC .ppc: begin
-                CapPipe cp = cast(ppc);
+            tagged PPS .pps: begin
+                CapPipe cp = cast(pps.pc);
                 next_pc = getOffset(cp);
             end
             tagged CSRData .csrdata: if (rot.iType == Csr) data = getAddr(csrdata);
         endcase
     end
-    CapPipe pipePc = cast(rot.pc);
+    CapPipe pipePc = cast(rot.ps.pc);
     return tagged Valid RVFI_DII_Execution {
         rvfi_order: zeroExtend(pack(traceCnt)),
         rvfi_trap: isValid(rot.trap),
@@ -647,12 +647,12 @@ module mkCommitStage#(CommitInput inIfc)(CommitStage);
 
         // record trap info
         Addr vaddr = 0;
-        if(x.ppc_vaddr_csrData matches tagged VAddr .va) begin
+        if(x.pps_vaddr_csrData matches tagged VAddr .va) begin
             vaddr = va;
         end
         let commitTrap_val = Valid (CommitTrap {
             trap: trap,
-            pc: x.pc,
+            ps: x.ps,
             addr: vaddr,
             orig_inst: x.orig_inst
 `ifdef RVFI_DII
@@ -665,7 +665,7 @@ module mkCommitStage#(CommitInput inIfc)(CommitStage);
 `endif
 
         if (verbosity >= 1) begin
-           $display ("instret:%0d  PC:0x%0h  instr:0x%08h", rg_serial_num, x.pc, x.orig_inst,
+           $display ("instret:%0d  PC:0x%0h  instr:0x%08h", rg_serial_num, x.ps.pc, x.orig_inst,
                      "  iType:", fshow (x.iType), "    [doCommitTrap]");
         end
         if (verbose) begin
@@ -764,16 +764,16 @@ module mkCommitStage#(CommitInput inIfc)(CommitStage);
 
        if (! debugger_halt) begin
           // trap handling & redirect
-          let trap_updates <- csrf.trap(trap.trap, cast(trap.pc), trap.addr, trap.orig_inst);
-          CapPipe new_pc = cast(trap_updates.new_pcc);
-          inIfc.redirectPc(cast(new_pc)
+          let trap_updates <- csrf.trap(trap.trap, cast(trap.ps.pc), trap.addr, trap.orig_inst);
+          PredState new_ps = PredState{pc: cast(trap_updates.new_pcc)};
+          inIfc.redirectPs(new_ps
 `ifdef RVFI_DII
                            , trap.x.dii_pid + (is_16b_inst(trap.orig_inst) ? 1 : 2)
 `endif
           );
 `ifdef RVFI
           Rvfi_Traces rvfis = replicate(tagged Invalid);
-          rvfis[0] = genRVFI(trap.x, traceCnt, getTSB(), getAddr(new_pc));
+          rvfis[0] = genRVFI(trap.x, traceCnt, getTSB(), getAddr(new_ps.pc));
           rvfiQ.enq(rvfis);
           traceCnt <= traceCnt + 1;
 `endif
@@ -816,7 +816,7 @@ module mkCommitStage#(CommitInput inIfc)(CommitStage);
 
         // kill everything, redirect, and increment epoch
         inIfc.killAll;
-        inIfc.redirectPc(x.pc
+        inIfc.redirectPs(x.ps
 `ifdef RVFI_DII
             , x.dii_pid
 `endif
@@ -859,7 +859,7 @@ module mkCommitStage#(CommitInput inIfc)(CommitStage);
 
         if(verbose) $display("[doCommitSystemInst] ", fshow(x));
         if (verbosity >= 1) begin
-           $display("instret:%0d  PC:0x%0h  instr:0x%08h", rg_serial_num, x.pc, x.orig_inst,
+           $display("instret:%0d  PC:0x%0h  instr:0x%08h", rg_serial_num, x.ps.pc, x.orig_inst,
                     "   iType:", fshow (x.iType), "    [doCommitSystemInst]");
         end
 
@@ -878,7 +878,7 @@ module mkCommitStage#(CommitInput inIfc)(CommitStage);
             // write CSR
             let csr_idx = validValue(x.csr);
             Data csr_data = ?;
-            if(x.ppc_vaddr_csrData matches tagged CSRData .d) begin
+            if(x.pps_vaddr_csrData matches tagged CSRData .d) begin
                 csr_data = getAddr(d);
             end
             else begin
@@ -907,7 +907,7 @@ module mkCommitStage#(CommitInput inIfc)(CommitStage);
             // write CSR
             let scr_idx = validValue(x.scr);
             CapMem scr_data = ?;
-            if(x.ppc_vaddr_csrData matches tagged CSRData .d) begin
+            if(x.pps_vaddr_csrData matches tagged CSRData .d) begin
                 scr_data = d;
             end
             else begin
@@ -917,8 +917,8 @@ module mkCommitStage#(CommitInput inIfc)(CommitStage);
         end
 
         // redirect (Sret and Mret redirect pc is got from CSRF)
-        CapMem next_pc = x.ppc_vaddr_csrData matches tagged PPC .ppc ? ppc : addPc(x.pc, 4);
-        doAssert(getAddr(next_pc) == getAddr(x.pc) + 4, "ppc must be pc + 4");
+        CapMem next_pc = x.pps_vaddr_csrData matches tagged PPS .pps ? pps.pc : addPc(x.ps, 4).pc;
+        doAssert(getAddr(next_pc) == getPc(x.ps) + 4, "ppc must be pc + 4");
 `ifdef INCLUDE_TANDEM_VERIF
         Maybe #(RET_Updates) m_ret_updates = no_ret_updates;
 `endif
@@ -936,7 +936,7 @@ module mkCommitStage#(CommitInput inIfc)(CommitStage);
            m_ret_updates = tagged Valid ret_updates;
 `endif
         end
-        inIfc.redirectPc(next_pc
+        inIfc.redirectPs(PredState{pc: next_pc}
 `ifdef RVFI_DII
             , x.dii_pid + (is_16b_inst(x.orig_inst) ? 1 : 2)
 `endif
@@ -944,7 +944,7 @@ module mkCommitStage#(CommitInput inIfc)(CommitStage);
 
 `ifdef RVFI
         Rvfi_Traces rvfis = replicate(tagged Invalid);
-        x.ppc_vaddr_csrData = tagged PPC next_pc;
+        x.pps_vaddr_csrData = tagged PPS PredState{pc: next_pc};
         CapPipe cp = cast(next_pc);
         rvfis[0] = genRVFI(x, traceCnt, getTSB(), getOffset(cp));
         rvfiQ.enq(rvfis);
@@ -1103,13 +1103,13 @@ module mkCommitStage#(CommitInput inIfc)(CommitStage);
                 else begin
                     if (verbose) $display("%t : [doCommitNormalInst - %d] ", $time(), i, fshow(inst_tag), " ; ", fshow(x));
 `ifdef RVFI
-                    CapPipe pipePc = cast(x.pc);
+                    CapPipe pipePc = cast(x.ps.pc);
                     rvfis[i] = genRVFI(x, traceCnt + zeroExtend(whichTrace), getTSB(), getOffset(pipePc) + (is_16b_inst(x.orig_inst) ? 2:4));
                     whichTrace = whichTrace + 1;
 `endif
 
                     if (verbosity >= 1) begin
-                       $display("instret:%0d  PC:0x%0h  instr:0x%08h", rg_serial_num + instret, x.pc, x.orig_inst,
+                       $display("instret:%0d  PC:0x%0h  instr:0x%08h", rg_serial_num + instret, x.ps.pc, x.orig_inst,
                                 "   iType:", fshow (x.iType), "    [doCommitNormalInst [%0d]]", i);
                     end
 

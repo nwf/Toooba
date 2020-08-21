@@ -47,8 +47,8 @@ export NextAddrPred(..);
 export mkBtb;
 
 interface NextAddrPred;
-    method Maybe#(CapMem) predPc(CapMem pc);
-    method Action update(CapMem pc, CapMem brTarget, Bool taken);
+    method Maybe#(PredState) predPc(PredState ps);
+    method Action update(PredState ps, PredState brTarget, Bool taken);
     // security
     method Action flush;
     method Bool flush_done;
@@ -61,8 +61,8 @@ typedef Bit#(TLog#(BtbEntries)) BtbIndex;
 typedef Bit#(TSub#(TSub#(AddrSz, TLog#(BtbEntries)), PcLsbsIgnore)) BtbTag;
 
 typedef struct {
-    CapMem pc;
-    CapMem nextPc;
+    PredState ps;
+    PredState nextPs;
     Bool taken;
 } BtbUpdate deriving(Bits, Eq, FShow);
 
@@ -70,7 +70,7 @@ typedef struct {
 module mkBtb(NextAddrPred);
     // Read and Write ordering doesn't matter since this is a predictor
     // mkRegFileWCF is the RegFile version of mkConfigReg
-    RegFile#(BtbIndex, CapMem) next_addrs <- mkRegFileWCF(0,fromInteger(valueOf(BtbEntries)-1));
+    RegFile#(BtbIndex, PredState) next_addrs <- mkRegFileWCF(0,fromInteger(valueOf(BtbEntries)-1));
     RegFile#(BtbIndex, BtbTag) tags <- mkRegFileWCF(0,fromInteger(valueOf(BtbEntries)-1));
     Vector#(BtbEntries, Reg#(Bool)) valid <- replicateM(mkConfigReg(False));
 
@@ -82,22 +82,22 @@ module mkBtb(NextAddrPred);
     Bool flushDone = True;
 `endif
 
-    function BtbIndex getIndex(CapMem pc) = truncate(getAddr(pc) >> valueof(PcLsbsIgnore));
-    function BtbTag getTag(CapMem pc) = truncateLSB(getAddr(pc));
+    function BtbIndex getIndex(PredState ps) = truncate(getPc(ps) >> valueof(PcLsbsIgnore));
+    function BtbTag getTag(PredState ps) = truncateLSB(getPc(ps));
 
     // no flush, accept update
     (* fire_when_enabled, no_implicit_conditions *)
     rule canonUpdate(flushDone &&& updateEn.wget matches tagged Valid .upd);
-        let pc = upd.pc;
-        let nextPc = upd.nextPc;
+        let ps = upd.ps;
+        let nextPs = upd.nextPs;
         let taken = upd.taken;
 
-        let index = getIndex(pc);
-        let tag = getTag(pc);
+        let index = getIndex(ps);
+        let tag = getTag(ps);
         if(taken) begin
             valid[index] <= True;
             tags.upd(index, tag);
-            next_addrs.upd(index, nextPc);
+            next_addrs.upd(index, nextPs);
         end else if( tags.sub(index) == tag ) begin
             // current instruction has target in btb, so clear it
             valid[index] <= False;
@@ -112,17 +112,17 @@ module mkBtb(NextAddrPred);
     endrule
 `endif
 
-    method Maybe#(CapMem) predPc(CapMem pc);
-        BtbIndex index = getIndex(pc);
-        BtbTag tag = getTag(pc);
+    method Maybe#(PredState) predPc(PredState ps);
+        BtbIndex index = getIndex(ps);
+        BtbTag tag = getTag(ps);
         if(valid[index] && tag == tags.sub(index))
             return tagged Valid next_addrs.sub(index);
         else
             return tagged Invalid;
     endmethod
 
-    method Action update(CapMem pc, CapMem nextPc, Bool taken);
-        updateEn.wset(BtbUpdate {pc: pc, nextPc: nextPc, taken: taken});
+    method Action update(PredState ps, PredState nextPs, Bool taken);
+        updateEn.wset(BtbUpdate {ps: ps, nextPs: nextPs, taken: taken});
     endmethod
 
 `ifdef SECURITY

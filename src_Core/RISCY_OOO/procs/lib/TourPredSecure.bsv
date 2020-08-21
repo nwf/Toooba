@@ -75,7 +75,7 @@ typedef TExp#(LgGlobalVecSz) GlobalVecSz;
 typedef Bit#(GlobalVecSz) GlobalVecSelect;
 
 typedef struct {
-    CapMem pc;
+    PredState ps;
     Bool taken;
     TourTrainInfo train;
     Bool mispred;
@@ -105,8 +105,8 @@ module mkTourPredSecure(DirPredictor#(TourTrainInfo));
     Reg#(Bool) flushDone <- mkReg(True);
     Reg#(TabIndex) flushIndex <- mkReg(0);
 
-    function Tuple2#(TabIndex, LocalHistVecSelect) getPCIndex(CapMem pc);
-        PCIndex pcIdx = truncate(getAddr(pc) >> 2);
+    function Tuple2#(TabIndex, LocalHistVecSelect) getPCIndex(PredState ps);
+        PCIndex pcIdx = truncate(getPc(ps) >> 2);
         TabIndex tabIdx = truncateLSB(pcIdx);
         LocalHistVecSelect sel = truncate(pcIdx);
         return tuple2(tabIdx, sel);
@@ -144,9 +144,9 @@ module mkTourPredSecure(DirPredictor#(TourTrainInfo));
     Vector#(SupSize, DirPred#(TourTrainInfo)) predIfc;
     for(Integer i = 0; i < valueof(SupSize); i = i+1) begin
         predIfc[i] = (interface DirPred;
-            method ActionValue#(DirPredResult#(TourTrainInfo)) pred(CapMem pc);
+            method ActionValue#(DirPredResult#(TourTrainInfo)) pred(PredState ps);
                 // get local history
-                let {localHistTabIdx, localHistVecSel} = getPCIndex(pc);
+                let {localHistTabIdx, localHistVecSel} = getPCIndex(ps);
                 Vector#(LocalHistVecSz, TourLocalHist) localHistVec = localHistTab.sub(localHistTabIdx);
                 TourLocalHist localHist = localHistVec[localHistVecSel];
                 // get local prediction
@@ -199,7 +199,7 @@ module mkTourPredSecure(DirPredictor#(TourTrainInfo));
     // no flush, accept update
     (* fire_when_enabled, no_implicit_conditions *)
     rule canonUpdate(flushDone &&& updateEn.wget matches tagged Valid .upd);
-        let pc = upd.pc;
+        let ps = upd.ps;
         let taken = upd.taken;
         let train = upd.train;
         let mispred = upd.mispred;
@@ -211,7 +211,7 @@ module mkTourPredSecure(DirPredictor#(TourTrainInfo));
         end
 
         // update local history (assume only 1 branch for an PC in flight)
-        let {localHistTabIdx, localHistVecSel} = getPCIndex(pc);
+        let {localHistTabIdx, localHistVecSel} = getPCIndex(ps);
         Vector#(LocalHistVecSz, TourLocalHist) localHistVec = localHistTab.sub(localHistTabIdx);
         localHistVec[localHistVecSel] = truncateLSB({pack(taken), train.localHist});
         localHistTab.upd(localHistTabIdx, localHistVec);
@@ -255,8 +255,8 @@ module mkTourPredSecure(DirPredictor#(TourTrainInfo));
 
     interface pred = predIfc;
 
-    method Action update(CapMem pc, Bool taken, TourTrainInfo train, Bool mispred);
-        updateEn.wset(TourUpdate {pc: pc, taken: taken, train: train, mispred: mispred});
+    method Action update(PredState ps, Bool taken, TourTrainInfo train, Bool mispred);
+        updateEn.wset(TourUpdate {ps: ps, taken: taken, train: train, mispred: mispred});
     endmethod
 
     method Action flush if(flushDone);

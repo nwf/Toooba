@@ -85,8 +85,8 @@ typedef struct {
     // src reg vals & pc & ppc
     CapPipe rVal1;
     CapPipe rVal2;
-    CapMem pc;
-    CapMem ppc;
+    PredState ps;
+    PredState pps;
     Bit #(32) orig_inst;
     // specualtion
     Maybe#(SpecTag) spec_tag;
@@ -101,7 +101,7 @@ typedef struct {
     Bool isCompressed;
     // result
     CapPipe data; // alu compute result
-    PPCVAddrCSRData csrData; // data to write CSR file, or predicted next PC if not. (For reorder buffer)
+    PPSVAddrCSRData csrData; // data to write CSR file, or predicted next PC if not. (For reorder buffer)
     ControlFlow controlFlow;
     Maybe#(CSR_XCapCause) capException;
     Maybe#(BoundsCheck) check;
@@ -143,8 +143,8 @@ module mkAluExeToFinFifo(AluExeToFinFifo);
 endmodule
 
 typedef struct {
-    CapMem pc;
-    CapMem nextPc;
+    PredState ps;
+    PredState nextPs;
     IType iType;
     Bool taken;
     DirPredTrainInfo dpTrain;
@@ -163,15 +163,15 @@ interface AluExeInput;
     // Special Capability Register file.
     method CapReg scaprf_rd(SCR csr);
     // ROB
-    method CapMem rob_getPC(InstTag t);
-    method CapMem rob_getPredPC(InstTag t);
+    method PredState rob_getPS(InstTag t);
+    method PredState rob_getPredPS(InstTag t);
     method Bit #(32) rob_getOrig_Inst (InstTag t);
     method Action rob_setExecuted(
         InstTag t,
 `ifdef INCLUDE_TANDEM_VERIF
         CapPipe dst_data,
 `endif
-        PPCVAddrCSRData csrData,
+        PPSVAddrCSRData csrData,
         Maybe#(CSR_XCapCause) capCause
 `ifdef RVFI
         , ExtraTraceBundle tb
@@ -188,7 +188,7 @@ interface AluExeInput;
     // write reg file & set conservative sb
     method Action writeRegFile(PhyRIndx dst, CapPipe data);
     // redirect
-    method Action redirect(CapMem new_pc, SpecTag spec_tag, InstTag inst_tag);
+    method Action redirect(PredState new_pc, SpecTag spec_tag, InstTag inst_tag);
     // spec update
     method Action correctSpec(SpecTag t);
 
@@ -278,8 +278,8 @@ module mkAluExePipeline#(AluExeInput inIfc)(AluExePipeline);
         end
 
         // get PC and PPC
-        let pc = inIfc.rob_getPC(x.tag);
-        let ppc = inIfc.rob_getPredPC(x.tag);
+        let ps = inIfc.rob_getPS(x.tag);
+        let pps = inIfc.rob_getPredPS(x.tag);
         let orig_inst = inIfc.rob_getOrig_Inst (x.tag);
 
         // go to next stage
@@ -291,8 +291,8 @@ module mkAluExePipeline#(AluExeInput inIfc)(AluExePipeline);
                 dpTrain: x.dpTrain,
                 rVal1: rVal1,
                 rVal2: rVal2,
-                pc: pc,
-                ppc: ppc,
+                ps: ps,
+                pps: pps,
                 orig_inst: orig_inst,
                 spec_tag: x.spec_tag
             },
@@ -306,26 +306,26 @@ module mkAluExePipeline#(AluExeInput inIfc)(AluExePipeline);
         let x = regToExe.data;
         if(verbose) $display("[doExeAlu] ", fshow(regToExe));
         // execution
-        ExecResult exec_result = basicExec(x.dInst, x.rVal1, x.rVal2, cast(x.pc), cast(x.ppc), x.orig_inst);
+        ExecResult exec_result = basicExec(x.dInst, x.rVal1, x.rVal2, cast(x.ps.pc), cast(x.pps.pc), x.orig_inst);
 
         if (verbosity > 0) begin
            $display ("AluExePipeline.doExeAlu: regToExe    = ", fshow (regToExe));
            $display ("AluExePipeline.doExeAlu: exec_result = ", fshow (exec_result));
            CapMem cm_npc = cast(exec_result.controlFlow.nextPc);
-           $display ("CapMem eq: %d, nextPc: %x, predPc: %x", cm_npc==x.ppc, cm_npc, x.ppc);
+           $display ("CapMem eq: %d, nextPc: %x, predPc: %x", cm_npc==x.pps.pc, cm_npc, x.pps.pc);
         end
 
         // when inst needs to store csrData in ROB, it must have iType = Csr, cannot mispredict
         if(isValid(x.dInst.csr)) begin
             doAssert(x.dInst.iType == Csr, "Only Csr inst needs to update csrData in ROB");
             doAssert(!exec_result.controlFlow.mispredict, "Csr inst cannot mispredict");
-            doAssert(cast(exec_result.controlFlow.nextPc) == x.ppc && x.ppc == addPc(x.pc, 4), "Csr inst ppc = pc+4");
+            doAssert(cast(exec_result.controlFlow.nextPc) == x.pps.pc && x.pps.pc == addAddr(x.ps.pc, 4), "Csr inst ppc = pc+4");
         end
         // when inst needs to store scrData in ROB, it must have iType = Scr, cannot mispredict
         if(isValid(x.dInst.scr)) begin
             // doAssert(x.dInst.iType == Scr, "Only Scr inst needs to update scrData in ROB"); // Removed because normal instructions can read SCRs
             doAssert(!exec_result.controlFlow.mispredict, "Scr inst cannot mispredict");
-            doAssert(cast(exec_result.controlFlow.nextPc) == x.ppc && x.ppc == addPc(x.pc, 4), "Scr inst ppc = pc+4");
+            doAssert(cast(exec_result.controlFlow.nextPc) == x.pps.pc && x.pps.pc == addAddr(x.ps.pc, 4), "Scr inst ppc = pc+4");
         end
 
         // send bypass
@@ -344,7 +344,7 @@ module mkAluExePipeline#(AluExeInput inIfc)(AluExePipeline);
                 dpTrain: x.dpTrain,
                 isCompressed: x.orig_inst[1:0] != 2'b11,
                 data: exec_result.data,
-                csrData: is_scr_or_csr ? CSRData (exec_result.csrData) : PPC (cast(exec_result.controlFlow.nextPc)),
+                csrData: is_scr_or_csr ? CSRData (exec_result.csrData) : PPS (PredState{pc: cast(exec_result.controlFlow.nextPc)}),
                 capException: exec_result.capException,
                 check: exec_result.boundsCheck,
 `ifdef RVFI
@@ -398,12 +398,12 @@ module mkAluExePipeline#(AluExeInput inIfc)(AluExePipeline);
         if (x.controlFlow.mispredict) (* nosplit *) begin
             // wrong branch predictin, we must have spec tag
             doAssert(isValid(x.spec_tag), "mispredicted branch must have spec tag");
-            inIfc.redirect(cast(x.controlFlow.nextPc), validValue(x.spec_tag), x.tag);
+            inIfc.redirect(PredState{pc: cast(x.controlFlow.nextPc)}, validValue(x.spec_tag), x.tag);
             // must be a branch, train branch predictor
             doAssert(x.iType == Jr || x.iType == CJALR || x.iType == CCall || x.iType == Br, "only jr, br, cjalr, and ccall can mispredict");
             inIfc.fetch_train_predictors(FetchTrainBP {
-                pc: cast(x.controlFlow.pc),
-                nextPc: cast(x.controlFlow.nextPc),
+                ps: PredState{pc: cast(x.controlFlow.pc)},
+                nextPs: PredState{pc: cast(x.controlFlow.nextPc)},
                 iType: x.iType,
                 taken: x.controlFlow.taken,
                 dpTrain: x.dpTrain,
@@ -431,8 +431,8 @@ module mkAluExePipeline#(AluExeInput inIfc)(AluExePipeline);
             // XXX not training JAL, reduce chance of conflicts
             if(x.iType == Jr || x.iType == CJALR || x.iType == CCall || x.iType == Br) begin
                 inIfc.fetch_train_predictors(FetchTrainBP {
-                    pc: cast(x.controlFlow.pc),
-                    nextPc: cast(x.controlFlow.nextPc),
+                    ps: PredState{pc: cast(x.controlFlow.pc)},
+                    nextPs: PredState{pc: cast(x.controlFlow.nextPc)},
                     iType: x.iType,
                     taken: x.controlFlow.taken,
                     dpTrain: x.dpTrain,

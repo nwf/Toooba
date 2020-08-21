@@ -44,9 +44,9 @@ import CHERICC_Fat::*;
 import CHERICap::*;
 
 interface RAS;
-    method CapMem first;
+    method PredState first;
     // first pop, then push
-    method Action popPush(Bool pop, Maybe#(CapMem) pushAddr);
+    method Action popPush(Bool pop, Maybe#(PredState) pushAddr);
 endinterface
 
 interface ReturnAddrStack;
@@ -61,7 +61,7 @@ typedef Bit#(TLog#(RasEntries)) RasIndex;
 
 (* synthesize *)
 module mkRas(ReturnAddrStack) provisos(NumAlias#(TExp#(TLog#(RasEntries)), RasEntries));
-    Vector#(RasEntries, Ehr#(TAdd#(SupSize, 1), CapMem)) stack <- replicateM(mkEhr(nullCap));
+    Vector#(RasEntries, Ehr#(TAdd#(SupSize, 1), PredState)) stack <- replicateM(mkEhr(nullPredState));
     // head points past valid data
     // to gracefully overflow, head is allowed to overflow to 0 and overwrite the oldest data
     Ehr#(TAdd#(SupSize, 1), RasIndex) head <- mkEhr(0);
@@ -79,10 +79,10 @@ module mkRas(ReturnAddrStack) provisos(NumAlias#(TExp#(TLog#(RasEntries)), RasEn
     Vector#(SupSize, RAS) rasIfc;
     for(Integer i = 0; i < valueof(SupSize); i = i+1) begin
         rasIfc[i] = (interface RAS;
-            method CapMem first;
+            method PredState first;
                 return stack[head[i]][i];
             endmethod
-            method Action popPush(Bool pop, Maybe#(CapMem) pushAddr);
+            method Action popPush(Bool pop, Maybe#(PredState) pushAddr);
                 // first pop, then push
                 RasIndex h = head[i];
                 if(pop) begin

@@ -555,12 +555,19 @@ instance DefaultValue#(VMInfo);
 endinstance
 
 typedef struct {
-    Addr  pc;
-    Addr  nextPc;
-    IType iType;
-    Bool  taken;
-    Bool  mispredict;
-} Redirect deriving (Bits, Eq, FShow);
+    CapMem pc;
+} PredState deriving (Bits, Eq, FShow);
+PredState nullPredState = PredState{pc: nullCap};
+
+function Addr getPc(PredState ps) = getAddr(ps.pc);
+function PredState setPcUnsafe(PredState ps, Addr pc);
+    ps.pc = setAddrUnsafe(ps.pc, pc);
+    return ps;
+endfunction
+function PredState addPc(PredState ps, Bit#(12) inc);
+    ps.pc = addAddr(ps.pc, inc);
+    return ps;
+endfunction
 
 typedef struct {
     CapPipe pc;
@@ -1039,4 +1046,4 @@ function Fmt showInst(Instruction inst);
   return ret;
 endfunction
 
-function x addPc(x cap, Bit#(12) inc) provisos (Add#(f, 12, c), CHERICap::CHERICap#(x, a, b, c, d, e)) = setAddrUnsafe(cap, getAddr(cap) + signExtend(inc));
+function x addAddr(x cap, Bit#(12) inc) provisos (Add#(f, 12, c), CHERICap::CHERICap#(x, a, b, c, d, e)) = setAddrUnsafe(cap, getAddr(cap) + signExtend(inc));

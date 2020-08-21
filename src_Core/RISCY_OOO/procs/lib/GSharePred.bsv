@@ -85,8 +85,8 @@ module mkGSharePred(DirPredictor#(GShareTrainInfo));
     Ehr#(TAdd#(1, SupSize), Bit#(TLog#(TAdd#(SupSize, 1)))) predCnt <- mkEhr(0);
     Ehr#(TAdd#(1, SupSize), Bit#(SupSize)) predRes <- mkEhr(0);
 
-    function BhtIndex getIndex(CapMem pc, GShareGHist gHist);
-        Bit#(PCIndexSz) pcIdx = truncate(getAddr(pc) >> 2);
+    function BhtIndex getIndex(PredState ps, GShareGHist gHist);
+        Bit#(PCIndexSz) pcIdx = truncate(getPc(ps) >> 2);
         return gHist ^ pcIdx;
     endfunction
 
@@ -108,13 +108,13 @@ module mkGSharePred(DirPredictor#(GShareTrainInfo));
     Vector#(SupSize, DirPred#(GShareTrainInfo)) predIfc;
     for(Integer i = 0; i < valueof(SupSize); i = i+1) begin
         predIfc[i] = (interface DirPred;
-            method ActionValue#(DirPredResult#(GShareTrainInfo)) pred(CapMem pc);
+            method ActionValue#(DirPredResult#(GShareTrainInfo)) pred(PredState ps);
                 // get the global history
                 // all previous branch in this cycle must be not taken
                 // otherwise this branch should be on wrong path
                 // because all inst in same cycle are fetched consecutively
                 GShareGHist gHist = curGHist >> predCnt[i];
-                Bool taken = isTaken(tab.sub(getIndex(pc, gHist)));
+                Bool taken = isTaken(tab.sub(getIndex(ps, gHist)));
 
                 // record pred result
                 predCnt[i] <= predCnt[i] + 1;
@@ -142,14 +142,14 @@ module mkGSharePred(DirPredictor#(GShareTrainInfo));
 
     interface pred = predIfc;
 
-    method Action update(CapMem pc, Bool taken, GShareTrainInfo train, Bool mispred);
+    method Action update(PredState ps, Bool taken, GShareTrainInfo train, Bool mispred);
         // update history if mispred
         if(mispred) begin
             GShareGHist newHist = truncate({pack(taken), train.gHist} >> 1);
             globalHist.redirect(newHist);
         end
         // update sat cnt
-        let index = getIndex(pc, train.gHist);
+        let index = getIndex(ps, train.gHist);
         Bit#(2) cnt = tab.sub(index);
         tab.upd(index, updateCnt(cnt, taken));
     endmethod

@@ -57,15 +57,15 @@ module mkBht(DirPredictor#(BhtTrainInfo));
     // mkRegFileWCF is the RegFile version of mkConfigReg
     RegFile#(BhtIndex, Bit#(2)) hist <- mkRegFileWCF(0,fromInteger(valueOf(BhtEntries)-1));
 
-    function BhtIndex getIndex(CapMem pc);
-        return truncate(getAddr(pc) >> 2);
+    function BhtIndex getIndex(PredState ps);
+        return truncate(getPc(ps) >> 2);
     endfunction
 
     Vector#(SupSize, DirPred#(BhtTrainInfo)) predIfc;
     for(Integer i = 0; i < valueof(SupSize); i = i+1) begin
         predIfc[i] = (interface DirPred;
-            method ActionValue#(DirPredResult#(BhtTrainInfo)) pred(CapMem pc);
-                let index = getIndex(pc);
+            method ActionValue#(DirPredResult#(BhtTrainInfo)) pred(PredState ps);
+                let index = getIndex(ps);
                 Bit#(2) cnt = hist.sub(index);
                 Bool taken = cnt[1] == 1;
                 return DirPredResult {
@@ -78,7 +78,7 @@ module mkBht(DirPredictor#(BhtTrainInfo));
 
     interface pred = predIfc;
 
-    method Action update(CapMem pc, Bool taken, BhtTrainInfo train, Bool mispred);
+    method Action update(PredState pc, Bool taken, BhtTrainInfo train, Bool mispred);
         let index = getIndex(pc);
         let current_hist = hist.sub(index);
         Bit#(2) next_hist;
