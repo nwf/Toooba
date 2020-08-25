@@ -194,6 +194,8 @@ interface ReorderBufferRowEhr#(numeric type aluExeNum, numeric type fpuMulDivExe
     // speculation
     method Bool dependsOn_wrongSpec(SpecTag tag);
     method Action correctSpeculation(SpecBits mask);
+    method Bool scrRead;
+    method Bool scrWrite;
 endinterface
 
 module mkReorderBufferRowEhr(ReorderBufferRowEhr#(aluExeNum, fpuMulDivExeNum)) provisos(
@@ -525,6 +527,9 @@ module mkReorderBufferRowEhr(ReorderBufferRowEhr#(aluExeNum, fpuMulDivExeNum)) p
         SpecBits sb = spec_bits[sb_correctSpec_port];
         spec_bits[sb_correctSpec_port] <= sb & mask;
     endmethod
+
+    method Bool scrRead  = (isValid(csr) || isValid(scr)) && (orig_inst[11:7]!=0);
+    method Bool scrWrite = (isValid(csr) || isValid(scr)) && (orig_inst[19:15]!=0);
 endmodule
 
 interface ROB_SpeculationUpdate;
