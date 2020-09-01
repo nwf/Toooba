@@ -881,6 +881,19 @@ module mkRenameStage#(RenameInput inIfc)(RenameStage);
                 if(doReplay(dInst.iType)) begin
                     stop = True;
                 end
+                // CSR reads and writes must issue at the head of the queue
+                // so that the state of the reorder buffer reflects all outstanding instructions.
+                if(isCsr(dInst.iType) && i != 0) begin
+                    stop = True;
+                end
+                Bool csrRead  = isCsr(dInst.iType) && (x.regs.dst  != Valid(Gpr(0)));
+                if (csrRead && rob.outstandingCsrWrite) begin
+                    stop = True;
+                end
+                Bool csrWrite = isCsr(dInst.iType) && (x.regs.src1 != Valid(Gpr(0)));
+                if (csrWrite && rob.outstandingCsrRead) begin
+                    stop = True;
+                end
 `ifdef SECURITY
                 // When speculation is not allowed at all, the second inst
                 // cannot be processed

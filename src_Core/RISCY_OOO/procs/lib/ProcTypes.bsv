@@ -854,10 +854,12 @@ Bit#(7) privSFENCEVMA  = 7'h9;
 
 function Bool isSystem(IType iType) = (
     iType == Unsupported || iType == Interrupt ||
-    iType == Ecall || iType == Ebreak || iType == Csr || iType == Scr ||
+    iType == Ecall || iType == Ebreak || /*iType == Csr || iType == Scr ||*/
     iType == SFence || iType == FenceI ||
     iType == Sret || iType == Mret
 );
+
+function Bool isCsr(IType iType) = iType == Csr || iType == Scr;
 
 // instruction requires replaying (i.e. fetch next instruction after current
 // instruction commits)

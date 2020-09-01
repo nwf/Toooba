@@ -258,7 +258,7 @@ deriving (Eq, FShow, Bits);
 `endif
 
 module mkCommitStage#(CommitInput inIfc)(CommitStage);
-    Bool verbose = False;
+    Bool verbose = True;
 
     Integer verbosity = 1;   // Bluespec: for lightweight verbosity trace
 
@@ -666,7 +666,7 @@ module mkCommitStage#(CommitInput inIfc)(CommitStage);
 
         if (verbosity >= 1) begin
            $display ("instret:%0d  PC:0x%0h  instr:0x%08h", rg_serial_num, x.ps.pc, x.orig_inst,
-                     "  iType:", fshow (x.iType), "    [doCommitTrap]");
+                     "  iType:", fshow (x.iType), "    [doCommitTrap] %0d: %m.", cur_cycle);
         end
         if (verbose) begin
            $display ("CommitStage.doCommitTrap_flush: deq_data:   ", fshow (x));
@@ -860,7 +860,7 @@ module mkCommitStage#(CommitInput inIfc)(CommitStage);
         if(verbose) $display("[doCommitSystemInst] ", fshow(x));
         if (verbosity >= 1) begin
            $display("instret:%0d  PC:0x%0h  instr:0x%08h", rg_serial_num, x.ps.pc, x.orig_inst,
-                    "   iType:", fshow (x.iType), "    [doCommitSystemInst]");
+                    "   iType:", fshow (x.iType), "    [doCommitSystemInst] %0d: %m.", cur_cycle);
         end
 
         // we claim a phy reg for every inst, so commit its renaming
@@ -1079,6 +1079,11 @@ module mkCommitStage#(CommitInput inIfc)(CommitStage);
 
         Bit #(64) instret = 0;
 
+        // Support SCR/CSR writes.
+        CapMem csr_data = ?;
+        Maybe#(SCR) scr_idx = Invalid;
+        Maybe#(CSR) csr_idx = Invalid;
+
 `ifdef INCLUDE_TANDEM_VERIF
        // These variables accumulate fflags and mstatus in sequential Program Order ('po')
        // (whereas the 'fflags' variable does just one update after superscalar retirement).
@@ -1096,7 +1101,7 @@ module mkCommitStage#(CommitInput inIfc)(CommitStage);
                 let inst_tag = rob.deqPort[i].getDeqInstTag;
 
                 // check can be committed or not
-                if(x.rob_inst_state != Executed || isValid(x.ldKilled) || isValid(x.trap) || isSystem(x.iType)) begin
+                if(x.rob_inst_state != Executed || isValid(x.ldKilled) || isValid(x.trap) || isSystem(x.iType) || (isCsr(x.iType) && i != 0)) begin
                     // inst not ready for commit, or system inst, or trap, or killed, stop here
                     stop = True;
                 end
@@ -1110,7 +1115,49 @@ module mkCommitStage#(CommitInput inIfc)(CommitStage);
 
                     if (verbosity >= 1) begin
                        $display("instret:%0d  PC:0x%0h  instr:0x%08h", rg_serial_num + instret, x.ps.pc, x.orig_inst,
-                                "   iType:", fshow (x.iType), "    [doCommitNormalInst [%0d]]", i);
+                                "   iType:", fshow (x.iType), "    [doCommitNormalInst [%0d]] %0d: %m.", i, cur_cycle);
+                    end
+
+                    if (i==0) begin
+                        Bool write_satp     = False; // flush tlb when satp csr is modified
+                        Bool flush_security = False; // flush for security when the flush csr is written
+                        if(x.iType == Csr) begin
+                            // write CSR
+                            csr_idx = x.csr;
+                            if(x.pps_vaddr_csrData matches tagged CSRData .d) begin
+                                csr_data = d;
+                            end
+                            else begin
+                                doAssert(False, "must have csr data");
+                            end
+
+`ifdef INCLUDE_TANDEM_VERIF
+                            Data data_warl_xformed = csrf.warl_xform (csr_idx, csr_data);
+                            x.ppc_vaddr_csrData = tagged CSRData data_warl_xformed;
+
+                            if (x.will_dirty_fpu_state) begin
+                               Data old_mstatus = csrf.rd (csrAddrMSTATUS);
+                               new_mstatus = { 1'b1, old_mstatus [62:15], 2'b11, old_mstatus [12:0] };
+                            end
+`endif
+
+                            // check if satp is modified or not
+                            write_satp = validValue(csr_idx) == csrAddrSATP;
+`ifdef SECURITY
+                            flush_security = validValue(csr_idx) == csrAddrMFLUSH;
+`endif
+                        end
+                        if(x.iType == Scr) begin
+                            // inIfc.commitCsrInstOrInterrupt; // TODO Will there be statcounter for SCRs?
+                            // write CSR
+                            scr_idx = x.scr;
+                            if(x.pps_vaddr_csrData matches tagged CSRData .d) begin
+                                csr_data = d;
+                            end
+                            else begin
+                                doAssert(False, "must have scr data");
+                            end
+                        end
                     end
 
 `ifdef INCLUDE_TANDEM_VERIF
@@ -1192,8 +1239,13 @@ module mkCommitStage#(CommitInput inIfc)(CommitStage);
         rg_last_inst <= last_inst;
 `endif
 
+        if (csr_idx matches tagged Valid .idx) begin
+            // notify commit of CSR (so MMIO pRq may be handled)
+            inIfc.commitCsrInstOrInterrupt;
+            csrf.csrInstWr(idx, getAddr(csr_data));
+        end else if (scr_idx matches tagged Valid .idx) csrf.scrInstWr(idx, cast(csr_data));
         // write FPU csr
-        if(csrf.fpuInstNeedWr(fflags, will_dirty_fpu_state)) begin
+        else if(csrf.fpuInstNeedWr(fflags, will_dirty_fpu_state)) begin
             csrf.fpuInstWr(fflags);
         end
 

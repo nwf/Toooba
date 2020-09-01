@@ -621,7 +621,7 @@ module mkFetchStage(FetchStage);
             main_epoch: f_main_epoch};
 
         f12f2.enq(tuple2(posLastSupX2,out));
-        if (verbose) $display("Fetch1: ", fshow(out), " posLastSupX2: %d", posLastSupX2);
+        if (verbose) $display("Fetch1: ", fshow(out), " posLastSupX2: %d", posLastSupX2, "next_ps: ", fshow(next_fetch_ps));
     endrule
 
     rule doFetch2;
